@@ -68,9 +68,19 @@ public class Chassis extends Subsystem {
 		// Put code here to be run every loop
 
 	}
+	
+	private double getRangeFinderVoltage() {
+    	return RobotMap.rangeFinder.getAverageVoltage();
+    }
+
+    public double getRangeFinderDistance() {
+//        double distanceInInches = getRangeFinderVoltage() *110.5;// / VOLT_DIST_RATIO;
+        double distanceInInches = getRangeFinderVoltage() * 107.5;
+        return distanceInInches;
+    } 
 
 	public void drive(double speed, double rotation) {
-		robotDrive.arcadeDrive(speed, rotation);
+		robotDrive.arcadeDrive(speed * -1, rotation * 1);
 		driveMove = speed;
 		driveRotate = rotation;
 	}
