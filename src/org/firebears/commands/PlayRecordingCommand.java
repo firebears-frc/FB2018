@@ -59,7 +59,7 @@ public class PlayRecordingCommand extends Command {
 	protected void execute() {
 		long currentTime = System.currentTimeMillis() - startTime;
 		while ((currentTime > time) && (hasMore)) {
-			Robot.chassis.drive(rotateAmount, forwardAmount);
+			Robot.chassis.drive(forwardAmount, rotateAmount);
 			hasMore = readLine();
 		}
 	}
