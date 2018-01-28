@@ -138,8 +138,8 @@ public class RobotMap {
 		encoderRight.setDistancePerPulse(0.05639);
 		encoderRight.setPIDSourceType(PIDSourceType.kRate);
 		
-//		rangeFinder = new AnalogInput();
-//		rangeFinder.setName("Chassis", "Rangefinder");
+		rangeFinder = new AnalogInput(0);
+		rangeFinder.setName("Chassis", "Rangefinder");
 		
 		try {
 			navXBoard = new AHRS(SPI.Port.kMXP);

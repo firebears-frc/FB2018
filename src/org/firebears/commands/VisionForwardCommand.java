@@ -74,7 +74,7 @@ public class VisionForwardCommand extends PIDCommand {
 	@Override
 	protected void usePIDOutput(double output) {
 		// Slow robot down when within specific distance
-		double speed = (Robot.chassis.getRangeFinderDistance() < SLOWDOWN_DISTANCE) ? -0.10 : -0.30;
+		double speed = (Robot.chassis.getRangeFinderDistance() < SLOWDOWN_DISTANCE) ? -0.40 : -0.75;
 		// Drive the robot
 		Robot.chassis.drive(speed, output);
 	}

@@ -123,5 +123,8 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putNumber("Back Right Encoder Rate", RobotMap.chassisBackRight.getSelectedSensorVelocity(RobotMap.PID_IDX));
 		SmartDashboard.putNumber("Front Right Encoder Distance", RobotMap.chassisFrontRight.getSelectedSensorPosition(RobotMap.PID_IDX));
 		SmartDashboard.putNumber("Front Right Encoder Rate", RobotMap.chassisFrontRight.getSelectedSensorVelocity(RobotMap.PID_IDX));
+		
+		SmartDashboard.putNumber("DistanceInInches", Robot.chassis.getRangeFinderDistance());
+		SmartDashboard.putNumber("NavX Angle", RobotMap.boundAngle(RobotMap.getNavXAngle()));
     }
 }

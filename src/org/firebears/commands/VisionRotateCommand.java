@@ -16,7 +16,7 @@ public class VisionRotateCommand extends PIDCommand {
 	double turnValue;
 	double targetAngle;
 	double FORWARD_SPEED = .15;
-	private static final double SPEED = 0.15;
+	private static final double SPEED = 0.5;
 	private static final double TOLERANCE = 1.0;
 	
     public VisionRotateCommand() {
@@ -37,6 +37,7 @@ public class VisionRotateCommand extends PIDCommand {
     	
     	// Get turn value from vision subsystem
     	turnValue = Robot.vision.getAngleX();
+//    	turnValue = 15;
     	
     	// Set target angle for PID to current angle + angle from vision
     	targetAngle = boundAngle(getNavXAngle() + turnValue);
