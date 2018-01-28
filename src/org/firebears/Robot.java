@@ -113,14 +113,14 @@ public class Robot extends TimedRobot {
         
         // Put Encoder values
         SmartDashboard.putNumber("Left Encoder", RobotMap.encoderLeft.get());
-		SmartDashboard.putNumber("Back Left Encoder Distance", RobotMap.chassisRearLeft.getSelectedSensorPosition(RobotMap.PID_IDX));
-		SmartDashboard.putNumber("Back Left Encoder Rate", RobotMap.chassisRearLeft.getSelectedSensorVelocity(RobotMap.PID_IDX));
+		SmartDashboard.putNumber("Back Left Encoder Distance", RobotMap.chassisBackLeft.getSelectedSensorPosition(RobotMap.PID_IDX));
+		SmartDashboard.putNumber("Back Left Encoder Rate", RobotMap.chassisBackLeft.getSelectedSensorVelocity(RobotMap.PID_IDX));
 		SmartDashboard.putNumber("Front Left Encoder Distance", RobotMap.chassisFrontLeft.getSelectedSensorPosition(RobotMap.PID_IDX));
 		SmartDashboard.putNumber("Front Left Encoder Rate", RobotMap.chassisFrontLeft.getSelectedSensorVelocity(RobotMap.PID_IDX));
 		
 		SmartDashboard.putNumber("Right Encoder", RobotMap.encoderRight.get());
-		SmartDashboard.putNumber("Back Right Encoder Distance", RobotMap.chassisRearRight.getSelectedSensorPosition(RobotMap.PID_IDX));
-		SmartDashboard.putNumber("Back Right Encoder Rate", RobotMap.chassisRearRight.getSelectedSensorVelocity(RobotMap.PID_IDX));
+		SmartDashboard.putNumber("Back Right Encoder Distance", RobotMap.chassisBackRight.getSelectedSensorPosition(RobotMap.PID_IDX));
+		SmartDashboard.putNumber("Back Right Encoder Rate", RobotMap.chassisBackRight.getSelectedSensorVelocity(RobotMap.PID_IDX));
 		SmartDashboard.putNumber("Front Right Encoder Distance", RobotMap.chassisFrontRight.getSelectedSensorPosition(RobotMap.PID_IDX));
 		SmartDashboard.putNumber("Front Right Encoder Rate", RobotMap.chassisFrontRight.getSelectedSensorVelocity(RobotMap.PID_IDX));
     }
