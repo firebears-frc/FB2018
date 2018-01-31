@@ -50,7 +50,7 @@ public class RobotMap {
 	// Variables for closed loop driving
 	public static final int PID_IDX = 0;
 	public static final int TIMEOUT_MS = 10;
-	static double m_P = 3.0f;
+	static double m_P = 3.0;
 	static double m_I = 0;
 	static double m_D = 0;
 	static double m_ff = 0;

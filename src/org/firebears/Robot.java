@@ -82,6 +82,10 @@ public class Robot extends TimedRobot {
 
     @Override
     public void autonomousInit() {
+    	
+    	
+    	
+    	
         autonomousCommand = chooser.getSelected();
         // schedule the autonomous command (example)
         if (autonomousCommand != null) autonomousCommand.start();
@@ -101,6 +105,7 @@ public class Robot extends TimedRobot {
         // teleop starts running. If you want the autonomous to
         // continue until interrupted by another command, remove
         // this line or comment it out.
+    	
         if (autonomousCommand != null) autonomousCommand.cancel();
     }
 
@@ -126,5 +131,6 @@ public class Robot extends TimedRobot {
 		
 		SmartDashboard.putNumber("DistanceInInches", Robot.chassis.getRangeFinderDistance());
 		SmartDashboard.putNumber("NavX Angle", RobotMap.boundAngle(RobotMap.getNavXAngle()));
+
     }
 }
