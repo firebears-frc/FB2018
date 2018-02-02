@@ -11,6 +11,7 @@
 
 package org.firebears;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -84,7 +85,9 @@ public class Robot extends TimedRobot {
     public void autonomousInit() {
     	
     	
-    	
+    	String gameData;
+    	gameData = DriverStation.getInstance().getGameSpecificMessage();
+    	System.out.println(gameData);
     	
         autonomousCommand = chooser.getSelected();
         // schedule the autonomous command (example)
