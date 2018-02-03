@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.firebears.commands.*;
+import org.firebears.commands.auto.DriveToDistanceCommand;
 import org.firebears.subsystems.*;
 
 /**
@@ -85,16 +86,34 @@ public class Robot extends TimedRobot {
 
     @Override
     public void autonomousInit() {
+//    	System.out.println("joytickbutton1: " + oi.joystick1.getRawButton(1));
+//    	System.out.println("joytickYAxis: "+ oi.joystick1.getRawAxis(1));
+    	System.out.println("joytickXAxis: "+ oi.joystick2.getRawAxis(2));
+
+    	double joystick = oi.joystick2.getRawAxis(2);
     	
-    	autoSelection.getAuto();
+//    	if (joystick > .33) {
+//    		RobotMap.side = "Right";
+//    	}else if (joystick <-.33) {
+//    		RobotMap.side = "Left";
+//    	}else if (joystick >-.33 && joystick < .33) {
+//    		RobotMap.side = "Middle";
+//    	}
+    	SmartDashboard.putString("Side", RobotMap.side);
+ 		SmartDashboard.putString("Priority", RobotMap.priority);
+ 		SmartDashboard.putBoolean("Cross", RobotMap.shouldCross);
     	
-    	String gameData;
-    	gameData = DriverStation.getInstance().getGameSpecificMessage();
-    	System.out.println(gameData);
     	
-        autonomousCommand = chooser.getSelected();
-        // schedule the autonomous command (example)
-        if (autonomousCommand != null) autonomousCommand.start();
+//    	autoSelection.getAuto();
+    	
+//    	String gameData;
+//    	gameData = DriverStation.getInstance().getGameSpecificMessage();
+//    	System.out.println(gameData);
+//    	
+//        autonomousCommand = chooser.getSelected();
+////    	autonomousCommand = new DriveToDistanceCommand(20);
+//         //schedule the autonomous command (example)
+//        if (autonomousCommand != null) autonomousCommand.start();
     }
 
     /**
@@ -103,6 +122,8 @@ public class Robot extends TimedRobot {
     @Override
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
+        
+       
     }
 
     @Override
@@ -138,8 +159,13 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putNumber("DistanceInInches", Robot.chassis.getRangeFinderDistance());
 		SmartDashboard.putNumber("NavX Angle", RobotMap.boundAngle(RobotMap.getNavXAngle()));
 		
+		SmartDashboard.putBoolean("TapeSensor", Robot.chassis.isTapeBright());
+//		System.out.println("Tape Sensor: " + RobotMap.tape.get());
+		
 		SmartDashboard.putBoolean("Closed_LOOP", RobotMap.CLOSED_LOOP_DRIVING);
 		SmartDashboard.putString("ControlMode", RobotMap.chassisFrontLeft.getControlMode().toString());
+		
+		
 
     }
 }
