@@ -89,10 +89,10 @@ public class Robot extends TimedRobot {
     public void autonomousInit() {
 //    	System.out.println("joytickbutton1: " + oi.joystick1.getRawButton(1));
 //    	System.out.println("joytickYAxis: "+ oi.joystick1.getRawAxis(1));
-    	System.out.println("joytickXAxis: "+ oi.joystick2.getRawAxis(2));
-
-    	double joystick = oi.joystick2.getRawAxis(2);
-    	
+//    	System.out.println("joytickXAxis: "+ oi.joystick2.getRawAxis(2));
+//
+//    	double joystick = oi.joystick2.getRawAxis(2);
+//    	
 //    	if (joystick > .33) {
 //    		RobotMap.side = "Right";
 //    	}else if (joystick <-.33) {
@@ -100,31 +100,13 @@ public class Robot extends TimedRobot {
 //    	}else if (joystick >-.33 && joystick < .33) {
 //    		RobotMap.side = "Middle";
 //    	}
-    	SmartDashboard.putString("Side", RobotMap.side);
- 		SmartDashboard.putString("Priority", RobotMap.priority);
- 		SmartDashboard.putBoolean("Cross", RobotMap.shouldCross);
+//    	SmartDashboard.putString("Side", RobotMap.side);
+// 		SmartDashboard.putString("Priority", RobotMap.priority);
+// 		SmartDashboard.putBoolean("Cross", RobotMap.shouldCross);
     	
-<<<<<<< HEAD
-=======
+
     	Command selectedAuto = autoSelection.getAuto();
     	selectedAuto.start();
->>>>>>> c4604485bafa4504099933066d7784a7e94f6485
-    	
-//    	autoSelection.getAuto();
-    	
-<<<<<<< HEAD
-//    	String gameData;
-//    	gameData = DriverStation.getInstance().getGameSpecificMessage();
-//    	System.out.println(gameData);
-//    	
-//        autonomousCommand = chooser.getSelected();
-////    	autonomousCommand = new DriveToDistanceCommand(20);
-//         //schedule the autonomous command (example)
-=======
-//        autonomousCommand = chooser.getSelected();
-//        // schedule the autonomous command (example)
->>>>>>> c4604485bafa4504099933066d7784a7e94f6485
-//        if (autonomousCommand != null) autonomousCommand.start();
     }
 
     /**
