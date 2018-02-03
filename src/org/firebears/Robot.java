@@ -134,6 +134,9 @@ public class Robot extends TimedRobot {
 		
 		SmartDashboard.putNumber("DistanceInInches", Robot.chassis.getRangeFinderDistance());
 		SmartDashboard.putNumber("NavX Angle", RobotMap.boundAngle(RobotMap.getNavXAngle()));
+		
+		SmartDashboard.putBoolean("Closed_LOOP", RobotMap.CLOSED_LOOP_DRIVING);
+		SmartDashboard.putString("ControlMode", RobotMap.chassisFrontLeft.getControlMode().toString());
 
     }
 }

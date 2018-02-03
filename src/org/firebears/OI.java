@@ -67,8 +67,8 @@ public class OI {
     	
         joystick1 = new Joystick(0);
         
-        testPID = new JoystickButton(joystick1, 1);
-        testPID.whenPressed(new SwitchDrivingType());
+//        testPID = new JoystickButton(joystick1, 1);
+//        testPID.whenPressed(new SwitchDrivingType());
 
         // SmartDashboard Buttons
         SmartDashboard.putData("Start Recording", new StartRecordingCommand());

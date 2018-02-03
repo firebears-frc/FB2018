@@ -53,12 +53,12 @@ public class RobotMap {
 	static double m_P = 3.0;
 	static double m_I = 0;
 	static double m_D = 0;
-	static double m_ff = 0;
+	static double m_ff = 1.46;
 	static int m_izone = 256;
-	static double m_rampRate = 0.03;
+	static double m_rampRate = 0.2;
 	static int m_profile = 0;
-	public static int m_CountPerRev = 750;//****Magnetic
-	public static boolean CLOSED_LOOP_DRIVING = true;
+	public static int m_CountPerRev = 700;//****Magnetic
+	public static boolean CLOSED_LOOP_DRIVING = false;
 
 	public static AHRS navXBoard;
 	
