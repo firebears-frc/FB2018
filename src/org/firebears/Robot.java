@@ -100,21 +100,29 @@ public class Robot extends TimedRobot {
 		} else {
 			RobotMap.side = "Middle";
 		}
-		if (y > 0) {
+		if (y >= 0) {
 			RobotMap.priority = "Switch";
 		} else if (y < 0) {
-			RobotMap.side = "Scale";
+			RobotMap.priority = "Scale";
 		}
+		if (z >= 0) {
+			RobotMap.shouldCross = true;
+		} else if (y < 0) {
+			RobotMap.shouldCross = false;
+		}
+		
 		SmartDashboard.putString("Side", RobotMap.side);
-		// SmartDashboard.putString("Priority", RobotMap.priority);
-		// SmartDashboard.putBoolean("Cross", RobotMap.shouldCross);
+		SmartDashboard.putString("Priority", RobotMap.priority);
+		SmartDashboard.putBoolean("Cross", RobotMap.shouldCross);
 		
 		Command selectedAuto = autoSelection.getAuto();
-		selectedAuto.start();
+//		selectedAuto.start();
 
 		String gameData;
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
 		System.out.println(gameData);
+		
+		
 
 		// autonomousCommand = chooser.getSelected();
 		// // schedule the autonomous command (example)

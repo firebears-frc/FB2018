@@ -59,11 +59,11 @@ public class AutoSelection extends Subsystem {
 		
 		Command selectedAuto = null;
 		String side = RobotMap.side;
-		System.out.println(side);
+		System.out.println("Side: " + side);
 		String priority = RobotMap.priority;
-		System.out.println(priority);
+		System.out.println("Priority: " + priority);
 		Boolean shouldCross = RobotMap.shouldCross;
-		System.out.println(shouldCross);
+		System.out.println("ShouldCross: " + shouldCross);
 		String gameData = DriverStation.getInstance().getGameSpecificMessage();
 
 		// to-do = replace println's with auto commands
