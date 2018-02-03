@@ -16,7 +16,10 @@ public class VisionForwardCommand extends PIDCommand {
 	double startAngle;
 	double currentAngle;
 	private static final double TOLERANCE = 2.5;
-	static int SLOWDOWN_DISTANCE = 24;
+	static final int SLOW_DISTANCE = 15;
+	static final int FAST_DISTANCE = 30;
+	static final double SLOW_SPEED = -0.4;
+	static final double FAST_SPEED = -0.75;
 	
     public VisionForwardCommand() {
     	super(.025, 0, 0);
@@ -74,7 +77,11 @@ public class VisionForwardCommand extends PIDCommand {
 	@Override
 	protected void usePIDOutput(double output) {
 		// Slow robot down when within specific distance
-		double speed = (Robot.chassis.getRangeFinderDistance() < SLOWDOWN_DISTANCE) ? -0.40 : -0.75;
+//		double speed = (Robot.chassis.getRangeFinderDistance() < SLOW_DISTANCE) ? -0.40 : -0.75;
+		double distancePer = (Robot.chassis.getRangeFinderDistance() - SLOW_DISTANCE) / (FAST_DISTANCE - SLOW_DISTANCE);
+		distancePer = Math.min(100, distancePer);
+		distancePer = Math.max(0, distancePer);
+		double speed = distancePer * (FAST_DISTANCE - SLOW_DISTANCE) + SLOW_DISTANCE;
 		// Drive the robot
 		Robot.chassis.drive(speed, output);
 	}
