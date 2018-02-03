@@ -20,6 +20,7 @@ public class DriveToDistanceCommand extends Command {
 	}
 
 	protected void initialize() {
+		System.out.println("Driving distance command");
 		startingDistance = RobotMap.chassisFrontLeft.getSelectedSensorPosition(RobotMap.PID_IDX);
 	}
 

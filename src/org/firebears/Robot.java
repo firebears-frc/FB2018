@@ -87,15 +87,16 @@ public class Robot extends TimedRobot {
     @Override
     public void autonomousInit() {
     	
-    	CommandGroup selectedAuto = autoSelection.getAuto();
+    	Command selectedAuto = autoSelection.getAuto();
+    	selectedAuto.start();
     	
     	String gameData;
     	gameData = DriverStation.getInstance().getGameSpecificMessage();
     	System.out.println(gameData);
     	
-        autonomousCommand = chooser.getSelected();
-        // schedule the autonomous command (example)
-        if (autonomousCommand != null) autonomousCommand.start();
+//        autonomousCommand = chooser.getSelected();
+//        // schedule the autonomous command (example)
+//        if (autonomousCommand != null) autonomousCommand.start();
     }
 
     /**
