@@ -59,6 +59,11 @@ public class RobotMap {
 	static int m_profile = 0;
 	public static int m_CountPerRev = 700;//****Magnetic
 	public static boolean CLOSED_LOOP_DRIVING = false;
+	
+	//For autoSelecion
+	public static String side;
+	public static String priority;
+	public static boolean shouldCross;
 
 	public static AHRS navXBoard;
 	
