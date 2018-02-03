@@ -14,6 +14,7 @@ package org.firebears;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -103,9 +104,15 @@ public class Robot extends TimedRobot {
  		SmartDashboard.putString("Priority", RobotMap.priority);
  		SmartDashboard.putBoolean("Cross", RobotMap.shouldCross);
     	
+<<<<<<< HEAD
+=======
+    	Command selectedAuto = autoSelection.getAuto();
+    	selectedAuto.start();
+>>>>>>> c4604485bafa4504099933066d7784a7e94f6485
     	
 //    	autoSelection.getAuto();
     	
+<<<<<<< HEAD
 //    	String gameData;
 //    	gameData = DriverStation.getInstance().getGameSpecificMessage();
 //    	System.out.println(gameData);
@@ -113,6 +120,10 @@ public class Robot extends TimedRobot {
 //        autonomousCommand = chooser.getSelected();
 ////    	autonomousCommand = new DriveToDistanceCommand(20);
 //         //schedule the autonomous command (example)
+=======
+//        autonomousCommand = chooser.getSelected();
+//        // schedule the autonomous command (example)
+>>>>>>> c4604485bafa4504099933066d7784a7e94f6485
 //        if (autonomousCommand != null) autonomousCommand.start();
     }
 
