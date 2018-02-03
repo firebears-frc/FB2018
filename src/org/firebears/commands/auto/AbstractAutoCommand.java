@@ -53,7 +53,9 @@ public abstract class AbstractAutoCommand extends Command {
   /**
    * @return a command to start if we never get game data.
    */
-  abstract protected Command getTimeoutCommand();
+  protected Command getTimeoutCommand() {
+	  return new DriveToDistanceCommand(60);
+  }
 
 
 }
