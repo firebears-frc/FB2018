@@ -29,14 +29,14 @@ public class Chassis extends Subsystem {
 	private double driveMove;
 	private double driveRotate;
 
-	private final WPI_TalonSRX frontLeft = RobotMap.chassisFrontLeft;
-	private final WPI_TalonSRX rearLeft = RobotMap.chassisBackLeft;
+	private final WPI_TalonSRX frontLeft = RobotMap.chassisLeftMaster;
+	private final WPI_TalonSRX rearLeft = RobotMap.chassisLeftSlave;
 	private final SpeedControllerGroup leftMotors = RobotMap.chassisLeftMotors;
-	private final WPI_TalonSRX frontRight = RobotMap.chassisFrontRight;
-	private final WPI_TalonSRX rearRight = RobotMap.chassisBackRight;
+	private final WPI_TalonSRX frontRight = RobotMap.chassisRightMaster;
+	private final WPI_TalonSRX rearRight = RobotMap.chassisRightSlave;
 	private final SpeedControllerGroup rightMotors = RobotMap.chassisRightMotors;
 	private final DifferentialDrive robotDrive = RobotMap.chassisRobotDrive;
-	private final DigitalInput tapeSensor = RobotMap.tapesensor;
+	private final DigitalInput tapeSensor = RobotMap.tapeSensor;
 
 	public boolean isTapeBright() {
 		// Return true when detecting light tape

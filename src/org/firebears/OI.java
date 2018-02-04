@@ -19,8 +19,10 @@ import org.firebears.commands.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.command.Command;
 
 import org.firebears.subsystems.*;
+import org.firebears.util.RobotReport;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -32,18 +34,24 @@ public class OI {
 	public Joystick joystick2;
 	public JoystickButton testPID;
 
-	public OI() {
+	public OI(RobotReport report) {
 		// Intialize the joysticks
 		joystick1 = new Joystick(0);
+		report.addJoystick(0, "Joystick 1", joystick1);
+		
 		joystick2 = new Joystick(1);
+		report.addJoystick(1, "Joystick 2", joystick2);
 
 		// Joystick Buttons
 		
 		// Switch between Open and Closed Loop Driving
 		// testPID = new JoystickButton(joystick1, 1);
+		// Command switchDriving = new SwitchDrivingType();
 		// testPID.whenPressed(new SwitchDrivingType());
+		// report.addJoystickButton(0, 1, "Swtich Driving Type", switchDriving);
 
 		// SmartDashboard Buttons
+		// Recoiding Commands
 		SmartDashboard.putData("Start Recording", new StartRecordingCommand());
 		SmartDashboard.putData("Stop Recording", new StopRecordingCommand());
 		SmartDashboard.putData("Play Recording", new PlayRecordingCommand());

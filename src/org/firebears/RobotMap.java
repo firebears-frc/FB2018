@@ -10,6 +10,8 @@
 
 package org.firebears;
 
+import org.firebears.util.RobotReport;
+
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
@@ -36,15 +38,20 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  * floating around.
  */
 public class RobotMap {
-	public static CANTalon chassisFrontLeft;
-	public static CANTalon chassisBackLeft;
+	public static CANTalon chassisLeftMaster;
+	public static CANTalon chassisLeftSlave;
 	public static SpeedControllerGroup chassisLeftMotors;
-	public static CANTalon chassisFrontRight;
-	public static CANTalon chassisBackRight;
+	public static CANTalon chassisRightMaster;
+	public static CANTalon chassisRightSlave;
 	public static SpeedControllerGroup chassisRightMotors;
 	public static DifferentialDrive chassisRobotDrive;
 	
 	public static PowerDistributionPanel pdp;
+	
+	public static final int CAN_LEFT_MASTER = 2;
+	public static final int CAN_LEFT_SLAVE = 3;
+	public static final int CAN_RIGHT_MASTER = 4;
+	public static final int CAN_RIGHT_SLAVE = 5;
 	
 	// Variables for closed loop driving
 	public static final int PID_IDX = 0;
@@ -73,36 +80,40 @@ public class RobotMap {
 	public static Encoder encoderLeft;
 	public static Encoder encoderRight;
 	
-	public static DigitalInput tapesensor;
+	public static DigitalInput tapeSensor;
 
-	public static void init() {
+	public static void init(RobotReport report) {
 		
 		// Set up motors for driving
-		chassisFrontLeft = new CANTalon(2);
-		chassisFrontLeft.setName("Chassis", "FrontLeft");
-		chassisFrontLeft.setNeutralMode(NeutralMode.Brake);
+		chassisLeftMaster = new CANTalon(CAN_LEFT_MASTER);
+		chassisLeftMaster.setName("Chassis", "FrontLeft");
+		chassisLeftMaster.setNeutralMode(NeutralMode.Brake);
+		report.addCAN(CAN_LEFT_MASTER, "Left Master", chassisLeftMaster);
 
-		chassisBackLeft = new CANTalon(3);
-		chassisBackLeft.setName("Chassis", "BackLeft");
-		chassisBackLeft.setNeutralMode(NeutralMode.Brake);
+		chassisLeftSlave = new CANTalon(CAN_LEFT_SLAVE);
+		chassisLeftSlave.setName("Chassis", "BackLeft");
+		chassisLeftSlave.setNeutralMode(NeutralMode.Brake);
+		report.addCAN(CAN_LEFT_SLAVE, "Left Slave", chassisLeftSlave);
 
-		chassisLeftMotors = new SpeedControllerGroup(chassisFrontLeft, chassisBackLeft);
+		chassisLeftMotors = new SpeedControllerGroup(chassisLeftMaster, chassisLeftSlave);
 //		LiveWindow.addActuator("Chassis", "LeftMotors", chassisLeftMotors);
 
-		chassisFrontRight = new CANTalon(4);
-		chassisFrontRight.setName("Chassis", "FrontRight");
-		chassisFrontRight.setNeutralMode(NeutralMode.Brake);
+		chassisRightMaster = new CANTalon(CAN_RIGHT_MASTER);
+		chassisRightMaster.setName("Chassis", "FrontRight");
+		chassisRightMaster.setNeutralMode(NeutralMode.Brake);
+		report.addCAN(CAN_RIGHT_MASTER, "Right Master", chassisRightMaster);
 
-		chassisBackRight = new CANTalon(5);
-		chassisBackRight.setName("Chassis", "BackRight");
-		chassisBackRight.setNeutralMode(NeutralMode.Brake);
+		chassisRightSlave = new CANTalon(CAN_RIGHT_SLAVE);
+		chassisRightSlave.setName("Chassis", "BackRight");
+		chassisRightSlave.setNeutralMode(NeutralMode.Brake);
+		report.addCAN(CAN_RIGHT_SLAVE, "Right Slave", chassisRightSlave);
 
-		chassisRightMotors = new SpeedControllerGroup(chassisFrontRight, chassisBackRight);
+		chassisRightMotors = new SpeedControllerGroup(chassisRightMaster, chassisRightSlave);
 //		LiveWindow.addActuator("Chassis", "RightMotors", chassisRightMotors);
 
-		chassisBackLeft.follow(chassisFrontLeft);
-	    chassisBackRight.follow(chassisFrontRight);
-		chassisRobotDrive = new DifferentialDrive(chassisFrontLeft, chassisFrontRight);
+		chassisLeftSlave.follow(chassisLeftMaster);
+	    chassisRightSlave.follow(chassisRightMaster);
+		chassisRobotDrive = new DifferentialDrive(chassisLeftMaster, chassisRightMaster);
 //		LiveWindow.addActuator("Chassis", "RobotDrive", chassisRobotDrive);
 		
 		chassisRobotDrive.setSafetyEnabled(true);
@@ -111,25 +122,15 @@ public class RobotMap {
 		
 		// Set up parameters for closed loop driving
 //		if (CLOSED_LOOP_DRIVING) {
-			chassisFrontLeft.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, PID_IDX, TIMEOUT_MS);
-			chassisFrontLeft.configEncoderCodesPerRev(m_CountPerRev);
-			chassisFrontLeft.setSensorPhase(true);
-		    setPID(chassisFrontLeft, m_P, m_I, m_D, m_ff, m_izone, m_rampRate, m_profile);
+			chassisLeftMaster.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, PID_IDX, TIMEOUT_MS);
+			chassisLeftMaster.configEncoderCodesPerRev(m_CountPerRev);
+			chassisLeftMaster.setSensorPhase(true);
+		    setPID(chassisLeftMaster, m_P, m_I, m_D, m_ff, m_izone, m_rampRate, m_profile);
 		    
-		    chassisFrontRight.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, PID_IDX, TIMEOUT_MS);
-		    chassisFrontRight.configEncoderCodesPerRev(m_CountPerRev);
-		    chassisFrontRight.setSensorPhase(true);
-		    setPID(chassisFrontRight, m_P, m_I, m_D, m_ff, m_izone, m_rampRate, m_profile);
-		    
-//		    chassisBackLeft.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, PID_IDX, TIMEOUT_MS);
-//		    chassisBackLeft.configEncoderCodesPerRev(m_CountPerRev);
-//		    chassisBackLeft.setSensorPhase(false);
-//		    setPID(chassisBackLeft, m_P, m_I, m_D, m_ff, m_izone, m_rampRate, m_profile);
-		    
-//		    chassisBackRight.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, PID_IDX, TIMEOUT_MS);
-//		    chassisBackRight.configEncoderCodesPerRev(m_CountPerRev);
-//		    chassisBackRight.setSensorPhase(false);
-//		    setPID(chassisBackRight, m_P, m_I, m_D, m_ff, m_izone, m_rampRate, m_profile);
+		    chassisRightMaster.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, PID_IDX, TIMEOUT_MS);
+		    chassisRightMaster.configEncoderCodesPerRev(m_CountPerRev);
+		    chassisRightMaster.setSensorPhase(true);
+		    setPID(chassisRightMaster, m_P, m_I, m_D, m_ff, m_izone, m_rampRate, m_profile);
 //		}
 		
 //		DigitalInput encoderLeftInputA = new DigitalInput(2);
@@ -148,8 +149,10 @@ public class RobotMap {
 		
 		rangeFinder = new AnalogInput(0);
 		rangeFinder.setName("Chassis", "Rangefinder");
+		report.addAnalogInput(0, "Range Finder", rangeFinder);
 		
-		tapesensor = new DigitalInput(0);
+		tapeSensor = new DigitalInput(0);
+		report.addDigitalIO(0, "Tape Finder", tapeSensor);
 		
 		
 		try {

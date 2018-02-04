@@ -9,9 +9,12 @@
 // it from being updated in the future.
 
 package org.firebears;
+import java.io.File;
+
 import org.firebears.commands.*;
 import org.firebears.commands.auto.DriveToDistanceCommand;
 import org.firebears.subsystems.*;
+import org.firebears.util.RobotReport;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -44,7 +47,8 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void robotInit() {
-		RobotMap.init();
+		RobotReport report = new RobotReport("FB2018");
+		RobotMap.init(report);
 		chassis = new Chassis();
 		autoSelection = new AutoSelection();
 		vision = new Vision();
@@ -53,11 +57,13 @@ public class Robot extends TimedRobot {
 		// (which it very likely will), subsystems are not guaranteed to be
 		// constructed yet. Thus, their requires() statements may grab null
 		// pointers. Bad news. Don't move it.
-		oi = new OI();
+		oi = new OI(report);
 
 		// Add commands to Autonomous Sendable Chooser
 		// chooser.addDefault("Autonomous Command", new AutonomousCommand());
 		SmartDashboard.putData("Auto mode", chooser);
+		
+		report.write(new File(System.getProperty("user.home"), "robotReport.md"));
 	}
 
 	/**
@@ -149,23 +155,23 @@ public class Robot extends TimedRobot {
 		// Put Encoder values
 		SmartDashboard.putNumber("Left Encoder", RobotMap.encoderLeft.get());
 		SmartDashboard.putNumber("Back Left Encoder Distance",
-				RobotMap.chassisBackLeft.getSelectedSensorPosition(RobotMap.PID_IDX));
+				RobotMap.chassisLeftSlave.getSelectedSensorPosition(RobotMap.PID_IDX));
 		SmartDashboard.putNumber("Back Left Encoder Rate",
-				RobotMap.chassisBackLeft.getSelectedSensorVelocity(RobotMap.PID_IDX));
+				RobotMap.chassisLeftSlave.getSelectedSensorVelocity(RobotMap.PID_IDX));
 		SmartDashboard.putNumber("Front Left Encoder Distance",
-				RobotMap.chassisFrontLeft.getSelectedSensorPosition(RobotMap.PID_IDX));
+				RobotMap.chassisLeftMaster.getSelectedSensorPosition(RobotMap.PID_IDX));
 		SmartDashboard.putNumber("Front Left Encoder Rate",
-				RobotMap.chassisFrontLeft.getSelectedSensorVelocity(RobotMap.PID_IDX));
+				RobotMap.chassisLeftMaster.getSelectedSensorVelocity(RobotMap.PID_IDX));
 
 		SmartDashboard.putNumber("Right Encoder", RobotMap.encoderRight.get());
 		SmartDashboard.putNumber("Back Right Encoder Distance",
-				RobotMap.chassisBackRight.getSelectedSensorPosition(RobotMap.PID_IDX));
+				RobotMap.chassisRightSlave.getSelectedSensorPosition(RobotMap.PID_IDX));
 		SmartDashboard.putNumber("Back Right Encoder Rate",
-				RobotMap.chassisBackRight.getSelectedSensorVelocity(RobotMap.PID_IDX));
+				RobotMap.chassisRightSlave.getSelectedSensorVelocity(RobotMap.PID_IDX));
 		SmartDashboard.putNumber("Front Right Encoder Distance",
-				RobotMap.chassisFrontRight.getSelectedSensorPosition(RobotMap.PID_IDX));
+				RobotMap.chassisRightMaster.getSelectedSensorPosition(RobotMap.PID_IDX));
 		SmartDashboard.putNumber("Front Right Encoder Rate",
-				RobotMap.chassisFrontRight.getSelectedSensorVelocity(RobotMap.PID_IDX));
+				RobotMap.chassisRightMaster.getSelectedSensorVelocity(RobotMap.PID_IDX));
 
 		SmartDashboard.putNumber("DistanceInInches", Robot.chassis.getRangeFinderDistance());
 		SmartDashboard.putNumber("NavX Angle", RobotMap.boundAngle(RobotMap.getNavXAngle()));
@@ -174,7 +180,7 @@ public class Robot extends TimedRobot {
 		// System.out.println("Tape Sensor: " + RobotMap.tape.get());
 
 		SmartDashboard.putBoolean("Closed_LOOP", RobotMap.CLOSED_LOOP_DRIVING);
-		SmartDashboard.putString("ControlMode", RobotMap.chassisFrontLeft.getControlMode().toString());
+		SmartDashboard.putString("ControlMode", RobotMap.chassisLeftMaster.getControlMode().toString());
 
 	}
 }
