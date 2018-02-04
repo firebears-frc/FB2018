@@ -14,11 +14,7 @@ public class ChangeSide extends Command {
 	String side;
 	
     public ChangeSide(String side) {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	
     	this.side = side;
-    	
     }
 
     // Called just before this Command runs the first time

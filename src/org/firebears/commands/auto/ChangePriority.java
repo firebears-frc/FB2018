@@ -12,9 +12,6 @@ public class ChangePriority extends Command {
 	String priority;
 
 	public ChangePriority(String priority) {
-		// Use requires() here to declare subsystem dependencies
-		// eg. requires(chassis);
-
 		this.priority = priority;
 	}
 
