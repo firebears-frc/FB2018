@@ -12,6 +12,7 @@ package org.firebears.subsystems;
 
 import org.firebears.RobotMap;
 import org.firebears.commands.*;
+import org.firebears.commands.auto.DriveToDistanceCommand;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -41,17 +42,17 @@ public class AutoSelection extends Subsystem {
 	String priority;
 	Boolean shouldCross;
 	
-	Command leftSideLeftScale = null; // leftSideLeftScaleCommand
-	Command leftSideRightScale = null; // leftSideRightScaleCommand
-	Command leftSideLeftSwitch = null; // leftSideLeftSwitchCommand
-	Command leftSideRightSwitch = null; // leftSideRightSwitchCommand
-	Command rightSideLeftScale = null; // rightSideLeftScaleCommand
-	Command rightSideRightScale = null; // rightSideRightScaleCommand
-	Command rightSideLeftSwitch = null; // rightSideLeftSwitchCommand
-	Command rightSideRightSwitch = null; // rightSideRightSwitchCommand
-	Command middleSideLeftSwitch = null; // middleSideLeftSwitchCommand
-	Command middleSideRightSwitch = null; // middleSideRightSwitchCommand
-	Command bothSideCrossAuto = null; //bothSideCrossAutoCommand
+	Command leftSideLeftScale = new DriveToDistanceCommand(1); // leftSideLeftScaleCommand
+	Command leftSideRightScale = new DriveToDistanceCommand(1);; // leftSideRightScaleCommand
+	Command leftSideLeftSwitch = new DriveToDistanceCommand(1);; // leftSideLeftSwitchCommand
+	Command leftSideRightSwitch = new DriveToDistanceCommand(1);; // leftSideRightSwitchCommand
+	Command rightSideLeftScale = new DriveToDistanceCommand(1);; // rightSideLeftScaleCommand
+	Command rightSideRightScale = new DriveToDistanceCommand(1);; // rightSideRightScaleCommand
+	Command rightSideLeftSwitch = new DriveToDistanceCommand(1);; // rightSideLeftSwitchCommand
+	Command rightSideRightSwitch = new DriveToDistanceCommand(1);; // rightSideRightSwitchCommand
+	Command middleSideLeftSwitch = new DriveToDistanceCommand(1);; // middleSideLeftSwitchCommand
+	Command middleSideRightSwitch = new DriveToDistanceCommand(1);; // middleSideRightSwitchCommand
+	Command bothSideCrossAuto = new DriveToDistanceCommand(1);; //bothSideCrossAutoCommand
 	
 	
 

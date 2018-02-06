@@ -116,7 +116,7 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putBoolean("Cross", RobotMap.shouldCross);
 		
 		Command selectedAuto = autoSelection.getAuto();
-//		selectedAuto.start();
+		selectedAuto.start();
 
 		String gameData;
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
