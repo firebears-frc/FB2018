@@ -21,20 +21,20 @@ public class DriveToTapeCommand extends Command {
     }
 
     protected void initialize() {
-		startingDistance = RobotMap.chassisLeftMaster.getSelectedSensorPosition(RobotMap.PID_IDX);
+//		startingDistance = RobotMap.chassisLeftMaster.getSelectedSensorPosition(RobotMap.PID_IDX);
     }
     protected void execute() {
     	Robot.chassis.drive(-SPEED, 0,false);
     }
 
     protected boolean isFinished() {
-    	currentDistance = RobotMap.chassisLeftMaster.getSelectedSensorPosition(RobotMap.PID_IDX);
+//    	currentDistance = RobotMap.chassisLeftMaster.getSelectedSensorPosition(RobotMap.PID_IDX);
         return Robot.chassis.isTapeBright();
     }
 
     protected void end() {
     	Robot.chassis.stop();
-    	System.out.println("Distance to tape: " + (currentDistance - startingDistance)/52.6);
+//    	System.out.println("Distance to tape: " + (currentDistance - startingDistance)/52.6);
     }
     
     protected void interrupted() {
