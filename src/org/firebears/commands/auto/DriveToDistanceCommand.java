@@ -21,7 +21,7 @@ public class DriveToDistanceCommand extends Command {
 
 	protected void initialize() {
 		System.out.println("Driving distance command");
-		startingDistance = RobotMap.chassisFrontLeft.getSelectedSensorPosition(RobotMap.PID_IDX);
+		startingDistance = RobotMap.chassisLeftMaster.getSelectedSensorPosition(RobotMap.PID_IDX);
 	}
 
 	protected void execute() {
@@ -41,7 +41,7 @@ public class DriveToDistanceCommand extends Command {
 	}
 
 	private double inchesTraveled() {
-		currentDistance = RobotMap.chassisFrontLeft.getSelectedSensorPosition(RobotMap.PID_IDX);
+		currentDistance = RobotMap.chassisLeftMaster.getSelectedSensorPosition(RobotMap.PID_IDX);
 		return (currentDistance - startingDistance) / 52.6;
 	}
 }

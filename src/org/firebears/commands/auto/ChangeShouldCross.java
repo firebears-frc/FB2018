@@ -12,9 +12,6 @@ public class ChangeShouldCross extends Command {
 	Boolean shouldCross;
 	
     public ChangeShouldCross(Boolean shouldCross) {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	
     	this.shouldCross = shouldCross;
     }
 
