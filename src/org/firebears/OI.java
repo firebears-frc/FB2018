@@ -15,10 +15,10 @@ package org.firebears;
 import org.firebears.commands.auto.ChangePriority;
 import org.firebears.commands.auto.ChangeShouldCross;
 import org.firebears.commands.auto.ChangeSide;
-import org.firebears.commands.auto.DriveIntoNullZoneCommand;
+//import org.firebears.commands.auto.DriveIntoNullZoneCommand;
 import org.firebears.commands.auto.DriveToDistanceCommand;
 import org.firebears.commands.auto.DriveToTapeCommand;
-import org.firebears.commands.auto.Test;
+//import org.firebears.commands.auto.Test;
 import org.firebears.commands.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Joystick;
@@ -79,9 +79,9 @@ public class OI {
 		SmartDashboard.putData("Shouldn't cross", new ChangeShouldCross(false));
 		SmartDashboard.putData("DriveToTapeCommand", new DriveToTapeCommand(.4));
 		SmartDashboard.putData("DriveInches", new DriveToDistanceCommand(18.8,.5));
-		SmartDashboard.putData("Nullzone Command",new DriveIntoNullZoneCommand());
+//		SmartDashboard.putData("Nullzone Command",new DriveIntoNullZoneCommand());
 //		SmartDashboard.putData("TEST",new Test());
-		
+		  SmartDashboard.putData("setAnimation", new I2CCommand());
 	}
 
 	public Joystick getJoystick1() {
