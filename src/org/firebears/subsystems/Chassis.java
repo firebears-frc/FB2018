@@ -78,8 +78,8 @@ public class Chassis extends Subsystem {
         return distanceInInches;
     } 
 
-	public void drive(double speed, double rotation) {
-		robotDrive.arcadeDrive(speed * -1, rotation * 1);
+	public void drive(double speed, double rotation, boolean square) {
+		robotDrive.arcadeDrive(speed * -1, rotation * 1, square);
 		driveMove = speed;
 		driveRotate = rotation;
 	}

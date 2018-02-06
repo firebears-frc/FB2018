@@ -86,6 +86,6 @@ public class VisionRotateCommand extends PIDCommand {
 		// Make sure output doesn't go faster than expected
 		output = Math.max(-SPEED, Math.min(output, SPEED));
 		// Drive the robot
-		Robot.chassis.drive(0.0, output);
+		Robot.chassis.drive(0.0, output,false);
 	}
 }

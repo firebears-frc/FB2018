@@ -40,17 +40,17 @@ public class AutoSelection extends Subsystem {
 	String priority;
 	Boolean shouldCross;
 	
-	Command leftSideLeftScale = new DriveToDistanceCommand(1); // leftSideLeftScaleCommand
-	Command leftSideRightScale = new DriveToDistanceCommand(1);; // leftSideRightScaleCommand
-	Command leftSideLeftSwitch = new DriveToDistanceCommand(1);; // leftSideLeftSwitchCommand
-	Command leftSideRightSwitch = new DriveToDistanceCommand(1);; // leftSideRightSwitchCommand
-	Command rightSideLeftScale = new DriveToDistanceCommand(1);; // rightSideLeftScaleCommand
-	Command rightSideRightScale = new DriveToDistanceCommand(1);; // rightSideRightScaleCommand
-	Command rightSideLeftSwitch = new DriveToDistanceCommand(1);; // rightSideLeftSwitchCommand
-	Command rightSideRightSwitch = new DriveToDistanceCommand(1);; // rightSideRightSwitchCommand
-	Command middleSideLeftSwitch = new DriveToDistanceCommand(1);; // middleSideLeftSwitchCommand
-	Command middleSideRightSwitch = new DriveToDistanceCommand(1);; // middleSideRightSwitchCommand
-	Command bothSideCrossAuto = new DriveToDistanceCommand(1);; //bothSideCrossAutoCommand
+	Command leftSideLeftScale = new DriveToDistanceCommand(1,.5); // leftSideLeftScaleCommand
+	Command leftSideRightScale = new DriveToDistanceCommand(1,.5); // leftSideRightScaleCommand
+	Command leftSideLeftSwitch = new DriveToDistanceCommand(1,.5); // leftSideLeftSwitchCommand
+	Command leftSideRightSwitch = new DriveToDistanceCommand(1,.5); // leftSideRightSwitchCommand
+	Command rightSideLeftScale = new DriveToDistanceCommand(1,.5); // rightSideLeftScaleCommand
+	Command rightSideRightScale = new DriveToDistanceCommand(1,.5); // rightSideRightScaleCommand
+	Command rightSideLeftSwitch = new DriveToDistanceCommand(1,.5); // rightSideLeftSwitchCommand
+	Command rightSideRightSwitch = new DriveToDistanceCommand(1,.5); // rightSideRightSwitchCommand
+	Command middleSideLeftSwitch = new DriveToDistanceCommand(1,.5); // middleSideLeftSwitchCommand
+	Command middleSideRightSwitch = new DriveToDistanceCommand(1,.5); // middleSideRightSwitchCommand
+	Command bothSideCrossAuto = new DriveToDistanceCommand(1,.5); //bothSideCrossAutoCommand
 	
 	
 

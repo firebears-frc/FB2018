@@ -83,6 +83,6 @@ public class VisionForwardCommand extends PIDCommand {
 		distancePer = Math.max(0, distancePer);
 		double speed = distancePer * (FAST_DISTANCE - SLOW_DISTANCE) + SLOW_DISTANCE;
 		// Drive the robot
-		Robot.chassis.drive(speed, output);
+		Robot.chassis.drive(speed, output,false);
 	}
 }

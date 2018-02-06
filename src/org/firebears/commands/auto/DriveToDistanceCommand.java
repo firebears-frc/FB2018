@@ -10,13 +10,15 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class DriveToDistanceCommand extends Command {
 
-	double targetDistance;
+	final double targetDistance;
 	double startingDistance;
 	double currentDistance;
+	final double SPEED;
 
-	public DriveToDistanceCommand(double inches) {
+	public DriveToDistanceCommand(double inches,double speed) {
 		requires(Robot.chassis);
 		targetDistance = inches;
+		SPEED = speed;
 	}
 
 	protected void initialize() {
@@ -25,7 +27,7 @@ public class DriveToDistanceCommand extends Command {
 	}
 
 	protected void execute() {
-		Robot.chassis.drive(-0.5, 0);
+		Robot.chassis.drive(-SPEED, 0,false);
 	}
 
 	protected boolean isFinished() {

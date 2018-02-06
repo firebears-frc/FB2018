@@ -15,6 +15,7 @@ package org.firebears;
 import org.firebears.commands.auto.ChangePriority;
 import org.firebears.commands.auto.ChangeShouldCross;
 import org.firebears.commands.auto.ChangeSide;
+import org.firebears.commands.auto.DriveIntoNullZoneCommand;
 import org.firebears.commands.auto.DriveToDistanceCommand;
 import org.firebears.commands.auto.DriveToTapeCommand;
 import org.firebears.commands.*;
@@ -44,8 +45,8 @@ public class OI {
 		
 		joystick2 = new Joystick(1);
 		
-		Driveinches = new JoystickButton(joystick1,1);
-		Driveinches.whileHeld(new DriveToDistanceCommand(18.8));
+//		Driveinches = new JoystickButton(joystick1,1);
+//		Driveinches.whileHeld(new DriveToDistanceCommand(18.8));
 		
 		report.addJoystick(1, "Joystick 2", joystick2);
 
@@ -76,7 +77,8 @@ public class OI {
 		SmartDashboard.putData("Should cross", new ChangeShouldCross(true));
 		SmartDashboard.putData("Shouldn't cross", new ChangeShouldCross(false));
 		SmartDashboard.putData("DriveToTapeCommand", new DriveToTapeCommand(.4));
-		SmartDashboard.putData("DriveInches", new DriveToDistanceCommand(18.8));
+		SmartDashboard.putData("DriveInches", new DriveToDistanceCommand(18.8,.5));
+		SmartDashboard.putData("Nullzone Command",new DriveIntoNullZoneCommand());
 		
 	}
 
