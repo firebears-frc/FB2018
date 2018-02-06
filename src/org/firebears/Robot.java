@@ -40,6 +40,7 @@ public class Robot extends TimedRobot {
 	public static Vision vision;
 	public static AutoSelection autoSelection;
 	public static Chassis chassis;
+	public static Lights lights;
 
 	/**
 	 * This function is run when the robot is first started up and should be used
@@ -52,6 +53,7 @@ public class Robot extends TimedRobot {
 		chassis = new Chassis();
 		autoSelection = new AutoSelection();
 		vision = new Vision();
+		lights = new Lights();
 
 		// OI must be constructed after subsystems. If the OI creates Commands
 		// (which it very likely will), subsystems are not guaranteed to be
