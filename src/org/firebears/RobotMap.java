@@ -64,7 +64,7 @@ public class RobotMap {
 	static double m_rampRate = 0.2;
 	static int m_profile = 0;
 	public static int m_CountPerRev = 700;//****Magnetic
-	public static boolean CLOSED_LOOP_DRIVING = false;
+	public static boolean CLOSED_LOOP_DRIVING = true;
 	
 	// For autoSelecion
 	public static String side;
