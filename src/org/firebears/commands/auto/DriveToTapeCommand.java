@@ -21,6 +21,7 @@ public class DriveToTapeCommand extends Command {
     }
 
     protected void initialize() {
+    	System.out.println("Starting " + this.toString());
 //		startingDistance = RobotMap.chassisLeftMaster.getSelectedSensorPosition(RobotMap.PID_IDX);
     }
     protected void execute() {
@@ -34,9 +35,16 @@ public class DriveToTapeCommand extends Command {
 
     protected void end() {
     	Robot.chassis.stop();
+    	System.out.println("Ending " + this);
 //    	System.out.println("Distance to tape: " + (currentDistance - startingDistance)/52.6);
     }
     
     protected void interrupted() {
+    	end();
+    	System.out.println("Was interrupted");
+    }
+    
+    public String toString() {
+    	return "DriveToTapeCommand: " + SPEED + " speed";
     }
 }

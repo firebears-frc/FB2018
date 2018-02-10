@@ -10,6 +10,7 @@
 
 package org.firebears;
 
+import org.firebears.subsystems.Lights;
 import org.firebears.util.RobotReport;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
@@ -28,6 +29,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.SPI;
+import edu.wpi.first.wpilibj.SerialPort.Port;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -60,6 +62,12 @@ public class RobotMap {
 	public static final int CAN_LEFT_SLAVE = 3;
 	public static final int CAN_RIGHT_MASTER = 4;
 	public static final int CAN_RIGHT_SLAVE = 5;
+	public static final int CAN_LEFT_CUBE_SPINNER = 11;
+	public static final int CAN_RIGHT_CUBE_SPINNER = 12;
+	public static final int CAN_LEFT_GRABBER_MOTOR = 13;
+	public static final int CAN_RIGHT_GRABBER_MOTOR = 14;
+	public static final int CAN_CLIMBER_MOTOR = 15;
+	public static final int CAN_SPARE_MOTOR = 16;
 	
 	// Variables for closed loop driving
 	public static final int PID_IDX = 0;
@@ -84,6 +92,7 @@ public class RobotMap {
 	public static AHRS navXBoard;
 	
 	public static AnalogInput rangeFinder;
+	public static AnalogInput rangeFinder2;
 	
 	public static Encoder encoderLeft;
 	public static Encoder encoderRight;
@@ -159,16 +168,26 @@ public class RobotMap {
 		rangeFinder.setName("Chassis", "Rangefinder");
 		report.addAnalogInput(0, "Range Finder", rangeFinder);
 		
-		pressureSensor = new AnalogInput(1);
+		rangeFinder2 = new AnalogInput(1);
+		rangeFinder2.setName("Chassis", "Rangefinder2");
+		report.addAnalogInput(1, "Range Finder 2", rangeFinder2);
+		
+		pressureSensor = new AnalogInput(2);
 		pressureSensor.setName("Chassis", "PressureSensor");
-		report.addAnalogInput(1, "Pressure Sensor", pressureSensor);
+		report.addAnalogInput(2, "Pressure Sensor", pressureSensor);
 		
-		tapeSensor = new DigitalInput(0);
-		report.addDigitalIO(0, "Tape Finder", tapeSensor);
+		// Put Ultrasonic Switches here
 		
+		tapeSensor = new DigitalInput(2);
+		report.addDigitalIO(2, "Tape Finder", tapeSensor);
+		
+		// Put Sensor for when cube is loaded here
+		
+		// Put Sensor for when cube is in the grabber here
 		
 		try {
-			navXBoard = new AHRS(SPI.Port.kMXP);
+//			navXBoard = new AHRS(SPI.Port.kMXP);
+			navXBoard = new AHRS(Port.kUSB);
 		 } catch (RuntimeException ex) {
 			DriverStation.reportError("Error instantiating navX MXP:  " + ex.getMessage(), true);
 		 }
@@ -179,6 +198,8 @@ public class RobotMap {
 //		testCompressor = new Compressor();
 //		testCompressor.setClosedLoopControl(true);
 //		testSolenoid = new DoubleSolenoid(1, 2);
+		
+		report.addOtherConfig(Lights.I2C_ADDRESS, "Trinket I2C Address");
 	}
 
 	/**

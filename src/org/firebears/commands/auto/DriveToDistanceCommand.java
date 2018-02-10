@@ -13,7 +13,9 @@ public class DriveToDistanceCommand extends Command {
 	final double targetDistance;
 	double startingDistance;
 	double currentDistance;
+	double timeout;
 	final double SPEED;
+	
 
 	public DriveToDistanceCommand(double inches,double speed) {
 		requires(Robot.chassis);
@@ -22,7 +24,8 @@ public class DriveToDistanceCommand extends Command {
 	}
 
 	protected void initialize() {
-		System.out.println("Driving distance command");
+		timeout = System.currentTimeMillis() + 1000 * 5;
+		System.out.println("Starting " + this.toString());
 		startingDistance = RobotMap.chassisLeftMaster.getSelectedSensorPosition(RobotMap.PID_IDX);
 	}
 
@@ -31,19 +34,31 @@ public class DriveToDistanceCommand extends Command {
 	}
 
 	protected boolean isFinished() {
-		return inchesTraveled() >= targetDistance;
+		if (inchesTraveled() >= targetDistance) {
+			return true;
+		} else if (System.currentTimeMillis() >= timeout) {
+			return true;
+		}
+		return false;
 	}
 
 	protected void end() {
-		Robot.chassis.stop();
+		Robot.chassis.drive(0, 0,false);
+		System.out.println("Ending " + this);
+//		Robot.chassis.stop();
 	}
 
 	protected void interrupted() {
 		end();
+		System.out.println("Was interrupted");
 	}
 
 	private double inchesTraveled() {
 		currentDistance = RobotMap.chassisLeftMaster.getSelectedSensorPosition(RobotMap.PID_IDX);
 		return (currentDistance - startingDistance) / 52.6;
+	}
+	
+	public String toString() {
+		return "DriveToDistanceCommand: " + targetDistance + " inches, " + SPEED + " speed"; 
 	}
 }

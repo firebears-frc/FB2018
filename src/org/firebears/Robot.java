@@ -91,23 +91,23 @@ public class Robot extends TimedRobot {
 		double y = oi.joystick2.getY();
 		double z = oi.joystick2.getZ();
 
-		if (x >= .33) {
-			RobotMap.side = "Right";
-		} else if (x <= -.33) {
-			RobotMap.side = "Left";
-		} else {
-			RobotMap.side = "Middle";
-		}
-		if (y >= 0) {
-			RobotMap.priority = "Switch";
-		} else if (y < 0) {
-			RobotMap.priority = "Scale";
-		}
-		if (z >= 0) {
-			RobotMap.shouldCross = true;
-		} else if (y < 0) {
-			RobotMap.shouldCross = false;
-		}
+//		if (x >= .33) {
+//			RobotMap.side = "Right";
+//		} else if (x <= -.33) {
+//			RobotMap.side = "Left";
+//		} else {
+//			RobotMap.side = "Middle";
+//		}
+//		if (y >= 0) {
+//			RobotMap.priority = "Switch";
+//		} else if (y < 0) {
+//			RobotMap.priority = "Scale";
+//		}
+//		if (z >= 0) {
+//			RobotMap.shouldCross = true;
+//		} else if (y < 0) {
+//			RobotMap.shouldCross = false;
+//		}
 		
 		SmartDashboard.putString("Side", RobotMap.side);
 		SmartDashboard.putString("Priority", RobotMap.priority);
