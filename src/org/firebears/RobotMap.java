@@ -54,6 +54,8 @@ public class RobotMap {
 	
 	public static DoubleSolenoid testSolenoid;
 	
+	public static AnalogInput pressureSensor;
+	
 	public static final int CAN_LEFT_MASTER = 2;
 	public static final int CAN_LEFT_SLAVE = 3;
 	public static final int CAN_RIGHT_MASTER = 4;
@@ -156,6 +158,10 @@ public class RobotMap {
 		rangeFinder = new AnalogInput(0);
 		rangeFinder.setName("Chassis", "Rangefinder");
 		report.addAnalogInput(0, "Range Finder", rangeFinder);
+		
+		pressureSensor = new AnalogInput(1);
+		pressureSensor.setName("Chassis", "PressureSensor");
+		report.addAnalogInput(1, "Pressure Sensor", pressureSensor);
 		
 		tapeSensor = new DigitalInput(0);
 		report.addDigitalIO(0, "Tape Finder", tapeSensor);

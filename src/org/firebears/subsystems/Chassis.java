@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 /**
@@ -59,7 +60,7 @@ public class Chassis extends Subsystem {
 	@Override
 	public void periodic() {
 		// Put code here to be run every loop
-
+		SmartDashboard.putNumber("Air Pressure", getAirPressure());
 	}
 	
 	/**
@@ -68,7 +69,14 @@ public class Chassis extends Subsystem {
 	private double getRangeFinderVoltage() {
     	return RobotMap.rangeFinder!=null ? RobotMap.rangeFinder.getAverageVoltage() : 0.0;
     }
-
+	
+	/**
+	 * @return Returns pressure in pounds per square inches.
+	 */
+	private double getAirPressure() {
+		double volts = RobotMap.pressureSensor.getAverageVoltage() - 0.49;
+		return volts * 51.28;
+	}
 	/**
 	 * @return Get range finder distance in inches. Returns 0.0 of the value is null.
 	 */
