@@ -4,34 +4,33 @@ import org.firebears.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * changes light animations
  */
 public class I2CCommand extends Command {
 
-    public I2CCommand() {
-       requires (Robot.lights);
-    }
+	private final int strip;
+	private final int animation;
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    }
+	public I2CCommand(int s, int a) {
+		strip = s;
+		animation = a;
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-      Robot.lights.setAnimation(1, 3);
-    }
+	}
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return true;
-    }
+	protected void initialize() {
+	}
 
-    // Called once after isFinished returns true
-    protected void end() {
-    }
+	protected void execute() {
+		Robot.lights.setAnimation(strip, animation);
+	}
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    }
+	protected boolean isFinished() {
+		return true;
+	}
+
+	protected void end() {
+	}
+
+	protected void interrupted() {
+	}
 }
