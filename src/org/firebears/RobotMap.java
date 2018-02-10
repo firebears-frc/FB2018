@@ -95,12 +95,12 @@ public class RobotMap {
 		// Set up motors for driving
 		chassisLeftMaster = new CANTalon(CAN_LEFT_MASTER);
 		chassisLeftMaster.setName("Chassis", "FrontLeft");
-		chassisLeftMaster.setNeutralMode(NeutralMode.Brake);
+		chassisLeftMaster.setNeutralMode(NeutralMode.Coast);
 		report.addCAN(CAN_LEFT_MASTER, "Left Master", chassisLeftMaster);
 
 		chassisLeftSlave = new CANTalon(CAN_LEFT_SLAVE);
 		chassisLeftSlave.setName("Chassis", "BackLeft");
-		chassisLeftSlave.setNeutralMode(NeutralMode.Brake);
+		chassisLeftSlave.setNeutralMode(NeutralMode.Coast);
 		report.addCAN(CAN_LEFT_SLAVE, "Left Slave", chassisLeftSlave);
 
 		chassisLeftMotors = new SpeedControllerGroup(chassisLeftMaster, chassisLeftSlave);
@@ -108,12 +108,12 @@ public class RobotMap {
 
 		chassisRightMaster = new CANTalon(CAN_RIGHT_MASTER);
 		chassisRightMaster.setName("Chassis", "FrontRight");
-		chassisRightMaster.setNeutralMode(NeutralMode.Brake);
+		chassisRightMaster.setNeutralMode(NeutralMode.Coast);
 		report.addCAN(CAN_RIGHT_MASTER, "Right Master", chassisRightMaster);
 
 		chassisRightSlave = new CANTalon(CAN_RIGHT_SLAVE);
 		chassisRightSlave.setName("Chassis", "BackRight");
-		chassisRightSlave.setNeutralMode(NeutralMode.Brake);
+		chassisRightSlave.setNeutralMode(NeutralMode.Coast);
 		report.addCAN(CAN_RIGHT_SLAVE, "Right Slave", chassisRightSlave);
 
 		chassisRightMotors = new SpeedControllerGroup(chassisRightMaster, chassisRightSlave);
