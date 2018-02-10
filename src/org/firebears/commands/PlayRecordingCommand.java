@@ -51,6 +51,7 @@ public class PlayRecordingCommand extends Command {
 			}
 			scanner = (new Scanner(stream)).useDelimiter(",");
 			hasMore = readLine();
+			System.out.println("Starting " + this.toString());
 		} catch (IOException i) {
 			i.printStackTrace();
 		}
@@ -70,9 +71,16 @@ public class PlayRecordingCommand extends Command {
 
 	protected void end() {
 		scanner.close();
+		System.out.println("Ending " + this);
 	}
 
 	protected void interrupted() {
 		scanner.close();
+		System.out.println("Ending " + this);
+		System.out.println("Was interrupted");
+	}
+	
+	public String toString() {
+		return "PlayRecording: " + fileName;
 	}
 }

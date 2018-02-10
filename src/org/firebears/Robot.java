@@ -9,22 +9,23 @@
 // it from being updated in the future.
 
 package org.firebears;
+
 import java.io.File;
 
-import org.firebears.commands.*;
-import org.firebears.commands.auto.DriveToDistanceCommand;
-import org.firebears.subsystems.*;
+import org.firebears.subsystems.AutoSelection;
+import org.firebears.subsystems.Chassis;
+import org.firebears.subsystems.Lights;
+import org.firebears.subsystems.Vision;
 import org.firebears.util.RobotReport;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -65,7 +66,7 @@ public class Robot extends TimedRobot {
 		// Add commands to Autonomous Sendable Chooser
 		// chooser.addDefault("Autonomous Command", new AutonomousCommand());
 		SmartDashboard.putData("Auto mode", chooser);
-		
+
 		report.write(new File(System.getProperty("user.home"), "robotReport.md"));
 	}
 
@@ -88,40 +89,38 @@ public class Robot extends TimedRobot {
 		// System.out.println("joytickbutton1: " + oi.joystick1.getRawButton(1));
 		// System.out.println("joytickYAxis: "+ oi.joystick1.getRawAxis(1));
 		// System.out.println("joytickXAxis: "+ oi.joystick2.getX());
-		double x = oi.joystick2.getX();
-		double y = oi.joystick2.getY();
-		double z = oi.joystick2.getZ();
+//		double x = oi.joystick2.getX();
+//		double y = oi.joystick2.getY();
+//		double z = oi.joystick2.getZ();
 
-		if (x >= .33) {
-			RobotMap.side = "Right";
-		} else if (x <= -.33) {
-			RobotMap.side = "Left";
-		} else {
-			RobotMap.side = "Middle";
-		}
-		if (y >= 0) {
-			RobotMap.priority = "Switch";
-		} else if (y < 0) {
-			RobotMap.priority = "Scale";
-		}
-		if (z >= 0) {
-			RobotMap.shouldCross = true;
-		} else if (y < 0) {
-			RobotMap.shouldCross = false;
-		}
-		
+		// if (x >= .33) {
+		// RobotMap.side = "Right";
+		// } else if (x <= -.33) {
+		// RobotMap.side = "Left";
+		// } else {
+		// RobotMap.side = "Middle";
+		// }
+		// if (y >= 0) {
+		// RobotMap.priority = "Switch";
+		// } else if (y < 0) {
+		// RobotMap.priority = "Scale";
+		// }
+		// if (z >= 0) {
+		// RobotMap.shouldCross = true;
+		// } else if (y < 0) {
+		// RobotMap.shouldCross = false;
+		// }
+
 		SmartDashboard.putString("Side", RobotMap.side);
 		SmartDashboard.putString("Priority", RobotMap.priority);
 		SmartDashboard.putBoolean("Cross", RobotMap.shouldCross);
-		
+
 		Command selectedAuto = autoSelection.getAuto();
 		selectedAuto.start();
 
 		String gameData;
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
 		System.out.println(gameData);
-		
-		
 
 		// autonomousCommand = chooser.getSelected();
 		// // schedule the autonomous command (example)
@@ -154,37 +153,39 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		// Put Encoder values
-		SmartDashboard.putNumber("Left Encoder", RobotMap.encoderLeft.get());
-		SmartDashboard.putNumber("Back Left Encoder Distance",
-				RobotMap.chassisLeftSlave.getSelectedSensorPosition(RobotMap.PID_IDX));
-		SmartDashboard.putNumber("Back Left Encoder Rate",
-				RobotMap.chassisLeftSlave.getSelectedSensorVelocity(RobotMap.PID_IDX));
-		SmartDashboard.putNumber("Front Left Encoder Distance",
-				RobotMap.chassisLeftMaster.getSelectedSensorPosition(RobotMap.PID_IDX));
-		SmartDashboard.putNumber("Front Left Encoder Rate",
-				RobotMap.chassisLeftMaster.getSelectedSensorVelocity(RobotMap.PID_IDX));
 
-		SmartDashboard.putNumber("Right Encoder", RobotMap.encoderRight.get());
-		SmartDashboard.putNumber("Back Right Encoder Distance",
-				RobotMap.chassisRightSlave.getSelectedSensorPosition(RobotMap.PID_IDX));
-		SmartDashboard.putNumber("Back Right Encoder Rate",
-				RobotMap.chassisRightSlave.getSelectedSensorVelocity(RobotMap.PID_IDX));
-		SmartDashboard.putNumber("Front Right Encoder Distance",
-				RobotMap.chassisRightMaster.getSelectedSensorPosition(RobotMap.PID_IDX));
-		SmartDashboard.putNumber("Front Right Encoder Rate",
-				RobotMap.chassisRightMaster.getSelectedSensorVelocity(RobotMap.PID_IDX));
+		if (RobotMap.DEBUG) {
+			// Put Encoder values
+			SmartDashboard.putNumber("Left Encoder", RobotMap.encoderLeft.get());
+			SmartDashboard.putNumber("Back Left Encoder Distance",
+					RobotMap.chassisLeftSlave.getSelectedSensorPosition(RobotMap.PID_IDX));
+			SmartDashboard.putNumber("Back Left Encoder Rate",
+					RobotMap.chassisLeftSlave.getSelectedSensorVelocity(RobotMap.PID_IDX));
+			SmartDashboard.putNumber("Front Left Encoder Distance",
+					RobotMap.chassisLeftMaster.getSelectedSensorPosition(RobotMap.PID_IDX));
+			SmartDashboard.putNumber("Front Left Encoder Rate",
+					RobotMap.chassisLeftMaster.getSelectedSensorVelocity(RobotMap.PID_IDX));
 
-		SmartDashboard.putNumber("DistanceInInches", Robot.chassis.getRangeFinderDistance());
-		SmartDashboard.putNumber("NavX Angle", RobotMap.boundAngle(RobotMap.getNavXAngle()));
-		
-		SmartDashboard.putNumber("Amps", RobotController.getInputCurrent());
+			SmartDashboard.putNumber("Right Encoder", RobotMap.encoderRight.get());
+			SmartDashboard.putNumber("Back Right Encoder Distance",
+					RobotMap.chassisRightSlave.getSelectedSensorPosition(RobotMap.PID_IDX));
+			SmartDashboard.putNumber("Back Right Encoder Rate",
+					RobotMap.chassisRightSlave.getSelectedSensorVelocity(RobotMap.PID_IDX));
+			SmartDashboard.putNumber("Front Right Encoder Distance",
+					RobotMap.chassisRightMaster.getSelectedSensorPosition(RobotMap.PID_IDX));
+			SmartDashboard.putNumber("Front Right Encoder Rate",
+					RobotMap.chassisRightMaster.getSelectedSensorVelocity(RobotMap.PID_IDX));
 
-		SmartDashboard.putBoolean("TapeSensor", Robot.chassis.isTapeBright());
-		// System.out.println("Tape Sensor: " + RobotMap.tape.get());
+			SmartDashboard.putNumber("DistanceInInches", Robot.chassis.getRangeFinderDistance());
+			SmartDashboard.putNumber("NavX Angle", RobotMap.boundAngle(RobotMap.getNavXAngle()));
 
-		SmartDashboard.putBoolean("Closed_LOOP", RobotMap.CLOSED_LOOP_DRIVING);
-		SmartDashboard.putString("ControlMode", RobotMap.chassisLeftMaster.getControlMode().toString());
+			SmartDashboard.putBoolean("TapeSensor", Robot.chassis.isTapeBright());
+			// System.out.println("Tape Sensor: " + RobotMap.tape.get());
 
+			SmartDashboard.putNumber("Amps", RobotController.getInputCurrent());
+
+			SmartDashboard.putBoolean("Closed_LOOP", RobotMap.CLOSED_LOOP_DRIVING);
+			SmartDashboard.putString("ControlMode", RobotMap.chassisLeftMaster.getControlMode().toString());
+		}
 	}
 }

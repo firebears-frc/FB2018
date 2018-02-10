@@ -34,6 +34,7 @@ public class StartRecordingCommand extends Command {
 			startTime = System.currentTimeMillis();
 			f = new File("/tmp/Recording.csv");
 			w = new PrintWriter(f);
+			System.out.println("Recording Start");
 		} catch (IOException i) {
 			i.printStackTrace();
 			recording = false;
@@ -53,9 +54,12 @@ public class StartRecordingCommand extends Command {
 
 	protected void end() {
 		w.close();
+		System.out.println("Recording Done");
 	}
 
 	protected void interrupted() {
 		w.close();
+		System.out.println("Recording Done");
+		System.out.println("Was interrupted");
 	}
 }

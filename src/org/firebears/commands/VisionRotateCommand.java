@@ -42,6 +42,8 @@ public class VisionRotateCommand extends PIDCommand {
     	// Set target angle for PID to current angle + angle from vision
     	targetAngle = boundAngle(getNavXAngle() + turnValue);
     	getPIDController().setSetpoint(0);
+    	
+    	System.out.println("Starting " + this.toString());
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -62,12 +64,14 @@ public class VisionRotateCommand extends PIDCommand {
     // Called once after isFinished returns true
     protected void end() {
     	Robot.chassis.stop();
+    	System.out.println("Ending " + this);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
     	end();
+    	System.out.println("Was interrupted");
     }
     
     private double getAngleDifference() {
@@ -87,5 +91,9 @@ public class VisionRotateCommand extends PIDCommand {
 		output = Math.max(-SPEED, Math.min(output, SPEED));
 		// Drive the robot
 		Robot.chassis.drive(0.0, output,false);
+	}
+	
+	public String toString() {
+		return "VisionRotateCommand: " + turnValue + " degrees";
 	}
 }
