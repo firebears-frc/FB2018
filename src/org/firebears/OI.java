@@ -85,7 +85,7 @@ public class OI {
 		SmartDashboard.putData("DriveToTapeCommand", new DriveToTapeCommand(.4));
 		SmartDashboard.putData("DriveInches", new DriveToDistanceCommand(18.8,.5));
 //		SmartDashboard.putData("Nullzone Command",new DriveIntoNullZoneCommand());
-//		SmartDashboard.putData("TEST",new Test());
+		SmartDashboard.putData("TEST",new TestRobotCommand());
 		SmartDashboard.putData("setAnimation", new I2CCommand());
 	}
 
