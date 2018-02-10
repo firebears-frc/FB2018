@@ -133,9 +133,16 @@ public class AutoSelection extends Subsystem {
 						System.out.println("Select auto: left side, right switch");
 						selectedAuto = leftSideRightSwitch;
 					} else {
-						// Runs when robot on left, switch on right and cannot cross
-						System.out.println("Select auto: cross auto line");
-						selectedAuto = bothSideCrossAuto;
+						if (gameData.charAt(1) == L) {
+							// Runs when robot on left, switch on right, scale on left and cannot cross
+							System.out.println("Select auto: left side, left scale");
+							selectedAuto = leftSideLeftScale;
+						} else {
+							// Runs when robot on left, scale & switch on right and cannot cross
+							System.out.println("Select auto: cross auto line");
+							selectedAuto = bothSideCrossAuto;
+						}
+
 					}
 					break;
 				}
@@ -219,9 +226,15 @@ public class AutoSelection extends Subsystem {
 						System.out.println("Select auto: right side, left switch");
 						selectedAuto = rightSideLeftSwitch;
 					} else {
-						// Runs when robot on right, switch on left and not allowed to cross
-						System.out.println("Select auto: cross auto line");
-						selectedAuto = bothSideCrossAuto;
+						if (gameData.charAt(1) == R) {
+							// Runs when robot on right, switch on left, scale on right and not allowed to cross
+							System.out.println("Select Auto: right side, right scale");
+							selectedAuto = rightSideRightScale;
+						} else {
+							// Runs when robot on right, switch & scale on left and not allowed to cross
+							System.out.println("Select auto: cross auto line");
+							selectedAuto = bothSideCrossAuto;
+						}
 					}
 					break;
 				}
