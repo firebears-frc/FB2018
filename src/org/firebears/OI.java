@@ -12,21 +12,25 @@
 //test
 package org.firebears;
 
+import org.firebears.commands.I2CCommand;
+import org.firebears.commands.PlayMirroredRecording;
+import org.firebears.commands.PlayRecordingCommand;
+import org.firebears.commands.StartRecordingCommand;
+import org.firebears.commands.StopRecordingCommand;
+import org.firebears.commands.TestRobotCommand;
+import org.firebears.commands.VisionForwardCommand;
+import org.firebears.commands.VisionGetCubeCommandGroup;
+import org.firebears.commands.VisionRotateCommand;
 import org.firebears.commands.auto.ChangePriority;
 import org.firebears.commands.auto.ChangeShouldCross;
 import org.firebears.commands.auto.ChangeSide;
-//import org.firebears.commands.auto.DriveIntoNullZoneCommand;
 import org.firebears.commands.auto.DriveToDistanceCommand;
 import org.firebears.commands.auto.DriveToTapeCommand;
-//import org.firebears.commands.auto.Test;
-import org.firebears.commands.*;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.firebears.util.RobotReport;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.command.Command;
-
-import org.firebears.subsystems.*;
-import org.firebears.util.RobotReport;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -34,65 +38,68 @@ import org.firebears.util.RobotReport;
  */
 public class OI {
 
-	public Joystick joystick1;
-	public Joystick joystick2;
-	public JoystickButton testPID;
-	public JoystickButton Driveinches;
-	
-	String testRecording = "recordings/test.csv";
+    public Joystick joystick1;
+    public Joystick joystick2;
+    public JoystickButton testPID;
+    public JoystickButton Driveinches;
 
-	public OI(RobotReport report) {
-		// Intialize the joysticks
-		joystick1 = new Joystick(0);
-		report.addJoystick(0, "Joystick 1", joystick1);
-		
-		joystick2 = new Joystick(1);
-		
-//		Driveinches = new JoystickButton(joystick1,1);
-//		Driveinches.whileHeld(new DriveToDistanceCommand(18.8));
-		
-		report.addJoystick(1, "Joystick 2", joystick2);
+    String testRecording = "recordings/test.csv";
 
-		// Joystick Buttons
-		
-		// Switch between Open and Closed Loop Driving
-		// testPID = new JoystickButton(joystick1, 1);
-		// Command switchDriving = new SwitchDrivingType();
-		// testPID.whenPressed(new SwitchDrivingType());
-		// report.addJoystickButton(0, 1, "Swtich Driving Type", switchDriving);
+    public OI(RobotReport report) {
+	// Intialize the joysticks
+	joystick1 = new Joystick(0);
+	report.addJoystick(0, "Joystick 1", joystick1);
 
-		// SmartDashboard Buttons
-		// Recording Commands
-		SmartDashboard.putData("Start Recording", new StartRecordingCommand());
-		SmartDashboard.putData("Stop Recording", new StopRecordingCommand());
-		SmartDashboard.putData("Play Recording", new PlayRecordingCommand());
-		SmartDashboard.putData("Play Recording Mirrored", new PlayMirroredRecording());
-		SmartDashboard.putData("Test Recording", new PlayRecordingCommand(testRecording));
-		SmartDashboard.putData("Mirror Test Recording", new PlayMirroredRecording(testRecording));
-		// Vision Commands
-		SmartDashboard.putData("Vision Turn", new VisionRotateCommand());
-		SmartDashboard.putData("Drive to Cube", new VisionForwardCommand());
-		SmartDashboard.putData("Vision Get Cube", new VisionGetCubeCommandGroup());
-		// Auto commands
-		SmartDashboard.putData("Left side", new ChangeSide("Left"));
-		SmartDashboard.putData("Middle", new ChangeSide("Middle"));
-		SmartDashboard.putData("Right side", new ChangeSide("Right"));
-		SmartDashboard.putData("Scale priority", new ChangePriority("Scale"));
-		SmartDashboard.putData("Switch priority", new ChangePriority("Switch"));
-		SmartDashboard.putData("Should cross", new ChangeShouldCross(true));
-		SmartDashboard.putData("Shouldn't cross", new ChangeShouldCross(false));
-		// Other Commands
-		SmartDashboard.putData("DriveToTapeCommand", new DriveToTapeCommand(.4));
-		SmartDashboard.putData("DriveInches", new DriveToDistanceCommand(18.8,.5));
-//		SmartDashboard.putData("Nullzone Command",new DriveIntoNullZoneCommand());
-		SmartDashboard.putData("TEST",new TestRobotCommand());
-		SmartDashboard.putData("setAnimation", new I2CCommand(1, 3));
-		
-		
+	joystick2 = new Joystick(1);
+
+	// Driveinches = new JoystickButton(joystick1,1);
+	// Driveinches.whileHeld(new DriveToDistanceCommand(18.8));
+
+	report.addJoystick(1, "Joystick 2", joystick2);
+
+	// Joystick Buttons
+
+	// Switch between Open and Closed Loop Driving
+	// testPID = new JoystickButton(joystick1, 1);
+	// Command switchDriving = new SwitchDrivingType();
+	// testPID.whenPressed(new SwitchDrivingType());
+	// report.addJoystickButton(0, 1, "Swtich Driving Type", switchDriving);
+
+	// SmartDashboard Buttons
+	// Recording Commands
+	if (RobotMap.DEBUG) {
+	    SmartDashboard.putData("Start Recording", new StartRecordingCommand());
+	    SmartDashboard.putData("Stop Recording", new StopRecordingCommand());
+	    SmartDashboard.putData("Play Recording", new PlayRecordingCommand());
+	    SmartDashboard.putData("Play Recording Mirrored", new PlayMirroredRecording());
+	    SmartDashboard.putData("Test Recording", new PlayRecordingCommand(testRecording));
+	    SmartDashboard.putData("Mirror Test Recording", new PlayMirroredRecording(testRecording));
+	    // Vision Commands
+	    SmartDashboard.putData("Vision Turn", new VisionRotateCommand());
+	    SmartDashboard.putData("Drive to Cube", new VisionForwardCommand());
+	    SmartDashboard.putData("Vision Get Cube", new VisionGetCubeCommandGroup());
+
+	    // Other Commands
+	    SmartDashboard.putData("DriveToTapeCommand", new DriveToTapeCommand(.4));
+	    SmartDashboard.putData("DriveInches", new DriveToDistanceCommand(18.8, .5));
+	    // SmartDashboard.putData("Nullzone Command",new DriveIntoNullZoneCommand());
 	}
+	// Auto commands
+	SmartDashboard.putData("Left side", new ChangeSide("Left"));
+	SmartDashboard.putData("Middle", new ChangeSide("Middle"));
+	SmartDashboard.putData("Right side", new ChangeSide("Right"));
+	SmartDashboard.putData("Scale priority", new ChangePriority("Scale"));
+	SmartDashboard.putData("Switch priority", new ChangePriority("Switch"));
+	SmartDashboard.putData("Should cross", new ChangeShouldCross(true));
+	SmartDashboard.putData("Shouldn't cross", new ChangeShouldCross(false));
 
-	public Joystick getJoystick1() {
-		return joystick1;
-	}
+	SmartDashboard.putData("setAnimation", new I2CCommand(1, 3));
+	SmartDashboard.putData("TEST", new TestRobotCommand());
+
+    }
+
+    public Joystick getJoystick1() {
+	return joystick1;
+    }
 
 }
