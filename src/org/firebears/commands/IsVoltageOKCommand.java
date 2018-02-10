@@ -4,44 +4,43 @@ import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Checks the battery voltage and sends a message to the console of the rio
  */
 public class IsVoltageOKCommand extends Command {
 	double volt;
-	public IsVoltageOKCommand() {
-
-
+	int x;
+	double check;
+	
+	public IsVoltageOKCommand(double check) {
+		this.check = check;
+		
 	}
 
-	// Called just before this Command runs the first time
 	protected void initialize() {
 		volt = RobotController.getBatteryVoltage();
-
-
 	}
 
-	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 	}
 
-	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		if (volt >= 13) {
-			System.out.println("Voltage is above 13");
+		if (volt >= check) {
+			System.out.println("Battery Voltage Good: " + String.format("%6.2f", volt));
 			return true;
-		}else {
-			System.out.println("Voltage is below 13");
+		} else {
+			x++;
+			if (x < 1) {
+				System.out.println("Check Battery!: " + String.format("%6.2f", volt));
+			}
 			return false;
-
 		}
 	}
 
-	// Called once after isFinished returns true
 	protected void end() {
+		x = 0;
 	}
 
-	// Called when another command which requires one or more of the same
-	// subsystems is scheduled to run
 	protected void interrupted() {
+		end();
 	}
 }

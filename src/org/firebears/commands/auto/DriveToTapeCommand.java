@@ -33,7 +33,8 @@ public class DriveToTapeCommand extends Command {
     }
 
     protected void end() {
-    	Robot.chassis.stop();
+		Robot.chassis.drive(0, 0,false);
+//    	Robot.chassis.stop();
 //    	System.out.println("Distance to tape: " + (currentDistance - startingDistance)/52.6);
     }
     

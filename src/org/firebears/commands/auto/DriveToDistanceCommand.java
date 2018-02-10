@@ -35,7 +35,8 @@ public class DriveToDistanceCommand extends Command {
 	}
 
 	protected void end() {
-		Robot.chassis.stop();
+		Robot.chassis.drive(0, 0,false);
+//		Robot.chassis.stop();
 	}
 
 	protected void interrupted() {

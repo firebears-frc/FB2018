@@ -8,6 +8,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class TestRobotCommand extends CommandGroup {
 
     public TestRobotCommand() {
-    	addSequential(new IsVoltageOKCommand());
+    	addSequential(new IsVoltageOKCommand(13.0),5);
     }
 }

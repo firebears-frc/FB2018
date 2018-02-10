@@ -8,6 +8,12 @@ roboRIO serial number: 030dbd09
 * 3 = Left Slave : CANTalon(3)
 * 4 = Right Master : CANTalon(4)
 * 5 = Right Slave : CANTalon(5)
+* 11 = Cube Launcher Left : CANTalon(11)
+* 12 = Cube Launcher Right : CANTalon(12)
+* 13 = Cube Acq Left : CANTalon(13)
+* 14 = Cube Acq RIght : CANTalon(14)
+* 15 = Climber : CANTalon(15)
+* 16 = Spare : CANTalon(16)
 
 ## DIO
 
