@@ -62,7 +62,7 @@ public class OI {
 		// report.addJoystickButton(0, 1, "Swtich Driving Type", switchDriving);
 
 		// SmartDashboard Buttons
-		// Recoiding Commands
+		// Recording Commands
 		SmartDashboard.putData("Start Recording", new StartRecordingCommand());
 		SmartDashboard.putData("Stop Recording", new StopRecordingCommand());
 		SmartDashboard.putData("Play Recording", new PlayRecordingCommand());
