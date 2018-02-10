@@ -20,7 +20,9 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDSourceType;
@@ -47,6 +49,10 @@ public class RobotMap {
 	public static DifferentialDrive chassisRobotDrive;
 	
 	public static PowerDistributionPanel pdp;
+	
+	public static Compressor testCompressor;
+	
+	public static DoubleSolenoid testSolenoid;
 	
 	public static final int CAN_LEFT_MASTER = 2;
 	public static final int CAN_LEFT_SLAVE = 3;
@@ -163,6 +169,10 @@ public class RobotMap {
 		
 		pdp = new PowerDistributionPanel();
 		pdp.clearStickyFaults();
+		
+//		testCompressor = new Compressor();
+//		testCompressor.setClosedLoopControl(true);
+//		testSolenoid = new DoubleSolenoid(1, 2);
 	}
 
 	/**

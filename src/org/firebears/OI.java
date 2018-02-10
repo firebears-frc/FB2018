@@ -38,6 +38,8 @@ public class OI {
 	public Joystick joystick2;
 	public JoystickButton testPID;
 	public JoystickButton Driveinches;
+	
+	String testRecording = "recordings/test.csv";
 
 	public OI(RobotReport report) {
 		// Intialize the joysticks
@@ -65,6 +67,8 @@ public class OI {
 		SmartDashboard.putData("Stop Recording", new StopRecordingCommand());
 		SmartDashboard.putData("Play Recording", new PlayRecordingCommand());
 		SmartDashboard.putData("Play Recording Mirrored", new PlayMirroredRecording());
+		SmartDashboard.putData("Test Recording", new PlayRecordingCommand(testRecording));
+		SmartDashboard.putData("Mirror Test Recording", new PlayMirroredRecording(testRecording));
 		// Vision Commands
 		SmartDashboard.putData("Vision Turn", new VisionRotateCommand());
 		SmartDashboard.putData("Drive to Cube", new VisionForwardCommand());
@@ -77,11 +81,12 @@ public class OI {
 		SmartDashboard.putData("Switch priority", new ChangePriority("Switch"));
 		SmartDashboard.putData("Should cross", new ChangeShouldCross(true));
 		SmartDashboard.putData("Shouldn't cross", new ChangeShouldCross(false));
+		// Other Commands
 		SmartDashboard.putData("DriveToTapeCommand", new DriveToTapeCommand(.4));
 		SmartDashboard.putData("DriveInches", new DriveToDistanceCommand(18.8,.5));
 //		SmartDashboard.putData("Nullzone Command",new DriveIntoNullZoneCommand());
 //		SmartDashboard.putData("TEST",new Test());
-		  SmartDashboard.putData("setAnimation", new I2CCommand());
+		SmartDashboard.putData("setAnimation", new I2CCommand());
 	}
 
 	public Joystick getJoystick1() {
