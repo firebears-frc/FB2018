@@ -13,6 +13,17 @@ package org.firebears.subsystems;
 import org.firebears.RobotMap;
 import org.firebears.commands.*;
 import org.firebears.commands.auto.DriveToDistanceCommand;
+import org.firebears.commands.auto.movement.BothSideCrossAutoCommand;
+import org.firebears.commands.auto.movement.LeftSideLeftScaleCommand;
+import org.firebears.commands.auto.movement.LeftSideLeftSwitchCommand;
+import org.firebears.commands.auto.movement.LeftSideRightScaleCommand;
+import org.firebears.commands.auto.movement.LeftSideRightSwitchCommand;
+import org.firebears.commands.auto.movement.MiddleSideLeftSwitchCommand;
+import org.firebears.commands.auto.movement.MiddleSideRightSwitchCommand;
+import org.firebears.commands.auto.movement.RightSideLeftScaleCommand;
+import org.firebears.commands.auto.movement.RightSideLeftSwitchCommand;
+import org.firebears.commands.auto.movement.RightSideRightScaleCommand;
+import org.firebears.commands.auto.movement.RightSideRightSwitchCommand;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -40,17 +51,17 @@ public class AutoSelection extends Subsystem {
 	String priority;
 	Boolean shouldCross;
 	
-	Command leftSideLeftScale = new DriveToDistanceCommand(1,.5); // leftSideLeftScaleCommand
-	Command leftSideRightScale = new DriveToDistanceCommand(1,.5); // leftSideRightScaleCommand
-	Command leftSideLeftSwitch = new DriveToDistanceCommand(1,.5); // leftSideLeftSwitchCommand
-	Command leftSideRightSwitch = new DriveToDistanceCommand(1,.5); // leftSideRightSwitchCommand
-	Command rightSideLeftScale = new DriveToDistanceCommand(1,.5); // rightSideLeftScaleCommand
-	Command rightSideRightScale = new DriveToDistanceCommand(1,.5); // rightSideRightScaleCommand
-	Command rightSideLeftSwitch = new DriveToDistanceCommand(1,.5); // rightSideLeftSwitchCommand
-	Command rightSideRightSwitch = new DriveToDistanceCommand(1,.5); // rightSideRightSwitchCommand
-	Command middleSideLeftSwitch = new DriveToDistanceCommand(1,.5); // middleSideLeftSwitchCommand
-	Command middleSideRightSwitch = new DriveToDistanceCommand(1,.5); // middleSideRightSwitchCommand
-	Command bothSideCrossAuto = new DriveToDistanceCommand(1,.5); //bothSideCrossAutoCommand
+	Command leftSideLeftScale = new LeftSideLeftScaleCommand();
+	Command leftSideRightScale = new LeftSideRightScaleCommand();
+	Command leftSideLeftSwitch = new LeftSideLeftSwitchCommand();
+	Command leftSideRightSwitch = new LeftSideRightSwitchCommand();
+	Command rightSideLeftScale = new RightSideLeftScaleCommand();
+	Command rightSideRightScale = new RightSideRightScaleCommand();
+	Command rightSideLeftSwitch = new RightSideLeftSwitchCommand();
+	Command rightSideRightSwitch = new RightSideRightSwitchCommand();
+	Command middleSideLeftSwitch = new MiddleSideLeftSwitchCommand();
+	Command middleSideRightSwitch = new MiddleSideRightSwitchCommand();
+	Command bothSideCrossAuto = new BothSideCrossAutoCommand();
 	
 	
 
