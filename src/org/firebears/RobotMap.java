@@ -169,15 +169,19 @@ public class RobotMap {
 	
 	leftOpenClose = new DoubleSolenoid(0, 5, 4);
 	leftOpenClose.setName("Grabber", "leftOpenClose");
+	report.addPcm(0, 5, 4, "leftOpenClose", leftOpenClose);
 	
 	rightOpenClose = new DoubleSolenoid(0, 7, 6);
 	rightOpenClose.setName("Grabber", "leftOpenClose");
+	report.addPcm(0, 7, 6, "rightOpenClose", rightOpenClose);
 	
 	leftUpDown = new DoubleSolenoid(1, 1, 0);
 	leftUpDown.setName("Grabber", "leftUpDown");
+	report.addPcm(1, 1, 0, "leftUpDown", leftUpDown);
 	
 	rightUpDown = new DoubleSolenoid(1, 3, 2);
 	rightUpDown.setName("Grabber", "rightUpDown");
+	report.addPcm(1, 3, 2, "rightUpDown", rightUpDown);
 	
 	compressor = new Compressor();
 	compressor.setClosedLoopControl(true);
