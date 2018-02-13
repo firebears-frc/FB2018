@@ -38,12 +38,18 @@ public class RobotMap {
     public static CANTalon chassisRightSlave;
     public static SpeedControllerGroup chassisRightMotors;
     public static DifferentialDrive chassisRobotDrive;
-
+    
     public static PowerDistributionPanel pdp;
 
-    public static Compressor testCompressor;
+    public static Compressor compressor;
+    
+    public static CANTalon leftIntake;
+    public static CANTalon rightIntake;
 
-    public static DoubleSolenoid testSolenoid;
+    public static DoubleSolenoid leftOpenClose;
+    public static DoubleSolenoid rightOpenClose;
+    public static DoubleSolenoid leftUpDown;
+    public static DoubleSolenoid rightUpDown;
 
     public static AnalogInput pressureSensor;
 
@@ -134,6 +140,7 @@ public class RobotMap {
 	chassisRightMaster.configEncoderCodesPerRev(m_CountPerRev);
 	chassisRightMaster.setSensorPhase(true);
 	setPID(chassisRightMaster, m_P, m_I, m_D, m_ff, m_izone, m_rampRate, m_profile);
+	
 	// }
 
 	// DigitalInput encoderLeftInputA = new DigitalInput(2);
@@ -152,6 +159,29 @@ public class RobotMap {
 //	encoderRight.setDistancePerPulse(0.05639);
 //	encoderRight.setPIDSourceType(PIDSourceType.kRate);
 
+	leftIntake = new CANTalon(CAN_LEFT_GRABBER_MOTOR);
+	leftIntake.setName("Grabber", "leftIntake");
+	report.addCAN(CAN_LEFT_GRABBER_MOTOR, "leftIntake", leftIntake);
+	
+	rightIntake = new CANTalon(CAN_RIGHT_GRABBER_MOTOR);
+	rightIntake.setName("Grabber", "rightIntake");
+	report.addCAN(CAN_RIGHT_GRABBER_MOTOR, "rightIntake", rightIntake);
+	
+	leftOpenClose = new DoubleSolenoid(0, 5, 4);
+	leftOpenClose.setName("Grabber", "leftOpenClose");
+	
+	rightOpenClose = new DoubleSolenoid(0, 7, 6);
+	rightOpenClose.setName("Grabber", "leftOpenClose");
+	
+	leftUpDown = new DoubleSolenoid(1, 1, 0);
+	leftUpDown.setName("Grabber", "leftUpDown");
+	
+	rightUpDown = new DoubleSolenoid(1, 3, 2);
+	rightUpDown.setName("Grabber", "rightUpDown");
+	
+	compressor = new Compressor();
+	compressor.setClosedLoopControl(true);
+	
 	rangeFinder = new AnalogInput(0);
 	rangeFinder.setName("Chassis", "Rangefinder");
 	report.addAnalogInput(0, "Range Finder", rangeFinder);
@@ -183,8 +213,7 @@ public class RobotMap {
 	pdp = new PowerDistributionPanel();
 	pdp.clearStickyFaults();
 
-	// testCompressor = new Compressor();
-	// testCompressor.setClosedLoopControl(true);
+
 	// testSolenoid = new DoubleSolenoid(1, 2);
 
 	report.addOtherConfig(Lights.I2C_ADDRESS, "Trinket I2C Address");
