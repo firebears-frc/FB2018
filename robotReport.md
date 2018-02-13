@@ -1,4 +1,4 @@
-# FB2018, as of 2018.02.04
+# FB2018, as of 2017.11.21
 
 roboRIO serial number: 030dbd09
 
@@ -8,23 +8,23 @@ roboRIO serial number: 030dbd09
 * 3 = Left Slave : CANTalon(3)
 * 4 = Right Master : CANTalon(4)
 * 5 = Right Slave : CANTalon(5)
-* 11 = Cube Launcher Left : CANTalon(11)
-* 12 = Cube Launcher Right : CANTalon(12)
-* 13 = Cube Acq Left : CANTalon(13)
-* 14 = Cube Acq RIght : CANTalon(14)
-* 15 = Climber : CANTalon(15)
-* 16 = Spare : CANTalon(16)
 
 ## DIO
 
-* 0 = Tape Finder : edu.wpi.first.wpilibj.DigitalInput@1764bce
+* 2 = Tape Finder : edu.wpi.first.wpilibj.DigitalInput@195a09c
 
 ## ANALOG IN
 
-* 0 = Range Finder : edu.wpi.first.wpilibj.AnalogInput@1a8a1dc
+* 0 = Range Finder : edu.wpi.first.wpilibj.AnalogInput@1521cc1
+* 1 = Range Finder 2 : edu.wpi.first.wpilibj.AnalogInput@12a0b8e
+* 2 = Pressure Sensor : edu.wpi.first.wpilibj.AnalogInput@13634ad
+
+## Other Configuration
+
+* 4 = Trinket I2C Address
 
 ## Joysticks
 
-* 0 = Joystick 1 : edu.wpi.first.wpilibj.Joystick@15a92bb
-* 1 = Joystick 2 : edu.wpi.first.wpilibj.Joystick@1db1f78
+* 0 = Joystick 1 : edu.wpi.first.wpilibj.Joystick@1e0a01f
+* 1 = Joystick 2 : edu.wpi.first.wpilibj.Joystick@75cab9
 
