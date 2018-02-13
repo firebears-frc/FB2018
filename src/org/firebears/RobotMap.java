@@ -64,7 +64,7 @@ public class RobotMap {
     static double m_P = 3.0;
     static double m_I = 0;
     static double m_D = 0;
-    static double m_ff = 1.46;
+    static double m_ff = 1.0; //1.46;
     static int m_izone = 256;
     static double m_rampRate = 0.2;
     static int m_profile = 0;
@@ -140,17 +140,17 @@ public class RobotMap {
 	// DigitalInput encoderLeftInputB = new DigitalInput(3);
 	// encoderLeft = new Encoder(encoderLeftInputA, encoderLeftInputB, false,
 	// EncodingType.k4X);
-	encoderLeft = new Encoder(2, 3, false, EncodingType.k4X);
-	encoderLeft.setDistancePerPulse(0.05639);
-	encoderLeft.setPIDSourceType(PIDSourceType.kRate);
+//	encoderLeft = new Encoder(2, 3, false, EncodingType.k4X);
+//	encoderLeft.setDistancePerPulse(0.05639);
+//	encoderLeft.setPIDSourceType(PIDSourceType.kRate);
 	//
 	// DigitalInput encoderRightInputA = new DigitalInput(4);
 	// DigitalInput encoderRightInputB = new DigitalInput(5);
 	// encoderRight = new Encoder(encoderRightInputA, encoderRightInputB, true,
 	// EncodingType.k4X);
-	encoderRight = new Encoder(4, 5, true, EncodingType.k4X);
-	encoderRight.setDistancePerPulse(0.05639);
-	encoderRight.setPIDSourceType(PIDSourceType.kRate);
+//	encoderRight = new Encoder(4, 5, true, EncodingType.k4X);
+//	encoderRight.setDistancePerPulse(0.05639);
+//	encoderRight.setPIDSourceType(PIDSourceType.kRate);
 
 	rangeFinder = new AnalogInput(0);
 	rangeFinder.setName("Chassis", "Rangefinder");
@@ -166,7 +166,7 @@ public class RobotMap {
 
 	// Put Ultrasonic Switches here
 
-	tapeSensor = new DigitalInput(2);
+	tapeSensor = new DigitalInput(0);
 	report.addDigitalIO(2, "Tape Finder", tapeSensor);
 
 	// Put Sensor for when cube is loaded here

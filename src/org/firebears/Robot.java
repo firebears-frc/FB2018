@@ -156,7 +156,7 @@ public class Robot extends TimedRobot {
 
 		if (RobotMap.DEBUG) {
 			// Put Encoder values
-			SmartDashboard.putNumber("Left Encoder", RobotMap.encoderLeft.get());
+//			SmartDashboard.putNumber("Left Encoder", RobotMap.encoderLeft.get());
 			SmartDashboard.putNumber("Back Left Encoder Distance",
 					RobotMap.chassisLeftSlave.getSelectedSensorPosition(RobotMap.PID_IDX));
 			SmartDashboard.putNumber("Back Left Encoder Rate",
@@ -166,7 +166,7 @@ public class Robot extends TimedRobot {
 			SmartDashboard.putNumber("Front Left Encoder Rate",
 					RobotMap.chassisLeftMaster.getSelectedSensorVelocity(RobotMap.PID_IDX));
 
-			SmartDashboard.putNumber("Right Encoder", RobotMap.encoderRight.get());
+//			SmartDashboard.putNumber("Right Encoder", RobotMap.encoderRight.get());
 			SmartDashboard.putNumber("Back Right Encoder Distance",
 					RobotMap.chassisRightSlave.getSelectedSensorPosition(RobotMap.PID_IDX));
 			SmartDashboard.putNumber("Back Right Encoder Rate",

@@ -10,23 +10,34 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class DriveToDistanceCommand extends Command {
 
-	final double targetDistance;
+	double targetDistance;
 	double startingDistance;
 	double currentDistance;
 	double timeout;
 	final double SPEED;
+	
+	final double LOWER_SPEED = .25;
+	final double UPPER_SPEED = .7;
+	final double LOWER_OVERSHOOT = 1;
+	final double UPPER_OVERSHOOT = 9.5;
+	double overshoot;
 	
 
 	public DriveToDistanceCommand(double inches,double speed) {
 		requires(Robot.chassis);
 		targetDistance = inches;
 		SPEED = speed;
+		
+		double overshootPer = (SPEED - LOWER_SPEED) / (UPPER_SPEED - LOWER_SPEED);
+		overshoot = overshootPer * (UPPER_OVERSHOOT - LOWER_OVERSHOOT) + LOWER_OVERSHOOT;
+		targetDistance = targetDistance - overshoot;
 	}
 
 	protected void initialize() {
 		timeout = System.currentTimeMillis() + 1000 * 5;
 		System.out.println("Starting " + this.toString());
 		startingDistance = RobotMap.chassisLeftMaster.getSelectedSensorPosition(RobotMap.PID_IDX);
+		System.out.println(targetDistance);
 	}
 
 	protected void execute() {

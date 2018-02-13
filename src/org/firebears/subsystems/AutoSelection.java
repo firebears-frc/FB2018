@@ -27,6 +27,7 @@ import org.firebears.commands.auto.movement.RightSideRightSwitchCommand;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -75,6 +76,11 @@ public class AutoSelection extends Subsystem {
 		Boolean shouldCross = RobotMap.shouldCross;
 		System.out.println("ShouldCross: " + shouldCross);
 		String gameData = DriverStation.getInstance().getGameSpecificMessage();
+		
+		// Week Zero Game Data
+//		NetworkTableInstance offSeasonNetworkTable = NetworkTableInstance.create();
+//		offSeasonNetworkTable.startClient("10.0.100.5");
+//		String gameData = offSeasonNetworkTable.getTable("OffseasonFMSInfo").getEntry("GameData").getString("defaultValue");
 
 		// to-do = replace println's with auto commands
 		switch (side) {
@@ -242,6 +248,12 @@ public class AutoSelection extends Subsystem {
 			}
 			break;
 		}
+		// If no command is selected, don't do anything
+		if (selectedAuto == null) {
+			System.out.println("No auto selected");
+			selectedAuto = new DoNothingCommand();// Maybe replace with WaitCommand
+		}
+		
 		return selectedAuto;
 	}
 

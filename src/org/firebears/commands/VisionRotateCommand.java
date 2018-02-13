@@ -6,6 +6,7 @@ import static org.firebears.RobotMap.getNavXAngle;
 import org.firebears.Robot;
 
 import edu.wpi.first.wpilibj.command.PIDCommand;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -16,11 +17,11 @@ public class VisionRotateCommand extends PIDCommand {
 	double turnValue;
 	double targetAngle;
 	double FORWARD_SPEED = .15;
-	private static final double SPEED = 0.5;
+	private static final double SPEED = 0.1;
 	private static final double TOLERANCE = 1.0;
 	
     public VisionRotateCommand() {
-    	super(0.5, 0, 0);
+    	super(.0325, 0, 0);
         
     	requires(Robot.chassis);
     	
@@ -37,10 +38,11 @@ public class VisionRotateCommand extends PIDCommand {
     	
     	// Get turn value from vision subsystem
     	turnValue = Robot.vision.getAngleX();
-//    	turnValue = 15;
+//    	turnValue = 90;
     	
     	// Set target angle for PID to current angle + angle from vision
     	targetAngle = boundAngle(getNavXAngle() + turnValue);
+    	System.out.println(targetAngle);
     	getPIDController().setSetpoint(0);
     	
     	System.out.println("Starting " + this.toString());
@@ -51,10 +53,11 @@ public class VisionRotateCommand extends PIDCommand {
     }
 
     // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
+    protected boolean isFinished() { 
     	
     	// Stop command when timeout expires, or when the current angle is within the tolerance
     	double difference = getAngleDifference(); 
+    	SmartDashboard.putNumber("Angle Difference:", difference); 
     	if (System.currentTimeMillis() >= timeout || Math.abs(difference) < TOLERANCE) {
     		return true;
     	}
@@ -63,7 +66,8 @@ public class VisionRotateCommand extends PIDCommand {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.chassis.stop();
+//    	Robot.chassis.stop();
+    	Robot.chassis.drive(0, 0, false);
     	System.out.println("Ending " + this);
     }
 
