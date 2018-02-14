@@ -50,6 +50,12 @@ public class RobotMap {
     public static DoubleSolenoid rightOpenClose;
     public static DoubleSolenoid leftUpDown;
     public static DoubleSolenoid rightUpDown;
+    
+    public static DoubleSolenoid leftLaunch;
+    public static DoubleSolenoid rightLaunch;
+    
+    public static CANTalon leftLaunchSpinner;
+    public static CANTalon rightLaunchSpinner;
 
     public static AnalogInput pressureSensor;
 
@@ -166,6 +172,18 @@ public class RobotMap {
 	rightIntake = new CANTalon(CAN_RIGHT_GRABBER_MOTOR);
 	rightIntake.setName("Grabber", "rightIntake");
 	report.addCAN(CAN_RIGHT_GRABBER_MOTOR, "rightIntake", rightIntake);
+	
+	leftLaunchSpinner = new CANTalon(CAN_LEFT_GRABBER_MOTOR);
+	leftLaunchSpinner.setName("shooter", "leftSpinner");
+	
+	rightLaunchSpinner = new CANTalon(CAN_RIGHT_GRABBER_MOTOR);
+	rightLaunchSpinner.setName("shooter", "rightSpinner");
+	
+	leftLaunch = new DoubleSolenoid(0,1,0);
+    leftLaunch.setName("shooter", "leftPneumatics");
+    
+	rightLaunch = new DoubleSolenoid(0,3,2);
+    rightLaunch.setName("shooter", "rightPneumatics");
 	
 	leftOpenClose = new DoubleSolenoid(0, 5, 4);
 	leftOpenClose.setName("Grabber", "leftOpenClose");
