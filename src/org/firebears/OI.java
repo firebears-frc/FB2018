@@ -26,6 +26,7 @@ import org.firebears.commands.auto.ChangeShouldCross;
 import org.firebears.commands.auto.ChangeSide;
 import org.firebears.commands.auto.DriveToDistanceCommand;
 import org.firebears.commands.auto.DriveToTapeCommand;
+import org.firebears.commands.auto.RotateToAngle;
 import org.firebears.util.RobotReport;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -82,6 +83,7 @@ public class OI {
 	    // Other Commands
 	    SmartDashboard.putData("DriveToTapeCommand", new DriveToTapeCommand(.4));
 	    SmartDashboard.putData("DriveInches", new DriveToDistanceCommand(60, .6));
+	    SmartDashboard.putData("RotateToAngle", new RotateToAngle(45));
 	    // SmartDashboard.putData("Nullzone Command",new DriveIntoNullZoneCommand());
 	}
 	// Auto commands
