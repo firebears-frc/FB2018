@@ -32,7 +32,7 @@ public class DriveCommand extends Command {
 	@Override
 	protected void execute() {
 		Joystick stick = Robot.oi.joystick1;
-		Robot.chassis.drive(stick.getY(), stick.getX(),true);
+		Robot.chassis.drive(stick.getY(), stick.getX()*.75,true);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

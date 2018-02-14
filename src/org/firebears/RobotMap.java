@@ -63,7 +63,7 @@ public class RobotMap {
     public static final int TIMEOUT_MS = 10;
     static double m_P = 3.0;
     static double m_I = 0;
-    static double m_D = 0;
+    static double m_D = 1.0;
     static double m_ff = 1.0; //1.46;
     static int m_izone = 256;
     static double m_rampRate = 0.2;
