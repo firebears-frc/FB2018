@@ -41,11 +41,14 @@ public class Lights extends Subsystem {
 
 	private byte[] dataOut = new byte[2];
 	private byte[] dataBack = new byte[0];
+	private int[] currentAnimation = new int[MAX_PIXELSTRIPS];
 
 	public synchronized void setAnimation(int s, int a) {
+		if (currentAnimation[s] == a) { return; }
 		dataOut[0] = (byte) (s + '0');
 		dataOut[1] = (byte) (a + '0');
 		i2c.transaction(dataOut, dataOut.length, dataBack, dataBack.length);
+		currentAnimation[s] = a;
 	}
 
 	@Override
@@ -71,5 +74,14 @@ public class Lights extends Subsystem {
 
 		}
 
+	}
+	
+	public void reset() {
+		for (int i = 0; i < MAX_PIXELSTRIPS; i++) {
+			currentAnimation[i] = -1;
+		}
+		setAnimation(SHOOTER_STRIP, FIRE_ANIMATION);
+		setAnimation(GRABBER_STRIP, FIRE_ANIMATION);
+		setAnimation(BASE_STRIP, FIRE_ANIMATION);
 	}
 }
