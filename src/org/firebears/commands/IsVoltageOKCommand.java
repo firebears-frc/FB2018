@@ -19,7 +19,7 @@ public class IsVoltageOKCommand extends Command {
 	protected void initialize() {
 		volt = RobotController.getBatteryVoltage();
 	}
-
+	
 	protected void execute() {
 	}
 

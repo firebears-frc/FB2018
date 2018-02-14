@@ -27,6 +27,11 @@ import org.firebears.commands.auto.ChangeSide;
 import org.firebears.commands.auto.DriveToDistanceCommand;
 import org.firebears.commands.auto.DriveToTapeCommand;
 import org.firebears.commands.auto.RotateToAngle;
+import org.firebears.commands.grabber.ExtendShooterCommand;
+import org.firebears.commands.grabber.OpenGrabberCommand;
+import org.firebears.commands.grabber.RaiseGrabberCommand;
+import org.firebears.commands.grabber.SpinGrabberWheelsCommand;
+import org.firebears.commands.grabber.SpinShooterWheelsCommand;
 import org.firebears.util.RobotReport;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -75,6 +80,7 @@ public class OI {
 	    SmartDashboard.putData("Play Recording Mirrored", new PlayMirroredRecording());
 	    SmartDashboard.putData("Test Recording", new PlayRecordingCommand(testRecording));
 	    SmartDashboard.putData("Mirror Test Recording", new PlayMirroredRecording(testRecording));
+	    
 	    // Vision Commands
 	    SmartDashboard.putData("Vision Turn", new VisionRotateCommand());
 	    SmartDashboard.putData("Drive to Cube", new VisionForwardCommand());
@@ -85,6 +91,17 @@ public class OI {
 	    SmartDashboard.putData("DriveInches", new DriveToDistanceCommand(60, .6));
 	    SmartDashboard.putData("RotateToAngle", new RotateToAngle(45));
 	    // SmartDashboard.putData("Nullzone Command",new DriveIntoNullZoneCommand());
+	    
+	   SmartDashboard.putData("Extend Shooter", new ExtendShooterCommand());
+	   SmartDashboard.putData("Retract Shooter", new ExtendShooterCommand());
+	   SmartDashboard.putData("Open Grabber", new OpenGrabberCommand());
+	   SmartDashboard.putData("Close Grabber", new OpenGrabberCommand());
+	   SmartDashboard.putData("Raise Grabber", new RaiseGrabberCommand());
+	   SmartDashboard.putData("Lower Grabber", new RaiseGrabberCommand());
+	   SmartDashboard.putData("Spin Grabber Wheels", new SpinGrabberWheelsCommand());
+	   SmartDashboard.putData("Stop Grabber Wheels", new SpinGrabberWheelsCommand());
+	   SmartDashboard.putData("Spin Shooter Wheels", new SpinShooterWheelsCommand());
+	   SmartDashboard.putData("Stop Shooter Wheels", new SpinShooterWheelsCommand());
 	}
 	// Auto commands
 	SmartDashboard.putData("Left side", new ChangeSide("Left"));
