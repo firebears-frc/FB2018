@@ -1,4 +1,4 @@
-# FB2018, as of 2018.02.04
+# FB2018, as of 2017.11.21
 
 roboRIO serial number: 030dbd09
 
@@ -8,23 +8,31 @@ roboRIO serial number: 030dbd09
 * 3 = Left Slave : CANTalon(3)
 * 4 = Right Master : CANTalon(4)
 * 5 = Right Slave : CANTalon(5)
-* 11 = Cube Launcher Left : CANTalon(11)
-* 12 = Cube Launcher Right : CANTalon(12)
-* 13 = Cube Acq Left : CANTalon(13)
-* 14 = Cube Acq RIght : CANTalon(14)
-* 15 = Climber : CANTalon(15)
-* 16 = Spare : CANTalon(16)
+* 13 = leftIntake : CANTalon(13)
+* 14 = rightIntake : CANTalon(14)
 
 ## DIO
 
-* 0 = Tape Finder : edu.wpi.first.wpilibj.DigitalInput@1764bce
+* 2 = Tape Finder : edu.wpi.first.wpilibj.DigitalInput@1e25b76
 
 ## ANALOG IN
 
-* 0 = Range Finder : edu.wpi.first.wpilibj.AnalogInput@1a8a1dc
+* 0 = Range Finder : edu.wpi.first.wpilibj.AnalogInput@515669
+* 1 = Range Finder 2 : edu.wpi.first.wpilibj.AnalogInput@4bae78
+* 2 = Pressure Sensor : edu.wpi.first.wpilibj.AnalogInput@1764bce
+
+## Other Configuration
+
+* 4 = Trinket I2C Address
+
+## Pneumatics
+
+* [0,5,4] = leftOpenClose : edu.wpi.first.wpilibj.DoubleSolenoid@1521cc1
+* [0,7,6] = rightOpenClose : edu.wpi.first.wpilibj.DoubleSolenoid@1c6c3b2
+* [1,1,0] = leftUpDown : edu.wpi.first.wpilibj.DoubleSolenoid@533e64
+* [1,3,2] = rightUpDown : edu.wpi.first.wpilibj.DoubleSolenoid@a294a6
 
 ## Joysticks
 
-* 0 = Joystick 1 : edu.wpi.first.wpilibj.Joystick@15a92bb
-* 1 = Joystick 2 : edu.wpi.first.wpilibj.Joystick@1db1f78
-
+* 0 = Joystick 1 : edu.wpi.first.wpilibj.Joystick@1b7dea0
+* 1 = Joystick 2 : edu.wpi.first.wpilibj.Joystick@c42916
