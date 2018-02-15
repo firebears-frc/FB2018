@@ -21,6 +21,10 @@ public class Shooter extends Subsystem {
 		RobotMap.leftLaunchSpinner.set(0);
 		RobotMap.rightLaunchSpinner.set(0);
 	}
+	
+	public void isShooterAtSpeed() {
+		
+	}
 
 	public void shooterPneumaticsUp() {
 
