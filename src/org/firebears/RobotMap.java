@@ -183,9 +183,11 @@ public class RobotMap {
 
 		leftLaunch = new DoubleSolenoid(0, 1, 0);
 		leftLaunch.setName("shooter", "leftPneumatics");
+		report.addPcm(0, 1, 0, "leftPneumatics", leftLaunch);
 
 		rightLaunch = new DoubleSolenoid(0, 3, 2);
 		rightLaunch.setName("shooter", "rightPneumatics");
+		report.addPcm(0, 3, 2, "rightPneumatics", rightLaunch);
 
 		leftOpenClose = new DoubleSolenoid(0, 5, 4);
 		leftOpenClose.setName("Grabber", "leftOpenClose");
