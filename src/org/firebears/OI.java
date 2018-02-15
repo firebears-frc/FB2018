@@ -92,16 +92,19 @@ public class OI {
 	    SmartDashboard.putData("RotateToAngle", new RotateToAngle(45));
 	    // SmartDashboard.putData("Nullzone Command",new DriveIntoNullZoneCommand());
 	    
-	   SmartDashboard.putData("Extend Shooter", new ExtendShooterCommand());
-	   SmartDashboard.putData("Retract Shooter", new ExtendShooterCommand());
-	   SmartDashboard.putData("Open Grabber", new OpenGrabberCommand());
-	   SmartDashboard.putData("Close Grabber", new OpenGrabberCommand());
-	   SmartDashboard.putData("Raise Grabber", new RaiseGrabberCommand());
-	   SmartDashboard.putData("Lower Grabber", new RaiseGrabberCommand());
-	   SmartDashboard.putData("Spin Grabber Wheels", new SpinGrabberWheelsCommand());
-	   SmartDashboard.putData("Stop Grabber Wheels", new SpinGrabberWheelsCommand());
-	   SmartDashboard.putData("Spin Shooter Wheels", new SpinShooterWheelsCommand());
-	   SmartDashboard.putData("Stop Shooter Wheels", new SpinShooterWheelsCommand());
+	   SmartDashboard.putData("Extend Shooter", new ExtendShooterCommand(true));
+	   SmartDashboard.putData("Retract Shooter", new ExtendShooterCommand(false));
+	   SmartDashboard.putData("Spin Shooter Wheels Fast", new SpinShooterWheelsCommand(Robot.shooter.HIGH_SPEED));
+	   SmartDashboard.putData("Spin Shooter Wheels Slow", new SpinShooterWheelsCommand(Robot.shooter.LOW_SPEED));
+	   SmartDashboard.putData("Stop Shooter Wheels", new SpinShooterWheelsCommand(0));
+	   
+	   SmartDashboard.putData("Open Grabber", new OpenGrabberCommand(true));
+	   SmartDashboard.putData("Close Grabber", new OpenGrabberCommand(false));
+	   SmartDashboard.putData("Raise Grabber", new RaiseGrabberCommand(true));
+	   SmartDashboard.putData("Lower Grabber", new RaiseGrabberCommand(false));
+	   SmartDashboard.putData("Spin Grabber Wheels", new SpinGrabberWheelsCommand(true));
+	   SmartDashboard.putData("Stop Grabber Wheels", new SpinGrabberWheelsCommand(false));
+
 	}
 	// Auto commands
 	SmartDashboard.putData("Left side", new ChangeSide("Left"));

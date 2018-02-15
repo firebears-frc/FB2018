@@ -1,19 +1,28 @@
 package org.firebears.commands.grabber;
 
+import org.firebears.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
 public class OpenGrabberCommand extends Command {
-
-    public OpenGrabberCommand() {
+	boolean shouldOpen;
+    public OpenGrabberCommand(boolean shouldOpen) {
+    	this.shouldOpen = shouldOpen;
+    	requires(Robot.grabber);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	if (this.shouldOpen == true) {
+    		Robot.grabber.grabberOpen();
+    	} else {
+    		Robot.grabber.grabberClose();
+    	}
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -22,7 +31,7 @@ public class OpenGrabberCommand extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true

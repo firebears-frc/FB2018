@@ -1,19 +1,28 @@
 package org.firebears.commands.grabber;
 
+import org.firebears.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
 public class RaiseGrabberCommand extends Command {
-
-    public RaiseGrabberCommand() {
+	boolean shouldRaise;
+    public RaiseGrabberCommand(boolean shouldRaise) {
+    	this.shouldRaise = shouldRaise;
+    	requires(Robot.grabber);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	if (this.shouldRaise == true) {
+    		Robot.grabber.grabberRaise();
+    	} else {
+    		Robot.grabber.grabberLower();
+    	}
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -22,7 +31,7 @@ public class RaiseGrabberCommand extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true
