@@ -27,8 +27,9 @@ import org.firebears.commands.auto.ChangeSide;
 import org.firebears.commands.auto.DriveToDistanceCommand;
 import org.firebears.commands.auto.DriveToTapeCommand;
 import org.firebears.commands.auto.RotateToAngle;
-
-import org.firebears.commands.driver.ShootCommand;
+import org.firebears.commands.driver.GrabberDownCommand;
+import org.firebears.commands.driver.GrabberUpCommand;
+import org.firebears.commands.driver.FireCubeCommand;
 import org.firebears.commands.grabber.OpenGrabberCommand;
 import org.firebears.commands.grabber.RaiseGrabberCommand;
 import org.firebears.commands.grabber.SpinGrabberWheelsCommand;
@@ -38,7 +39,6 @@ import org.firebears.util.RobotReport;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -52,6 +52,14 @@ public class OI {
     public JoystickButton testPID;
     public JoystickButton Driveinches;
     public JoystickButton extendShooter;
+    public JoystickButton highShot;
+    public JoystickButton medShot;
+    public JoystickButton lowShot;
+    public JoystickButton switchShot;
+    public JoystickButton armDown;
+    public JoystickButton armUp;
+    public JoystickButton armClose;
+    public JoystickButton armOpen;
 
     String testRecording = "recordings/test.csv";
 
@@ -70,7 +78,33 @@ public class OI {
 	// Joystick Buttons
 	
 	extendShooter = new JoystickButton(joystick2, 1);
-	extendShooter.whenPressed(new ShootCommand());
+	extendShooter.whenPressed(new FireCubeCommand());
+	
+	highShot = new JoystickButton(joystick2, 6);
+	highShot.whenPressed(new SpinShooterWheelsCommand(20));
+	
+	medShot = new JoystickButton(joystick2, 5);
+	medShot.whenPressed(new SpinShooterWheelsCommand(15));
+	
+	lowShot = new JoystickButton(joystick2, 4);
+	lowShot.whenPressed(new SpinShooterWheelsCommand(10));
+	
+	switchShot = new JoystickButton(joystick2, 3);
+	switchShot.whenPressed(new SpinShooterWheelsCommand(5));
+	
+	armDown = new JoystickButton(joystick2, 7);
+	armDown.whenPressed(new GrabberDownCommand());
+	
+	armUp = new JoystickButton(joystick2, 9);
+	armUp.whenPressed(new GrabberUpCommand());
+	
+	
+	armClose = new JoystickButton(joystick2, 8);
+	armClose.whenPressed(new OpenGrabberCommand(false));
+	
+	armOpen = new JoystickButton(joystick2, 10);
+	armOpen.whenPressed(new OpenGrabberCommand(true));
+	
 
 	// Switch between Open and Closed Loop Driving
 	// testPID = new JoystickButton(joystick1, 1);

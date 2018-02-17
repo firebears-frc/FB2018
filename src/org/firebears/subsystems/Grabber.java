@@ -45,6 +45,12 @@ public class Grabber extends Subsystem {
 		RobotMap.leftIntake.set(0);
 		RobotMap.rightIntake.set(0);
 	}
+	public boolean hasCube() {
+		return RobotMap.leftCubeSwitch.get() || RobotMap.rightCubeSwitch.get();
+	}
+	public boolean isRaised() {
+		return RobotMap.rightUpDown.get() == SOL_REVERSE;
+	}
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.

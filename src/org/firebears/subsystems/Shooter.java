@@ -1,5 +1,6 @@
 package org.firebears.subsystems;
 
+import org.firebears.Robot;
 import org.firebears.RobotMap;
 import org.firebears.RobotMap.EncoderPIDSource;
 
@@ -48,7 +49,7 @@ public class Shooter extends Subsystem {
 		
 		SmartDashboard.putNumber("Target Speed", speed);
 		
-		leftSpinner.setSetpoint(speed);
+		leftSpinner.setSetpoint(speed);// ((speed/20) * 60) = rpm
 		rightSpinner.setSetpoint(-speed);
 		
 //		RobotMap.leftLaunchSpinner.set(speed);
@@ -65,8 +66,11 @@ public class Shooter extends Subsystem {
 	}
 
 	public void shooterPneumaticsUp() {
-		RobotMap.leftLaunch.set(SOL_FORWARD);
-		RobotMap.rightLaunch.set(SOL_FORWARD);
+		//if (Robot.grabber.hasCube() && Robot.grabber.isRaised()){ // Uncomment for competition code
+			RobotMap.leftLaunch.set(SOL_FORWARD);
+			RobotMap.rightLaunch.set(SOL_FORWARD);
+		//}
+		
 	}
 
 	public void shooterPneumaticsDown() {

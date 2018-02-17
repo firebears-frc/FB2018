@@ -59,6 +59,9 @@ public class RobotMap {
 	public static CANTalon rightLaunchSpinner;
 
 	public static AnalogInput pressureSensor;
+	
+	public static DigitalInput leftCubeSwitch;
+	public static DigitalInput rightCubeSwitch;
 
 	public static final int CAN_LEFT_MASTER = 2;
 	public static final int CAN_LEFT_SLAVE = 3;
@@ -209,7 +212,12 @@ public class RobotMap {
 
 		tapeSensor = new DigitalInput(0);
 		report.addDigitalIO(2, "Tape Finder", tapeSensor);
-
+		
+		leftCubeSwitch = new DigitalInput(9);
+		report.addDigitalIO(3, "Left Cube Switch", leftCubeSwitch);
+		
+		rightCubeSwitch = new DigitalInput(9);
+		report.addDigitalIO(4, "Right Cube Switch", rightCubeSwitch);
 		// Put Sensor for when cube is loaded here
 
 		// Put Sensor for when cube is in the grabber here

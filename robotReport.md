@@ -16,6 +16,8 @@ roboRIO serial number: 030dbd09
 ## DIO
 
 * 2 = Tape Finder : edu.wpi.first.wpilibj.DigitalInput@655221
+* 8 = limit switch for cube aqc
+* 9 = limit switch for cube aqc 
 
 ## ANALOG IN
 
