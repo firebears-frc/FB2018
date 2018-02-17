@@ -2,6 +2,8 @@ package org.firebears.subsystems;
 
 import org.firebears.RobotMap;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -10,22 +12,28 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Grabber extends Subsystem {
 	
 	final double MOTORSPEED = 1;
+	final Value SOL_FORWARD = DoubleSolenoid.Value.kForward;
+	final Value SOL_REVERSE = DoubleSolenoid.Value.kReverse;
 	
 	// to-do
 	public void grabberRaise() {
-		
+		RobotMap.leftUpDown.set(SOL_REVERSE);
+		RobotMap.rightUpDown.set(SOL_REVERSE);
 	}
 	
 	public void grabberLower() {
-		
+		RobotMap.leftUpDown.set(SOL_FORWARD);
+		RobotMap.rightUpDown.set(SOL_FORWARD);
 	}
 	
 	public void grabberOpen() {
-		
+		RobotMap.leftOpenClose.set(SOL_REVERSE);
+		RobotMap.rightOpenClose.set(SOL_REVERSE);
 	}
 	
 	public void grabberClose() {
-		
+		RobotMap.leftOpenClose.set(SOL_FORWARD);
+		RobotMap.rightOpenClose.set(SOL_FORWARD);
 	}
 	
 	public void grabberStartSpinning() {

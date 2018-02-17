@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.SerialPort.Port;
@@ -149,22 +150,6 @@ public class RobotMap {
 
 		// }
 
-		// DigitalInput encoderLeftInputA = new DigitalInput(2);
-		// DigitalInput encoderLeftInputB = new DigitalInput(3);
-		// encoderLeft = new Encoder(encoderLeftInputA, encoderLeftInputB, false,
-		// EncodingType.k4X);
-		// encoderLeft = new Encoder(2, 3, false, EncodingType.k4X);
-		// encoderLeft.setDistancePerPulse(0.05639);
-		// encoderLeft.setPIDSourceType(PIDSourceType.kRate);
-		//
-		// DigitalInput encoderRightInputA = new DigitalInput(4);
-		// DigitalInput encoderRightInputB = new DigitalInput(5);
-		// encoderRight = new Encoder(encoderRightInputA, encoderRightInputB, true,
-		// EncodingType.k4X);
-		// encoderRight = new Encoder(4, 5, true, EncodingType.k4X);
-		// encoderRight.setDistancePerPulse(0.05639);
-		// encoderRight.setPIDSourceType(PIDSourceType.kRate);
-
 		leftIntake = new CANTalon(CAN_LEFT_GRABBER_MOTOR);
 		leftIntake.setName("Grabber", "leftIntake");
 		report.addCAN(CAN_LEFT_GRABBER_MOTOR, "leftIntake", leftIntake);
@@ -289,8 +274,8 @@ public class RobotMap {
 
 		@Override
 		public void set(double speed) {
-			// if (encoderMultiplier != 0) {
-			if (CLOSED_LOOP_DRIVING) {
+			if (encoderMultiplier != 0) {
+//			if (CLOSED_LOOP_DRIVING) {
 				set(ControlMode.Velocity, speed * encoderMultiplier);
 			} else {
 				set(ControlMode.PercentOutput, speed);
@@ -305,5 +290,31 @@ public class RobotMap {
 		public void configEncoderCodesPerRev(int ticks) {
 			this.encoderMultiplier = ticks;
 		}
+	}
+	
+	public static class EncoderPIDSource implements PIDSource {
+
+		PIDSourceType pidType;
+		WPI_TalonSRX sourceTalon;
+		
+		public EncoderPIDSource(WPI_TalonSRX talon) {
+			sourceTalon = talon;
+		}
+		
+		@Override
+		public void setPIDSourceType(PIDSourceType pidSource) {
+			pidType = pidSource;
+		}
+
+		@Override
+		public PIDSourceType getPIDSourceType() {
+			return PIDSourceType.kRate;
+		}
+
+		@Override
+		public double pidGet() {
+			return sourceTalon.getSelectedSensorVelocity(PID_IDX);
+		}
+		
 	}
 }
