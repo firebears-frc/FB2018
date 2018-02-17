@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.SerialPort.Port;
@@ -51,7 +52,7 @@ public class RobotMap {
 	public static DoubleSolenoid leftUpDown;
 	public static DoubleSolenoid rightUpDown;
 
-	public static DoubleSolenoid leftLaunch;
+    public static DoubleSolenoid leftLaunch;
 	public static DoubleSolenoid rightLaunch;
 
 	public static CANTalon leftLaunchSpinner;
@@ -73,15 +74,15 @@ public class RobotMap {
 	// Variables for closed loop driving
 	public static final int PID_IDX = 0;
 	public static final int TIMEOUT_MS = 10;
-	static double m_P = 3.0;
+	static double m_P = 1.10;
 	static double m_I = 0;
-	static double m_D = 1.0;
+	static double m_D = 0.0;
 	static double m_ff = 1.0; // 1.46;
 	static int m_izone = 256;
-	static double m_rampRate = 0.2;
+	static double m_rampRate = 0.1;
 	static int m_profile = 0;
 	public static int m_CountPerRev = 700;// ****Magnetic
-	public static boolean CLOSED_LOOP_DRIVING = true;
+	public static boolean CLOSED_LOOP_DRIVING = false;
 
 	// For autoSelecion
 	public static String side;
@@ -148,22 +149,6 @@ public class RobotMap {
 		setPID(chassisRightMaster, m_P, m_I, m_D, m_ff, m_izone, m_rampRate, m_profile);
 
 		// }
-
-		// DigitalInput encoderLeftInputA = new DigitalInput(2);
-		// DigitalInput encoderLeftInputB = new DigitalInput(3);
-		// encoderLeft = new Encoder(encoderLeftInputA, encoderLeftInputB, false,
-		// EncodingType.k4X);
-		// encoderLeft = new Encoder(2, 3, false, EncodingType.k4X);
-		// encoderLeft.setDistancePerPulse(0.05639);
-		// encoderLeft.setPIDSourceType(PIDSourceType.kRate);
-		//
-		// DigitalInput encoderRightInputA = new DigitalInput(4);
-		// DigitalInput encoderRightInputB = new DigitalInput(5);
-		// encoderRight = new Encoder(encoderRightInputA, encoderRightInputB, true,
-		// EncodingType.k4X);
-		// encoderRight = new Encoder(4, 5, true, EncodingType.k4X);
-		// encoderRight.setDistancePerPulse(0.05639);
-		// encoderRight.setPIDSourceType(PIDSourceType.kRate);
 
 		leftIntake = new CANTalon(CAN_LEFT_GRABBER_MOTOR);
 		leftIntake.setName("Grabber", "leftIntake");
@@ -289,8 +274,8 @@ public class RobotMap {
 
 		@Override
 		public void set(double speed) {
-			// if (encoderMultiplier != 0) {
-			if (CLOSED_LOOP_DRIVING) {
+			if (encoderMultiplier != 0) {
+//			if (CLOSED_LOOP_DRIVING) {
 				set(ControlMode.Velocity, speed * encoderMultiplier);
 			} else {
 				set(ControlMode.PercentOutput, speed);
@@ -305,5 +290,31 @@ public class RobotMap {
 		public void configEncoderCodesPerRev(int ticks) {
 			this.encoderMultiplier = ticks;
 		}
+	}
+	
+	public static class EncoderPIDSource implements PIDSource {
+
+		PIDSourceType pidType;
+		WPI_TalonSRX sourceTalon;
+		
+		public EncoderPIDSource(WPI_TalonSRX talon) {
+			sourceTalon = talon;
+		}
+		
+		@Override
+		public void setPIDSourceType(PIDSourceType pidSource) {
+			pidType = pidSource;
+		}
+
+		@Override
+		public PIDSourceType getPIDSourceType() {
+			return PIDSourceType.kRate;
+		}
+
+		@Override
+		public double pidGet() {
+			return sourceTalon.getSelectedSensorVelocity(PID_IDX);
+		}
+		
 	}
 }

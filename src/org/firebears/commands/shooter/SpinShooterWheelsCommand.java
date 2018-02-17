@@ -1,4 +1,4 @@
-package org.firebears.commands.grabber;
+package org.firebears.commands.shooter;
 
 import org.firebears.Robot;
 
@@ -18,8 +18,10 @@ public class SpinShooterWheelsCommand extends Command {
 	// Called just before this Command runs the first time
 	protected void initialize() {
 		if (this.speed == 0) {
+			System.out.println("Spinning shooter wheels");
 			Robot.shooter.shooterStopWheel();
 		} else {
+			System.out.println("Stopped shooter wheels");
 			Robot.shooter.shooterSpinWheel(this.speed);
 		}
 	}

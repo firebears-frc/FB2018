@@ -19,8 +19,10 @@ public class RaiseGrabberCommand extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	if (this.shouldRaise == true) {
+    		System.out.println("Raised grabber");
     		Robot.grabber.grabberRaise();
     	} else {
+    		System.out.println("Lowered grabber");
     		Robot.grabber.grabberLower();
     	}
     }
