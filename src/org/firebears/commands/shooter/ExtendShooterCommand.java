@@ -1,4 +1,4 @@
-package org.firebears.commands.grabber;
+package org.firebears.commands.shooter;
 
 import org.firebears.Robot;
 
@@ -20,11 +20,11 @@ public class ExtendShooterCommand extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	if (this.shouldExtend == true) {
-    		Robot.shooter.shooterPneumaticsUp();
     		System.out.println("Extend Shooter");
+    		Robot.shooter.shooterPneumaticsUp();
     	} else {
-    		Robot.shooter.shooterPneumaticsDown();
     		System.out.println("Retract Shooter");
+    		Robot.shooter.shooterPneumaticsDown();	
     	}
     }
 

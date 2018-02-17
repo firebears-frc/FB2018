@@ -19,8 +19,10 @@ public class SpinGrabberWheelsCommand extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	if (this.shouldSpin == true) {
+    		System.out.println("Spinning grabber wheels");
     		Robot.grabber.grabberStartSpinning();
     	} else {
+    		System.out.println("Stopped grabber wheels");
     		Robot.grabber.grabberStopSpinning();
     	}
     }

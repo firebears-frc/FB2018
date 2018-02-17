@@ -19,8 +19,10 @@ public class OpenGrabberCommand extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	if (this.shouldOpen == true) {
+    		System.out.println("Opened grabber");
     		Robot.grabber.grabberOpen();
     	} else {
+    		System.out.println("Closed grabber");
     		Robot.grabber.grabberClose();
     	}
     }
