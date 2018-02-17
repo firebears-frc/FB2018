@@ -60,7 +60,6 @@ public class RobotMap {
 
 	public static AnalogInput pressureSensor;
 	
-	public static DigitalInput leftCubeSwitch;
 	public static DigitalInput rightCubeSwitch;
 
 	public static final int CAN_LEFT_MASTER = 2;
@@ -155,54 +154,54 @@ public class RobotMap {
 
 		leftIntake = new CANTalon(CAN_LEFT_GRABBER_MOTOR);
 		leftIntake.setName("Grabber", "leftIntake");
-		report.addCAN(CAN_LEFT_GRABBER_MOTOR, "leftIntake", leftIntake);
+		report.addCAN(CAN_LEFT_GRABBER_MOTOR, "grabberLeftIntake", leftIntake);
 
 		rightIntake = new CANTalon(CAN_RIGHT_GRABBER_MOTOR);
 		rightIntake.setName("Grabber", "rightIntake");
-		report.addCAN(CAN_RIGHT_GRABBER_MOTOR, "rightIntake", rightIntake);
+		report.addCAN(CAN_RIGHT_GRABBER_MOTOR, "grabberRightIntake", rightIntake);
 
 		leftLaunchSpinner = new CANTalon(CAN_LEFT_CUBE_SPINNER);
 		leftLaunchSpinner.setName("shooter", "leftSpinner");
-		report.addCAN(CAN_LEFT_CUBE_SPINNER, "leftSpinner", leftLaunchSpinner);
+		report.addCAN(CAN_LEFT_CUBE_SPINNER, "shooterLeftSpinner", leftLaunchSpinner);
 
 		rightLaunchSpinner = new CANTalon(CAN_RIGHT_CUBE_SPINNER);
 		rightLaunchSpinner.setName("shooter", "rightSpinner");
-		report.addCAN(CAN_RIGHT_CUBE_SPINNER, "rightSpinner", rightLaunchSpinner);
+		report.addCAN(CAN_RIGHT_CUBE_SPINNER, "shooterRightSpinner", rightLaunchSpinner);
 
 		leftLaunch = new DoubleSolenoid(0, 1, 0);
-		leftLaunch.setName("shooter", "leftPneumatics");
-		report.addPcm(0, 1, 0, "leftPneumatics", leftLaunch);
+		leftLaunch.setName("shooter", "shooterLeftPneumatics");
+		report.addPcm(0, 1, 0, "shooterLeftPneumatics", leftLaunch);
 
 		rightLaunch = new DoubleSolenoid(0, 3, 2);
-		rightLaunch.setName("shooter", "rightPneumatics");
-		report.addPcm(0, 3, 2, "rightPneumatics", rightLaunch);
+		rightLaunch.setName("shooter", "shooterRightPneumatics");
+		report.addPcm(0, 3, 2, "shooterRightPneumatics", rightLaunch);
 
 		leftOpenClose = new DoubleSolenoid(0, 5, 4);
-		leftOpenClose.setName("Grabber", "leftOpenClose");
-		report.addPcm(0, 5, 4, "leftOpenClose", leftOpenClose);
+		leftOpenClose.setName("Grabber", "grabberLeftOpenClose");
+		report.addPcm(0, 5, 4, "grabberLeftOpenClose", leftOpenClose);
 
 		rightOpenClose = new DoubleSolenoid(0, 7, 6);
-		rightOpenClose.setName("Grabber", "leftOpenClose");
-		report.addPcm(0, 7, 6, "rightOpenClose", rightOpenClose);
+		rightOpenClose.setName("Grabber", "grabberLeftOpenClose");
+		report.addPcm(0, 7, 6, "grabberLeftOpenClose", rightOpenClose);
 
 		leftUpDown = new DoubleSolenoid(1, 1, 0);
-		leftUpDown.setName("Grabber", "leftUpDown");
-		report.addPcm(1, 1, 0, "leftUpDown", leftUpDown);
+		leftUpDown.setName("Grabber", "grabberLeftUpDown");
+		report.addPcm(1, 1, 0, "grabberLeftUpDown", leftUpDown);
 
 		rightUpDown = new DoubleSolenoid(1, 3, 2);
-		rightUpDown.setName("Grabber", "rightUpDown");
-		report.addPcm(1, 3, 2, "rightUpDown", rightUpDown);
+		rightUpDown.setName("Grabber", "grabberRightUpDown");
+		report.addPcm(1, 3, 2, "grabberRightUpDown", rightUpDown);
 
 		compressor = new Compressor();
 		compressor.setClosedLoopControl(true);
 
 		rangeFinder = new AnalogInput(0);
 		rangeFinder.setName("Chassis", "Rangefinder");
-		report.addAnalogInput(0, "Range Finder", rangeFinder);
+		report.addAnalogInput(0, "Front Range Finder", rangeFinder);
 
 		rangeFinder2 = new AnalogInput(1);
 		rangeFinder2.setName("Chassis", "Rangefinder2");
-		report.addAnalogInput(1, "Range Finder 2", rangeFinder2);
+		report.addAnalogInput(1, "Grabber Range Finder", rangeFinder2);
 
 		pressureSensor = new AnalogInput(2);
 		pressureSensor.setName("Chassis", "PressureSensor");
@@ -212,11 +211,9 @@ public class RobotMap {
 
 		tapeSensor = new DigitalInput(0);
 		report.addDigitalIO(2, "Tape Finder", tapeSensor);
+	
 		
-		leftCubeSwitch = new DigitalInput(3);
-		report.addDigitalIO(3, "Left Cube Switch", leftCubeSwitch);
-		
-		rightCubeSwitch = new DigitalInput(9);
+		rightCubeSwitch = new DigitalInput(4);
 		report.addDigitalIO(4, "Right Cube Switch", rightCubeSwitch);
 		// Put Sensor for when cube is loaded here
 
