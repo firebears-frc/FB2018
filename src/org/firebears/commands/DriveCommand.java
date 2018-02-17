@@ -19,36 +19,36 @@ import org.firebears.Robot;
  */
 public class DriveCommand extends Command {
 
-	public DriveCommand() {
-		requires(Robot.chassis);
-	}
+    public DriveCommand() {
+	requires(Robot.chassis);
+    }
 
-	// Called just before this Command runs the first time
-	@Override
-	protected void initialize() {
-	}
+    // Called just before this Command runs the first time
+    @Override
+    protected void initialize() {
+    }
 
-	// Called repeatedly when this Command is scheduled to run
-	@Override
-	protected void execute() {
-		Joystick stick = Robot.oi.joystick1;
-		Robot.chassis.drive(stick.getY(), stick.getX()*.75,true);
-	}
+    // Called repeatedly when this Command is scheduled to run
+    @Override
+    protected void execute() {
+	Joystick stick = Robot.oi.joystick1;
+	Robot.chassis.drive(stick.getY(), stick.getX() * 1.0, true);
+    }
 
-	// Make this return true when this Command no longer needs to run execute()
-	@Override
-	protected boolean isFinished() {
-		return false;
-	}
+    // Make this return true when this Command no longer needs to run execute()
+    @Override
+    protected boolean isFinished() {
+	return false;
+    }
 
-	// Called once after isFinished returns true
-	@Override
-	protected void end() {
-	}
+    // Called once after isFinished returns true
+    @Override
+    protected void end() {
+    }
 
-	// Called when another command which requires one or more of the same
-	// subsystems is scheduled to run
-	@Override
-	protected void interrupted() {
-	}
+    // Called when another command which requires one or more of the same
+    // subsystems is scheduled to run
+    @Override
+    protected void interrupted() {
+    }
 }
