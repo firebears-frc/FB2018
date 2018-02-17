@@ -28,6 +28,7 @@ public class Lights extends Subsystem {
 	public static final int BASE_STRIP = 2;
 
 	private boolean letsCelebrate = false;
+	private boolean isShooting = false;
 
 	public final I2C i2c;
 	final DriverStation driverstation;
@@ -37,6 +38,9 @@ public class Lights extends Subsystem {
 		driverstation = DriverStation.getInstance();
 	}
 
+	public void setShootingMode(boolean shooting) {
+		isShooting = shooting;
+	}
 	public void setCelebrateMode(boolean celebrate) {
 		letsCelebrate = celebrate;
 	}
@@ -83,6 +87,9 @@ public class Lights extends Subsystem {
 				setAnimation(SHOOTER_STRIP, RED_ANIMATION);
 				setAnimation(GRABBER_STRIP, RED_ANIMATION);
 				setAnimation(BASE_STRIP, RED_ANIMATION);
+			} 
+			if (isShooting) {
+				setAnimation(SHOOTER_STRIP, BUILD_ANIMATION);
 			}
 
 		}

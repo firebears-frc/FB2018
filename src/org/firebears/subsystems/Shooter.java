@@ -1,5 +1,6 @@
 package org.firebears.subsystems;
 
+import org.firebears.Robot;
 import org.firebears.RobotMap;
 import org.firebears.RobotMap.EncoderPIDSource;
 
@@ -53,6 +54,7 @@ public class Shooter extends Subsystem {
 		
 //		RobotMap.leftLaunchSpinner.set(speed);
 //		RobotMap.rightLaunchSpinner.set(speed);
+		Robot.lights.setShootingMode(true);
 	}
 
 	public void shooterStopWheel() {
@@ -62,6 +64,7 @@ public class Shooter extends Subsystem {
 		rightSpinner.disable();
 //		RobotMap.leftLaunchSpinner.set(0);
 //		RobotMap.rightLaunchSpinner.set(0);
+		Robot.lights.setShootingMode(false);
 	}
 
 	public void shooterPneumaticsUp() {
