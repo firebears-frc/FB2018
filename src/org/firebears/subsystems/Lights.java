@@ -27,12 +27,18 @@ public class Lights extends Subsystem {
 	public static final int GRABBER_STRIP = 1;
 	public static final int BASE_STRIP = 2;
 
+	private boolean letsCelebrate = false;
+
 	public final I2C i2c;
 	final DriverStation driverstation;
 
 	public Lights() {
 		i2c = new I2C(Port.kOnboard, I2C_ADDRESS);
 		driverstation = DriverStation.getInstance();
+	}
+
+	public void setCelebrateMode(boolean celebrate) {
+		letsCelebrate = celebrate;
 	}
 
 	public void initDefaultCommand() {
@@ -44,7 +50,9 @@ public class Lights extends Subsystem {
 	private int[] currentAnimation = new int[MAX_PIXELSTRIPS];
 
 	public synchronized void setAnimation(int s, int a) {
-		if (currentAnimation[s] == a) { return; }
+		if (currentAnimation[s] == a) {
+			return;
+		}
 		dataOut[0] = (byte) (s + '0');
 		dataOut[1] = (byte) (a + '0');
 		i2c.transaction(dataOut, dataOut.length, dataBack, dataBack.length);
@@ -53,7 +61,12 @@ public class Lights extends Subsystem {
 
 	@Override
 	public void periodic() {
-		if (driverstation.isDisabled()) {
+
+		if (letsCelebrate) {
+			setAnimation(SHOOTER_STRIP, CELEBRATE_ANIMATION);
+			setAnimation(GRABBER_STRIP, CELEBRATE_ANIMATION);
+			setAnimation(BASE_STRIP, CELEBRATE_ANIMATION);
+		} else if (driverstation.isDisabled()) {
 			setAnimation(SHOOTER_STRIP, PACMAN_ANIMATION);
 			setAnimation(GRABBER_STRIP, FIRE_ANIMATION);
 			setAnimation(BASE_STRIP, FIRE_ANIMATION);
@@ -75,7 +88,7 @@ public class Lights extends Subsystem {
 		}
 
 	}
-	
+
 	public void reset() {
 		for (int i = 0; i < MAX_PIXELSTRIPS; i++) {
 			currentAnimation[i] = -1;
