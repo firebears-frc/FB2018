@@ -12,6 +12,7 @@
 //test
 package org.firebears;
 
+import org.firebears.commands.CelebrateCommand;
 import org.firebears.commands.I2CCommand;
 import org.firebears.commands.PlayMirroredRecording;
 import org.firebears.commands.PlayRecordingCommand;
@@ -60,6 +61,7 @@ public class OI {
     public JoystickButton armUp;
     public JoystickButton armClose;
     public JoystickButton armOpen;
+    public JoystickButton celebrateButton;
 
     String testRecording = "recordings/test.csv";
 
@@ -111,7 +113,9 @@ public class OI {
 	// Command switchDriving = new SwitchDrivingType();
 	// testPID.whenPressed(new SwitchDrivingType());
 	// report.addJoystickButton(0, 1, "Swtich Driving Type", switchDriving);
-
+celebrateButton = new JoystickButton(joystick1, 9);
+celebrateButton.whileHeld(new CelebrateCommand());
+	
 	// SmartDashboard Buttons
 	// Recording Commands
 	if (RobotMap.DEBUG) {
