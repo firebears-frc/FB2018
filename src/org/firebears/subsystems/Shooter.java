@@ -21,26 +21,26 @@ public class Shooter extends Subsystem {
 	final Value SOL_FORWARD = DoubleSolenoid.Value.kForward;
 	final Value SOL_REVERSE = DoubleSolenoid.Value.kReverse;
 	
-	PIDController leftSpinner;
+	public PIDController leftSpinner;
 	EncoderPIDSource leftSpinnerEncoder;
 	
-	PIDController rightSpinner;
+	public PIDController rightSpinner;
 	EncoderPIDSource rightSpinnerEncoder;
 	
 	final double spinnerP = 0.1;
 	final double spinnerI = 0;
 	final double spinnerD = 0;
 	final double spinnerF = 0.1;
-	final double TOLERANCE = 0.01;
+	final double TOLERANCE = 0.05;
 	
 	public Shooter() {
 		leftSpinnerEncoder = new EncoderPIDSource(RobotMap.leftLaunchSpinner);
 		leftSpinner = new PIDController(spinnerP, spinnerI, spinnerD, spinnerF, leftSpinnerEncoder, RobotMap.leftLaunchSpinner);
-//		leftSpinner.setAbsoluteTolerance(TOLERANCE);
+		leftSpinner.setAbsoluteTolerance(TOLERANCE);
 		
 		rightSpinnerEncoder = new EncoderPIDSource(RobotMap.rightLaunchSpinner);
 		rightSpinner = new PIDController(spinnerP, spinnerI, spinnerD, spinnerF, rightSpinnerEncoder, RobotMap.rightLaunchSpinner);
-//		rightSpinner.setAbsoluteTolerance(TOLERANCE);
+		rightSpinner.setAbsoluteTolerance(TOLERANCE);
 	}
 
 	public void shooterSpinWheel(double speed) {
@@ -69,15 +69,15 @@ public class Shooter extends Subsystem {
 
 	public void shooterPneumaticsUp() {
 		//if (Robot.grabber.hasCube() && Robot.grabber.isRaised()){ // Uncomment for competition code
-			RobotMap.leftLaunch.set(SOL_FORWARD);
-			RobotMap.rightLaunch.set(SOL_FORWARD);
+			RobotMap.leftLaunch.set(SOL_REVERSE);
+			RobotMap.rightLaunch.set(SOL_REVERSE);
 		//}
 		
 	}
 
 	public void shooterPneumaticsDown() {
-		RobotMap.leftLaunch.set(SOL_REVERSE);
-		RobotMap.rightLaunch.set(SOL_REVERSE);
+		RobotMap.leftLaunch.set(SOL_FORWARD);
+		RobotMap.rightLaunch.set(SOL_FORWARD);
 	}
 
 	public void initDefaultCommand() {

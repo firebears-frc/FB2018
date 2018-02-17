@@ -27,27 +27,27 @@ public class Grabber extends Subsystem {
 	}
 	
 	public void grabberOpen() {
-		RobotMap.leftOpenClose.set(SOL_REVERSE);
-		RobotMap.rightOpenClose.set(SOL_REVERSE);
-	}
-	
-	public void grabberClose() {
 		RobotMap.leftOpenClose.set(SOL_FORWARD);
 		RobotMap.rightOpenClose.set(SOL_FORWARD);
 	}
 	
+	public void grabberClose() {
+		RobotMap.leftOpenClose.set(SOL_REVERSE);
+		RobotMap.rightOpenClose.set(SOL_REVERSE);
+	}
+	
 	public void grabberStartSpinning() {
-		RobotMap.leftIntake.set(MOTORSPEED);
-		RobotMap.rightIntake.set(MOTORSPEED);
+		RobotMap.leftIntake.set(-MOTORSPEED);
+		RobotMap.rightIntake.set(-MOTORSPEED);
 	}
 	
 	public void grabberStopSpinning() {
 		RobotMap.leftIntake.set(0);
 		RobotMap.rightIntake.set(0);
 	}
-	public boolean hasCube() {
-		return RobotMap.rightCubeSwitch.get();
-	}
+//	public boolean hasCube() {
+//		return RobotMap.rightCubeSwitch.get();
+//	}
 	public boolean isRaised() {
 		return RobotMap.rightUpDown.get() == SOL_REVERSE;
 	}
