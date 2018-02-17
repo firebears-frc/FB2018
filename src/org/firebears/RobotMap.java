@@ -213,7 +213,7 @@ public class RobotMap {
 		tapeSensor = new DigitalInput(0);
 		report.addDigitalIO(2, "Tape Finder", tapeSensor);
 		
-		leftCubeSwitch = new DigitalInput(9);
+		leftCubeSwitch = new DigitalInput(3);
 		report.addDigitalIO(3, "Left Cube Switch", leftCubeSwitch);
 		
 		rightCubeSwitch = new DigitalInput(9);
