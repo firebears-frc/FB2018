@@ -12,8 +12,6 @@ public class OpenGrabberCommand extends Command {
     public OpenGrabberCommand(boolean shouldOpen) {
     	this.shouldOpen = shouldOpen;
     	requires(Robot.grabber);
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time

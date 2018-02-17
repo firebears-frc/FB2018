@@ -25,6 +25,7 @@ import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.command.WaitCommand;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -111,19 +112,20 @@ public class Robot extends TimedRobot {
 	// RobotMap.shouldCross = false;
 	// }
 
-	SmartDashboard.putString("Side", RobotMap.side);
-	SmartDashboard.putString("Priority", RobotMap.priority);
-	SmartDashboard.putBoolean("Cross", RobotMap.shouldCross);
+//	SmartDashboard.putString("Side", RobotMap.side); 
+//	SmartDashboard.putString("Priority", RobotMap.priority);
+//	SmartDashboard.putBoolean("Cross", RobotMap.shouldCross);
 
-	selectedAuto = autoSelection.getAuto();
+//	selectedAuto = autoSelection.getAuto();
+	selectedAuto = new WaitCommand(1);
 	System.out.println("selectedAuto = " + selectedAuto);
 	if (selectedAuto != null) {
 	    selectedAuto.start();
 	}
 
-	String gameData;
-	gameData = DriverStation.getInstance().getGameSpecificMessage();
-	System.out.println(gameData);
+//	String gameData;
+//	gameData = DriverStation.getInstance().getGameSpecificMessage();
+//	System.out.println(gameData);
 
 	// autonomousCommand = chooser.getSelected();
 	// // schedule the autonomous command (example)
@@ -155,6 +157,7 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void teleopPeriodic() {
+    System.out.println("Teleop");
 	Scheduler.getInstance().run();
 
 	if (RobotMap.DEBUG) {
@@ -181,13 +184,14 @@ public class Robot extends TimedRobot {
 
 	    SmartDashboard.putBoolean("TapeSensor", Robot.chassis.isTapeBright());
 	    // System.out.println("Tape Sensor: " + RobotMap.tape.get());
+		SmartDashboard.putBoolean("Cube in Grabber", RobotMap.cubeSwitch.get());
 
 	    SmartDashboard.putNumber("Amps", RobotController.getInputCurrent());
 	    
 	    SmartDashboard.putNumber("Left Shooter Rate", 
-	    		RobotMap.leftLaunchSpinner.getSelectedSensorPosition(RobotMap.PID_IDX));
+	    		RobotMap.leftLaunchSpinner.getSelectedSensorVelocity(RobotMap.PID_IDX));
 	    SmartDashboard.putNumber("Right Shooter Rate", 
-	    		RobotMap.rightLaunchSpinner.getSelectedSensorPosition(RobotMap.PID_IDX));
+	    		RobotMap.rightLaunchSpinner.getSelectedSensorVelocity(RobotMap.PID_IDX));
 	    
 	    SmartDashboard.putNumber("Left Shooter Error", Robot.shooter.leftSpinner.getError());
 	    SmartDashboard.putNumber("Right Shooter Error", Robot.shooter.rightSpinner.getError());

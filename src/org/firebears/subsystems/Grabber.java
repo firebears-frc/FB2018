@@ -11,19 +11,19 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Grabber extends Subsystem {
 	
-	final double MOTORSPEED = 1;
+	final double MOTORSPEED = .4;
 	final Value SOL_FORWARD = DoubleSolenoid.Value.kForward;
 	final Value SOL_REVERSE = DoubleSolenoid.Value.kReverse;
 	
 	// to-do
 	public void grabberRaise() {
-		RobotMap.leftUpDown.set(SOL_REVERSE);
-		RobotMap.rightUpDown.set(SOL_REVERSE);
+		RobotMap.leftUpDown.set(SOL_FORWARD);
+		RobotMap.rightUpDown.set(SOL_FORWARD);
 	}
 	
 	public void grabberLower() {
-		RobotMap.leftUpDown.set(SOL_FORWARD);
-		RobotMap.rightUpDown.set(SOL_FORWARD);
+		RobotMap.leftUpDown.set(SOL_REVERSE);
+		RobotMap.rightUpDown.set(SOL_REVERSE);
 	}
 	
 	public void grabberOpen() {
@@ -37,7 +37,7 @@ public class Grabber extends Subsystem {
 	}
 	
 	public void grabberStartSpinning() {
-		RobotMap.leftIntake.set(-MOTORSPEED);
+		RobotMap.leftIntake.set(MOTORSPEED);
 		RobotMap.rightIntake.set(-MOTORSPEED);
 	}
 	
@@ -45,9 +45,11 @@ public class Grabber extends Subsystem {
 		RobotMap.leftIntake.set(0);
 		RobotMap.rightIntake.set(0);
 	}
-//	public boolean hasCube() {
-//		return RobotMap.rightCubeSwitch.get();
-//	}
+	
+	public boolean hasCube() {
+		return RobotMap.cubeSwitch.get();
+	}
+	
 	public boolean isRaised() {
 		return RobotMap.rightUpDown.get() == SOL_REVERSE;
 	}

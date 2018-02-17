@@ -13,9 +13,9 @@ import edu.wpi.first.wpilibj.command.WaitCommand;
 public class GrabberDownCommand extends CommandGroup {
 
     public GrabberDownCommand() {
-    	addParallel(new RaiseGrabberCommand(false));
-    	addParallel(new OpenGrabberCommand(true));
-    	addParallel(new SpinGrabberWheelsCommand(true));
-    	addParallel(new WaitCommand(.5));
+    	addSequential(new RaiseGrabberCommand(false));
+    	addSequential(new WaitCommand(.5));
+    	addSequential(new OpenGrabberCommand(true));
+    	addSequential(new SpinGrabberWheelsCommand(true));
     }
 }

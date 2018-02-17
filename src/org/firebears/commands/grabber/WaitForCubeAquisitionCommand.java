@@ -16,8 +16,8 @@ public class WaitForCubeAquisitionCommand extends Command {
     protected void execute() {
     }
     protected boolean isFinished() {    	
-//        return Robot.grabber.hasCube();
-    	return true;
+        return Robot.grabber.hasCube();
+//    	return true;
     }
     protected void end() {
     }

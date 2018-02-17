@@ -1,6 +1,7 @@
 package org.firebears.commands.grabber;
 
 import org.firebears.Robot;
+import org.firebears.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -12,12 +13,11 @@ public class RaiseGrabberCommand extends Command {
     public RaiseGrabberCommand(boolean shouldRaise) {
     	this.shouldRaise = shouldRaise;
     	requires(Robot.grabber);
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	System.out.println(this.shouldRaise);
     	if (this.shouldRaise == true) {
     		System.out.println("Raised grabber");
     		Robot.grabber.grabberRaise();
@@ -38,6 +38,8 @@ public class RaiseGrabberCommand extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	System.out.println(RobotMap.leftUpDown.get());
+		System.out.println(RobotMap.rightUpDown.get());
     }
 
     // Called when another command which requires one or more of the same

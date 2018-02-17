@@ -12,9 +12,6 @@ public class ExtendShooterCommand extends Command {
     public ExtendShooterCommand(boolean shouldExtend) {
     	this.shouldExtend = shouldExtend;
     	requires(Robot.shooter);
-    	
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time

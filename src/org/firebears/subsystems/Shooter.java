@@ -27,10 +27,10 @@ public class Shooter extends Subsystem {
 	public PIDController rightSpinner;
 	EncoderPIDSource rightSpinnerEncoder;
 	
-	final double spinnerP = 0.1;
+	final double spinnerP = 0.0;
 	final double spinnerI = 0;
 	final double spinnerD = 0;
-	final double spinnerF = 0.1;
+	final double spinnerF = 1.0;
 	final double TOLERANCE = 0.05;
 	
 	public Shooter() {
@@ -46,6 +46,8 @@ public class Shooter extends Subsystem {
 	public void shooterSpinWheel(double speed) {
 		leftSpinner.enable();
 		rightSpinner.enable();
+
+//		speed = speed * 800;
 		
 		SmartDashboard.putNumber("Target Speed", speed);
 		
@@ -68,10 +70,10 @@ public class Shooter extends Subsystem {
 	}
 
 	public void shooterPneumaticsUp() {
-		//if (Robot.grabber.hasCube() && Robot.grabber.isRaised()){ // Uncomment for competition code
+		if (Robot.grabber.hasCube()){ // Uncomment for competition code
 			RobotMap.leftLaunch.set(SOL_REVERSE);
 			RobotMap.rightLaunch.set(SOL_REVERSE);
-		//}
+		}
 		
 	}
 

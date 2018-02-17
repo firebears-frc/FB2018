@@ -101,6 +101,8 @@ public class RobotMap {
 
 	public static DigitalInput tapeSensor;
 
+	public static DigitalInput cubeSwitch;
+	
 	public static void init(RobotReport report) {
 
 		// Set up motors for driving
@@ -152,17 +154,23 @@ public class RobotMap {
 
 		leftIntake = new CANTalon(CAN_LEFT_GRABBER_MOTOR);
 		leftIntake.setName("Grabber", "leftIntake");
+		leftIntake.setNeutralMode(NeutralMode.Brake);
 		report.addCAN(CAN_LEFT_GRABBER_MOTOR, "leftIntake", leftIntake);
+		
+
 
 		rightIntake = new CANTalon(CAN_RIGHT_GRABBER_MOTOR);
 		rightIntake.setName("Grabber", "rightIntake");
+		rightIntake.setNeutralMode(NeutralMode.Brake);
 		report.addCAN(CAN_RIGHT_GRABBER_MOTOR, "rightIntake", rightIntake);
 
 		leftLaunchSpinner = new CANTalon(CAN_LEFT_CUBE_SPINNER);
+		leftLaunchSpinner.setSensorPhase(true);
 		leftLaunchSpinner.setName("shooter", "leftSpinner");
 		report.addCAN(CAN_LEFT_CUBE_SPINNER, "leftSpinner", leftLaunchSpinner);
 
 		rightLaunchSpinner = new CANTalon(CAN_RIGHT_CUBE_SPINNER);
+		rightLaunchSpinner.setSensorPhase(true);
 		rightLaunchSpinner.setName("shooter", "rightSpinner");
 		report.addCAN(CAN_RIGHT_CUBE_SPINNER, "rightSpinner", rightLaunchSpinner);
 
@@ -213,6 +221,8 @@ public class RobotMap {
 		// Put Sensor for when cube is loaded here
 
 		// Put Sensor for when cube is in the grabber here
+		cubeSwitch = new DigitalInput(4);
+		report.addDigitalIO(4, "Cube Detector", cubeSwitch);
 
 		try {
 			// navXBoard = new AHRS(SPI.Port.kMXP);

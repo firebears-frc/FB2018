@@ -30,6 +30,7 @@ import org.firebears.commands.auto.DriveToTapeCommand;
 import org.firebears.commands.auto.RotateToAngle;
 import org.firebears.commands.driver.GrabberDownCommand;
 import org.firebears.commands.driver.GrabberUpCommand;
+import org.firebears.commands.driver.DriverCloseCommand;
 import org.firebears.commands.driver.FireCubeCommand;
 import org.firebears.commands.grabber.OpenGrabberCommand;
 import org.firebears.commands.grabber.RaiseGrabberCommand;
@@ -62,6 +63,8 @@ public class OI {
     public JoystickButton armClose;
     public JoystickButton armOpen;
     public JoystickButton celebrateButton;
+    public JoystickButton spinGrabberWheels;
+    public JoystickButton stopGrabberWheels;
 
     String testRecording = "recordings/test.csv";
 
@@ -83,16 +86,16 @@ public class OI {
 	extendShooter.whenPressed(new FireCubeCommand());
 	
 	highShot = new JoystickButton(joystick2, 6);
-	highShot.whenPressed(new SpinShooterWheelsCommand(20));
+	highShot.whenPressed(new SpinShooterWheelsCommand(1));
 	
 	medShot = new JoystickButton(joystick2, 5);
-	medShot.whenPressed(new SpinShooterWheelsCommand(15));
+	medShot.whenPressed(new SpinShooterWheelsCommand(.75));
 	
 	lowShot = new JoystickButton(joystick2, 4);
-	lowShot.whenPressed(new SpinShooterWheelsCommand(10));
+	lowShot.whenPressed(new SpinShooterWheelsCommand(.5));
 	
 	switchShot = new JoystickButton(joystick2, 3);
-	switchShot.whenPressed(new SpinShooterWheelsCommand(5));
+	switchShot.whenPressed(new SpinShooterWheelsCommand(.25));
 	
 	armDown = new JoystickButton(joystick2, 7);
 	armDown.whenPressed(new GrabberDownCommand());
@@ -102,19 +105,22 @@ public class OI {
 	
 	
 	armClose = new JoystickButton(joystick2, 8);
-	armClose.whenPressed(new OpenGrabberCommand(false));
+	armClose.whenPressed(new DriverCloseCommand());
 	
 	armOpen = new JoystickButton(joystick2, 10);
 	armOpen.whenPressed(new OpenGrabberCommand(true));
 	
+	spinGrabberWheels = new JoystickButton(joystick2, 11);
+	spinGrabberWheels.whenPressed(new SpinGrabberWheelsCommand(true));
+	spinGrabberWheels.whenReleased(new SpinGrabberWheelsCommand(false));
 
 	// Switch between Open and Closed Loop Driving
 	// testPID = new JoystickButton(joystick1, 1);
 	// Command switchDriving = new SwitchDrivingType();
 	// testPID.whenPressed(new SwitchDrivingType());
 	// report.addJoystickButton(0, 1, "Swtich Driving Type", switchDriving);
-celebrateButton = new JoystickButton(joystick1, 9);
-celebrateButton.whileHeld(new CelebrateCommand());
+	celebrateButton = new JoystickButton(joystick1, 9);
+	celebrateButton.whileHeld(new CelebrateCommand());
 	
 	// SmartDashboard Buttons
 	// Recording Commands
