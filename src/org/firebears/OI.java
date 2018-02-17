@@ -27,6 +27,7 @@ import org.firebears.commands.auto.ChangeSide;
 import org.firebears.commands.auto.DriveToDistanceCommand;
 import org.firebears.commands.auto.DriveToTapeCommand;
 import org.firebears.commands.auto.RotateToAngle;
+import org.firebears.commands.driver.ShootCommand;
 import org.firebears.commands.grabber.ExtendShooterCommand;
 import org.firebears.commands.grabber.OpenGrabberCommand;
 import org.firebears.commands.grabber.RaiseGrabberCommand;
@@ -36,6 +37,7 @@ import org.firebears.util.RobotReport;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -48,6 +50,7 @@ public class OI {
     public Joystick joystick2;
     public JoystickButton testPID;
     public JoystickButton Driveinches;
+    public JoystickButton extendShooter;
 
     String testRecording = "recordings/test.csv";
 
@@ -64,6 +67,9 @@ public class OI {
 	report.addJoystick(1, "Joystick 2", joystick2);
 
 	// Joystick Buttons
+	
+	extendShooter = new JoystickButton(joystick2, 1);
+	extendShooter.whenPressed(new ShootCommand());
 
 	// Switch between Open and Closed Loop Driving
 	// testPID = new JoystickButton(joystick1, 1);
