@@ -29,6 +29,8 @@ public class Lights extends Subsystem {
 
 	private boolean letsCelebrate = false;
 	private boolean isShooting = false;
+	private boolean hasShot = false;
+	private boolean holdingCube = false;
 
 	public final I2C i2c;
 	final DriverStation driverstation;
@@ -41,8 +43,17 @@ public class Lights extends Subsystem {
 	public void setShootingMode(boolean shooting) {
 		isShooting = shooting;
 	}
+
+	public void setFallingMode(boolean falling) {
+		hasShot = falling;
+	}
+
 	public void setCelebrateMode(boolean celebrate) {
 		letsCelebrate = celebrate;
+	}
+
+	public void setCubeMode(boolean cube) {
+		holdingCube = cube;
 	}
 
 	public void initDefaultCommand() {
@@ -87,9 +98,15 @@ public class Lights extends Subsystem {
 				setAnimation(SHOOTER_STRIP, RED_ANIMATION);
 				setAnimation(GRABBER_STRIP, RED_ANIMATION);
 				setAnimation(BASE_STRIP, RED_ANIMATION);
-			} 
+			}
 			if (isShooting) {
 				setAnimation(SHOOTER_STRIP, BUILD_ANIMATION);
+			}
+			if (hasShot) {
+				setAnimation(SHOOTER_STRIP, FALL_ANIMATION);
+			}
+			if (holdingCube) {
+				setAnimation(GRABBER_STRIP, CUBE_ANIMATION);
 			}
 
 		}
