@@ -2,6 +2,7 @@ package org.firebears.subsystems;
 
 import org.firebears.Robot;
 import org.firebears.RobotMap;
+import org.firebears.commands.grabber.AutoPullCubeCommand;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
@@ -13,7 +14,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Grabber extends Subsystem {
 
 	final double MOTORSPEED = .5;
-	final double SLOW_SPEED = .01;
+	final double SLOW_SPEED = .05;
 	final Value SOL_FORWARD = DoubleSolenoid.Value.kForward;
 	final Value SOL_REVERSE = DoubleSolenoid.Value.kReverse;
 
@@ -41,13 +42,13 @@ public class Grabber extends Subsystem {
 	}
 
 	public void grabberStartSpinning() {
-		RobotMap.leftIntake.set(MOTORSPEED);
-		RobotMap.rightIntake.set(-MOTORSPEED);
+		RobotMap.leftIntake.set(-MOTORSPEED);
+		RobotMap.rightIntake.set(MOTORSPEED);
 	}
 	
 	public void grabberSlowSpin() {
-		RobotMap.leftIntake.set(SLOW_SPEED);
-		RobotMap.rightIntake.set(-SLOW_SPEED);
+		RobotMap.leftIntake.set(-SLOW_SPEED);
+		RobotMap.rightIntake.set(SLOW_SPEED);
 	}
 
 	public void grabberStopSpinning() {
@@ -60,14 +61,10 @@ public class Grabber extends Subsystem {
 	}
 	
 	public boolean isRaised() {
-		return RobotMap.rightUpDown.get() == SOL_REVERSE;
+		return RobotMap.rightUpDown.get() == SOL_FORWARD;
 	}
 
-	// Put methods for controlling this subsystem
-	// here. Call these from Commands.
-
 	public void initDefaultCommand() {
-		// Set the default command for a subsystem here.
-		// setDefaultCommand(new MySpecialCommand());
+//		setDefaultCommand(new AutoPullCubeCommand());
 	}
 }

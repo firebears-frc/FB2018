@@ -157,46 +157,48 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void teleopPeriodic() {
-	Scheduler.getInstance().run();
-
-	if (RobotMap.DEBUG) {
-	    // Put Encoder values
-	    SmartDashboard.putNumber("Left Master Encoder Distance",
-		    RobotMap.chassisLeftMaster.getSelectedSensorPosition(RobotMap.PID_IDX));
-	    SmartDashboard.putNumber("Left Master Encoder Rate",
-		    RobotMap.chassisLeftMaster.getSelectedSensorVelocity(RobotMap.PID_IDX));
-	    
-	    SmartDashboard.putNumber("Right Master Encoder Distance",
-		    RobotMap.chassisRightMaster.getSelectedSensorPosition(RobotMap.PID_IDX));
-	    SmartDashboard.putNumber("Right Master Encoder Rate",
-		    RobotMap.chassisRightMaster.getSelectedSensorVelocity(RobotMap.PID_IDX));
-	    
-	    if (RobotMap.CLOSED_LOOP_DRIVING) {
-	    	SmartDashboard.putNumber("Left Master PID Error", 
+    	Scheduler.getInstance().run();
+    	
+    	if (RobotMap.DEBUG) {
+    		// Put Encoder values
+    		SmartDashboard.putNumber("Left Master Encoder Distance",
+    				RobotMap.chassisLeftMaster.getSelectedSensorPosition(RobotMap.PID_IDX));
+    		SmartDashboard.putNumber("Left Master Encoder Rate",
+    				RobotMap.chassisLeftMaster.getSelectedSensorVelocity(RobotMap.PID_IDX));
+    		
+    		SmartDashboard.putNumber("Right Master Encoder Distance",
+    				RobotMap.chassisRightMaster.getSelectedSensorPosition(RobotMap.PID_IDX));
+    		SmartDashboard.putNumber("Right Master Encoder Rate",
+    				RobotMap.chassisRightMaster.getSelectedSensorVelocity(RobotMap.PID_IDX));
+    		
+    		if (RobotMap.CLOSED_LOOP_DRIVING) {
+    			SmartDashboard.putNumber("Left Master PID Error", 
 	    			RobotMap.chassisLeftMaster.getClosedLoopError(RobotMap.PID_IDX));
-	    	SmartDashboard.putNumber("Right Master PID Error", 
+    			SmartDashboard.putNumber("Right Master PID Error", 
 	    			RobotMap.chassisRightMaster.getClosedLoopError(RobotMap.PID_IDX));
-	    }
-
-	    SmartDashboard.putNumber("DistanceInInches", Robot.chassis.getRangeFinderDistance());
-	    SmartDashboard.putNumber("NavX Angle", RobotMap.boundAngle(RobotMap.getNavXAngle()));
-
-	    SmartDashboard.putBoolean("TapeSensor", Robot.chassis.isTapeBright());
-	    // System.out.println("Tape Sensor: " + RobotMap.tape.get());
-		SmartDashboard.putBoolean("Cube in Grabber", RobotMap.cubeSwitch.get());
-
-	    SmartDashboard.putNumber("Amps", RobotController.getInputCurrent());
-	    
-	    SmartDashboard.putNumber("Left Shooter Rate", 
+    		}
+    		
+    		SmartDashboard.putNumber("DistanceInInches", Robot.chassis.getRangeFinderDistance());
+    		SmartDashboard.putNumber("NavX Angle", RobotMap.boundAngle(RobotMap.getNavXAngle()));
+    		
+    		SmartDashboard.putBoolean("TapeSensor", Robot.chassis.isTapeBright());
+    		// System.out.println("Tape Sensor: " + RobotMap.tape.get());
+    		SmartDashboard.putBoolean("Cube in Grabber", RobotMap.cubeSwitch.get());
+    		
+    		SmartDashboard.putNumber("Amps", RobotController.getInputCurrent());
+    		
+    		SmartDashboard.putNumber("Left Shooter Rate", 
 	    		RobotMap.leftLaunchSpinner.getSelectedSensorVelocity(RobotMap.PID_IDX));
-	    SmartDashboard.putNumber("Right Shooter Rate", 
+    		SmartDashboard.putNumber("Right Shooter Rate", 
 	    		RobotMap.rightLaunchSpinner.getSelectedSensorVelocity(RobotMap.PID_IDX));
-	    
-	    SmartDashboard.putNumber("Left Shooter Error", Robot.shooter.leftSpinner.getError());
-	    SmartDashboard.putNumber("Right Shooter Error", Robot.shooter.rightSpinner.getError());
-
-	    SmartDashboard.putBoolean("Closed_LOOP", RobotMap.CLOSED_LOOP_DRIVING);
-	    SmartDashboard.putString("ControlMode", RobotMap.chassisLeftMaster.getControlMode().toString());
-	}
+//    		SmartDashboard.putNumber("Left Shooter Rate", Robot.shooter.leftSpinnerEncoder.pidGet());
+//        	SmartDashboard.putNumber("Right Shooter Rate",  Robot.shooter.rightSpinnerEncoder.pidGet());
+    		
+    		SmartDashboard.putNumber("Left Shooter Error", Robot.shooter.leftSpinner.getError());
+    		SmartDashboard.putNumber("Right Shooter Error", Robot.shooter.rightSpinner.getError());
+    		
+    		SmartDashboard.putBoolean("Closed_LOOP", RobotMap.CLOSED_LOOP_DRIVING);
+    		SmartDashboard.putString("ControlMode", RobotMap.chassisLeftMaster.getControlMode().toString());
+    	}
     }
 }

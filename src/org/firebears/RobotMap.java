@@ -156,8 +156,6 @@ public class RobotMap {
 		leftIntake.setName("Grabber", "leftIntake");
 		leftIntake.setNeutralMode(NeutralMode.Brake);
 		report.addCAN(CAN_LEFT_GRABBER_MOTOR, "leftIntake", leftIntake);
-		
-
 
 		rightIntake = new CANTalon(CAN_RIGHT_GRABBER_MOTOR);
 		rightIntake.setName("Grabber", "rightIntake");
@@ -166,11 +164,13 @@ public class RobotMap {
 
 		leftLaunchSpinner = new CANTalon(CAN_LEFT_CUBE_SPINNER);
 		leftLaunchSpinner.setSensorPhase(true);
+		leftLaunchSpinner.setNeutralMode(NeutralMode.Coast);
 		leftLaunchSpinner.setName("shooter", "leftSpinner");
 		report.addCAN(CAN_LEFT_CUBE_SPINNER, "leftSpinner", leftLaunchSpinner);
 
 		rightLaunchSpinner = new CANTalon(CAN_RIGHT_CUBE_SPINNER);
 		rightLaunchSpinner.setSensorPhase(true);
+		rightLaunchSpinner.setNeutralMode(NeutralMode.Coast);
 		rightLaunchSpinner.setName("shooter", "rightSpinner");
 		report.addCAN(CAN_RIGHT_CUBE_SPINNER, "rightSpinner", rightLaunchSpinner);
 

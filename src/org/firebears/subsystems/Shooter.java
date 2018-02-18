@@ -27,25 +27,31 @@ public class Shooter extends Subsystem {
 	public PIDController rightSpinner;
 	EncoderPIDSource rightSpinnerEncoder;
 
-	final double spinnerP = 0.1;
+	final double spinnerP = 0.000125;
 	final double spinnerI = 0;
 	final double spinnerD = 0;
-	final double spinnerF = 0.1;
-	final double TOLERANCE = 0.01;
+	final double spinnerF = 0;
+	final double TOLERANCE_PER = 5;
 
 	public Shooter() {
 		leftSpinnerEncoder = new EncoderPIDSource(RobotMap.leftLaunchSpinner);
 		leftSpinner = new PIDController(spinnerP, spinnerI, spinnerD, spinnerF, leftSpinnerEncoder,
 				RobotMap.leftLaunchSpinner);
-		// leftSpinner.setAbsoluteTolerance(TOLERANCE);
+		leftSpinner.setPercentTolerance(TOLERANCE_PER);
+//		leftSpinner.setToleranceBuffer(6);
+		SmartDashboard.putData("Left Spin", leftSpinner);
 
 		rightSpinnerEncoder = new EncoderPIDSource(RobotMap.rightLaunchSpinner);
 		rightSpinner = new PIDController(spinnerP, spinnerI, spinnerD, spinnerF, rightSpinnerEncoder,
 				RobotMap.rightLaunchSpinner);
-		// rightSpinner.setAbsoluteTolerance(TOLERANCE);
+		rightSpinner.setPercentTolerance(TOLERANCE_PER);
+//		rightSpinner.setToleranceBuffer(6);
+		SmartDashboard.putData("Right Spin", rightSpinner);
 	}
 
 	public void shooterSpinWheel(double speed) {
+		speed = speed * 800;
+		
 		leftSpinner.enable();
 		rightSpinner.enable();
 
@@ -72,13 +78,13 @@ public class Shooter extends Subsystem {
 	}
 
 	public void shooterPneumaticsUp() {
-		RobotMap.leftLaunch.set(SOL_FORWARD);
-		RobotMap.rightLaunch.set(SOL_FORWARD);
+		RobotMap.leftLaunch.set(SOL_REVERSE);
+		RobotMap.rightLaunch.set(SOL_REVERSE);
 	}
 
 	public void shooterPneumaticsDown() {
-		RobotMap.leftLaunch.set(SOL_REVERSE);
-		RobotMap.rightLaunch.set(SOL_REVERSE);
+		RobotMap.leftLaunch.set(SOL_FORWARD);
+		RobotMap.rightLaunch.set(SOL_FORWARD);
 	}
 
 	public void initDefaultCommand() {
