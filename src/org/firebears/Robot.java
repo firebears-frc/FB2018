@@ -112,12 +112,12 @@ public class Robot extends TimedRobot {
 	// RobotMap.shouldCross = false;
 	// }
 
-//	SmartDashboard.putString("Side", RobotMap.side); 
-//	SmartDashboard.putString("Priority", RobotMap.priority);
-//	SmartDashboard.putBoolean("Cross", RobotMap.shouldCross);
+	SmartDashboard.putString("Side", RobotMap.side); 
+	SmartDashboard.putString("Priority", RobotMap.priority);
+	SmartDashboard.putBoolean("Cross", RobotMap.shouldCross);
 
-//	selectedAuto = autoSelection.getAuto();
-	selectedAuto = new WaitCommand(1);
+	selectedAuto = autoSelection.getAuto();
+
 	System.out.println("selectedAuto = " + selectedAuto);
 	if (selectedAuto != null) {
 	    selectedAuto.start();
@@ -157,7 +157,6 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void teleopPeriodic() {
-    System.out.println("Teleop");
 	Scheduler.getInstance().run();
 
 	if (RobotMap.DEBUG) {

@@ -41,8 +41,8 @@ public class Chassis extends Subsystem {
 
 	public boolean isTapeBright() {
 		// Return true when detecting light tape
-//		return tapeSensor.get();
-		return false;
+		return tapeSensor.get();
+//		return false;
 		
 	}
 	public double getDriveMove() {

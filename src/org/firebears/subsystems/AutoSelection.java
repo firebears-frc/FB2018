@@ -64,11 +64,9 @@ public class AutoSelection extends Subsystem {
 	Command middleSideRightSwitch = new MiddleSideRightSwitchCommand();
 	Command bothSideCrossAuto = new BothSideCrossAutoCommand();
 	
-	NetworkTableInstance offSeasonNetworkTable = null;
 	
 	public AutoSelection() {
-		offSeasonNetworkTable = NetworkTableInstance.create();
-		offSeasonNetworkTable.startClient("10.0.100.5");
+		
 	}
 	
 
@@ -81,12 +79,12 @@ public class AutoSelection extends Subsystem {
 		System.out.println("Priority: " + priority);
 		Boolean shouldCross = RobotMap.shouldCross;
 		System.out.println("ShouldCross: " + shouldCross);
-//		String gameData = DriverStation.getInstance().getGameSpecificMessage();
-		
-		// Week Zero Game Data
-		String gameData = offSeasonNetworkTable.getTable("OffseasonFMSInfo").getEntry("GameData").getString("defaultValue");
+		String gameData = DriverStation.getInstance().getGameSpecificMessage();
+//		
+//		// Week Zero Game Data
+//		String gameData = offSeasonNetworkTable.getTable("OffseasonFMSInfo").getEntry("GameData").getString("defaultValue");
 		if (gameData == null) {  gameData = "LLL"; System.out.println("No game data retrieved"); }
-		
+//		
 		// to-do = replace println's with auto commands
 		switch (side) {
 

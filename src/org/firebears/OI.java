@@ -66,7 +66,7 @@ public class OI {
     public JoystickButton spinGrabberWheels;
     public JoystickButton stopGrabberWheels;
 
-    String testRecording = "recordings/test.csv";
+    String testRecording = "recordings/LeftSideLeftScale.csv";
 
     public OI(RobotReport report) {
 	// Intialize the joysticks

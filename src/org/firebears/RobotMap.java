@@ -75,15 +75,15 @@ public class RobotMap {
 	// Variables for closed loop driving
 	public static final int PID_IDX = 0;
 	public static final int TIMEOUT_MS = 10;
-	static double m_P = 1.10;
-	static double m_I = 0;
-	static double m_D = 0.0;
-	static double m_ff = 1.0; // 1.46;
+	static double m_P = 0.25;
+	static double m_I = 0.0;
+	static double m_D = 0.05;
+	static double m_ff = 1.75;//1.0; // 1.46;
 	static int m_izone = 256;
-	static double m_rampRate = 0.1;
+	static double m_rampRate = 0.0;
 	static int m_profile = 0;
-	public static int m_CountPerRev = 700;// ****Magnetic
-	public static boolean CLOSED_LOOP_DRIVING = false;
+	public static int m_CountPerRev = 650;// ****Magnetic
+	public static boolean CLOSED_LOOP_DRIVING = true;
 
 	// For autoSelecion
 	public static String side;
@@ -215,7 +215,7 @@ public class RobotMap {
 
 		// Put Ultrasonic Switches here
 
-		tapeSensor = new DigitalInput(0);
+		tapeSensor = new DigitalInput(2);
 		report.addDigitalIO(2, "Tape Finder", tapeSensor);
 
 		// Put Sensor for when cube is loaded here
