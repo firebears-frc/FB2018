@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.I2C.Port;
 public class Lights extends Subsystem {
 	public static final int MAX_ANIMATIONS = 9;
 	public static final int MAX_PIXELSTRIPS = 3;
-	public static final int BRIGHTNESS = 128;
+	public static final int BRIGHTNESS = 125;
 	public static final int I2C_ADDRESS = 4;
 	public static final int BUILD_ANIMATION = 0;
 	public static final int CELEBRATE_ANIMATION = 1;
