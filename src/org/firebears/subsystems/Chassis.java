@@ -21,12 +21,11 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-
 /**
  *
  */
 public class Chassis extends Subsystem {
-	
+
 	private double driveMove;
 	private double driveRotate;
 
@@ -43,12 +42,13 @@ public class Chassis extends Subsystem {
 		// Return true when detecting light tape
 		return tapeSensor.get();
 //		return false;
-		
+
 	}
+
 	public double getDriveMove() {
 		return driveMove;
 	}
-	
+
 	public double getDriveRotate() {
 		return driveRotate;
 	}
@@ -63,14 +63,15 @@ public class Chassis extends Subsystem {
 		// Put code here to be run every loop
 		SmartDashboard.putNumber("Air Pressure", getAirPressure());
 	}
-	
+
 	/**
-	 * @return Returns the voltage of the range finder. Returns 0.0 if the value is null.
+	 * @return Returns the voltage of the range finder. Returns 0.0 if the value is
+	 *         null.
 	 */
 	private double getRangeFinderVoltage() {
-    	return RobotMap.rangeFinder!=null ? RobotMap.rangeFinder.getAverageVoltage() : 0.0;
-    }
-	
+		return RobotMap.rangeFinder != null ? RobotMap.rangeFinder.getAverageVoltage() : 0.0;
+	}
+
 	/**
 	 * @return Returns pressure in pounds per square inches.
 	 */
@@ -78,14 +79,17 @@ public class Chassis extends Subsystem {
 		double volts = RobotMap.pressureSensor.getAverageVoltage() - 0.49;
 		return volts * 51.28;
 	}
+
 	/**
-	 * @return Get range finder distance in inches. Returns 0.0 of the value is null.
+	 * @return Get range finder distance in inches. Returns 0.0 of the value is
+	 *         null.
 	 */
-    public double getRangeFinderDistance() {
-//        double distanceInInches = getRangeFinderVoltage() *110.5;// / VOLT_DIST_RATIO;
-        double distanceInInches = getRangeFinderVoltage() * 107.5;
-        return distanceInInches;
-    } 
+	public double getRangeFinderDistance() {
+		// double distanceInInches = getRangeFinderVoltage() *110.5;// /
+		// VOLT_DIST_RATIO;
+		double distanceInInches = getRangeFinderVoltage() * 107.5;
+		return distanceInInches;
+	}
 
 	public void drive(double speed, double rotation, boolean square) {
 		robotDrive.arcadeDrive(speed * -1, rotation * 1, square);
