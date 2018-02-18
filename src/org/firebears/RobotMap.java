@@ -21,6 +21,7 @@ import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.SerialPort.Port;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -100,6 +101,8 @@ public class RobotMap {
 
 	public static DigitalInput tapeSensor;
 
+	public static DigitalInput cubeSwitch;
+	
 	public static void init(RobotReport report) {
 
 		// Set up motors for driving
@@ -137,32 +140,37 @@ public class RobotMap {
 		chassisRobotDrive.setMaxOutput(1.0);
 
 		// Set up parameters for closed loop driving
-		// if (CLOSED_LOOP_DRIVING) {
-		chassisLeftMaster.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, PID_IDX, TIMEOUT_MS);
-		chassisLeftMaster.configEncoderCodesPerRev(m_CountPerRev);
-		chassisLeftMaster.setSensorPhase(true);
-		setPID(chassisLeftMaster, m_P, m_I, m_D, m_ff, m_izone, m_rampRate, m_profile);
-
-		chassisRightMaster.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, PID_IDX, TIMEOUT_MS);
-		chassisRightMaster.configEncoderCodesPerRev(m_CountPerRev);
-		chassisRightMaster.setSensorPhase(true);
-		setPID(chassisRightMaster, m_P, m_I, m_D, m_ff, m_izone, m_rampRate, m_profile);
-
-		// }
+		if (CLOSED_LOOP_DRIVING) {
+			chassisLeftMaster.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, PID_IDX, TIMEOUT_MS);
+			chassisLeftMaster.configEncoderCodesPerRev(m_CountPerRev);
+			chassisLeftMaster.setSensorPhase(true);
+			setPID(chassisLeftMaster, m_P, m_I, m_D, m_ff, m_izone, m_rampRate, m_profile);
+			
+			chassisRightMaster.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, PID_IDX, TIMEOUT_MS);
+			chassisRightMaster.configEncoderCodesPerRev(m_CountPerRev);
+			chassisRightMaster.setSensorPhase(true);
+			setPID(chassisRightMaster, m_P, m_I, m_D, m_ff, m_izone, m_rampRate, m_profile);
+		}
 
 		leftIntake = new CANTalon(CAN_LEFT_GRABBER_MOTOR);
 		leftIntake.setName("Grabber", "leftIntake");
+		leftIntake.setNeutralMode(NeutralMode.Brake);
 		report.addCAN(CAN_LEFT_GRABBER_MOTOR, "leftIntake", leftIntake);
+		
+
 
 		rightIntake = new CANTalon(CAN_RIGHT_GRABBER_MOTOR);
 		rightIntake.setName("Grabber", "rightIntake");
+		rightIntake.setNeutralMode(NeutralMode.Brake);
 		report.addCAN(CAN_RIGHT_GRABBER_MOTOR, "rightIntake", rightIntake);
 
 		leftLaunchSpinner = new CANTalon(CAN_LEFT_CUBE_SPINNER);
+		leftLaunchSpinner.setSensorPhase(true);
 		leftLaunchSpinner.setName("shooter", "leftSpinner");
 		report.addCAN(CAN_LEFT_CUBE_SPINNER, "leftSpinner", leftLaunchSpinner);
 
 		rightLaunchSpinner = new CANTalon(CAN_RIGHT_CUBE_SPINNER);
+		rightLaunchSpinner.setSensorPhase(true);
 		rightLaunchSpinner.setName("shooter", "rightSpinner");
 		report.addCAN(CAN_RIGHT_CUBE_SPINNER, "rightSpinner", rightLaunchSpinner);
 
@@ -213,6 +221,8 @@ public class RobotMap {
 		// Put Sensor for when cube is loaded here
 
 		// Put Sensor for when cube is in the grabber here
+		cubeSwitch = new DigitalInput(4);
+		report.addDigitalIO(4, "Cube Detector", cubeSwitch);
 
 		try {
 			// navXBoard = new AHRS(SPI.Port.kMXP);
@@ -221,10 +231,8 @@ public class RobotMap {
 			DriverStation.reportError("Error instantiating navX MXP:  " + ex.getMessage(), true);
 		}
 
-		pdp = new PowerDistributionPanel();
-		pdp.clearStickyFaults();
-
-		// testSolenoid = new DoubleSolenoid(1, 2);
+//		pdp = new PowerDistributionPanel();
+//		pdp.clearStickyFaults();
 
 		report.addOtherConfig(Lights.I2C_ADDRESS, "Trinket I2C Address");
 	}
@@ -277,6 +285,7 @@ public class RobotMap {
 			if (encoderMultiplier != 0) {
 //			if (CLOSED_LOOP_DRIVING) {
 				set(ControlMode.Velocity, speed * encoderMultiplier);
+				SmartDashboard.putNumber(this + " Target", speed * encoderMultiplier);
 			} else {
 				set(ControlMode.PercentOutput, speed);
 			}

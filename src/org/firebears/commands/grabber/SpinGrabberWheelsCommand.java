@@ -12,8 +12,6 @@ public class SpinGrabberWheelsCommand extends Command {
     public SpinGrabberWheelsCommand(boolean shouldSpin) {
     	this.shouldSpin = shouldSpin;
     	requires(Robot.grabber);
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
