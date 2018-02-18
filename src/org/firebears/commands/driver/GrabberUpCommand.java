@@ -2,6 +2,7 @@ package org.firebears.commands.driver;
 
 import org.firebears.commands.grabber.OpenGrabberCommand;
 import org.firebears.commands.grabber.RaiseGrabberCommand;
+import org.firebears.commands.grabber.SlowGrabberWheelsCommands;
 import org.firebears.commands.grabber.SpinGrabberWheelsCommand;
 import org.firebears.commands.grabber.WaitForCubeAquisitionCommand;
 
@@ -17,6 +18,7 @@ public class GrabberUpCommand extends CommandGroup {
         addSequential(new OpenGrabberCommand(false));
 //    	addSequential(new WaitForCubeAquisitionCommand());
     	addSequential(new RaiseGrabberCommand(true));
+    	addSequential(new WaitCommand(.5));
     	addSequential(new SpinGrabberWheelsCommand(false));
     }
 }
