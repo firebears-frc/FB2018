@@ -183,7 +183,7 @@ public class Robot extends TimedRobot {
     		
     		SmartDashboard.putBoolean("TapeSensor", Robot.chassis.isTapeBright());
     		// System.out.println("Tape Sensor: " + RobotMap.tape.get());
-    		SmartDashboard.putBoolean("Cube in Grabber", RobotMap.cubeSwitch.get());
+    		SmartDashboard.putBoolean("Cube in Grabber", Robot.grabber.hasCube());
     		
     		SmartDashboard.putNumber("Amps", RobotController.getInputCurrent());
     		
