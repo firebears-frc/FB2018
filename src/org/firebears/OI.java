@@ -37,6 +37,7 @@ import org.firebears.commands.grabber.RaiseGrabberCommand;
 import org.firebears.commands.grabber.SpinGrabberWheelsCommand;
 import org.firebears.commands.shooter.ExtendShooterCommand;
 import org.firebears.commands.shooter.SpinShooterWheelsCommand;
+import org.firebears.commands.shooter.TestShooterSpeedCommand;
 import org.firebears.util.RobotReport;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -86,13 +87,13 @@ public class OI {
 	extendShooter.whenPressed(new FireCubeCommand());
 	
 	highShot = new JoystickButton(joystick2, 6);
-	highShot.whenPressed(new SpinShooterWheelsCommand(1));
+	highShot.whenPressed(new SpinShooterWheelsCommand(.9));
 	
 	medShot = new JoystickButton(joystick2, 5);
-	medShot.whenPressed(new SpinShooterWheelsCommand(.75));
+	medShot.whenPressed(new SpinShooterWheelsCommand(.6));
 	
 	lowShot = new JoystickButton(joystick2, 4);
-	lowShot.whenPressed(new SpinShooterWheelsCommand(.5));
+	lowShot.whenPressed(new SpinShooterWheelsCommand(.4));
 	
 	switchShot = new JoystickButton(joystick2, 3);
 	switchShot.whenPressed(new SpinShooterWheelsCommand(.25));
@@ -148,6 +149,8 @@ public class OI {
 	   SmartDashboard.putData("Spin Shooter Wheels Fast", new SpinShooterWheelsCommand(Robot.shooter.HIGH_SPEED));
 	   SmartDashboard.putData("Spin Shooter Wheels Slow", new SpinShooterWheelsCommand(Robot.shooter.LOW_SPEED));
 	   SmartDashboard.putData("Stop Shooter Wheels", new SpinShooterWheelsCommand(0));
+	   SmartDashboard.putData("Test Shooter Speed", new TestShooterSpeedCommand());
+	   SmartDashboard.putNumber("Set Shooter Test Speed", 0);
 	   
 	   SmartDashboard.putData("Open Grabber", new OpenGrabberCommand(true));
 	   SmartDashboard.putData("Close Grabber", new OpenGrabberCommand(false));
@@ -155,7 +158,6 @@ public class OI {
 	   SmartDashboard.putData("Lower Grabber", new RaiseGrabberCommand(false));
 	   SmartDashboard.putData("Spin Grabber Wheels", new SpinGrabberWheelsCommand(true));
 	   SmartDashboard.putData("Stop Grabber Wheels", new SpinGrabberWheelsCommand(false));
-
 	}
 	// Auto commands
 	SmartDashboard.putData("Left side", new ChangeSide("Left"));
