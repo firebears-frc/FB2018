@@ -30,6 +30,7 @@ import org.firebears.commands.auto.DriveToTapeCommand;
 import org.firebears.commands.auto.RotateToAngle;
 import org.firebears.commands.driver.GrabberDownCommand;
 import org.firebears.commands.driver.GrabberUpCommand;
+import org.firebears.commands.driver.DanceCommand;
 import org.firebears.commands.driver.DriverCloseCommand;
 import org.firebears.commands.driver.FireCubeCommand;
 import org.firebears.commands.grabber.OpenGrabberCommand;
@@ -66,6 +67,7 @@ public class OI {
     public JoystickButton celebrateButton;
     public JoystickButton spinGrabberWheels;
     public JoystickButton stopGrabberWheels;
+    public JoystickButton dance;
 
     String testRecording = "recordings/LeftSideLeftScale.csv";
 
@@ -115,6 +117,8 @@ public class OI {
 	spinGrabberWheels.whenPressed(new SpinGrabberWheelsCommand(true));
 	spinGrabberWheels.whenReleased(new SpinGrabberWheelsCommand(false));
 
+//	dance = new JoystickButton(joystick1, 1);
+//	dance.whileHeld(new DanceCommand());
 	// Switch between Open and Closed Loop Driving
 	// testPID = new JoystickButton(joystick1, 1);
 	// Command switchDriving = new SwitchDrivingType();

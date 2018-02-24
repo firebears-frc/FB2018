@@ -2,7 +2,6 @@ package org.firebears.subsystems;
 
 import org.firebears.Robot;
 import org.firebears.RobotMap;
-import org.firebears.commands.grabber.AutoPullCubeCommand;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
@@ -15,8 +14,8 @@ public class Grabber extends Subsystem {
 
 	final double MOTORSPEED = .5;
 	final double SLOW_SPEED = .05;
-	final Value SOL_FORWARD = DoubleSolenoid.Value.kForward;
-	final Value SOL_REVERSE = DoubleSolenoid.Value.kReverse;
+	public final Value SOL_FORWARD = DoubleSolenoid.Value.kForward;
+	public final Value SOL_REVERSE = DoubleSolenoid.Value.kReverse;
 
 	// to-do
 	public void grabberRaise() {
@@ -57,12 +56,13 @@ public class Grabber extends Subsystem {
 	}
 	
 	public boolean hasCube() {
-		return RobotMap.cubeSwitch.get();
+		return !RobotMap.cubeSwitch.get();
 	}
 	
 	public boolean isRaised() {
 		return RobotMap.rightUpDown.get() == SOL_FORWARD;
 	}
+	
 
 	public void initDefaultCommand() {
 //		setDefaultCommand(new AutoPullCubeCommand());
