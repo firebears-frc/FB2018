@@ -12,6 +12,7 @@
 //test
 package org.firebears;
 
+import org.firebears.commands.BackIntoWallCommand;
 import org.firebears.commands.CelebrateCommand;
 import org.firebears.commands.DriveToDistanceStraightCommand;
 import org.firebears.commands.I2CCommand;
@@ -19,6 +20,7 @@ import org.firebears.commands.PlayMirroredRecording;
 import org.firebears.commands.PlayRecordingCommand;
 import org.firebears.commands.StartRecordingCommand;
 import org.firebears.commands.StopRecordingCommand;
+import org.firebears.commands.TestMotors;
 import org.firebears.commands.TestRobotCommand;
 import org.firebears.commands.VisionForwardCommand;
 import org.firebears.commands.VisionGetCubeCommandGroup;
@@ -69,6 +71,8 @@ public class OI {
     public JoystickButton spinGrabberWheels;
     public JoystickButton stopGrabberWheels;
     public JoystickButton dance;
+    public JoystickButton testMotors;
+    public JoystickButton testMotors2;
 
     String testRecording = "recordings/LeftSideLeftScale.csv";
 
@@ -85,6 +89,12 @@ public class OI {
 	report.addJoystick(1, "Joystick 2", joystick2);
 
 	// Joystick Buttons
+	
+	testMotors = new JoystickButton(joystick1, 7);
+	testMotors.whileHeld(new TestMotors(true, true));
+	
+	testMotors = new JoystickButton(joystick1, 9);
+	testMotors.whileHeld(new TestMotors(true, false));
 	
 	extendShooter = new JoystickButton(joystick2, 1);
 	extendShooter.whenPressed(new FireCubeCommand());
@@ -147,6 +157,8 @@ public class OI {
 	    SmartDashboard.putData("DriveToTapeCommand", new DriveToTapeCommand(.4));
 	    SmartDashboard.putData("DriveInches", new DriveToDistanceCommand(10000, 1.0));
 	    SmartDashboard.putData("RotateToAngle", new RotateToAngle(45));
+	    SmartDashboard.putNumber("Target Inches", 50);
+	    SmartDashboard.putData("Drive into Wall", new BackIntoWallCommand(12));
 	    // SmartDashboard.putData("Nullzone Command",new DriveIntoNullZoneCommand());
 	    
 	   SmartDashboard.putData("Extend Shooter", new ExtendShooterCommand(true));

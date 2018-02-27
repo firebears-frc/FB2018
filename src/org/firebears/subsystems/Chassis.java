@@ -69,7 +69,7 @@ public class Chassis extends Subsystem {
 	 *         null.
 	 */
 	private double getRangeFinderVoltage() {
-		return RobotMap.rangeFinder != null ? RobotMap.rangeFinder.getAverageVoltage() : 0.0;
+		return RobotMap.chassisRangeFinder != null ? RobotMap.chassisRangeFinder.getVoltage() : 0.0;
 	}
 
 	/**
@@ -84,10 +84,11 @@ public class Chassis extends Subsystem {
 	 * @return Get range finder distance in inches. Returns 0.0 of the value is
 	 *         null.
 	 */
-	public double getRangeFinderDistance() {
+	public double getChassisRangeFinderDistance() {
 		// double distanceInInches = getRangeFinderVoltage() *110.5;// /
 		// VOLT_DIST_RATIO;
-		double distanceInInches = getRangeFinderVoltage() * 107.5;
+//		double distanceInInches = getRangeFinderVoltage() * 107.5;
+		double distanceInInches = getRangeFinderVoltage() * 41.6;
 		return distanceInInches;
 	}
 

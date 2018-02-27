@@ -84,7 +84,6 @@ public class RobotMap {
 	static int m_profile = 0;
 	public static int m_CountPerRev = 650;// ****Magnetic
 	public static boolean CLOSED_LOOP_DRIVING = true;
-	public static double rotation = 0.0;
 
 	// For autoSelecion
 	public static String side;
@@ -94,8 +93,8 @@ public class RobotMap {
 	// Different Sensors
 	public static AHRS navXBoard;
 
-	public static AnalogInput rangeFinder;
-	public static AnalogInput rangeFinder2;
+	public static AnalogInput grabberRangeFinder;
+	public static AnalogInput chassisRangeFinder;
 
 	public static Encoder encoderLeft;
 	public static Encoder encoderRight;
@@ -203,13 +202,13 @@ public class RobotMap {
 		compressor = new Compressor();
 		compressor.setClosedLoopControl(true);
 
-		rangeFinder = new AnalogInput(0);
-		rangeFinder.setName("Chassis", "Rangefinder");
-		report.addAnalogInput(0, "Range Finder", rangeFinder);
+		grabberRangeFinder = new AnalogInput(0);
+		grabberRangeFinder.setName("Grabber", "Rangefinder");
+		report.addAnalogInput(0, "Range Finder", grabberRangeFinder);
 
-		rangeFinder2 = new AnalogInput(1);
-		rangeFinder2.setName("Chassis", "Rangefinder2");
-		report.addAnalogInput(1, "Range Finder 2", rangeFinder2);
+		chassisRangeFinder = new AnalogInput(1);
+		chassisRangeFinder.setName("Chassis", "Rangefinder2");
+		report.addAnalogInput(1, "Range Finder 2", chassisRangeFinder);
 
 		pressureSensor = new AnalogInput(2);
 		pressureSensor.setName("Chassis", "PressureSensor");

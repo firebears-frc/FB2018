@@ -48,7 +48,7 @@ public class VisionForwardCommand extends PIDCommand {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	// Stop command when timeout expires, or when the robot's distance is within the tolerance
-    	if (System.currentTimeMillis() >= timeout || Robot.chassis.getRangeFinderDistance() < 12) {
+    	if (System.currentTimeMillis() >= timeout || Robot.grabber.getGrabberRangeFinderDistance() < 12) {
 			return true;
 		}
 		return false;
@@ -78,7 +78,7 @@ public class VisionForwardCommand extends PIDCommand {
 	protected void usePIDOutput(double output) {
 		// Slow robot down when within specific distance
 //		double speed = (Robot.chassis.getRangeFinderDistance() < SLOW_DISTANCE) ? -0.40 : -0.75;
-		double distancePer = (Robot.chassis.getRangeFinderDistance() - SLOW_DISTANCE) / (FAST_DISTANCE - SLOW_DISTANCE);
+		double distancePer = (Robot.grabber.getGrabberRangeFinderDistance() - SLOW_DISTANCE) / (FAST_DISTANCE - SLOW_DISTANCE);
 		distancePer = Math.min(100, distancePer);
 		distancePer = Math.max(0, distancePer);
 		double speed = distancePer * (FAST_DISTANCE - SLOW_DISTANCE) + SLOW_DISTANCE;

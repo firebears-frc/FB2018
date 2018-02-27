@@ -178,7 +178,8 @@ public class Robot extends TimedRobot {
 	    			RobotMap.chassisRightMaster.getClosedLoopError(RobotMap.PID_IDX));
     		}
     		
-    		SmartDashboard.putNumber("DistanceInInches", Robot.chassis.getRangeFinderDistance());
+    		SmartDashboard.putNumber("DistanceInInches", Robot.chassis.getChassisRangeFinderDistance());
+    		SmartDashboard.putNumber("Grabber Distance", Robot.grabber.getGrabberRangeFinderDistance());
     		SmartDashboard.putNumber("NavX Angle", RobotMap.boundAngle(RobotMap.getNavXAngle()));
     		
     		SmartDashboard.putBoolean("TapeSensor", Robot.chassis.isTapeBright());
@@ -199,6 +200,7 @@ public class Robot extends TimedRobot {
     		
     		SmartDashboard.putBoolean("Closed_LOOP", RobotMap.CLOSED_LOOP_DRIVING);
     		SmartDashboard.putString("ControlMode", RobotMap.chassisLeftMaster.getControlMode().toString());
+    		
     	}
     }
 }
