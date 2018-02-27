@@ -13,6 +13,7 @@
 package org.firebears;
 
 import org.firebears.commands.CelebrateCommand;
+import org.firebears.commands.DriveToDistanceStraightCommand;
 import org.firebears.commands.I2CCommand;
 import org.firebears.commands.PlayMirroredRecording;
 import org.firebears.commands.PlayRecordingCommand;
@@ -144,7 +145,7 @@ public class OI {
 
 	    // Other Commands
 	    SmartDashboard.putData("DriveToTapeCommand", new DriveToTapeCommand(.4));
-	    SmartDashboard.putData("DriveInches", new DriveToDistanceCommand(60, .6));
+	    SmartDashboard.putData("DriveInches", new DriveToDistanceCommand(10000, 1.0));
 	    SmartDashboard.putData("RotateToAngle", new RotateToAngle(45));
 	    // SmartDashboard.putData("Nullzone Command",new DriveIntoNullZoneCommand());
 	    
@@ -162,6 +163,7 @@ public class OI {
 	   SmartDashboard.putData("Lower Grabber", new RaiseGrabberCommand(false));
 	   SmartDashboard.putData("Spin Grabber Wheels", new SpinGrabberWheelsCommand(true));
 	   SmartDashboard.putData("Stop Grabber Wheels", new SpinGrabberWheelsCommand(false));
+	   SmartDashboard.putData("DriveStraight", new DriveToDistanceStraightCommand(200, .5));
 	}
 	// Auto commands
 	SmartDashboard.putData("Left side", new ChangeSide("Left"));

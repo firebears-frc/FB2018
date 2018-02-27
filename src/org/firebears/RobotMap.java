@@ -144,6 +144,7 @@ public class RobotMap {
 			chassisLeftMaster.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, PID_IDX, TIMEOUT_MS);
 			chassisLeftMaster.configEncoderCodesPerRev(m_CountPerRev);
 			chassisLeftMaster.setSensorPhase(true);
+//			chassisLeftMaster.
 			setPID(chassisLeftMaster, m_P, m_I, m_D, m_ff, m_izone, m_rampRate, m_profile);
 			
 			chassisRightMaster.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, PID_IDX, TIMEOUT_MS);

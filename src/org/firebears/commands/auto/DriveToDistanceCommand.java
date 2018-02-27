@@ -34,7 +34,7 @@ public class DriveToDistanceCommand extends Command {
 	}
 
 	protected void initialize() {
-		timeout = System.currentTimeMillis() + 1000 * 5;
+		timeout = System.currentTimeMillis() + 1000 * 30;
 		System.out.println("Starting " + this.toString());
 		startingDistance = RobotMap.chassisLeftMaster.getSelectedSensorPosition(RobotMap.PID_IDX);
 		System.out.println(targetDistance);
