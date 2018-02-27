@@ -1,5 +1,8 @@
 package org.firebears.commands;
 
+import static org.firebears.RobotMap.boundAngle;
+import static org.firebears.RobotMap.getNavXAngle;
+
 import org.firebears.Robot;
 import org.firebears.RobotMap;
 
@@ -9,51 +12,54 @@ import edu.wpi.first.wpilibj.command.PIDCommand;
  * Drive Straight from 2016 modified for 2018 robot.
  */
 public class DriveToDistanceStraightCommand extends PIDCommand {
-	enum UNTIL {
-		UNTIL_TIMEOUT, // Command will finish after a timeout
-		UNTIL_DISTANCE, // Command will finish after a certain distance
-		UNTIL_HIT_WALL, // Command will finish after distance sensor detects something
-	}
-
-	final double max_speed;
-	final double distance;
-	final UNTIL untilx;
-	double targetLocation;
-	double targetAngle;
+	
 	long timeout;
+	double startAngle;
+	double currentAngle;
+	double tolerance = 2.5;
+	double startingDistance;
+	double currentDistance;
+	double targetDistance;
+	double speed;
+
+	
 
 	public DriveToDistanceStraightCommand(double z, double speed) {
-		super(0.1, 0.0, 0.0);
+		super(1.0, 0.0, 0.0);
 		requires(Robot.chassis);
-		distance = z;
-		max_speed = speed;
-		untilx = UNTIL.UNTIL_DISTANCE;
-		getPIDController().setAbsoluteTolerance(2);
+		targetDistance = z;
+		this.speed = speed;
+		getPIDController().setInputRange(-180.0, 180.0);
+		getPIDController().setAbsoluteTolerance(tolerance);
+		getPIDController().setContinuous();
+		
 	}
-
-	public DriveToDistanceStraightCommand(double z) {
-		this(z, .6);
-	}
-
-	public DriveToDistanceStraightCommand(UNTIL until, double speed) {
-		this(0., speed);
+	public double getAngleDifference() {
+		return boundAngle(getNavXAngle() - startAngle);
 	}
 
 	protected void initialize() {
-		timeout = System.currentTimeMillis() + 1000 * 20;
-		targetAngle = RobotMap.navXBoard.getAngle();
-		targetLocation = distance + returnPIDInput();
-		setSetpoint(targetLocation);
-		getPIDController().enable();
+		timeout = System.currentTimeMillis() + 1000 * 6;
+		startAngle = getNavXAngle();
+		startingDistance = RobotMap.chassisLeftMaster.getSelectedSensorPosition(RobotMap.PID_IDX);
+		getPIDController().setSetpoint(0.0);
+		
 	}
 
 	protected void execute() {
+		currentAngle = getNavXAngle();
+		System.out.println("navx angle: "+ currentAngle);
 	}
 
 	protected boolean isFinished() {
-		double currentLocation = returnPIDInput();
-		return (Math.abs(currentLocation - targetLocation) < 2) || (System.currentTimeMillis() > timeout);
-	}
+		if (System.currentTimeMillis() >= timeout) {
+			return true;
+		}
+
+		if (inchesTraveled() >= targetDistance) {
+			return true;
+		}
+		return false;	}
 
 	protected void end() {
 		getPIDController().disable();
@@ -63,32 +69,19 @@ public class DriveToDistanceStraightCommand extends PIDCommand {
 	protected void interrupted() {
 		end();
 	}
+	private double inchesTraveled() {
+		currentDistance = RobotMap.chassisLeftMaster.getSelectedSensorPosition(RobotMap.PID_IDX);
+		return (currentDistance - startingDistance) / 52.6;
+	}
 
 	@Override
 	protected double returnPIDInput() {
-		return RobotMap.chassisLeftMaster.getSelectedSensorPosition(RobotMap.PID_IDX)/52.6;
+		return getAngleDifference();
 	}
 
 	@Override
 	protected void usePIDOutput(double output) {
-		output = Math.max((max_speed*-1), Math.min(output, max_speed));
-		double currentAngle = RobotMap.navXBoard.getAngle();
-		double angleDiff = diff(targetAngle, currentAngle);
-		double x = angleDiff * 0.1;
-		x = Math.max(-0.2, Math.min(x, 0.2));
-		double y = -1 * output;
-		System.out.println("Diff: " + angleDiff);
-		Robot.chassis.drive(y, x, false);
+		Robot.chassis.drive(-speed, output, false);
 
 	}
-	/**
-	 * Calculate angle1 - angle2.
-	 * @return angle in the range -180 to 180.
-	 */
-	protected static double diff(double angle1, double angle2) {
-		double angleDiff = angle1 - angle2;
-		while (angleDiff < -180.0) { angleDiff += 360.0; }
-		while (angleDiff > 180.0) { angleDiff -= 360.0; }
-		return angleDiff;
-}
 }
