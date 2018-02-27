@@ -4,6 +4,7 @@ import org.firebears.Robot;
 import org.firebears.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * Drive forward a certain amount of inches
@@ -34,6 +35,12 @@ public class DriveToDistanceCommand extends Command {
 	}
 
 	protected void initialize() {
+//		targetDistance = SmartDashboard.getNumber("Target Inches", 0);
+//		
+//		double overshootPer = (SPEED - LOWER_SPEED) / (UPPER_SPEED - LOWER_SPEED);
+//		overshoot = overshootPer * (UPPER_OVERSHOOT - LOWER_OVERSHOOT) + LOWER_OVERSHOOT;
+//		targetDistance = targetDistance - overshoot;
+		
 		timeout = System.currentTimeMillis() + 1000 * 5;
 		System.out.println("Starting " + this.toString());
 		startingDistance = RobotMap.chassisLeftMaster.getSelectedSensorPosition(RobotMap.PID_IDX);

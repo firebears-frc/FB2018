@@ -34,19 +34,6 @@ public class RotateToAngle extends PIDCommand {
 		requires(Robot.chassis);
 	}
 
-	private double getAngleDifference() {
-		return boundAngle(getNavXAngle() - targetAngle);
-	}
-
-	@Override
-	protected double returnPIDInput() {
-		return getAngleDifference();
-	}
-
-	protected void usePIDOutput(double output) {
-		Robot.chassis.drive(0.0, output, false);
-	}
-
 	protected void initialize() {
 		targetAngle = boundAngle(getNavXAngle() + m_angle);
 		getPIDController().setSetpoint(0); 
@@ -66,5 +53,18 @@ public class RotateToAngle extends PIDCommand {
 
 	protected void interrupted() {
 		end();
+	}
+
+	private double getAngleDifference() {
+		return boundAngle(getNavXAngle() - targetAngle);
+	}
+
+	@Override
+	protected double returnPIDInput() {
+		return getAngleDifference();
+	}
+
+	protected void usePIDOutput(double output) {
+		Robot.chassis.drive(0.0, output, false);
 	}
 }

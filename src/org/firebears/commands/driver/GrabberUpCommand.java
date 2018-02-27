@@ -15,7 +15,7 @@ public class GrabberUpCommand extends CommandGroup {
 
     public GrabberUpCommand() {
         addSequential(new OpenGrabberCommand(false));
-    	addSequential(new WaitForCubeAquisitionCommand());
+//    	addSequential(new WaitForCubeAquisitionCommand());
     	addSequential(new RaiseGrabberCommand(true));
     	addSequential(new WaitCommand(.5));
     	addSequential(new SpinGrabberWheelsCommand(false));

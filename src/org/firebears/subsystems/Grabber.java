@@ -62,7 +62,23 @@ public class Grabber extends Subsystem {
 	public boolean isRaised() {
 		return RobotMap.rightUpDown.get() == SOL_FORWARD;
 	}
+
+	/**
+	 * @return Returns the voltage of the range finder. Returns 0.0 if the value is
+	 *         null.
+	 */
+	private double getRangeFinderVoltage() {
+		return RobotMap.grabberRangeFinder != null ? RobotMap.grabberRangeFinder.getVoltage() : 0.0;
+	}
 	
+	/**
+	 * @return Get range finder distance in inches. Returns 0.0 of the value is
+	 *         null.
+	 */
+	public double getGrabberRangeFinderDistance() {
+		double distanceInInches = getRangeFinderVoltage() * 107.5;
+		return distanceInInches;
+	}
 
 	public void initDefaultCommand() {
 //		setDefaultCommand(new AutoPullCubeCommand());

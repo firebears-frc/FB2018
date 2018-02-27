@@ -37,8 +37,8 @@ public class VisionRotateCommand extends PIDCommand {
     	timeout = System.currentTimeMillis() + 1000 * 5;
     	
     	// Get turn value from vision subsystem
-    	turnValue = Robot.vision.getAngleX();
-//    	turnValue = 90;
+//    	turnValue = Robot.vision.getAngleX();
+    	turnValue = 90;
     	
     	// Set target angle for PID to current angle + angle from vision
     	targetAngle = boundAngle(getNavXAngle() + turnValue);
