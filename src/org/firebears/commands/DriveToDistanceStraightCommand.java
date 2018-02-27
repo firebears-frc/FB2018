@@ -1,7 +1,6 @@
 package org.firebears.commands;
 
 import static org.firebears.RobotMap.boundAngle;
-import static org.firebears.RobotMap.getNavXAngle;
 
 import org.firebears.Robot;
 import org.firebears.RobotMap;
@@ -35,19 +34,19 @@ public class DriveToDistanceStraightCommand extends PIDCommand {
 		
 	}
 	public double getAngleDifference() {
-		return boundAngle(getNavXAngle() - startAngle);
+		return boundAngle(RobotMap.navXBoard.getAngle() - startAngle);
 	}
 
 	protected void initialize() {
 		timeout = System.currentTimeMillis() + 1000 * 6;
-		startAngle = getNavXAngle();
+		startAngle = RobotMap.navXBoard.getAngle();
 		startingDistance = RobotMap.chassisLeftMaster.getSelectedSensorPosition(RobotMap.PID_IDX);
 		getPIDController().setSetpoint(0.0);
 		
 	}
 
 	protected void execute() {
-		currentAngle = getNavXAngle();
+		currentAngle = RobotMap.navXBoard.getAngle();
 		System.out.println("navx angle: "+ currentAngle);
 	}
 
