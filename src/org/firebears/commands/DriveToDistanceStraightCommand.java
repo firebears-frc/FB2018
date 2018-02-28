@@ -24,7 +24,7 @@ public class DriveToDistanceStraightCommand extends PIDCommand {
 	
 
 	public DriveToDistanceStraightCommand(double z, double speed) {
-		super(1.0, 0.0, 0.0);
+		super(.065, 0.0, 0.0);
 		requires(Robot.chassis);
 		targetDistance = z;
 		this.speed = speed;

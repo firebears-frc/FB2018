@@ -18,6 +18,7 @@ import org.firebears.commands.DriveToDistanceStraightCommand;
 import org.firebears.commands.I2CCommand;
 import org.firebears.commands.PlayMirroredRecording;
 import org.firebears.commands.PlayRecordingCommand;
+import org.firebears.commands.RotateToAngleCommand;
 import org.firebears.commands.StartRecordingCommand;
 import org.firebears.commands.StopRecordingCommand;
 import org.firebears.commands.TestMotors;
@@ -38,6 +39,7 @@ import org.firebears.commands.driver.DriverCloseCommand;
 import org.firebears.commands.driver.FireCubeCommand;
 import org.firebears.commands.grabber.OpenGrabberCommand;
 import org.firebears.commands.grabber.RaiseGrabberCommand;
+import org.firebears.commands.grabber.ReverseGrabberWheelsCommand;
 import org.firebears.commands.grabber.SpinGrabberWheelsCommand;
 import org.firebears.commands.shooter.ExtendShooterCommand;
 import org.firebears.commands.shooter.SpinShooterWheelsCommand;
@@ -69,6 +71,7 @@ public class OI {
     public JoystickButton armOpen;
     public JoystickButton celebrateButton;
     public JoystickButton spinGrabberWheels;
+    public JoystickButton reverseGrabberWheels;
     public JoystickButton stopGrabberWheels;
     public JoystickButton dance;
     public JoystickButton testMotors;
@@ -127,6 +130,10 @@ public class OI {
 	spinGrabberWheels = new JoystickButton(joystick2, 11);
 	spinGrabberWheels.whenPressed(new SpinGrabberWheelsCommand(true));
 	spinGrabberWheels.whenReleased(new SpinGrabberWheelsCommand(false));
+	
+	spinGrabberWheels = new JoystickButton(joystick2, 12);
+	spinGrabberWheels.whenPressed(new ReverseGrabberWheelsCommand(true));
+	spinGrabberWheels.whenReleased(new ReverseGrabberWheelsCommand(false));
 
 //	dance = new JoystickButton(joystick1, 1);
 //	dance.whileHeld(new DanceCommand());
@@ -156,9 +163,11 @@ public class OI {
 	    // Other Commands
 	    SmartDashboard.putData("DriveToTapeCommand", new DriveToTapeCommand(.4));
 	    SmartDashboard.putData("DriveInches", new DriveToDistanceCommand(10000, 1.0));
-	    SmartDashboard.putData("RotateToAngle", new RotateToAngle(45));
+	    SmartDashboard.putData("RotateToAngle", new RotateToAngleCommand(90));
+	    SmartDashboard.putNumber("Target Angle", 90);
 	    SmartDashboard.putNumber("Target Inches", 50);
 	    SmartDashboard.putData("Drive into Wall", new BackIntoWallCommand(12));
+	   SmartDashboard.putData("DriveStraight", new DriveToDistanceStraightCommand(100, .5));
 	    // SmartDashboard.putData("Nullzone Command",new DriveIntoNullZoneCommand());
 	    
 	   SmartDashboard.putData("Extend Shooter", new ExtendShooterCommand(true));
@@ -175,7 +184,6 @@ public class OI {
 	   SmartDashboard.putData("Lower Grabber", new RaiseGrabberCommand(false));
 	   SmartDashboard.putData("Spin Grabber Wheels", new SpinGrabberWheelsCommand(true));
 	   SmartDashboard.putData("Stop Grabber Wheels", new SpinGrabberWheelsCommand(false));
-	   SmartDashboard.putData("DriveStraight", new DriveToDistanceStraightCommand(200, .5));
 	}
 	// Auto commands
 	SmartDashboard.putData("Left side", new ChangeSide("Left"));

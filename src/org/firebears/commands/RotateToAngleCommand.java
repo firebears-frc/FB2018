@@ -12,13 +12,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class RotateToAngleCommand extends PIDCommand {
 
     protected final double turnValue;
-    protected final double SPEED = 0.3;
-    protected double angleTolerance = 5.0;
+    protected final double SPEED = 0.5;
+    protected double angleTolerance = 3.0;
     protected double targetAngle;
     long timeout;
 
     public RotateToAngleCommand(double degrees) {
-	super(1., 0.0, 0.0); // PID
+	super(0.3, 0.0, 0.0); // PID
 	requires(Robot.chassis);
 	turnValue = degrees;
 
@@ -55,8 +55,9 @@ public class RotateToAngleCommand extends PIDCommand {
     }
 
     protected void initialize() {
-	timeout = System.currentTimeMillis() + 1000 * 2;
-	targetAngle = bound(RobotMap.navXBoard.getAngle() + turnValue);
+	timeout = System.currentTimeMillis() + 1000 * 5;
+//	targetAngle = bound(RobotMap.navXBoard.getAngle() + turnValue);
+	targetAngle = bound(RobotMap.navXBoard.getAngle() + SmartDashboard.getNumber("Target Angle", 0));
 	getPIDController().setSetpoint(0.0);
 	if (RobotMap.DEBUG)
 	    System.out.println("\t # " + this);

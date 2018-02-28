@@ -55,6 +55,11 @@ public class Grabber extends Subsystem {
 		RobotMap.rightIntake.set(0);
 	}
 	
+	public void grabberReverseSpin() {
+		RobotMap.leftIntake.set(MOTORSPEED);
+		RobotMap.rightIntake.set(-MOTORSPEED);
+	}
+	
 	public boolean hasCube() {
 		return !RobotMap.cubeSwitch.get();
 	}
