@@ -166,17 +166,23 @@ public class Robot extends TimedRobot {
     		SmartDashboard.putNumber("Left Master Encoder Rate",
     				RobotMap.chassisLeftMaster.getSelectedSensorVelocity(RobotMap.PID_IDX));
     		
+    		double inchesPerSecond = RobotMap.chassisLeftMaster.getSelectedSensorVelocity(RobotMap.PID_IDX) * 10 / 52.6;
+    		double metersPerSecond = inchesPerSecond / 39.37;
+    		
+    		SmartDashboard.putNumber("LeftMaster Inches per Second", inchesPerSecond);
+    		SmartDashboard.putNumber("LeftMaster Meters per Second", metersPerSecond);
+    		
     		SmartDashboard.putNumber("Right Master Encoder Distance",
     				RobotMap.chassisRightMaster.getSelectedSensorPosition(RobotMap.PID_IDX));
     		SmartDashboard.putNumber("Right Master Encoder Rate",
     				RobotMap.chassisRightMaster.getSelectedSensorVelocity(RobotMap.PID_IDX));
-    		
-    		if (RobotMap.CLOSED_LOOP_DRIVING) {
-    			SmartDashboard.putNumber("Left Master PID Error", 
-	    			RobotMap.chassisLeftMaster.getClosedLoopError(RobotMap.PID_IDX));
-    			SmartDashboard.putNumber("Right Master PID Error", 
-	    			RobotMap.chassisRightMaster.getClosedLoopError(RobotMap.PID_IDX));
-    		}
+//    		
+//    		if (RobotMap.CLOSED_LOOP_DRIVING) {
+//    			SmartDashboard.putNumber("Left Master PID Error", 
+//	    			RobotMap.chassisLeftMaster.getClosedLoopError(RobotMap.PID_IDX));
+//    			SmartDashboard.putNumber("Right Master PID Error", 
+//	    			RobotMap.chassisRightMaster.getClosedLoopError(RobotMap.PID_IDX));
+//    		}
     		
     		SmartDashboard.putNumber("DistanceInInches", Robot.chassis.getChassisRangeFinderDistance());
     		SmartDashboard.putNumber("Grabber Distance", Robot.grabber.getGrabberRangeFinderDistance());

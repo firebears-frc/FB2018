@@ -32,6 +32,8 @@ import org.firebears.commands.auto.ChangeSide;
 import org.firebears.commands.auto.DriveToDistanceCommand;
 import org.firebears.commands.auto.DriveToTapeCommand;
 import org.firebears.commands.auto.RotateToAngle;
+import org.firebears.commands.auto.TestCommandGroup;
+import org.firebears.commands.auto.TestCrossFieldCommandGroup;
 import org.firebears.commands.driver.GrabberDownCommand;
 import org.firebears.commands.driver.GrabberUpCommand;
 import org.firebears.commands.driver.DanceCommand;
@@ -77,7 +79,7 @@ public class OI {
     public JoystickButton testMotors;
     public JoystickButton testMotors2;
 
-    String testRecording = "recordings/LeftSideLeftScale.csv";
+    String testRecording = "recordings/RightSideLeftScale.csv";
 
     public OI(RobotReport report) {
 	// Intialize the joysticks
@@ -162,12 +164,13 @@ public class OI {
 
 	    // Other Commands
 	    SmartDashboard.putData("DriveToTapeCommand", new DriveToTapeCommand(.4));
-	    SmartDashboard.putData("DriveInches", new DriveToDistanceCommand(10000, 1.0));
 	    SmartDashboard.putData("RotateToAngle", new RotateToAngleCommand(90));
 	    SmartDashboard.putNumber("Target Angle", 90);
-	    SmartDashboard.putNumber("Target Inches", 50);
+	    SmartDashboard.putNumber("Target Speed", .5);
 	    SmartDashboard.putData("Drive into Wall", new BackIntoWallCommand(12));
-	   SmartDashboard.putData("DriveStraight", new DriveToDistanceStraightCommand(100, .5));
+	    SmartDashboard.putData("DriveStraight", new DriveToDistanceStraightCommand(200, .5));
+	    SmartDashboard.putData("Test Command Group", new TestCommandGroup());
+	    SmartDashboard.putData("Test Cross Field Command Group", new TestCrossFieldCommandGroup());
 	    // SmartDashboard.putData("Nullzone Command",new DriveIntoNullZoneCommand());
 	    
 	   SmartDashboard.putData("Extend Shooter", new ExtendShooterCommand(true));
