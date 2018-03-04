@@ -50,6 +50,7 @@ import org.firebears.util.RobotReport;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -71,7 +72,9 @@ public class OI {
     public JoystickButton armUp;
     public JoystickButton armClose;
     public JoystickButton armOpen;
+    public JoystickButton armOpenClose;
     public JoystickButton celebrateButton;
+    public JoystickButton celebrateButton2;
     public JoystickButton spinGrabberWheels;
     public JoystickButton reverseGrabberWheels;
     public JoystickButton stopGrabberWheels;
@@ -96,13 +99,19 @@ public class OI {
 	// Joystick Buttons
 	
 	testMotors = new JoystickButton(joystick1, 7);
-	testMotors.whileHeld(new TestMotors(true, true));
+	TestMotors testMotorsStraightForward = new TestMotors(true, true);
+	testMotors.whileHeld(testMotorsStraightForward);
+	report.addJoystickButton(0, 7, "Test Motors Forward", testMotorsStraightForward);
 	
 	testMotors = new JoystickButton(joystick1, 9);
-	testMotors.whileHeld(new TestMotors(true, false));
+	TestMotors testMotorsStraightBackwards = new TestMotors(true, false);
+	testMotors.whileHeld(testMotorsStraightBackwards);
+	report.addJoystickButton(0, 9, "Test Motors Backward", testMotorsStraightBackwards);
 	
 	extendShooter = new JoystickButton(joystick2, 1);
-	extendShooter.whenPressed(new FireCubeCommand());
+	Command fireCubeCommand = new FireCubeCommand();
+	extendShooter.whenPressed(fireCubeCommand);
+	report.addJoystickButton(1, 1, "Shoot", fireCubeCommand);
 	
 	highShot = new JoystickButton(joystick2, 6);
 	highShot.whenPressed(new SpinShooterWheelsCommand(.9));
@@ -117,25 +126,44 @@ public class OI {
 	switchShot.whenPressed(new SpinShooterWheelsCommand(.25));
 	
 	armDown = new JoystickButton(joystick2, 7);
-	armDown.whenPressed(new GrabberDownCommand());
+	Command grabberDownCommand = new GrabberDownCommand();
+	armDown.whenPressed(grabberDownCommand);
+	report.addJoystickButton(1, 7, "Arm Down", grabberDownCommand);
 	
 	armUp = new JoystickButton(joystick2, 9);
-	armUp.whenPressed(new GrabberUpCommand());
-	
+	Command grabberUpCommand = new GrabberUpCommand();
+	armUp.whenPressed(grabberUpCommand);
+	report.addJoystickButton(1, 9, "Arm Up", grabberUpCommand);
 	
 	armClose = new JoystickButton(joystick2, 8);
-	armClose.whenPressed(new DriverCloseCommand());
+	Command armCloseCommand = new DriverCloseCommand();
+	armClose.whenPressed(armCloseCommand);
+	report.addJoystickButton(1, 8, "Arm Close", armCloseCommand);
 	
 	armOpen = new JoystickButton(joystick2, 10);
-	armOpen.whenPressed(new OpenGrabberCommand(true));
+	Command armOpenCommand = new  OpenGrabberCommand(true);
+	armOpen.whenPressed(armOpenCommand);
+	report.addJoystickButton(1, 10, "Arm Open", armOpenCommand);
+	
+	armOpenClose = new JoystickButton(joystick2, 14);
+	Command armClosedCommand = new  OpenGrabberCommand(false);
+	armOpenClose.whenPressed(armOpenCommand);
+	armOpenClose.whenReleased(armClosedCommand);
+	report.addJoystickButton(1, 14, "Toggle arms open/closed", armClosedCommand);
 	
 	spinGrabberWheels = new JoystickButton(joystick2, 11);
-	spinGrabberWheels.whenPressed(new SpinGrabberWheelsCommand(true));
-	spinGrabberWheels.whenReleased(new SpinGrabberWheelsCommand(false));
+	Command spinnerWheelsStartCommand = new SpinGrabberWheelsCommand(true);
+	spinGrabberWheels.whenPressed(spinnerWheelsStartCommand);
+	Command spinnerWheelsStopCommand = new SpinGrabberWheelsCommand(false);
+	spinGrabberWheels.whenReleased(spinnerWheelsStopCommand);
+	report.addJoystickButton(1, 11, "Spinner wheels", spinnerWheelsStartCommand);
 	
 	spinGrabberWheels = new JoystickButton(joystick2, 12);
-	spinGrabberWheels.whenPressed(new ReverseGrabberWheelsCommand(true));
-	spinGrabberWheels.whenReleased(new ReverseGrabberWheelsCommand(false));
+	Command grabberWheelsStartCommand = new ReverseGrabberWheelsCommand(true);
+	spinGrabberWheels.whenPressed(grabberWheelsStartCommand);
+	Command grabberWheelsStopCommand = new ReverseGrabberWheelsCommand(false);
+	spinGrabberWheels.whenReleased(grabberWheelsStopCommand);
+	report.addJoystickButton(1, 12, "Grabber wheels", spinnerWheelsStartCommand);
 
 //	dance = new JoystickButton(joystick1, 1);
 //	dance.whileHeld(new DanceCommand());
@@ -144,8 +172,12 @@ public class OI {
 	// Command switchDriving = new SwitchDrivingType();
 	// testPID.whenPressed(new SwitchDrivingType());
 	// report.addJoystickButton(0, 1, "Swtich Driving Type", switchDriving);
-	celebrateButton = new JoystickButton(joystick1, 9);
-	celebrateButton.whileHeld(new CelebrateCommand());
+	celebrateButton = new JoystickButton(joystick1, 13);
+	Command celebrateCommand = new CelebrateCommand();
+	celebrateButton.whileHeld(celebrateCommand);
+	report.addJoystickButton(1, 13, "Celebrate", celebrateCommand);
+	celebrateButton2 =  new JoystickButton(joystick1, 2);
+	celebrateButton2.whileHeld(celebrateCommand);
 	
 	// SmartDashboard Buttons
 	// Recording Commands
@@ -185,8 +217,8 @@ public class OI {
 	   SmartDashboard.putData("Close Grabber", new OpenGrabberCommand(false));
 	   SmartDashboard.putData("Raise Grabber", new RaiseGrabberCommand(true));
 	   SmartDashboard.putData("Lower Grabber", new RaiseGrabberCommand(false));
-	   SmartDashboard.putData("Spin Grabber Wheels", new SpinGrabberWheelsCommand(true));
-	   SmartDashboard.putData("Stop Grabber Wheels", new SpinGrabberWheelsCommand(false));
+	   SmartDashboard.putData("Spin Grabber Wheels", spinnerWheelsStartCommand);
+	   SmartDashboard.putData("Stop Grabber Wheels", spinnerWheelsStopCommand);
 	}
 	// Auto commands
 	SmartDashboard.putData("Left side", new ChangeSide("Left"));
