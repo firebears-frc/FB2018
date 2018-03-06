@@ -17,11 +17,12 @@ public class VisionRotateCommand extends PIDCommand {
 	double turnValue;
 	double targetAngle;
 	double FORWARD_SPEED = .15;
-	private static final double SPEED = 0.1;
+	private static final double SPEED = 0.7;
 	private static final double TOLERANCE = 1.0;
 	
     public VisionRotateCommand() {
-    	super(.0325, 0, 0);
+//    	super(.0325, 0, 0);
+    	super(.05, 0, 0);
         
     	requires(Robot.chassis);
     	
@@ -37,8 +38,8 @@ public class VisionRotateCommand extends PIDCommand {
     	timeout = System.currentTimeMillis() + 1000 * 5;
     	
     	// Get turn value from vision subsystem
-//    	turnValue = Robot.vision.getAngleX();
-    	turnValue = 90;
+    	turnValue = Robot.vision.getAngleX();
+//    	turnValue = 90;
     	
     	// Set target angle for PID to current angle + angle from vision
     	targetAngle = boundAngle(getNavXAngle() + turnValue);
@@ -67,7 +68,7 @@ public class VisionRotateCommand extends PIDCommand {
     // Called once after isFinished returns true
     protected void end() {
 //    	Robot.chassis.stop();
-    	Robot.chassis.drive(0, 0, false);
+    	Robot.chassis.drive(0, 0, true);
     	System.out.println("Ending " + this);
     }
 

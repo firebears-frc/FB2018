@@ -20,6 +20,7 @@ import org.firebears.subsystems.Shooter;
 import org.firebears.subsystems.Vision;
 import org.firebears.util.RobotReport;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -62,6 +63,8 @@ public class Robot extends TimedRobot {
 	shooter = new Shooter();
 	grabber = new Grabber();
 
+	CameraServer.getInstance().startAutomaticCapture();
+	
 	// OI must be constructed after subsystems. If the OI creates Commands
 	// (which it very likely will), subsystems are not guaranteed to be
 	// constructed yet. Thus, their requires() statements may grab null
