@@ -46,9 +46,8 @@ public class DriveToDistanceStraightCommand extends PIDCommand {
 		
 		startAngle = RobotMap.navXBoard.getAngle();
 		startingDistance = RobotMap.chassisLeftMaster.getSelectedSensorPosition(RobotMap.PID_IDX);
-		targetDistance = targetDistance - getOffset(speed);
+//		targetDistance = targetDistance - getOffset(speed);
 		getPIDController().setSetpoint(0.0);
-		System.out.println(getOffset(speed));
 	}
 
 	protected void execute() {
@@ -77,11 +76,11 @@ public class DriveToDistanceStraightCommand extends PIDCommand {
 	}
 	
 	// Calculate overshoot based on given speed
-	private double getOffset(double speed) {
-    	double offsetAnswer;
-    	offsetAnswer = speed * ((offsetFrom100Per - offsetFrom50Per)/.5);//y = m*x + b
-    	return offsetAnswer;
-    }
+//	private double getOffset(double speed) {
+//    	double offsetAnswer;
+//    	offsetAnswer = speed * ((offsetFrom100Per - offsetFrom50Per)/.5);//y = m*x + b
+//    	return offsetAnswer;
+//    }
 	
 	private double inchesTraveled() {
 		currentDistance = RobotMap.chassisLeftMaster.getSelectedSensorPosition(RobotMap.PID_IDX);
