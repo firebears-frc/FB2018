@@ -12,6 +12,7 @@ package org.firebears;
 
 import java.io.File;
 
+import org.firebears.commands.shooter.SpinShooterWheelsCommand;
 import org.firebears.subsystems.AutoSelection;
 import org.firebears.subsystems.Chassis;
 import org.firebears.subsystems.Grabber;
@@ -20,7 +21,9 @@ import org.firebears.subsystems.Shooter;
 import org.firebears.subsystems.Vision;
 import org.firebears.util.RobotReport;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -53,6 +56,7 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void robotInit() {
+	CameraServer.getInstance().startAutomaticCapture();
 	RobotReport report = new RobotReport("FB2018");
 	RobotMap.init(report);
 	chassis = new Chassis();
@@ -147,7 +151,6 @@ public class Robot extends TimedRobot {
 	// teleop starts running. If you want the autonomous to
 	// continue until interrupted by another command, remove
 	// this line or comment it out.
-
 	if (selectedAuto != null)
 	    selectedAuto.cancel();
     }
@@ -157,6 +160,8 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void teleopPeriodic() {
+    	Joystick stick = Robot.oi.joystick2;
+		Robot.shooter.shooterSpinWheel(stick.getThrottle());
     	Scheduler.getInstance().run();
     	
     	if (RobotMap.DEBUG) {

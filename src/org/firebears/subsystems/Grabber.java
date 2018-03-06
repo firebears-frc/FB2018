@@ -12,7 +12,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Grabber extends Subsystem {
 
-	final double MOTORSPEED = .5;
+	final double MOTORSPEED = 0.5;
+	final double REVMOTORSPEED = 1.0;
 	final double SLOW_SPEED = .05;
 	public final Value SOL_FORWARD = DoubleSolenoid.Value.kForward;
 	public final Value SOL_REVERSE = DoubleSolenoid.Value.kReverse;
@@ -56,8 +57,8 @@ public class Grabber extends Subsystem {
 	}
 	
 	public void grabberReverseSpin() {
-		RobotMap.leftIntake.set(MOTORSPEED);
-		RobotMap.rightIntake.set(-MOTORSPEED);
+		RobotMap.leftIntake.set(REVMOTORSPEED);
+		RobotMap.rightIntake.set(-REVMOTORSPEED);
 	}
 	
 	public boolean hasCube() {

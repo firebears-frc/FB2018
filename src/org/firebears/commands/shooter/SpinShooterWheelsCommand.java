@@ -2,6 +2,7 @@ package org.firebears.commands.shooter;
 
 import org.firebears.Robot;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -17,6 +18,7 @@ public class SpinShooterWheelsCommand extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
+		
 		if (this.speed == 0) {
 			System.out.println("Spinning shooter wheels");
 			Robot.shooter.shooterStopWheel();
@@ -28,6 +30,8 @@ public class SpinShooterWheelsCommand extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
+//		Joystick stick = Robot.oi.joystick2;
+//		Robot.shooter.shooterSpinWheel(stick.getThrottle());
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
