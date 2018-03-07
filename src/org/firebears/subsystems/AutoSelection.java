@@ -73,15 +73,65 @@ public class AutoSelection extends Subsystem {
 	
 
 	public Command getAuto() {
-		
+//		
 		Command selectedAuto = null;
-		String side = Robot.oi.joystick2.getRawButton(18) ? LEFT : (Robot.oi.joystick2.getRawButton(17) ? RIGHT : MIDDLE);
-		System.out.println("Side: " + side);
-		String priority = Robot.oi.joystick2.getRawButton(15) ? SCALE : SWITCH;
-		System.out.println("Priority: " + priority);
-		Boolean shouldCross = Robot.oi.joystick2.getRawButton(16);
-		System.out.println("ShouldCross: " + shouldCross);
+//		String side = Robot.oi.joystick2.getRawButton(18) ? LEFT : (Robot.oi.joystick2.getRawButton(17) ? RIGHT : MIDDLE);
+//		System.out.println("Side: " + side);
+//		String priority = Robot.oi.joystick2.getRawButton(15) ? SCALE : SWITCH;
+//		System.out.println("Priority: " + priority);
+//		Boolean shouldCross = Robot.oi.joystick2.getRawButton(16);
+//		System.out.println("ShouldCross: " + shouldCross);
+		
+		
+		
+		boolean leftSide = Robot.oi.joystick2.getRawButton(18);
+		boolean rightSide = Robot.oi.joystick2.getRawButton(17);
+		boolean shouldCross = Robot.oi.joystick2.getRawButton(16);
+		boolean scaleBool = Robot.oi.joystick2.getRawButton(15);
+		
+		String side = "";
+		String priority = "";
+
+
+		if (leftSide == true && rightSide == false) {
+			RobotMap.side = "Left";
+			side = LEFT;
+		} else if (leftSide == false && rightSide == true) {
+			RobotMap.side = "Right";
+			side = RIGHT;
+
+		} else if (leftSide == false && rightSide == false) {
+			RobotMap.side = "Middle";
+			side = MIDDLE;
+
+		}
+
+		if (scaleBool == false) {
+			RobotMap.priority = "Switch";
+			priority = SWITCH;
+		} else if (scaleBool == true) {
+			RobotMap.priority = "Scale";
+			priority = SCALE;
+		}
+		
+		if (shouldCross == true) {
+			RobotMap.shouldCross = true;
+			shouldCross = true;
+		} else if (shouldCross == false) {
+			RobotMap.shouldCross = false;
+			shouldCross = false;
+		}
+		System.out.println(side);
+		System.out.println(priority);
+		System.out.println(shouldCross);
+
+
+
+		
 		String gameData = DriverStation.getInstance().getGameSpecificMessage();
+
+		
+		
 		if (gameData == null) {  gameData = "LLL"; System.out.println("No game data retrieved"); }
 //		
 		// to-do = replace println's with auto commands

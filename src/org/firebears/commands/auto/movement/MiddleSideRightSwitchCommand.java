@@ -22,6 +22,6 @@ public class MiddleSideRightSwitchCommand extends CommandGroup {
 		addSequential(new WaitCommand(.7));
 		addSequential(new RotateToAngleCommand(-60));
 		addSequential(new WaitCommand(.5));
-		addSequential(new DriveToDistanceStraightCommand(40, 1.0));
+		addSequential(new DriveToDistanceStraightCommand(45, 1.0));
     }
 }

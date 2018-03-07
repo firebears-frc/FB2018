@@ -60,11 +60,11 @@ public class Robot extends TimedRobot {
 		RobotReport report = new RobotReport("FB2018");
 		RobotMap.init(report);
 		chassis = new Chassis();
-		autoSelection = new AutoSelection();
 		vision = new Vision();
 		lights = new Lights();
 		shooter = new Shooter();
 		grabber = new Grabber();
+		autoSelection = new AutoSelection();
 
 		CameraServer.getInstance().startAutomaticCapture();
 
@@ -96,27 +96,30 @@ public class Robot extends TimedRobot {
 		// System.out.println("joytickbutton1: " + oi.joystick1.getRawButton(1));
 		// System.out.println("joytickYAxis: "+ oi.joystick1.getRawAxis(1));
 		// System.out.println("joytickXAxis: "+ oi.joystick2.getX());
-		// double x = oi.joystick2.getX();
-		// double y = oi.joystick2.getY();
-		// double z = oi.joystick2.getZ();
+		boolean leftSide = oi.joystick2.getRawButton(18);
+		boolean rightSide = oi.joystick2.getRawButton(17);
+		boolean scaleBool = oi.joystick2.getRawButton(15);
+		boolean crossBool = oi.joystick2.getRawButton(16);
 
-		// if (x >= .33) {
-		// RobotMap.side = "Right";
-		// } else if (x <= -.33) {
-		// RobotMap.side = "Left";
-		// } else {
-		// RobotMap.side = "Middle";
-		// }
-		// if (y >= 0) {
-		// RobotMap.priority = "Switch";
-		// } else if (y < 0) {
-		// RobotMap.priority = "Scale";
-		// }
-		// if (z >= 0) {
-		// RobotMap.shouldCross = true;
-		// } else if (y < 0) {
-		// RobotMap.shouldCross = false;
-		// }
+		if (leftSide == true && rightSide == false) {
+			RobotMap.side = "Left";
+		} else if (leftSide == false && rightSide == true) {
+			RobotMap.side = "Right";
+		} else if (leftSide == false && rightSide == false) {
+			RobotMap.side = "Middle";
+		}
+
+		if (scaleBool == false) {
+			RobotMap.priority = "Switch";
+		} else if (scaleBool == true) {
+			RobotMap.priority = "Scale";
+		}
+		
+		if (crossBool == true) {
+			RobotMap.shouldCross = true;
+		} else if (crossBool == false) {
+			RobotMap.shouldCross = false;
+		}
 
 		SmartDashboard.putString("Side", RobotMap.side);
 		SmartDashboard.putString("Priority", RobotMap.priority);
@@ -163,8 +166,12 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Joystick stick = Robot.oi.joystick2;
-		Robot.shooter.shooterSpinWheel(-(stick.getThrottle()-1)/2);
-		
+		if (((stick.getRawAxis(0) + 1) / 2) > .1) {
+			Robot.shooter.shooterSpinWheel((stick.getRawAxis(0) + 1) / 2);
+		} else {
+			Robot.shooter.shooterSpinWheel(0);
+		}
+
 		Scheduler.getInstance().run();
 
 		if (RobotMap.DEBUG) {

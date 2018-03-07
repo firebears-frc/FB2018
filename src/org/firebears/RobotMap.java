@@ -110,11 +110,19 @@ public class RobotMap {
 		chassisLeftMaster = new CANTalon(CAN_LEFT_MASTER);
 		chassisLeftMaster.setName("Chassis", "FrontLeft");
 		chassisLeftMaster.setNeutralMode(NeutralMode.Brake);
+		chassisLeftMaster.configPeakCurrentLimit(0, TIMEOUT_MS);
+		chassisLeftMaster.configPeakCurrentDuration(0, TIMEOUT_MS);
+		chassisLeftMaster.configContinuousCurrentLimit(20, TIMEOUT_MS);
+		chassisLeftMaster.enableCurrentLimit(true);
 		report.addCAN(CAN_LEFT_MASTER, "Left Master - PDP:3", chassisLeftMaster);
 
 		chassisLeftSlave = new CANTalon(CAN_LEFT_SLAVE);
 		chassisLeftSlave.setName("Chassis", "BackLeft");
 		chassisLeftSlave.setNeutralMode(NeutralMode.Brake);
+		chassisLeftSlave.configPeakCurrentLimit(0, TIMEOUT_MS);
+		chassisLeftSlave.configPeakCurrentDuration(0, TIMEOUT_MS);
+		chassisLeftSlave.configContinuousCurrentLimit(20, TIMEOUT_MS);
+		chassisLeftSlave.enableCurrentLimit(true);
 		report.addCAN(CAN_LEFT_SLAVE, "Left Slave - PDP:2", chassisLeftSlave);
 
 		chassisLeftMotors = new SpeedControllerGroup(chassisLeftMaster, chassisLeftSlave);
@@ -123,11 +131,19 @@ public class RobotMap {
 		chassisRightMaster = new CANTalon(CAN_RIGHT_MASTER);
 		chassisRightMaster.setName("Chassis", "FrontRight");
 		chassisRightMaster.setNeutralMode(NeutralMode.Brake);
+		chassisRightMaster.configPeakCurrentLimit(0, TIMEOUT_MS);
+		chassisRightMaster.configPeakCurrentDuration(0, TIMEOUT_MS);
+		chassisRightMaster.configContinuousCurrentLimit(20, TIMEOUT_MS);
+		chassisRightMaster.enableCurrentLimit(true);
 		report.addCAN(CAN_RIGHT_MASTER, "Right Master - PDP:1", chassisRightMaster);
 
 		chassisRightSlave = new CANTalon(CAN_RIGHT_SLAVE);
 		chassisRightSlave.setName("Chassis", "BackRight");
 		chassisRightSlave.setNeutralMode(NeutralMode.Brake);
+		chassisRightSlave.configPeakCurrentLimit(0, TIMEOUT_MS);
+		chassisRightSlave.configPeakCurrentDuration(0, TIMEOUT_MS);
+		chassisRightSlave.configContinuousCurrentLimit(20, TIMEOUT_MS);
+		chassisRightSlave.enableCurrentLimit(true);
 		report.addCAN(CAN_RIGHT_SLAVE, "Right Slave - PDP:0", chassisRightSlave);
 
 		chassisRightMotors = new SpeedControllerGroup(chassisRightMaster, chassisRightSlave);

@@ -19,6 +19,7 @@ import org.firebears.commands.DriveToDistanceStraightCommand;
 import org.firebears.commands.I2CCommand;
 import org.firebears.commands.PlayMirroredRecording;
 import org.firebears.commands.PlayRecordingCommand;
+import org.firebears.commands.ResetNavX;
 import org.firebears.commands.RotateToAngleCommand;
 import org.firebears.commands.StartRecordingCommand;
 import org.firebears.commands.StopRecordingCommand;
@@ -227,6 +228,7 @@ public class OI {
 	   
 	   SmartDashboard.putData("Turn on Compressor", new ActivateCompressor(true));
 	   SmartDashboard.putData("Turn off Compressor", new ActivateCompressor(false));
+	   SmartDashboard.putData("Reset NavX", new ResetNavX());
 	}
 	// Auto commands
 	SmartDashboard.putData("Left side", new ChangeSide("Left"));
