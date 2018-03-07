@@ -147,8 +147,8 @@ public class OI {
 	
 	armOpenClose = new JoystickButton(joystick2, 14);
 	Command armClosedCommand = new  OpenGrabberCommand(false);
-	armOpenClose.whenPressed(armOpenCommand);
-	armOpenClose.whenReleased(armClosedCommand);
+	armOpenClose.whenPressed(armClosedCommand);
+	armOpenClose.whenReleased(armOpenCommand);
 	report.addJoystickButton(1, 14, "Toggle arms open/closed", armClosedCommand);
 	
 	spinGrabberWheels = new JoystickButton(joystick2, 11);
@@ -178,6 +178,11 @@ public class OI {
 	report.addJoystickButton(1, 13, "Celebrate", celebrateCommand);
 	celebrateButton2 =  new JoystickButton(joystick1, 2);
 	celebrateButton2.whileHeld(celebrateCommand);
+	
+	report.addJoystickButton(1, 15, "Switch/Scale", "Autonomous");
+	report.addJoystickButton(1, 16, "Cross/Dont-cross", "Autonomous");
+	report.addJoystickButton(1, 17, "Left-side", "Autonomous");
+	report.addJoystickButton(1, 18, "Left-side", "Autonomous");
 	
 	// SmartDashboard Buttons
 	// Recording Commands
