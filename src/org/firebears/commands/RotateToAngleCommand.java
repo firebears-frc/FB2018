@@ -15,8 +15,8 @@ public class RotateToAngleCommand extends PIDCommand {
     protected final double SPEED = 0.5;
     protected double angleTolerance = 1.5;
     protected double targetAngle;
-    double offsetFrom90 = 3.8;
-    double offsetFrom10 = 2.0;
+    double offsetFrom90 = 10;//3.8;
+    double offsetFrom10 = 3;//2.0;
     long timeout;
 
     public RotateToAngleCommand(double degrees) {

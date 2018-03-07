@@ -84,7 +84,7 @@ public class DriveToDistanceStraightCommand extends PIDCommand {
 	
 	private double inchesTraveled() {
 		currentDistance = RobotMap.chassisLeftMaster.getSelectedSensorPosition(RobotMap.PID_IDX);
-		return (currentDistance - startingDistance) / 52.6;
+		return Math.abs((currentDistance - startingDistance) / 52.6);
 	}
 
 	@Override

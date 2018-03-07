@@ -40,180 +40,183 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends TimedRobot {
 
-    Command selectedAuto;
+	Command selectedAuto;
 
-    public static OI oi;
-    public static Vision vision;
-    public static AutoSelection autoSelection;
-    public static Chassis chassis;
-    public static Lights lights;
-    public static Shooter shooter;
-    public static Grabber grabber;
+	public static OI oi;
+	public static Vision vision;
+	public static AutoSelection autoSelection;
+	public static Chassis chassis;
+	public static Lights lights;
+	public static Shooter shooter;
+	public static Grabber grabber;
 
-    /**
-     * This function is run when the robot is first started up and should be used
-     * for any initialization code.
-     */
-    @Override
-    public void robotInit() {
-	CameraServer.getInstance().startAutomaticCapture();
-	RobotReport report = new RobotReport("FB2018");
-	RobotMap.init(report);
-	chassis = new Chassis();
-	autoSelection = new AutoSelection();
-	vision = new Vision();
-	lights = new Lights();
-	shooter = new Shooter();
-	grabber = new Grabber();
+	/**
+	 * This function is run when the robot is first started up and should be used
+	 * for any initialization code.
+	 */
+	@Override
+	public void robotInit() {
+		CameraServer.getInstance().startAutomaticCapture();
+		RobotReport report = new RobotReport("FB2018");
+		RobotMap.init(report);
+		chassis = new Chassis();
+		autoSelection = new AutoSelection();
+		vision = new Vision();
+		lights = new Lights();
+		shooter = new Shooter();
+		grabber = new Grabber();
 
-	CameraServer.getInstance().startAutomaticCapture();
-	
-	// OI must be constructed after subsystems. If the OI creates Commands
-	// (which it very likely will), subsystems are not guaranteed to be
-	// constructed yet. Thus, their requires() statements may grab null
-	// pointers. Bad news. Don't move it.
-	oi = new OI(report);
+		CameraServer.getInstance().startAutomaticCapture();
 
-	report.write(new File(System.getProperty("user.home"), "robotReport.md"));
-    }
+		// OI must be constructed after subsystems. If the OI creates Commands
+		// (which it very likely will), subsystems are not guaranteed to be
+		// constructed yet. Thus, their requires() statements may grab null
+		// pointers. Bad news. Don't move it.
+		oi = new OI(report);
 
-    /**
-     * This function is called when the disabled button is hit. You can use it to
-     * reset subsystems before shutting down.
-     */
-    @Override
-    public void disabledInit() {
-
-    }
-
-    @Override
-    public void disabledPeriodic() {
-	Scheduler.getInstance().run();
-    }
-
-    @Override
-    public void autonomousInit() {
-	// System.out.println("joytickbutton1: " + oi.joystick1.getRawButton(1));
-	// System.out.println("joytickYAxis: "+ oi.joystick1.getRawAxis(1));
-	// System.out.println("joytickXAxis: "+ oi.joystick2.getX());
-	// double x = oi.joystick2.getX();
-	// double y = oi.joystick2.getY();
-	// double z = oi.joystick2.getZ();
-
-	// if (x >= .33) {
-	// RobotMap.side = "Right";
-	// } else if (x <= -.33) {
-	// RobotMap.side = "Left";
-	// } else {
-	// RobotMap.side = "Middle";
-	// }
-	// if (y >= 0) {
-	// RobotMap.priority = "Switch";
-	// } else if (y < 0) {
-	// RobotMap.priority = "Scale";
-	// }
-	// if (z >= 0) {
-	// RobotMap.shouldCross = true;
-	// } else if (y < 0) {
-	// RobotMap.shouldCross = false;
-	// }
-
-	SmartDashboard.putString("Side", RobotMap.side); 
-	SmartDashboard.putString("Priority", RobotMap.priority);
-	SmartDashboard.putBoolean("Cross", RobotMap.shouldCross);
-
-	selectedAuto = autoSelection.getAuto();
-
-	System.out.println("selectedAuto = " + selectedAuto);
-	if (selectedAuto != null) {
-	    selectedAuto.start();
+		report.write(new File(System.getProperty("user.home"), "robotReport.md"));
 	}
 
-//	String gameData;
-//	gameData = DriverStation.getInstance().getGameSpecificMessage();
-//	System.out.println(gameData);
+	/**
+	 * This function is called when the disabled button is hit. You can use it to
+	 * reset subsystems before shutting down.
+	 */
+	@Override
+	public void disabledInit() {
 
-	// autonomousCommand = chooser.getSelected();
-	// // schedule the autonomous command (example)
-	// if (autonomousCommand != null) autonomousCommand.start();
-    }
+	}
 
-    /**
-     * This function is called periodically during autonomous
-     */
-    @Override
-    public void autonomousPeriodic() {
-	Scheduler.getInstance().run();
+	@Override
+	public void disabledPeriodic() {
+		Scheduler.getInstance().run();
+	}
 
-    }
+	@Override
+	public void autonomousInit() {
+		// System.out.println("joytickbutton1: " + oi.joystick1.getRawButton(1));
+		// System.out.println("joytickYAxis: "+ oi.joystick1.getRawAxis(1));
+		// System.out.println("joytickXAxis: "+ oi.joystick2.getX());
+		// double x = oi.joystick2.getX();
+		// double y = oi.joystick2.getY();
+		// double z = oi.joystick2.getZ();
 
-    @Override
-    public void teleopInit() {
-	// This makes sure that the autonomous stops running when
-	// teleop starts running. If you want the autonomous to
-	// continue until interrupted by another command, remove
-	// this line or comment it out.
-	if (selectedAuto != null)
-	    selectedAuto.cancel();
-    }
+		// if (x >= .33) {
+		// RobotMap.side = "Right";
+		// } else if (x <= -.33) {
+		// RobotMap.side = "Left";
+		// } else {
+		// RobotMap.side = "Middle";
+		// }
+		// if (y >= 0) {
+		// RobotMap.priority = "Switch";
+		// } else if (y < 0) {
+		// RobotMap.priority = "Scale";
+		// }
+		// if (z >= 0) {
+		// RobotMap.shouldCross = true;
+		// } else if (y < 0) {
+		// RobotMap.shouldCross = false;
+		// }
 
-    /**
-     * This function is called periodically during operator control
-     */
-    @Override
-    public void teleopPeriodic() {
-    	Joystick stick = Robot.oi.joystick2;
-		Robot.shooter.shooterSpinWheel(stick.getThrottle());
-    	Scheduler.getInstance().run();
-    	
-    	if (RobotMap.DEBUG) {
-    		// Put Encoder values
-    		SmartDashboard.putNumber("Left Master Encoder Distance",
-    				RobotMap.chassisLeftMaster.getSelectedSensorPosition(RobotMap.PID_IDX));
-    		SmartDashboard.putNumber("Left Master Encoder Rate",
-    				RobotMap.chassisLeftMaster.getSelectedSensorVelocity(RobotMap.PID_IDX));
-    		
-    		double inchesPerSecond = RobotMap.chassisLeftMaster.getSelectedSensorVelocity(RobotMap.PID_IDX) * 10 / 52.6;
-    		double metersPerSecond = inchesPerSecond / 39.37;
-    		
-    		SmartDashboard.putNumber("LeftMaster Inches per Second", inchesPerSecond);
-    		SmartDashboard.putNumber("LeftMaster Meters per Second", metersPerSecond);
-    		
-    		SmartDashboard.putNumber("Right Master Encoder Distance",
-    				RobotMap.chassisRightMaster.getSelectedSensorPosition(RobotMap.PID_IDX));
-    		SmartDashboard.putNumber("Right Master Encoder Rate",
-    				RobotMap.chassisRightMaster.getSelectedSensorVelocity(RobotMap.PID_IDX));
-//    		
-//    		if (RobotMap.CLOSED_LOOP_DRIVING) {
-//    			SmartDashboard.putNumber("Left Master PID Error", 
-//	    			RobotMap.chassisLeftMaster.getClosedLoopError(RobotMap.PID_IDX));
-//    			SmartDashboard.putNumber("Right Master PID Error", 
-//	    			RobotMap.chassisRightMaster.getClosedLoopError(RobotMap.PID_IDX));
-//    		}
-    		
-    		SmartDashboard.putNumber("DistanceInInches", Robot.chassis.getChassisRangeFinderDistance());
-    		SmartDashboard.putNumber("Grabber Distance", Robot.grabber.getGrabberRangeFinderDistance());
-    		SmartDashboard.putNumber("NavX Angle", RobotMap.boundAngle(RobotMap.getNavXAngle()));
-    		
-    		SmartDashboard.putBoolean("TapeSensor", Robot.chassis.isTapeBright());
-    		// System.out.println("Tape Sensor: " + RobotMap.tape.get());
-    		SmartDashboard.putBoolean("Cube in Grabber", Robot.grabber.hasCube());
-    		
-    		SmartDashboard.putNumber("Amps", RobotController.getInputCurrent());
-    		
-    		SmartDashboard.putNumber("Left Shooter Rate", 
-	    		RobotMap.leftLaunchSpinner.getSelectedSensorVelocity(RobotMap.PID_IDX));
-    		SmartDashboard.putNumber("Right Shooter Rate", 
-	    		RobotMap.rightLaunchSpinner.getSelectedSensorVelocity(RobotMap.PID_IDX));
-//    		SmartDashboard.putNumber("Left Shooter Rate", Robot.shooter.leftSpinnerEncoder.pidGet());
-//        	SmartDashboard.putNumber("Right Shooter Rate",  Robot.shooter.rightSpinnerEncoder.pidGet());
-    		
-    		SmartDashboard.putNumber("Left Shooter Error", Robot.shooter.leftSpinner.getError());
-    		SmartDashboard.putNumber("Right Shooter Error", Robot.shooter.rightSpinner.getError());
-    		
-    		SmartDashboard.putBoolean("Closed_LOOP", RobotMap.CLOSED_LOOP_DRIVING);
-    		SmartDashboard.putString("ControlMode", RobotMap.chassisLeftMaster.getControlMode().toString());
-    		
-    	}
-    }
+		SmartDashboard.putString("Side", RobotMap.side);
+		SmartDashboard.putString("Priority", RobotMap.priority);
+		SmartDashboard.putBoolean("Cross", RobotMap.shouldCross);
+
+		selectedAuto = autoSelection.getAuto();
+
+		System.out.println("selectedAuto = " + selectedAuto);
+		if (selectedAuto != null) {
+			selectedAuto.start();
+		}
+
+		// String gameData;
+		// gameData = DriverStation.getInstance().getGameSpecificMessage();
+		// System.out.println(gameData);
+
+		// autonomousCommand = chooser.getSelected();
+		// // schedule the autonomous command (example)
+		// if (autonomousCommand != null) autonomousCommand.start();
+	}
+
+	/**
+	 * This function is called periodically during autonomous
+	 */
+	@Override
+	public void autonomousPeriodic() {
+		Scheduler.getInstance().run();
+
+	}
+
+	@Override
+	public void teleopInit() {
+		// This makes sure that the autonomous stops running when
+		// teleop starts running. If you want the autonomous to
+		// continue until interrupted by another command, remove
+		// this line or comment it out.
+		if (selectedAuto != null)
+			selectedAuto.cancel();
+	}
+
+	/**
+	 * This function is called periodically during operator control
+	 */
+	@Override
+	public void teleopPeriodic() {
+		Joystick stick = Robot.oi.joystick2;
+		Robot.shooter.shooterSpinWheel(-(stick.getThrottle()-1)/2);
+		
+		Scheduler.getInstance().run();
+
+		if (RobotMap.DEBUG) {
+			// Put Encoder values
+			SmartDashboard.putNumber("Left Master Encoder Distance",
+					RobotMap.chassisLeftMaster.getSelectedSensorPosition(RobotMap.PID_IDX));
+			SmartDashboard.putNumber("Left Master Encoder Rate",
+					RobotMap.chassisLeftMaster.getSelectedSensorVelocity(RobotMap.PID_IDX));
+
+			double inchesPerSecond = RobotMap.chassisLeftMaster.getSelectedSensorVelocity(RobotMap.PID_IDX) * 10 / 52.6;
+			double metersPerSecond = inchesPerSecond / 39.37;
+
+			SmartDashboard.putNumber("LeftMaster Inches per Second", inchesPerSecond);
+			SmartDashboard.putNumber("LeftMaster Meters per Second", metersPerSecond);
+
+			SmartDashboard.putNumber("Right Master Encoder Distance",
+					RobotMap.chassisRightMaster.getSelectedSensorPosition(RobotMap.PID_IDX));
+			SmartDashboard.putNumber("Right Master Encoder Rate",
+					RobotMap.chassisRightMaster.getSelectedSensorVelocity(RobotMap.PID_IDX));
+			//
+			// if (RobotMap.CLOSED_LOOP_DRIVING) {
+			// SmartDashboard.putNumber("Left Master PID Error",
+			// RobotMap.chassisLeftMaster.getClosedLoopError(RobotMap.PID_IDX));
+			// SmartDashboard.putNumber("Right Master PID Error",
+			// RobotMap.chassisRightMaster.getClosedLoopError(RobotMap.PID_IDX));
+			// }
+
+			SmartDashboard.putNumber("DistanceInInches", Robot.chassis.getChassisRangeFinderDistance());
+			SmartDashboard.putNumber("Grabber Distance", Robot.grabber.getGrabberRangeFinderDistance());
+			SmartDashboard.putNumber("NavX Angle", RobotMap.boundAngle(RobotMap.getNavXAngle()));
+
+			SmartDashboard.putBoolean("TapeSensor", Robot.chassis.isTapeBright());
+			// System.out.println("Tape Sensor: " + RobotMap.tape.get());
+			SmartDashboard.putBoolean("Cube in Grabber", Robot.grabber.hasCube());
+
+			SmartDashboard.putNumber("Amps", RobotController.getInputCurrent());
+
+			SmartDashboard.putNumber("Left Shooter Rate",
+					RobotMap.leftLaunchSpinner.getSelectedSensorVelocity(RobotMap.PID_IDX));
+			SmartDashboard.putNumber("Right Shooter Rate",
+					RobotMap.rightLaunchSpinner.getSelectedSensorVelocity(RobotMap.PID_IDX));
+			// SmartDashboard.putNumber("Left Shooter Rate",
+			// Robot.shooter.leftSpinnerEncoder.pidGet());
+			// SmartDashboard.putNumber("Right Shooter Rate",
+			// Robot.shooter.rightSpinnerEncoder.pidGet());
+
+			SmartDashboard.putNumber("Left Shooter Error", Robot.shooter.leftSpinner.getError());
+			SmartDashboard.putNumber("Right Shooter Error", Robot.shooter.rightSpinner.getError());
+
+			SmartDashboard.putBoolean("Closed_LOOP", RobotMap.CLOSED_LOOP_DRIVING);
+			SmartDashboard.putString("ControlMode", RobotMap.chassisLeftMaster.getControlMode().toString());
+
+		}
+	}
 }

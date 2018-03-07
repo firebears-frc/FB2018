@@ -16,11 +16,37 @@ import edu.wpi.first.wpilibj.command.WaitCommand;
  */
 public class TestCommandGroup extends CommandGroup {
 
-    public TestCommandGroup() {
-    	addParallel(new PlayRecordingCommand("recordings/LeftSideLeftScale.csv"));
-    	addSequential(new WaitCommand(5.0));
-    	addSequential(new SpinShooterWheelsCommand(.5));
-    	addSequential(new WaitCommand(2.0));
-    	addSequential(new FireCubeCommand());
-    }
+	public TestCommandGroup() {
+		// addParallel(new PlayRecordingCommand("recordings/LeftSideLeftScale.csv"));
+		// addSequential(new WaitCommand(5.0));
+		// addSequential(new SpinShooterWheelsCommand(.5));
+		// addSequential(new WaitCommand(2.0));
+		// addSequential(new FireCubeCommand());
+
+		
+//		addSequential(new DriveToDistanceStraightCommand(24, -.5));
+		
+
+    	addSequential(new DriveToDistanceStraightCommand(190, 0.70));
+    	addSequential(new WaitCommand(0.5));
+    	addSequential(new RotateToAngleCommand(90));
+    	addSequential(new WaitCommand(.5));
+    	addSequential(new DriveToDistanceStraightCommand(230, 1.0));
+    	
+    	
+    	addSequential(new WaitCommand(.5));
+    	addSequential(new RotateToAngleCommand(90));
+    	addSequential(new WaitCommand(.5));
+    	addSequential(new DriveToDistanceStraightCommand(45, 0.7));
+    	addSequential(new WaitCommand(.5));
+    	addSequential(new RotateToAngleCommand(90));
+//    	addSequential(new WaitCommand(.5));
+//    	addSequential(new DriveToDistanceStraightCommand(24, -0.5));
+    	addSequential(new WaitCommand(.5));
+    	addSequential(new DriveToDistanceStraightCommand(60, 1.0));
+    	
+
+		
+
+	}
 }

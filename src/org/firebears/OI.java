@@ -82,7 +82,7 @@ public class OI {
     public JoystickButton testMotors;
     public JoystickButton testMotors2;
 
-    String testRecording = "recordings/RightSideLeftScale.csv";
+    String testRecording = "recordings/MiddleSideRightSwitch.csv";
 
     public OI(RobotReport report) {
 	// Intialize the joysticks
@@ -172,12 +172,12 @@ public class OI {
 	// Command switchDriving = new SwitchDrivingType();
 	// testPID.whenPressed(new SwitchDrivingType());
 	// report.addJoystickButton(0, 1, "Swtich Driving Type", switchDriving);
-	celebrateButton = new JoystickButton(joystick1, 13);
-	Command celebrateCommand = new CelebrateCommand();
-	celebrateButton.whileHeld(celebrateCommand);
-	report.addJoystickButton(1, 13, "Celebrate", celebrateCommand);
-	celebrateButton2 =  new JoystickButton(joystick1, 2);
-	celebrateButton2.whileHeld(celebrateCommand);
+//	celebrateButton = new JoystickButton(joystick1, 13);
+//	Command celebrateCommand = new CelebrateCommand();
+//	celebrateButton.whileHeld(celebrateCommand);
+//	report.addJoystickButton(1, 13, "Celebrate", celebrateCommand);
+//	celebrateButton2 =  new JoystickButton(joystick1, 2);
+//	celebrateButton2.whileHeld(celebrateCommand);
 	
 	// SmartDashboard Buttons
 	// Recording Commands
