@@ -75,9 +75,9 @@ public class AutoSelection extends Subsystem {
 	public Command getAuto() {
 		
 		Command selectedAuto = null;
-		String side = Robot.oi.joystick2.getRawButton(17) ? LEFT : (Robot.oi.joystick2.getRawButton(18) ? RIGHT : MIDDLE);
+		String side = Robot.oi.joystick2.getRawButton(18) ? LEFT : (Robot.oi.joystick2.getRawButton(17) ? RIGHT : MIDDLE);
 		System.out.println("Side: " + side);
-		String priority = Robot.oi.joystick2.getRawButton(15) ? SWITCH : SCALE;
+		String priority = Robot.oi.joystick2.getRawButton(15) ? SCALE : SWITCH;
 		System.out.println("Priority: " + priority);
 		Boolean shouldCross = Robot.oi.joystick2.getRawButton(16);
 		System.out.println("ShouldCross: " + shouldCross);
