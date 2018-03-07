@@ -1,28 +1,28 @@
-# FB2018, as of 2018.02.16
+# FB2018, as of 2018.02.28
 
 roboRIO serial number: 030a4a34
 
 ## CAN
 
-* 2 = Left Master : CANTalon(2)
-* 3 = Left Slave : CANTalon(3)
-* 4 = Right Master : CANTalon(4)
-* 5 = Right Slave : CANTalon(5)
-* 11 = shooterLeftSpinner : CANTalon(11)
-* 12 = shooterRightSpinner : CANTalon(12)
-* 13 = grabberLeftIntake : CANTalon(13)
-* 14 = grabberRightIntake : CANTalon(14)
+* 2 = Left Master - PDP:3 : CANTalon(2)
+* 3 = Left Slave - PDP:2 : CANTalon(3)
+* 4 = Right Master - PDP:1 : CANTalon(4)
+* 5 = Right Slave - PDP:0 : CANTalon(5)
+* 11 = leftSpinner : CANTalon(11)
+* 12 = rightSpinner : CANTalon(12)
+* 13 = leftIntake : CANTalon(13)
+* 14 = rightIntake : CANTalon(14)
 
 ## DIO
 
-* 2 = Tape Finder : edu.wpi.first.wpilibj.DigitalInput@655221
-* 4 = Right Cube Switch : edu.wpi.first.wpilibj.DigitalInput@6f3b58
+* 2 = Tape Finder : edu.wpi.first.wpilibj.DigitalInput@f0a63f
+* 4 = Cube Detector : edu.wpi.first.wpilibj.DigitalInput@1f4c3
 
 ## ANALOG IN
 
-* 0 = Front Range Finder : edu.wpi.first.wpilibj.AnalogInput@1764bce
-* 1 = Grabber Range Finder : edu.wpi.first.wpilibj.AnalogInput@98385c
-* 2 = Pressure Sensor : edu.wpi.first.wpilibj.AnalogInput@1cfe4b2
+* 0 = Range Finder : edu.wpi.first.wpilibj.AnalogInput@104e3b2
+* 1 = Range Finder 2 : edu.wpi.first.wpilibj.AnalogInput@19619aa
+* 2 = Pressure Sensor : edu.wpi.first.wpilibj.AnalogInput@ac736f
 
 ## Other Configuration
 
@@ -30,15 +30,26 @@ roboRIO serial number: 030a4a34
 
 ## Pneumatics
 
-* [0,1,0] = shooterLeftPneumatics : edu.wpi.first.wpilibj.DoubleSolenoid@14f9431
-* [0,3,2] = shooterRightPneumatics : edu.wpi.first.wpilibj.DoubleSolenoid@195a09c
-* [0,5,4] = grabberLeftOpenClose : edu.wpi.first.wpilibj.DoubleSolenoid@e40994
-* [0,7,6] = grabberLeftOpenClose : edu.wpi.first.wpilibj.DoubleSolenoid@93a7ca
-* [1,1,0] = grabberLeftUpDown : edu.wpi.first.wpilibj.DoubleSolenoid@182c5f3
-* [1,3,2] = grabberRightUpDown : edu.wpi.first.wpilibj.DoubleSolenoid@105039f
+* [0,1,0] = leftPneumatics : edu.wpi.first.wpilibj.DoubleSolenoid@774085
+* [0,3,2] = rightPneumatics : edu.wpi.first.wpilibj.DoubleSolenoid@8102c8
+* [0,5,4] = leftOpenClose : edu.wpi.first.wpilibj.DoubleSolenoid@996db8
+* [0,7,6] = rightOpenClose : edu.wpi.first.wpilibj.DoubleSolenoid@163006a
+* [1,1,0] = leftUpDown : edu.wpi.first.wpilibj.DoubleSolenoid@1be847c
+* [1,3,2] = rightUpDown : edu.wpi.first.wpilibj.DoubleSolenoid@1975e01
 
 ## Joysticks
 
-* 0 = Joystick 1 : edu.wpi.first.wpilibj.Joystick@88ff2c
-* 1 = Joystick 2 : edu.wpi.first.wpilibj.Joystick@1851384
+* 0 = Joystick 1 : edu.wpi.first.wpilibj.Joystick@d072a9
+    * 7 = Test Motors Forward : TestMotors
+    * 9 = Test Motors Backward : TestMotors
+* 1 = Joystick 2 : edu.wpi.first.wpilibj.Joystick@75222b
+    * 1 = Shoot : FireCubeCommand
+    * 7 = Arm Down : GrabberDownCommand
+    * 8 = Arm Close : DriverCloseCommand
+    * 9 = Arm Up : GrabberUpCommand
+    * 10 = Arm Open : OpenGrabberCommand
+    * 11 = Spinner wheels : SpinGrabberWheelsCommand
+    * 12 = Grabber wheels : SpinGrabberWheelsCommand
+    * 13 = Celebrate : CelebrateCommand
+    * 14 = Toggle arms open/closed : OpenGrabberCommand
 

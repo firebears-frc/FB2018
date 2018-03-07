@@ -10,6 +10,7 @@
 
 package org.firebears.subsystems;
 
+import org.firebears.Robot;
 import org.firebears.RobotMap;
 import org.firebears.commands.*;
 import org.firebears.commands.auto.DriveToDistanceCommand;
@@ -31,6 +32,7 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
@@ -73,16 +75,13 @@ public class AutoSelection extends Subsystem {
 	public Command getAuto() {
 		
 		Command selectedAuto = null;
-		String side = RobotMap.side;
+		String side = Robot.oi.joystick2.getRawButton(18) ? LEFT : (Robot.oi.joystick2.getRawButton(17) ? RIGHT : MIDDLE);
 		System.out.println("Side: " + side);
-		String priority = RobotMap.priority;
+		String priority = Robot.oi.joystick2.getRawButton(15) ? SCALE : SWITCH;
 		System.out.println("Priority: " + priority);
-		Boolean shouldCross = RobotMap.shouldCross;
+		Boolean shouldCross = Robot.oi.joystick2.getRawButton(16);
 		System.out.println("ShouldCross: " + shouldCross);
 		String gameData = DriverStation.getInstance().getGameSpecificMessage();
-//		
-//		// Week Zero Game Data
-//		String gameData = offSeasonNetworkTable.getTable("OffseasonFMSInfo").getEntry("GameData").getString("defaultValue");
 		if (gameData == null) {  gameData = "LLL"; System.out.println("No game data retrieved"); }
 //		
 		// to-do = replace println's with auto commands
@@ -266,6 +265,8 @@ public class AutoSelection extends Subsystem {
 
 	@Override
 	public void periodic() {
-		// Put code here to be run every loop
+		if (RobotMap.DEBUG) {
+		    SmartDashboard.putNumber("Throttle", Robot.oi.joystick2.getThrottle());
+		}
 	}
 }
