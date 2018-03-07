@@ -12,6 +12,7 @@
 //test
 package org.firebears;
 
+import org.firebears.commands.ActivateCompressor;
 import org.firebears.commands.BackIntoWallCommand;
 import org.firebears.commands.CelebrateCommand;
 import org.firebears.commands.DriveToDistanceStraightCommand;
@@ -31,7 +32,6 @@ import org.firebears.commands.auto.ChangeShouldCross;
 import org.firebears.commands.auto.ChangeSide;
 import org.firebears.commands.auto.DriveToDistanceCommand;
 import org.firebears.commands.auto.DriveToTapeCommand;
-import org.firebears.commands.auto.RotateToAngle;
 import org.firebears.commands.auto.TestCommandGroup;
 import org.firebears.commands.auto.TestCrossFieldCommandGroup;
 import org.firebears.commands.driver.GrabberDownCommand;
@@ -224,6 +224,9 @@ public class OI {
 	   SmartDashboard.putData("Lower Grabber", new RaiseGrabberCommand(false));
 	   SmartDashboard.putData("Spin Grabber Wheels", spinnerWheelsStartCommand);
 	   SmartDashboard.putData("Stop Grabber Wheels", spinnerWheelsStopCommand);
+	   
+	   SmartDashboard.putData("Turn on Compressor", new ActivateCompressor(true));
+	   SmartDashboard.putData("Turn off Compressor", new ActivateCompressor(false));
 	}
 	// Auto commands
 	SmartDashboard.putData("Left side", new ChangeSide("Left"));
