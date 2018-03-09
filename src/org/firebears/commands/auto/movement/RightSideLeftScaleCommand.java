@@ -5,6 +5,8 @@ import org.firebears.commands.PlayRecordingCommand;
 import org.firebears.commands.RelativeAngleCommand;
 import org.firebears.commands.ResetNavX;
 import org.firebears.commands.RotateToAngleCommand;
+import org.firebears.commands.driver.FireCubeCommand;
+import org.firebears.commands.shooter.SpinShooterWheelsCommand;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.WaitCommand;
@@ -29,8 +31,10 @@ public class RightSideLeftScaleCommand extends CommandGroup {
     	addSequential(new WaitCommand(.5));
     	addSequential(new RelativeAngleCommand(0));
     	addSequential(new WaitCommand(.5));
+    	addSequential(new SpinShooterWheelsCommand(.6));
     	addSequential(new DriveToDistanceStraightCommand(60, 0.7));
     	addSequential(new WaitCommand(.5));
     	addSequential(new RelativeAngleCommand(-90));
+    	addSequential(new FireCubeCommand());
     }
 }

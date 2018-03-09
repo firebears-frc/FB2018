@@ -20,9 +20,8 @@ public class RightSideRightScaleCommand extends CommandGroup {
 		addSequential(new SpinShooterWheelsCommand(.6));
 		addSequential(new WaitCommand(.7));
 		addSequential(new RotateToAngleCommand(90));
-//		addSequential(new SpinShooterWheelsCommand(.6));
 		addSequential(new DriveToDistanceStraightCommand(24, .5));
 		addSequential(new WaitCommand(.5));
-//		addSequential(new FireCubeCommand());
+		addSequential(new FireCubeCommand());
 	}
 }

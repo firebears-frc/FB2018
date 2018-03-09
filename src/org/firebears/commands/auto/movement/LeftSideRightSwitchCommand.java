@@ -5,6 +5,7 @@ import org.firebears.commands.PlayRecordingCommand;
 import org.firebears.commands.RelativeAngleCommand;
 import org.firebears.commands.ResetNavX;
 import org.firebears.commands.RotateToAngleCommand;
+import org.firebears.commands.grabber.OpenGrabberCommand;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.WaitCommand;
@@ -33,6 +34,7 @@ public class LeftSideRightSwitchCommand extends CommandGroup {
     	addSequential(new WaitCommand(.5));
     	addSequential(new RelativeAngleCommand(270));
     	addSequential(new WaitCommand(.5));
+		addSequential(new OpenGrabberCommand(true));
     	addSequential(new DriveToDistanceStraightCommand(48, 1.0));
     }
 }

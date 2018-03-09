@@ -36,12 +36,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
-
 /**
  *
  */
 public class AutoSelection extends Subsystem {
-	
+
 	final String LEFT = "Left";
 	final String RIGHT = "Right";
 	final String MIDDLE = "Middle";
@@ -53,7 +52,7 @@ public class AutoSelection extends Subsystem {
 	String side;
 	String priority;
 	Boolean shouldCross;
-	
+
 	Command leftSideLeftScale = new LeftSideLeftScaleCommand();
 	Command leftSideRightScale = new LeftSideRightScaleCommand();
 	Command leftSideLeftSwitch = new LeftSideLeftSwitchCommand();
@@ -65,33 +64,29 @@ public class AutoSelection extends Subsystem {
 	Command middleSideLeftSwitch = new MiddleSideLeftSwitchCommand();
 	Command middleSideRightSwitch = new MiddleSideRightSwitchCommand();
 	Command bothSideCrossAuto = new BothSideCrossAutoCommand();
-	
-	
+
 	public AutoSelection() {
-		
+
 	}
-	
 
 	public Command getAuto() {
-//		
+		//
 		Command selectedAuto = null;
-//		String side = Robot.oi.joystick2.getRawButton(18) ? LEFT : (Robot.oi.joystick2.getRawButton(17) ? RIGHT : MIDDLE);
-//		System.out.println("Side: " + side);
-//		String priority = Robot.oi.joystick2.getRawButton(15) ? SCALE : SWITCH;
-//		System.out.println("Priority: " + priority);
-//		Boolean shouldCross = Robot.oi.joystick2.getRawButton(16);
-//		System.out.println("ShouldCross: " + shouldCross);
-		
-		
-		
-		boolean leftSide = Robot.oi.joystick2.getRawButton(18);
-		boolean rightSide = Robot.oi.joystick2.getRawButton(17);
+		// String side = Robot.oi.joystick2.getRawButton(18) ? LEFT :
+		// (Robot.oi.joystick2.getRawButton(17) ? RIGHT : MIDDLE);
+		// System.out.println("Side: " + side);
+		// String priority = Robot.oi.joystick2.getRawButton(15) ? SCALE : SWITCH;
+		// System.out.println("Priority: " + priority);
+		// Boolean shouldCross = Robot.oi.joystick2.getRawButton(16);
+		// System.out.println("ShouldCross: " + shouldCross);
+
+		boolean leftSide = Robot.oi.joystick2.getRawButton(3);
+		boolean rightSide = Robot.oi.joystick2.getRawButton(2);
 		boolean shouldCross = Robot.oi.joystick2.getRawButton(16);
 		boolean scaleBool = Robot.oi.joystick2.getRawButton(15);
-		
+
 		String side = "";
 		String priority = "";
-
 
 		if (leftSide == true && rightSide == false) {
 			RobotMap.side = "Left";
@@ -113,7 +108,7 @@ public class AutoSelection extends Subsystem {
 			RobotMap.priority = "Scale";
 			priority = SCALE;
 		}
-		
+
 		if (shouldCross == true) {
 			RobotMap.shouldCross = true;
 			shouldCross = true;
@@ -125,15 +120,24 @@ public class AutoSelection extends Subsystem {
 		System.out.println(priority);
 		System.out.println(shouldCross);
 
-
-
-		
 		String gameData = DriverStation.getInstance().getGameSpecificMessage();
 
-		
-		
-		if (gameData == null) {  gameData = "LLL"; System.out.println("No game data retrieved"); }
-//		
+//		for (int i = 0; i < 100; i++) {
+//			gameData = DriverStation.getInstance().getGameSpecificMessage();
+//			if (gameData != null) {
+//				break;
+//			}
+//			try {
+//				Thread.sleep(20);
+//			} catch (Exception e) {
+//			}
+//		}
+
+		if (gameData == null) {
+			gameData = "LLL";
+			System.out.println("No game data retrieved");
+		}
+		//
 		// to-do = replace println's with auto commands
 		switch (side) {
 
@@ -242,7 +246,7 @@ public class AutoSelection extends Subsystem {
 					System.out.println("Select auto: right side, right scale");
 					selectedAuto = rightSideRightScale;
 					break;
-					
+
 				// Scale on left
 				case L:
 					if (shouldCross) {
@@ -259,7 +263,7 @@ public class AutoSelection extends Subsystem {
 							System.out.println("Select auto: cross auto line");
 							selectedAuto = bothSideCrossAuto;
 						}
-						
+
 					}
 					break;
 				}
@@ -267,9 +271,9 @@ public class AutoSelection extends Subsystem {
 
 			// Switch as priority
 			case SWITCH:
-				
+
 				switch (gameData.charAt(0)) {
-				
+
 				// Switch on right
 				case R:
 					// Runs when robot on right, switch on right
@@ -285,7 +289,8 @@ public class AutoSelection extends Subsystem {
 						selectedAuto = rightSideLeftSwitch;
 					} else {
 						if (gameData.charAt(1) == R) {
-							// Runs when robot on right, switch on left, scale on right and not allowed to cross
+							// Runs when robot on right, switch on left, scale on right and not allowed to
+							// cross
 							System.out.println("Select Auto: right side, right scale");
 							selectedAuto = rightSideRightScale;
 						} else {
@@ -305,7 +310,7 @@ public class AutoSelection extends Subsystem {
 			System.out.println("No auto selected");
 			selectedAuto = new DoNothingCommand();// Maybe replace with WaitCommand
 		}
-		
+
 		return selectedAuto;
 	}
 
@@ -315,8 +320,8 @@ public class AutoSelection extends Subsystem {
 
 	@Override
 	public void periodic() {
-		if (RobotMap.DEBUG) {
-		    SmartDashboard.putNumber("Throttle", Robot.oi.joystick2.getThrottle());
-		}
+		// if (RobotMap.DEBUG) {
+		// SmartDashboard.putNumber("Throttle", Robot.oi.joystick2.getThrottle());
+		// }
 	}
 }

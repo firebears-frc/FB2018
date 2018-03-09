@@ -7,6 +7,7 @@ import org.firebears.commands.RelativeAngleCommand;
 import org.firebears.commands.ResetNavX;
 import org.firebears.commands.RotateToAngleCommand;
 import org.firebears.commands.driver.FireCubeCommand;
+import org.firebears.commands.grabber.OpenGrabberCommand;
 import org.firebears.commands.grabber.WaitForCubeAquisitionCommand;
 import org.firebears.commands.shooter.SpinShooterWheelsCommand;
 
@@ -29,22 +30,32 @@ public class TestCommandGroup extends CommandGroup {
 //		addSequential(new DriveToDistanceStraightCommand(24, -.5));
 		
 		
-		addSequential(new ResetNavX());
-		addSequential(new WaitCommand(.25));
-    	addSequential(new DriveToDistanceStraightCommand(190, 0.70));
-    	addSequential(new WaitCommand(0.5));
-    	addSequential(new RelativeAngleCommand(90));
-    	addSequential(new WaitCommand(.5));
-    	addSequential(new DriveToDistanceStraightCommand(215, 1.0));
+//		addSequential(new ResetNavX());
+//		addSequential(new WaitCommand(.25));
+//    	addSequential(new DriveToDistanceStraightCommand(190, 0.70));
+//    	addSequential(new WaitCommand(0.5));
+//    	addSequential(new RelativeAngleCommand(90));
+//    	addSequential(new WaitCommand(.5));
+//    	addSequential(new DriveToDistanceStraightCommand(215, 1.0));
+//    	
+//    	
+//    	addSequential(new WaitCommand(.5));
+//    	addSequential(new RelativeAngleCommand(0));
+//    	addSequential(new WaitCommand(.5));
+//    	addSequential(new DriveToDistanceStraightCommand(54, 0.7));
+//    	addSequential(new WaitCommand(.5));
+//    	addSequential(new RelativeAngleCommand(90));
     	
-    	
-    	addSequential(new WaitCommand(.5));
-    	addSequential(new RelativeAngleCommand(0));
-    	addSequential(new WaitCommand(.5));
-    	addSequential(new DriveToDistanceStraightCommand(54, 0.7));
-    	addSequential(new WaitCommand(.5));
-    	addSequential(new RelativeAngleCommand(90));
-    	
+		addSequential(new DriveToDistanceStraightCommand(12, .5));
+		addSequential(new WaitCommand(.7));
+		addSequential(new RotateToAngleCommand(-60));
+		addSequential(new WaitCommand(.7));
+		addSequential(new DriveToDistanceStraightCommand(24, .5));
+		addSequential(new WaitCommand(.7));
+		addSequential(new RotateToAngleCommand(60));
+		addSequential(new WaitCommand(.5));
+		addSequential(new OpenGrabberCommand(true));
+		addSequential(new DriveToDistanceStraightCommand(45, 1.0));
 
 //		addSequential(new ResetNavX());
 //		addSequential(new WaitCommand(.25));
@@ -52,5 +63,9 @@ public class TestCommandGroup extends CommandGroup {
 //		addSequential(new WaitCommand(1));
 //		addSequential(new RelativeAngleCommand(180));
 
+//		addSequential(new SpinShooterWheelsCommand(.6));
+//		addSequential(new WaitCommand(1.0));
+//		addSequential(new FireCubeCommand());
+		
 	}
 }

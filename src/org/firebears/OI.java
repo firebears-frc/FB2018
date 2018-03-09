@@ -114,17 +114,17 @@ public class OI {
 	extendShooter.whenPressed(fireCubeCommand);
 	report.addJoystickButton(1, 1, "Shoot", fireCubeCommand);
 	
-	highShot = new JoystickButton(joystick2, 6);
-	highShot.whenPressed(new SpinShooterWheelsCommand(.9));
-	
-	medShot = new JoystickButton(joystick2, 5);
-	medShot.whenPressed(new SpinShooterWheelsCommand(.6));
-	
-	lowShot = new JoystickButton(joystick2, 4);
-	lowShot.whenPressed(new SpinShooterWheelsCommand(.4));
-	
-	switchShot = new JoystickButton(joystick2, 3);
-	switchShot.whenPressed(new SpinShooterWheelsCommand(.25));
+//	highShot = new JoystickButton(joystick2, 6);
+//	highShot.whenPressed(new SpinShooterWheelsCommand(.9));
+//	
+//	medShot = new JoystickButton(joystick2, 5);
+//	medShot.whenPressed(new SpinShooterWheelsCommand(.6));
+//	
+//	lowShot = new JoystickButton(joystick2, 4);
+//	lowShot.whenPressed(new SpinShooterWheelsCommand(.4));
+//	
+//	switchShot = new JoystickButton(joystick2, 3);
+//	switchShot.whenPressed(new SpinShooterWheelsCommand(.25));
 	
 	armDown = new JoystickButton(joystick2, 7);
 	Command grabberDownCommand = new GrabberDownCommand();
@@ -136,20 +136,20 @@ public class OI {
 	armUp.whenPressed(grabberUpCommand);
 	report.addJoystickButton(1, 9, "Arm Up", grabberUpCommand);
 	
-	armClose = new JoystickButton(joystick2, 8);
+//	armClose = new JoystickButton(joystick2, 8);
 	Command armCloseCommand = new DriverCloseCommand();
-	armClose.whenPressed(armCloseCommand);
-	report.addJoystickButton(1, 8, "Arm Close", armCloseCommand);
+//	armClose.whenPressed(armCloseCommand);
+//	report.addJoystickButton(1, 8, "Arm Close", armCloseCommand);
 	
-	armOpen = new JoystickButton(joystick2, 10);
+//	armOpen = new JoystickButton(joystick2, 10);
 	Command armOpenCommand = new  OpenGrabberCommand(true);
-	armOpen.whenPressed(armOpenCommand);
-	report.addJoystickButton(1, 10, "Arm Open", armOpenCommand);
+//	armOpen.whenPressed(armOpenCommand);
+//	report.addJoystickButton(1, 10, "Arm Open", armOpenCommand);
 	
 	armOpenClose = new JoystickButton(joystick2, 14);
-	Command armClosedCommand = new  OpenGrabberCommand(false);
-	armOpenClose.whenPressed(armClosedCommand);
-	armOpenClose.whenReleased(armOpenCommand);
+	Command armClosedCommand = new OpenGrabberCommand(false);
+	armOpenClose.whenPressed(armOpenCommand);
+	armOpenClose.whenReleased(armClosedCommand);
 	report.addJoystickButton(1, 14, "Toggle arms open/closed", armClosedCommand);
 	
 	spinGrabberWheels = new JoystickButton(joystick2, 11);
@@ -159,11 +159,11 @@ public class OI {
 	spinGrabberWheels.whenReleased(spinnerWheelsStopCommand);
 	report.addJoystickButton(1, 11, "Spinner wheels", spinnerWheelsStartCommand);
 	
-	spinGrabberWheels = new JoystickButton(joystick2, 12);
+	reverseGrabberWheels = new JoystickButton(joystick2, 12);
 	Command grabberWheelsStartCommand = new ReverseGrabberWheelsCommand(true);
-	spinGrabberWheels.whenPressed(grabberWheelsStartCommand);
+	reverseGrabberWheels.whenPressed(grabberWheelsStartCommand);
 	Command grabberWheelsStopCommand = new ReverseGrabberWheelsCommand(false);
-	spinGrabberWheels.whenReleased(grabberWheelsStopCommand);
+	reverseGrabberWheels.whenReleased(grabberWheelsStopCommand);
 	report.addJoystickButton(1, 12, "Grabber wheels", spinnerWheelsStartCommand);
 
 //	dance = new JoystickButton(joystick1, 1);

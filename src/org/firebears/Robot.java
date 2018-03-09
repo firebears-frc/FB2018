@@ -93,37 +93,37 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void autonomousInit() {
-		// System.out.println("joytickbutton1: " + oi.joystick1.getRawButton(1));
-		// System.out.println("joytickYAxis: "+ oi.joystick1.getRawAxis(1));
-		// System.out.println("joytickXAxis: "+ oi.joystick2.getX());
-		boolean leftSide = oi.joystick2.getRawButton(18);
-		boolean rightSide = oi.joystick2.getRawButton(17);
-		boolean scaleBool = oi.joystick2.getRawButton(15);
-		boolean crossBool = oi.joystick2.getRawButton(16);
-
-		if (leftSide == true && rightSide == false) {
-			RobotMap.side = "Left";
-		} else if (leftSide == false && rightSide == true) {
-			RobotMap.side = "Right";
-		} else if (leftSide == false && rightSide == false) {
-			RobotMap.side = "Middle";
-		}
-
-		if (scaleBool == false) {
-			RobotMap.priority = "Switch";
-		} else if (scaleBool == true) {
-			RobotMap.priority = "Scale";
-		}
-		
-		if (crossBool == true) {
-			RobotMap.shouldCross = true;
-		} else if (crossBool == false) {
-			RobotMap.shouldCross = false;
-		}
-
-		SmartDashboard.putString("Side", RobotMap.side);
-		SmartDashboard.putString("Priority", RobotMap.priority);
-		SmartDashboard.putBoolean("Cross", RobotMap.shouldCross);
+//		// System.out.println("joytickbutton1: " + oi.joystick1.getRawButton(1));
+//		// System.out.println("joytickYAxis: "+ oi.joystick1.getRawAxis(1));
+//		// System.out.println("joytickXAxis: "+ oi.joystick2.getX());
+//		boolean leftSide = oi.joystick2.getRawButton(18);
+//		boolean rightSide = oi.joystick2.getRawButton(17);
+//		boolean scaleBool = oi.joystick2.getRawButton(15);
+//		boolean crossBool = oi.joystick2.getRawButton(16);
+//
+//		if (leftSide == true && rightSide == false) {
+//			RobotMap.side = "Left";
+//		} else if (leftSide == false && rightSide == true) {
+//			RobotMap.side = "Right";
+//		} else if (leftSide == false && rightSide == false) {
+//			RobotMap.side = "Middle";
+//		}
+//
+//		if (scaleBool == false) {
+//			RobotMap.priority = "Switch";
+//		} else if (scaleBool == true) {
+//			RobotMap.priority = "Scale";
+//		}
+//		
+//		if (crossBool == true) {
+//			RobotMap.shouldCross = true;
+//		} else if (crossBool == false) {
+//			RobotMap.shouldCross = false;
+//		}
+//
+//		SmartDashboard.putString("Side", RobotMap.side);
+//		SmartDashboard.putString("Priority", RobotMap.priority);
+//		SmartDashboard.putBoolean("Cross", RobotMap.shouldCross);
 
 		selectedAuto = autoSelection.getAuto();
 
@@ -223,6 +223,8 @@ public class Robot extends TimedRobot {
 
 			SmartDashboard.putBoolean("Closed_LOOP", RobotMap.CLOSED_LOOP_DRIVING);
 			SmartDashboard.putString("ControlMode", RobotMap.chassisLeftMaster.getControlMode().toString());
+			
+			SmartDashboard.putString("Solenoid Pos", RobotMap.leftUpDown.get().toString());
 
 		}
 	}
