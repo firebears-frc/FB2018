@@ -56,7 +56,6 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void robotInit() {
-		CameraServer.getInstance().startAutomaticCapture();
 		RobotReport report = new RobotReport("FB2018");
 		RobotMap.init(report);
 		chassis = new Chassis();
@@ -66,7 +65,7 @@ public class Robot extends TimedRobot {
 		grabber = new Grabber();
 		autoSelection = new AutoSelection();
 
-		CameraServer.getInstance().startAutomaticCapture();
+//		CameraServer.getInstance().startAutomaticCapture();
 
 		// OI must be constructed after subsystems. If the OI creates Commands
 		// (which it very likely will), subsystems are not guaranteed to be
@@ -125,6 +124,10 @@ public class Robot extends TimedRobot {
 //		SmartDashboard.putString("Priority", RobotMap.priority);
 //		SmartDashboard.putBoolean("Cross", RobotMap.shouldCross);
 
+		Robot.grabber.grabberRaise();
+		Robot.grabber.grabberClose();
+		RobotMap.compressor.stop();
+		
 		selectedAuto = autoSelection.getAuto();
 
 		System.out.println("selectedAuto = " + selectedAuto);
@@ -156,8 +159,11 @@ public class Robot extends TimedRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-		if (selectedAuto != null)
+		if (selectedAuto != null) {
 			selectedAuto.cancel();
+		}
+		
+		RobotMap.compressor.start();
 	}
 
 	/**

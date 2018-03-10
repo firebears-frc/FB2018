@@ -27,9 +27,9 @@ public class Shooter extends Subsystem {
 	public PIDController rightSpinner;
 	EncoderPIDSource rightSpinnerEncoder;
 
-	final double spinnerP = 0.000125;
+	final double spinnerP = 0.00025;
 	final double spinnerI = 0;
-	final double spinnerD = 0;
+	final double spinnerD = 0.00025;
 	final double spinnerF = 0;
 	final double TOLERANCE_PER = 5;
 

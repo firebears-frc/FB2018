@@ -16,8 +16,8 @@ public class RelativeAngleCommand extends PIDCommand {
 	protected double angleTolerance = 2;
 	protected double targetAngle;
 	double angle;
-	double offsetFrom90 = 10;// 3.8;
-	double offsetFrom10 = 3;// 2.0;
+	double offsetFrom90 = 5.625;//10;// 3.8;
+	double offsetFrom10 = 4;//3;// 2.0;
 	long timeout;
 
 	public RelativeAngleCommand(double angle) {

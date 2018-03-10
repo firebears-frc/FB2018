@@ -15,8 +15,8 @@ public class RotateToAngleCommand extends PIDCommand {
     protected final double SPEED = 0.5;
     protected double angleTolerance = 1.5;
     protected double targetAngle;
-    double offsetFrom90 = 6;//10;//3.8;
-    double offsetFrom10 = 2.66;//3;//2.0;
+    double offsetFrom90 = 5.625;//10;//3.8;
+    double offsetFrom10 = 4;//3;//2.0;
     long timeout;
 
     public RotateToAngleCommand(double degrees) {
@@ -64,9 +64,9 @@ public class RotateToAngleCommand extends PIDCommand {
 
     protected void initialize() {
 	timeout = System.currentTimeMillis() + 1000 * 5;
-//	targetAngle = bound(RobotMap.navXBoard.getAngle() + turnValue - getOffset(turnValue));
+	targetAngle = bound(RobotMap.navXBoard.getAngle() + turnValue - getOffset(turnValue));
 //	targetAngle = bound(RobotMap.navXBoard.getAngle() + SmartDashboard.getNumber("Target Angle", 0));
-	targetAngle = bound(RobotMap.navXBoard.getAngle() + SmartDashboard.getNumber("Target Angle", 0) - getOffset(turnValue));
+//	targetAngle = bound(RobotMap.navXBoard.getAngle() + SmartDashboard.getNumber("Target Angle", 0) - getOffset(turnValue));
 	getPIDController().setSetpoint(0.0);
 	if (RobotMap.DEBUG)
 	    System.out.println("\t # " + this);
