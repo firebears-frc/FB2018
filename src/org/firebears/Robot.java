@@ -21,10 +21,13 @@ import org.firebears.subsystems.Shooter;
 import org.firebears.subsystems.Vision;
 import org.firebears.util.RobotReport;
 
+import com.kauailabs.navx.frc.AHRS;
+
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotController;
+import edu.wpi.first.wpilibj.SerialPort.Port;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -88,6 +91,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
+		SmartDashboard.putNumber("NavX Angle", RobotMap.getNavXAngle());
 	}
 
 	@Override
@@ -123,7 +127,7 @@ public class Robot extends TimedRobot {
 //		SmartDashboard.putString("Side", RobotMap.side);
 //		SmartDashboard.putString("Priority", RobotMap.priority);
 //		SmartDashboard.putBoolean("Cross", RobotMap.shouldCross);
-
+		
 		Robot.grabber.grabberRaise();
 		Robot.grabber.grabberClose();
 		RobotMap.compressor.stop();
