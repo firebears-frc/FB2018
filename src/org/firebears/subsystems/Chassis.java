@@ -59,10 +59,16 @@ public class Chassis extends Subsystem {
 	}
 
 	@Override
-	public void periodic() {
-		// Put code here to be run every loop
-		SmartDashboard.putNumber("Air Pressure", getAirPressure());
-	}
+    public void periodic() {
+        periodicCount++;
+        if (periodicCount % 25 == 0) {
+            SmartDashboard.putNumber("Air Pressure", getAirPressure());
+        }
+        if (periodicCount % 250 == 0) {
+            System.out.printf("Chassis: Air Pressure = %5.2f%n", getAirPressure());
+        }  
+    }
+	private long periodicCount = 0;
 
 	/**
 	 * @return Returns the voltage of the range finder. Returns 0.0 if the value is
