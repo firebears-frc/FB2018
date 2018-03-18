@@ -20,7 +20,7 @@ import org.firebears.commands.I2CCommand;
 import org.firebears.commands.PlayMirroredRecording;
 import org.firebears.commands.PlayRecordingCommand;
 import org.firebears.commands.ResetNavX;
-import org.firebears.commands.RotateToAngleCommand;
+import org.firebears.commands.RelativeAngleCommand;
 import org.firebears.commands.StartRecordingCommand;
 import org.firebears.commands.StopRecordingCommand;
 import org.firebears.commands.TestMotors;
@@ -166,6 +166,12 @@ public class OI {
 	reverseGrabberWheels.whenReleased(grabberWheelsStopCommand);
 	report.addJoystickButton(1, 12, "Grabber wheels", spinnerWheelsStartCommand);
 
+
+	celebrateButton = new JoystickButton(joystick1, 13);
+	Command celebrateCommand = new CelebrateCommand();
+	celebrateButton.whileHeld(celebrateCommand);
+	report.addJoystickButton(1, 13, "Celebrate", celebrateCommand);
+	
 //	dance = new JoystickButton(joystick1, 1);
 //	dance.whileHeld(new DanceCommand());
 	// Switch between Open and Closed Loop Driving
@@ -173,10 +179,6 @@ public class OI {
 	// Command switchDriving = new SwitchDrivingType();
 	// testPID.whenPressed(new SwitchDrivingType());
 	// report.addJoystickButton(0, 1, "Swtich Driving Type", switchDriving);
-//	celebrateButton = new JoystickButton(joystick1, 13);
-//	Command celebrateCommand = new CelebrateCommand();
-//	celebrateButton.whileHeld(celebrateCommand);
-//	report.addJoystickButton(1, 13, "Celebrate", celebrateCommand);
 //	celebrateButton2 =  new JoystickButton(joystick1, 2);
 //	celebrateButton2.whileHeld(celebrateCommand);
 	
@@ -202,7 +204,7 @@ public class OI {
 
 	    // Other Commands
 	    SmartDashboard.putData("DriveToTapeCommand", new DriveToTapeCommand(.4));
-	    SmartDashboard.putData("RotateToAngle", new RotateToAngleCommand(90));
+	    SmartDashboard.putData("RotateToAngle", new RelativeAngleCommand(90));
 	    SmartDashboard.putNumber("Target Angle", 90);
 	    SmartDashboard.putNumber("Target Speed", .5);
 	    SmartDashboard.putData("Drive into Wall", new BackIntoWallCommand(12));

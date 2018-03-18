@@ -4,7 +4,7 @@ import org.firebears.commands.ActivateCompressor;
 import org.firebears.commands.DriveToDistanceStraightCommand;
 import org.firebears.commands.PlayMirroredRecording;
 import org.firebears.commands.PlayRecordingCommand;
-import org.firebears.commands.RotateToAngleCommand;
+import org.firebears.commands.RelativeAngleCommand;
 import org.firebears.commands.driver.FireCubeCommand;
 import org.firebears.commands.driver.GrabberDownCommand;
 import org.firebears.commands.driver.GrabberUpCommand;
@@ -30,7 +30,7 @@ public class LeftSideLeftSwitchCommand extends CommandGroup {
     	addSequential(new DriveToDistanceStraightCommand(60, .4));
 		addSequential(new DriveToDistanceStraightCommand(48, .8));
 		addSequential(new WaitCommand(.5));
-		addSequential(new RotateToAngleCommand(-90));
+		addSequential(new RelativeAngleCommand(-90));
 //		addSequential(new DriveToDistanceStraightCommand(24, -.5));
 		addSequential(new WaitCommand(.5));
 //		addSequential(new OpenGrabberCommand(true));

@@ -68,7 +68,7 @@ public class Robot extends TimedRobot {
 		grabber = new Grabber();
 		autoSelection = new AutoSelection();
 
-//		CameraServer.getInstance().startAutomaticCapture();
+		CameraServer.getInstance().startAutomaticCapture();
 
 		// OI must be constructed after subsystems. If the OI creates Commands
 		// (which it very likely will), subsystems are not guaranteed to be
