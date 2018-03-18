@@ -34,6 +34,7 @@ public class Lights extends Subsystem {
 
 	public final I2C i2c;
 	final DriverStation driverstation;
+	private long fallingTimeout = 0;
 
 	public Lights() {
 		i2c = new I2C(Port.kOnboard, I2C_ADDRESS);
@@ -46,6 +47,9 @@ public class Lights extends Subsystem {
 
 	public void setFallingMode(boolean falling) {
 		hasShot = falling;
+		if (falling) {
+			fallingTimeout = System.currentTimeMillis() + 2 * 1000L;
+		}
 	}
 
 	public void setCelebrateMode(boolean celebrate) {
@@ -104,6 +108,9 @@ public class Lights extends Subsystem {
 			}
 			if (hasShot) {
 				setAnimation(SHOOTER_STRIP, FALL_ANIMATION);
+				if (System.currentTimeMillis() > fallingTimeout) {
+					hasShot = false;
+				}
 			}
 			if (holdingCube) {
 				setAnimation(GRABBER_STRIP, CUBE_ANIMATION);

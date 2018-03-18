@@ -167,7 +167,7 @@ public class OI {
 	report.addJoystickButton(1, 12, "Grabber wheels", spinnerWheelsStartCommand);
 
 
-	celebrateButton = new JoystickButton(joystick1, 13);
+	celebrateButton = new JoystickButton(joystick2, 13);
 	Command celebrateCommand = new CelebrateCommand();
 	celebrateButton.whileHeld(celebrateCommand);
 	report.addJoystickButton(1, 13, "Celebrate", celebrateCommand);
