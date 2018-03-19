@@ -81,7 +81,7 @@ public class Chassis extends Subsystem {
 	/**
 	 * @return Returns pressure in pounds per square inches.
 	 */
-	private double getAirPressure() {
+	public double getAirPressure() {
 		double volts = RobotMap.pressureSensor.getAverageVoltage() - 0.49;
 		return volts * 51.28;
 	}

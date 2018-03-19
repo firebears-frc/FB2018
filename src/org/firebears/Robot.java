@@ -44,6 +44,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends TimedRobot {
 
 	Command selectedAuto;
+	Command manualShooter;
 
 	public static OI oi;
 	public static Vision vision;
@@ -175,12 +176,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		Joystick stick = Robot.oi.joystick2;
-		if (((stick.getRawAxis(0) + 1) / 2) > .1) {
-			Robot.shooter.shooterSpinWheel((stick.getRawAxis(0) + 1) / 2);
-		} else {
-			Robot.shooter.shooterSpinWheel(0);
-		}
+		
 
 		Scheduler.getInstance().run();
 

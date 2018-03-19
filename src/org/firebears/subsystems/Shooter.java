@@ -3,6 +3,7 @@ package org.firebears.subsystems;
 import org.firebears.Robot;
 import org.firebears.RobotMap;
 import org.firebears.RobotMap.EncoderPIDSource;
+import org.firebears.commands.TeleopShooterCommand;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
@@ -88,6 +89,6 @@ public class Shooter extends Subsystem {
 	}
 
 	public void initDefaultCommand() {
-
+		setDefaultCommand(new TeleopShooterCommand());
 	}
 }

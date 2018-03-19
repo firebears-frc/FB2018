@@ -104,6 +104,19 @@ public class RobotMap {
 
 	public static DigitalInput cubeSwitch;
 	
+	
+	public static boolean TestDriveSim = false;
+	public static boolean TestNavx = false;
+	public static boolean TestShooter = false;
+	public static boolean TestSolenoid = false;
+	public static boolean TestUltrasonic = false;
+	public static boolean TestVision = false;
+	public static boolean TestVoltage = false;
+	public static boolean TestPressure = false;
+
+
+
+	
 	public static void init(RobotReport report) {
 
 		// Set up motors for driving
