@@ -52,6 +52,7 @@ public class AutoSelection extends Subsystem {
 	String side;
 	String priority;
 	Boolean shouldCross;
+	Boolean shouldSplit;
 
 	Command leftSideLeftScale = new LeftSideLeftScaleCommand();
 	Command leftSideRightScale = new LeftSideRightScaleCommand();
@@ -137,8 +138,7 @@ public class AutoSelection extends Subsystem {
 			gameData = "LLL";
 			System.out.println("No game data retrieved");
 		}
-		//
-		// to-do = replace println's with auto commands
+		
 		switch (side) {
 
 		// Robot on left side
@@ -305,6 +305,90 @@ public class AutoSelection extends Subsystem {
 			}
 			break;
 		}
+		
+		if (selectedAuto == leftSideLeftScale) {
+			if (gameData.charAt(0) == L) {
+				if (shouldSplit == true) {
+					// Runs when robot on left, switch & scale on left, and put cube in both
+					System.out.println("Select auto: left side, 2 cube, left switch and scale");
+					// Add command here
+					
+				} else {
+					// Runs when robot on left, scale on left, switch on right, put 2 cubes on scale
+					System.out.println("Select auto: left side, 2 cube, left scale");
+					// Add command here
+				}
+				
+			} else {
+				// Runs when robot on left, scale on left, switch on right, put 2 cubes on scale
+				System.out.println("Select auto: left side, 2 cube, left scale");
+				// Add command here
+			}
+			
+		}
+		
+		if (selectedAuto == leftSideLeftSwitch) {
+			if (gameData.charAt(1) == L) {
+				if (shouldSplit == true) {
+					// Runs when robot on left, switch & scale on left, and put cube in both
+					System.out.println("Select auto: left side, 2 cube, left switch and scale");
+					// Add command here
+					
+				} else {
+					// Runs when robot on left, switch on left, scale on right, put 2 cubes on switch
+					System.out.println("Select auto: left side, 2 cube, left switch");
+					// Add command here
+				}
+				
+			} else {
+				// Runs when robot on left, switch on left, scale on right, put 2 cubes on switch
+				System.out.println("Select auto: left side, 2 cube, left switch");
+				// Add command here
+			}
+			
+		}
+		
+		if (selectedAuto == rightSideRightScale) {
+			if (gameData.charAt(0) == R) {
+				if (shouldSplit == true) {
+					// Runs when robot on right, switch & scale on right, and put cube in both
+					System.out.println("Select auto: right side, 2 cube, right switch and scale");
+					// Add command here
+					
+				} else {
+					// Runs when robot on right, scale on right, switch on left, put 2 cubes on scale
+					System.out.println("Select auto: right side, 2 cube, right scale");
+					// Add command here
+				}
+				
+			} else {
+				// Runs when robot on right, scale on right, switch on left, put 2 cubes on scale
+				System.out.println("Select auto: right side, 2 cube, right scale");
+				// Add command here
+			}
+			
+		}
+		
+		if (selectedAuto == rightSideRightSwitch) {
+			if (gameData.charAt(1) == R) {
+				if (shouldSplit == true) {
+					// Runs when robot on right, switch & scale on right, and put cube in both
+					System.out.println("Select auto: right side, 2 cube, right switch and scale");
+					// Add command here
+					
+				} else {
+					// Runs when robot on right, switch on right, scale on left, put 2 cubes on switch
+					System.out.println("Select auto: right side, 2 cube, right switch");
+					// Add command here
+				}
+				
+			} else {
+				// Runs when robot on right, switch on right, scale on left, put 2 cubes on switch
+				System.out.println("Select auto: right side, 2 cube, right switch");
+				// Add command here
+			}
+			
+		}
 		// If no command is selected, don't do anything
 		if (selectedAuto == null) {
 			System.out.println("No auto selected");
@@ -313,6 +397,7 @@ public class AutoSelection extends Subsystem {
 
 		return selectedAuto;
 	}
+	
 
 	@Override
 	public void initDefaultCommand() {
