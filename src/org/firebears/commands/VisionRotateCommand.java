@@ -17,12 +17,15 @@ public class VisionRotateCommand extends PIDCommand {
 	double turnValue;
 	double targetAngle;
 	double FORWARD_SPEED = .15;
-	private static final double SPEED = 0.7;
+	private static final double SPEED = 0.5;
 	private static final double TOLERANCE = 1.0;
+	
+	double offsetFrom5 = 1.45;
+	double offsetFrom20 = 38.5;
 	
     public VisionRotateCommand() {
 //    	super(.0325, 0, 0);
-    	super(.05, 0, 0);
+    	super(5, 0.0, 0);
         
     	requires(Robot.chassis);
     	
@@ -38,8 +41,9 @@ public class VisionRotateCommand extends PIDCommand {
     	timeout = System.currentTimeMillis() + 1000 * 5;
     	
     	// Get turn value from vision subsystem
-    	turnValue = Robot.vision.getAngleX();
-//    	turnValue = 90;
+    	// Because cameras are upside down we multiply by negative one
+    	turnValue = Robot.vision.getAngleX() * -1 / 2;
+//    	turnValue = SmartDashboard.getNumber("Target Angle", 0) / 2;
     	
     	// Set target angle for PID to current angle + angle from vision
     	targetAngle = boundAngle(getNavXAngle() + turnValue);
@@ -84,6 +88,12 @@ public class VisionRotateCommand extends PIDCommand {
 		return boundAngle(getNavXAngle() - targetAngle);
 	}
 
+    private double getOffset(double startAngle) {
+		double offsetAnswer;
+		offsetAnswer = startAngle * ((offsetFrom20 - offsetFrom5) / 15);// y = m*x + b
+		return offsetAnswer;
+	}
+    
 	@Override
 	protected double returnPIDInput() {
 		// Use difference in angles as input for PID
@@ -95,7 +105,7 @@ public class VisionRotateCommand extends PIDCommand {
 		// Make sure output doesn't go faster than expected
 		output = Math.max(-SPEED, Math.min(output, SPEED));
 		// Drive the robot
-		Robot.chassis.drive(0.0, output,false);
+		Robot.chassis.drive(0.0, output, true);
 	}
 	
 	public String toString() {
