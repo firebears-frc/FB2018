@@ -104,17 +104,45 @@ public class RobotMap {
 
 	public static DigitalInput cubeSwitch;
 	
+	public static DigitalInput grabberUpPositionSensor;
+	public static DigitalInput grabberDownPositionSensor;
+
+	
+	
+	public static boolean TestDriveSimLeftMasterPositive = false;
+	public static boolean TestDriveSimLeftMasterNegative = false;
+	public static boolean TestDriveSimLeftSlavePositive = false;
+	public static boolean TestDriveSimLeftSlaveNegative = false;
+	
+	public static boolean TestDriveSimRightMasterPositive = false;
+	public static boolean TestDriveSimRightMasterNegative = false;
+	public static boolean TestDriveSimRightSlavePositive = false;
+	public static boolean TestDriveSimRightSlaveNegative = false;
 	
 	public static boolean TestDriveSim = false;
-	public static boolean TestNavx = false;
+
+	
+	public static boolean TestShooterLeftPositive = false;
+	public static boolean TestShooterLeftNegative = false;
+	public static boolean TestShooterRightPositive = false;
+	public static boolean TestShooterRightNegative = false;
+	
 	public static boolean TestShooter = false;
+	
+
+	public static boolean TestSolenoidGrabberVertUp = false;
+	public static boolean TestSolenoidGrabberVertDown = false;
+
 	public static boolean TestSolenoid = false;
+
+
+	public static boolean TestNavx = false;
 	public static boolean TestUltrasonic = false;
 	public static boolean TestVision = false;
 	public static boolean TestVoltage = false;
 	public static boolean TestPressure = false;
-
-
+	
+	public static boolean DisableShooter = false;
 
 	
 	public static void init(RobotReport report) {
@@ -254,6 +282,12 @@ public class RobotMap {
 		// Put Sensor for when cube is in the grabber here
 		cubeSwitch = new DigitalInput(4);
 		report.addDigitalIO(4, "Cube Detector", cubeSwitch);
+		
+		grabberDownPositionSensor = new DigitalInput(6);
+		report.addDigitalIO(0, "Grabber Down Position", grabberDownPositionSensor);
+
+		grabberUpPositionSensor = new DigitalInput(5);
+		report.addDigitalIO(1, "Grabber Up Position", grabberUpPositionSensor);
 
 		try {
 			// navXBoard = new AHRS(SPI.Port.kMXP);

@@ -64,9 +64,9 @@ public class Chassis extends Subsystem {
         if (periodicCount % 25 == 0) {
             SmartDashboard.putNumber("Air Pressure", getAirPressure());
         }
-        if (periodicCount % 250 == 0) {
-            System.out.printf("Chassis: Air Pressure = %5.2f%n", getAirPressure());
-        }  
+//        if (periodicCount % 250 == 0) {
+//            System.out.printf("Chassis: Air Pressure = %5.2f%n", getAirPressure());
+//        }  
     }
 	private long periodicCount = 0;
 

@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Grabber extends Subsystem {
 
 	final double MOTORSPEED = 0.5;
-	final double REVMOTORSPEED = .7;
+	final double REVMOTORSPEED = .5;
 	final double SLOW_SPEED = .05;
 	public final Value SOL_FORWARD = DoubleSolenoid.Value.kForward;
 	public final Value SOL_REVERSE = DoubleSolenoid.Value.kReverse;
@@ -66,7 +66,10 @@ public class Grabber extends Subsystem {
 	}
 	
 	public boolean isRaised() {
-		return RobotMap.rightUpDown.get() == SOL_FORWARD;
+		return RobotMap.grabberUpPositionSensor.get();
+	}
+	public boolean isDown() {
+		return RobotMap.grabberDownPositionSensor.get();
 	}
 
 	/**

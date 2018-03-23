@@ -44,7 +44,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends TimedRobot {
 
 	Command selectedAuto;
-	Command manualShooter;
 
 	public static OI oi;
 	public static Vision vision;
@@ -160,6 +159,8 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void teleopInit() {
+		RobotMap.DisableShooter = false;
+
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
@@ -176,8 +177,6 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		
-
 		Scheduler.getInstance().run();
 
 		if (RobotMap.DEBUG) {
@@ -231,6 +230,11 @@ public class Robot extends TimedRobot {
 			SmartDashboard.putString("ControlMode", RobotMap.chassisLeftMaster.getControlMode().toString());
 			
 			SmartDashboard.putString("Solenoid Pos", RobotMap.leftUpDown.get().toString());
+			
+			SmartDashboard.putBoolean("GrabberUp", !RobotMap.grabberUpPositionSensor.get());
+			SmartDashboard.putBoolean("GrabberDown", !RobotMap.grabberDownPositionSensor.get());
+
+			
 
 		}
 	}
