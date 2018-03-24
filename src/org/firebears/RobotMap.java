@@ -107,7 +107,8 @@ public class RobotMap {
 	public static DigitalInput grabberUpPositionSensor;
 	public static DigitalInput grabberDownPositionSensor;
 
-	
+	public static DigitalInput lidarSensor0;
+	public static DigitalInput lidarSensor1;
 	
 	public static boolean TestDriveSimLeftMasterPositive = false;
 	public static boolean TestDriveSimLeftMasterNegative = false;
@@ -274,6 +275,12 @@ public class RobotMap {
 
 		// Put Ultrasonic Switches here
 
+		lidarSensor0 = new DigitalInput(0);
+		report.addDigitalIO(0, "Grabber Lidar 0", lidarSensor0);
+		
+		lidarSensor1 = new DigitalInput(1);
+		report.addDigitalIO(1, "Grabber Lidar 1", lidarSensor1);
+		
 		tapeSensor = new DigitalInput(2);
 		report.addDigitalIO(2, "Tape Finder", tapeSensor);
 

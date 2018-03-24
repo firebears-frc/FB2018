@@ -6,6 +6,7 @@ import org.firebears.RobotMap;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -92,4 +93,10 @@ public class Grabber extends Subsystem {
 	public void initDefaultCommand() {
 //		setDefaultCommand(new AutoPullCubeCommand());
 	}
+	
+    @Override
+    public void periodic() {
+	SmartDashboard.putBoolean("lidar0", RobotMap.lidarSensor0.get());
+	SmartDashboard.putBoolean("lidar1", RobotMap.lidarSensor1.get());
+    }
 }
