@@ -16,7 +16,7 @@ public class FireCubeCommand extends CommandGroup {
     	addSequential(new OpenGrabberCommand(true));
     	addSequential(new WaitCommand(.5));
         addSequential(new ExtendShooterCommand(true));
-        addSequential(new WaitCommand(.75));
+        addSequential(new WaitCommand(.25));
         addSequential(new ExtendShooterCommand(false));
 //        addSequential(new SpinShooterWheelsCommand(0));
         addSequential(new OpenGrabberCommand(false));

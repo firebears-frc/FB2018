@@ -19,12 +19,16 @@ import org.firebears.commands.auto.movement.LeftSideLeftScaleCommand;
 import org.firebears.commands.auto.movement.LeftSideLeftSwitchCommand;
 import org.firebears.commands.auto.movement.LeftSideRightScaleCommand;
 import org.firebears.commands.auto.movement.LeftSideRightSwitchCommand;
+import org.firebears.commands.auto.movement.LeftSideTwoCubeScaleCommand;
+import org.firebears.commands.auto.movement.LeftSideTwoCubeSplitCommand;
 import org.firebears.commands.auto.movement.MiddleSideLeftSwitchCommand;
 import org.firebears.commands.auto.movement.MiddleSideRightSwitchCommand;
 import org.firebears.commands.auto.movement.RightSideLeftScaleCommand;
 import org.firebears.commands.auto.movement.RightSideLeftSwitchCommand;
 import org.firebears.commands.auto.movement.RightSideRightScaleCommand;
 import org.firebears.commands.auto.movement.RightSideRightSwitchCommand;
+import org.firebears.commands.auto.movement.RightSideTwoCubeScaleCommand;
+import org.firebears.commands.auto.movement.RightSideTwoCubeSplitCommand;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -65,6 +69,11 @@ public class AutoSelection extends Subsystem {
 	Command middleSideLeftSwitch = new MiddleSideLeftSwitchCommand();
 	Command middleSideRightSwitch = new MiddleSideRightSwitchCommand();
 	Command bothSideCrossAuto = new BothSideCrossAutoCommand();
+	
+	Command leftSideTwoCubeScale = new LeftSideTwoCubeScaleCommand();
+	Command leftSideTwoCubeSplit = new LeftSideTwoCubeSplitCommand();
+	Command rightSideTwoCubeScale = new RightSideTwoCubeScaleCommand();
+	Command rightSideTwoCubeSplit = new RightSideTwoCubeSplitCommand();
 
 	public AutoSelection() {
 
@@ -85,6 +94,7 @@ public class AutoSelection extends Subsystem {
 		boolean rightSide = Robot.oi.joystick2.getRawButton(2);
 		boolean shouldCross = Robot.oi.joystick2.getRawButton(16);
 		boolean scaleBool = Robot.oi.joystick2.getRawButton(15);
+		boolean shouldSplit = Robot.oi.joystick2.getRawButton(8);
 
 		String side = "";
 		String priority = "";
@@ -117,6 +127,15 @@ public class AutoSelection extends Subsystem {
 			RobotMap.shouldCross = false;
 			shouldCross = false;
 		}
+		
+		if (shouldSplit == true) {
+			RobotMap.shouldSplit = true;
+			shouldSplit = true;
+		} else if (shouldSplit == false) {
+			RobotMap.shouldSplit = false;
+			shouldSplit = false;
+		}
+		
 		System.out.println(side);
 		System.out.println(priority);
 		System.out.println(shouldCross);
@@ -306,23 +325,25 @@ public class AutoSelection extends Subsystem {
 			break;
 		}
 		
+		
+		
 		if (selectedAuto == leftSideLeftScale) {
 			if (gameData.charAt(0) == L) {
 				if (shouldSplit == true) {
 					// Runs when robot on left, switch & scale on left, and put cube in both
 					System.out.println("Select auto: left side, 2 cube, left switch and scale");
-					// Add command here
+					selectedAuto = leftSideTwoCubeSplit;
 					
 				} else {
 					// Runs when robot on left, scale on left, switch on right, put 2 cubes on scale
 					System.out.println("Select auto: left side, 2 cube, left scale");
-					// Add command here
+					selectedAuto = leftSideTwoCubeScale;
 				}
 				
 			} else {
 				// Runs when robot on left, scale on left, switch on right, put 2 cubes on scale
 				System.out.println("Select auto: left side, 2 cube, left scale");
-				// Add command here
+				selectedAuto = leftSideTwoCubeScale;
 			}
 			
 		}
@@ -332,7 +353,7 @@ public class AutoSelection extends Subsystem {
 				if (shouldSplit == true) {
 					// Runs when robot on left, switch & scale on left, and put cube in both
 					System.out.println("Select auto: left side, 2 cube, left switch and scale");
-					// Add command here
+					selectedAuto = leftSideTwoCubeSplit;
 					
 				} else {
 					// Runs when robot on left, switch on left, scale on right, put 2 cubes on switch
@@ -353,18 +374,18 @@ public class AutoSelection extends Subsystem {
 				if (shouldSplit == true) {
 					// Runs when robot on right, switch & scale on right, and put cube in both
 					System.out.println("Select auto: right side, 2 cube, right switch and scale");
-					// Add command here
+					selectedAuto = rightSideTwoCubeSplit;
 					
 				} else {
 					// Runs when robot on right, scale on right, switch on left, put 2 cubes on scale
 					System.out.println("Select auto: right side, 2 cube, right scale");
-					// Add command here
+					selectedAuto = rightSideTwoCubeScale;
 				}
 				
 			} else {
 				// Runs when robot on right, scale on right, switch on left, put 2 cubes on scale
 				System.out.println("Select auto: right side, 2 cube, right scale");
-				// Add command here
+				selectedAuto = rightSideTwoCubeScale;
 			}
 			
 		}
@@ -374,7 +395,7 @@ public class AutoSelection extends Subsystem {
 				if (shouldSplit == true) {
 					// Runs when robot on right, switch & scale on right, and put cube in both
 					System.out.println("Select auto: right side, 2 cube, right switch and scale");
-					// Add command here
+					selectedAuto = rightSideTwoCubeSplit;
 					
 				} else {
 					// Runs when robot on right, switch on right, scale on left, put 2 cubes on switch
@@ -389,6 +410,8 @@ public class AutoSelection extends Subsystem {
 			}
 			
 		}
+		
+		
 		// If no command is selected, don't do anything
 		if (selectedAuto == null) {
 			System.out.println("No auto selected");

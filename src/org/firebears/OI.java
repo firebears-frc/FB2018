@@ -17,6 +17,7 @@ import org.firebears.commands.BackIntoWallCommand;
 import org.firebears.commands.CelebrateCommand;
 import org.firebears.commands.DriveToDistanceStraightCommand;
 import org.firebears.commands.I2CCommand;
+import org.firebears.commands.NonPIDAngle;
 import org.firebears.commands.PlayMirroredRecording;
 import org.firebears.commands.PlayRecordingCommand;
 import org.firebears.commands.ResetNavX;
@@ -199,7 +200,7 @@ public class OI {
 	    
 	    // Vision Commands
 	    SmartDashboard.putData("Vision Turn", new VisionRotateCommand());
-	    SmartDashboard.putData("Drive to Cube", new VisionForwardCommand());
+	    SmartDashboard.putData("Drive to Cube", new VisionForwardCommand(.5));
 	    SmartDashboard.putData("Vision Get Cube", new VisionGetCubeCommandGroup());
 
 	    // Other Commands
@@ -210,7 +211,6 @@ public class OI {
 	    SmartDashboard.putData("Drive into Wall", new BackIntoWallCommand(12));
 	    SmartDashboard.putData("DriveStraight", new DriveToDistanceStraightCommand(200, .5));
 	    SmartDashboard.putData("Test Command Group", new TestCommandGroup());
-	    SmartDashboard.putData("Test Cross Field Command Group", new TestCrossFieldCommandGroup());
 	    // SmartDashboard.putData("Nullzone Command",new DriveIntoNullZoneCommand());
 	    
 	   SmartDashboard.putData("Extend Shooter", new ExtendShooterCommand(true));
