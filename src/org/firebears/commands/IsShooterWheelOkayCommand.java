@@ -52,28 +52,31 @@ public class IsShooterWheelOkayCommand extends Command {
 			rightBackwardNegation = true;
 		}
 
+		
+		Robot.shooter.leftSpinner.enable();
+		Robot.shooter.rightSpinner.enable();
 	}
 
 	protected void execute() {
 
 		switch (side) {
 		case "left":
-			RobotMap.leftLaunchSpinner.set(1 * direction);
-			// Robot.shooter.leftSpinner.setSetpoint(700 * direction);
+//			RobotMap.leftLaunchSpinner.set(1 * direction);
+			 Robot.shooter.leftSpinner.setSetpoint(700 * direction);
 			// Robot.shooter.shooterSpinWheel(1 * direction);
 			System.out.println("Shooter Side: " + side + " Direction: " + vector);
 			break;
 		case "right":
-			RobotMap.rightLaunchSpinner.set(1 * direction);
-			// Robot.shooter.rightSpinner.setSetpoint(700 * direction);
+//			RobotMap.rightLaunchSpinner.set(1 * direction);
+			 Robot.shooter.rightSpinner.setSetpoint(700 * direction);
 			// Robot.shooter.shooterSpinWheel(1* direction);
 			System.out.println("Shooter Side: " + side + " Direction: " + vector);
 			break;
 		default:
-			// Robot.shooter.leftSpinner.setSetpoint(0);
-			// Robot.shooter.rightSpinner.setSetpoint(0);
-			RobotMap.rightLaunchSpinner.set(0);
-			RobotMap.leftLaunchSpinner.set(0);
+			 Robot.shooter.leftSpinner.setSetpoint(0);
+			 Robot.shooter.rightSpinner.setSetpoint(0);
+//			RobotMap.rightLaunchSpinner.set(0);
+//			RobotMap.leftLaunchSpinner.set(0);
 
 			System.out.println("Error in IsShooterWheelOkayCommand: " + side + "is not a side");
 			break;
@@ -138,15 +141,19 @@ public class IsShooterWheelOkayCommand extends Command {
 					+ RobotMap.leftLaunchSpinner.getSelectedSensorVelocity(RobotMap.PID_IDX));
 
 		}
-		RobotMap.leftLaunchSpinner.set(0);
-		RobotMap.rightLaunchSpinner.set(0);
+//		RobotMap.leftLaunchSpinner.set(0);
+//		RobotMap.rightLaunchSpinner.set(0);
+		Robot.shooter.leftSpinner.setSetpoint(0);
+		Robot.shooter.rightSpinner.setSetpoint(0);
 
 	}
 
 	protected void interrupted() {
 		System.out.println("IsShooterWheelOkayCommand Interrupted");
-		RobotMap.leftLaunchSpinner.set(0);
-		RobotMap.rightLaunchSpinner.set(0);
+//		RobotMap.leftLaunchSpinner.set(0);
+//		RobotMap.rightLaunchSpinner.set(0);
+		Robot.shooter.leftSpinner.setSetpoint(0);
+		Robot.shooter.rightSpinner.setSetpoint(0);
 
 	}
 }

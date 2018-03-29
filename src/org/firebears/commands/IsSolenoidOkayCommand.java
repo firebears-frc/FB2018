@@ -23,9 +23,9 @@ public class IsSolenoidOkayCommand extends Command {
 
 	protected void initialize() {
 		System.out.println("IsSolenoidOkayCommand Started");
-		RobotMap.TestSolenoid = false;
-		RobotMap.TestSolenoidGrabberVertUp = false;
-		RobotMap.TestSolenoidGrabberVertDown = false;
+//		RobotMap.TestSolenoid = false;
+//		RobotMap.TestSolenoidGrabberVertUp = false;
+//		RobotMap.TestSolenoidGrabberVertDown = false;
 
 		switch (solenoid) {
 		case 1:

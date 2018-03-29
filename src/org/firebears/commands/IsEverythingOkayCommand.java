@@ -61,13 +61,24 @@ public class IsEverythingOkayCommand extends Command {
 		
 		System.out.println("		Shooter Test Status:....." + check(RobotMap.TestShooter));
 	
+		System.out.println("Solenoid=================" + check(RobotMap.TestSolenoid));
+
 		
+		System.out.println("	Solenoid UP Test Status:...." + check(RobotMap.TestSolenoidGrabberVertUp));
+		System.out.println("	Solenoid DOWN Test Status:...." + check(RobotMap.TestSolenoidGrabberVertDown));
+
+		
+		
+		if (RobotMap.TestSolenoidGrabberVertUp && RobotMap.TestSolenoidGrabberVertDown) {
+			RobotMap.TestSolenoid = true;
+		}
+		System.out.println("		Solenoid Test Status:...." + check(RobotMap.TestSolenoid));
+
 		
 		
 
 		
 		System.out.println("	Navx Test Status:........" + check(RobotMap.TestNavx));
-		System.out.println("	Solenoid Test Status:...." + check(RobotMap.TestSolenoid));
 		System.out.println("	Ultrasonic Test Status:.." + check(RobotMap.TestUltrasonic));
 		System.out.println("	Vision Test Status:......" + check(RobotMap.TestVision));
 		System.out.println("	Pressure Test Status:...." + check(RobotMap.TestPressure));

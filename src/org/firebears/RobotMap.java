@@ -143,6 +143,7 @@ public class RobotMap {
 	public static boolean TestPressure = false;
 	
 	public static boolean DisableShooter = false;
+	public static boolean DisableDrive = false;
 
 	
 	public static void init(RobotReport report) {

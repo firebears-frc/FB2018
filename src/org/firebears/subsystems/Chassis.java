@@ -41,7 +41,7 @@ public class Chassis extends Subsystem {
 	public boolean isTapeBright() {
 		// Return true when detecting light tape
 		return tapeSensor.get();
-//		return false;
+		// return false;
 
 	}
 
@@ -59,15 +59,16 @@ public class Chassis extends Subsystem {
 	}
 
 	@Override
-    public void periodic() {
-        periodicCount++;
-        if (periodicCount % 25 == 0) {
-            SmartDashboard.putNumber("Air Pressure", getAirPressure());
-        }
-//        if (periodicCount % 250 == 0) {
-//            System.out.printf("Chassis: Air Pressure = %5.2f%n", getAirPressure());
-//        }  
-    }
+	public void periodic() {
+		periodicCount++;
+		if (periodicCount % 25 == 0) {
+			SmartDashboard.putNumber("Air Pressure", getAirPressure());
+		}
+		// if (periodicCount % 250 == 0) {
+		// System.out.printf("Chassis: Air Pressure = %5.2f%n", getAirPressure());
+		// }
+	}
+
 	private long periodicCount = 0;
 
 	/**
@@ -93,7 +94,7 @@ public class Chassis extends Subsystem {
 	public double getChassisRangeFinderDistance() {
 		// double distanceInInches = getRangeFinderVoltage() *110.5;// /
 		// VOLT_DIST_RATIO;
-//		double distanceInInches = getRangeFinderVoltage() * 107.5;
+		// double distanceInInches = getRangeFinderVoltage() * 107.5;
 		double distanceInInches = getRangeFinderVoltage() * 41.6;
 		return distanceInInches;
 	}
@@ -102,6 +103,25 @@ public class Chassis extends Subsystem {
 		robotDrive.arcadeDrive(speed * -1, rotation * 1, square);
 		driveMove = speed;
 		driveRotate = rotation;
+	}
+
+	public void leftFront(double speed) {
+		RobotMap.chassisLeftMaster.set(speed);
+	}
+
+	public void leftRear(double speed) {
+		RobotMap.chassisLeftSlave.set(speed);
+
+	}
+
+	public void rightFront(double speed) {
+		RobotMap.chassisRightMaster.set(speed);
+
+	}
+
+	public void rightRear(double speed) {
+		RobotMap.chassisRightSlave.set(speed);
+
 	}
 
 	public void stop() {

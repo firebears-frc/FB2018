@@ -13,6 +13,7 @@ package org.firebears.commands;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 import org.firebears.Robot;
+import org.firebears.RobotMap;
 
 /**
  *
@@ -31,8 +32,11 @@ public class DriveCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-	Joystick stick = Robot.oi.joystick1;
-	Robot.chassis.drive(stick.getY(), stick.getX() * 1.0, true);
+    	if (RobotMap.DisableDrive == false) {
+    		Joystick stick = Robot.oi.joystick1;
+       		Robot.chassis.drive(stick.getY(), stick.getX() * 1.0, true);	
+    	}
+   		
     }
 
     // Make this return true when this Command no longer needs to run execute()

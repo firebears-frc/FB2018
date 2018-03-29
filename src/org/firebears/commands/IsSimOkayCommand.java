@@ -55,28 +55,36 @@ public class IsSimOkayCommand extends Command {
 		
 		switch (side) {
 		case "left front":
-			RobotMap.chassisLeftMaster.set(1 * direction);
-			System.out.println("Chassis Side: " + side + " Set to 610 and direction " + vector);
+//			RobotMap.chassisLeftMaster.set(1 * direction);
+			Robot.chassis.leftFront(1 * direction);
+			System.out.println("Chassis Side: " + side + " Set to 610 and direction " + vector + " " + RobotMap.chassisLeftMaster.getSelectedSensorVelocity(RobotMap.PID_IDX));
 			break;
 		case "left rear":
-			RobotMap.chassisLeftSlave.set(1 * direction);
-			System.out.println("Chassis Side: " + side + " Set to 610 and direction " + vector);
+//			RobotMap.chassisLeftSlave.set(1 * direction);
+			Robot.chassis.leftRear(1 * direction);
+			System.out.println("Chassis Side: " + side + " Set to 610 and direction " + vector + " " + RobotMap.chassisLeftMaster.getSelectedSensorVelocity(RobotMap.PID_IDX));
 			break;
 		case "right front":
-			RobotMap.chassisRightMaster.set(1 * direction);
-			System.out.println("Chassis Side: " + side + " Set to 610 and direction " + vector);
+//			RobotMap.chassisRightMaster.set(1 * direction);
+			Robot.chassis.rightFront(1 * direction);
+			System.out.println("Chassis Side: " + side + " Set to 610 and direction " + vector + " " + RobotMap.chassisRightMaster.getSelectedSensorVelocity(RobotMap.PID_IDX));
 			break;
 		case "right rear":
-			RobotMap.chassisRightSlave.set(1 * direction);
-			System.out.println("Chassis Side: " + side + " Set to 610 and direction " + vector);
+//			RobotMap.chassisRightSlave.set(1 * direction);
+			Robot.chassis.rightRear(1 * direction);
+			System.out.println("Chassis Side: " + side + " Set to 610 and direction " + vector + " " + RobotMap.chassisRightMaster.getSelectedSensorVelocity(RobotMap.PID_IDX));
 			break;
 		default:
 			// RobotMap.chassisRightMotors.set(0);
 			// RobotMap.chassisLeftMotors.set(0);
-			RobotMap.chassisLeftMaster.set(0);
-			RobotMap.chassisLeftSlave.set(0);
-			RobotMap.chassisRightMaster.set(0);
-			RobotMap.chassisRightSlave.set(0);
+//			RobotMap.chassisLeftMaster.set(0);
+//			RobotMap.chassisLeftSlave.set(0);
+//			RobotMap.chassisRightMaster.set(0);
+//			RobotMap.chassisRightSlave.set(0);
+			Robot.chassis.leftFront(0);
+			Robot.chassis.leftRear(0);
+			Robot.chassis.rightFront(0);
+			Robot.chassis.rightRear(0);
 			System.out.println("Error in isSimOkayCommand: " + side + "is not a side");
 			break;
 		}
@@ -97,7 +105,7 @@ public class IsSimOkayCommand extends Command {
 //		System.out.println(side + "Chassis Motors not reaching speed in " + vector + " Direction!");
 //
 		
-		return ((RobotMap.chassisLeftMaster.getSelectedSensorVelocity(RobotMap.PID_IDX) <= -600)
+		return ((RobotMap.chassisLeftMaster.getSelectedSensorVelocity(RobotMap.PID_IDX) >= 600)
 				&& leftForwardNegation)
 				|| ((RobotMap.chassisRightMaster.getSelectedSensorVelocity(RobotMap.PID_IDX) >= -600)
 						&& rightBackwardNegation)
@@ -148,10 +156,18 @@ public class IsSimOkayCommand extends Command {
 		// RobotMap.chassisRightMotors.set(0);
 		// RobotMap.chassisLeftMotors.set(0);
 
-		RobotMap.chassisLeftMaster.set(0);
-		RobotMap.chassisLeftSlave.set(0);
-		RobotMap.chassisRightMaster.set(0);
-		RobotMap.chassisRightSlave.set(0);
+//		RobotMap.chassisLeftMaster.set(0);
+//		RobotMap.chassisLeftSlave.set(0);
+//		RobotMap.chassisRightMaster.set(0);
+//		RobotMap.chassisRightSlave.set(0);
+		Robot.chassis.leftFront(0);
+		Robot.chassis.leftRear(0);
+		Robot.chassis.rightFront(0);
+		Robot.chassis.rightRear(0);
+
+
+
+
 
 		// RobotMap.TestDriveSim = true;
 		// RobotMap.TestDriveSimLeftMasterPositive = true;
@@ -191,11 +207,16 @@ public class IsSimOkayCommand extends Command {
 		// RobotMap.chassisRightMotors.set(0);
 		// RobotMap.chassisLeftMotors.set(0);
 
-		RobotMap.chassisLeftMaster.set(0);
-		RobotMap.chassisLeftSlave.set(0);
-		RobotMap.chassisRightMaster.set(0);
-		RobotMap.chassisRightSlave.set(0);
+//		RobotMap.chassisLeftMaster.set(0);
+//		RobotMap.chassisLeftSlave.set(0);
+//		RobotMap.chassisRightMaster.set(0);
+//		RobotMap.chassisRightSlave.set(0);
 
+		Robot.chassis.leftFront(0);
+		Robot.chassis.leftRear(0);
+		Robot.chassis.rightFront(0);
+		Robot.chassis.rightRear(0);
+		
 		System.out.println("isSimOkayCommand interrupted");
 
 	}
