@@ -233,19 +233,20 @@ public class OI {
 	   SmartDashboard.putData("Turn off Compressor", new ActivateCompressor(false));
 	   SmartDashboard.putData("Reset NavX", new ResetNavX());
 	   SmartDashboard.putData("NOTPIDROTATECOMMAND", new NonPIDRotateCommand(-90));
-	}
-	// Auto commands
-	SmartDashboard.putData("Left side", new ChangeSide("Left"));
-	SmartDashboard.putData("Middle", new ChangeSide("Middle"));
-	SmartDashboard.putData("Right side", new ChangeSide("Right"));
-	SmartDashboard.putData("Scale priority", new ChangePriority("Scale"));
-	SmartDashboard.putData("Switch priority", new ChangePriority("Switch"));
-	SmartDashboard.putData("Should cross", new ChangeShouldCross(true));
-	SmartDashboard.putData("Shouldn't cross", new ChangeShouldCross(false));
+	   
+	   // Auto commands
+	   SmartDashboard.putData("Left side", new ChangeSide("Left"));
+	   SmartDashboard.putData("Middle", new ChangeSide("Middle"));
+	   SmartDashboard.putData("Right side", new ChangeSide("Right"));
+	   SmartDashboard.putData("Scale priority", new ChangePriority("Scale"));
+	   SmartDashboard.putData("Switch priority", new ChangePriority("Switch"));
+	   SmartDashboard.putData("Should cross", new ChangeShouldCross(true));
+	   SmartDashboard.putData("Shouldn't cross", new ChangeShouldCross(false));
+	   
+	   SmartDashboard.putData("setAnimation", new I2CCommand(1, 3));
+	   SmartDashboard.putData("TEST", new TestRobotCommand());
 
-	SmartDashboard.putData("setAnimation", new I2CCommand(1, 3));
-	SmartDashboard.putData("TEST", new TestRobotCommand());
-
+		}
     }
 
     public Joystick getJoystick1() {

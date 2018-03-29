@@ -20,7 +20,7 @@ public class IsAirPressureOkayCommand extends Command {
 		pressure = Robot.chassis.getAirPressure();
 		System.out.println("IsAirPressureOkayCommand started");
 		RobotMap.TestPressure = false;
-		if (pressure > CHECK) {
+		if (pressure < CHECK) {
 			System.out.println("Pressure is too low: " + String.format("%6.2f", pressure));
 
 		}

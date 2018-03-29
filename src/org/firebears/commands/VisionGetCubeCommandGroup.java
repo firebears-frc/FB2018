@@ -19,7 +19,7 @@ public class VisionGetCubeCommandGroup extends CommandGroup {
         addSequential(new VisionRotateCommand());
         addSequential(new WaitCommand(.25));
 //        addSequential(new VisionForwardCommand());
-        addSequential(new VisionForwardCommand(.3), 3);
+        addSequential(new VisionForwardCommand(.3));
         addSequential(new DriveToDistanceStraightCommand(10, -.3));
     }
 }

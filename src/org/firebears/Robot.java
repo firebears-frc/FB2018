@@ -182,6 +182,10 @@ public class Robot extends TimedRobot {
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 
+		SmartDashboard.putNumber("NavX Angle", RobotMap.boundAngle(RobotMap.getNavXAngle()));
+		SmartDashboard.putBoolean("GrabberUp", !RobotMap.grabberUpPositionSensor.get());
+		SmartDashboard.putBoolean("GrabberDown", !RobotMap.grabberDownPositionSensor.get());
+		
 		if (RobotMap.DEBUG) {
 			// Put Encoder values
 			SmartDashboard.putNumber("Left Master Encoder Distance",
@@ -209,7 +213,6 @@ public class Robot extends TimedRobot {
 
 			SmartDashboard.putNumber("DistanceInInches", Robot.chassis.getChassisRangeFinderDistance());
 			SmartDashboard.putNumber("Grabber Distance", Robot.grabber.getGrabberRangeFinderDistance());
-			SmartDashboard.putNumber("NavX Angle", RobotMap.boundAngle(RobotMap.getNavXAngle()));
 
 			SmartDashboard.putBoolean("TapeSensor", Robot.chassis.isTapeBright());
 			// System.out.println("Tape Sensor: " + RobotMap.tape.get());
@@ -233,11 +236,6 @@ public class Robot extends TimedRobot {
 			SmartDashboard.putString("ControlMode", RobotMap.chassisLeftMaster.getControlMode().toString());
 			
 			SmartDashboard.putString("Solenoid Pos", RobotMap.leftUpDown.get().toString());
-			
-			SmartDashboard.putBoolean("GrabberUp", !RobotMap.grabberUpPositionSensor.get());
-			SmartDashboard.putBoolean("GrabberDown", !RobotMap.grabberDownPositionSensor.get());
-
-			
 
 		}
 	}

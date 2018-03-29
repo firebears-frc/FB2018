@@ -14,7 +14,7 @@ public class TestRobotCommand extends CommandGroup {
 
     public TestRobotCommand() {
     	
-//    	addSequential(new ActivateCompressor(false));
+    	addSequential(new ActivateCompressor(false));
     	addSequential(new DisableShooterCommand(true));
     	addSequential(new DisableDriveCommand(true));
 
@@ -27,34 +27,34 @@ public class TestRobotCommand extends CommandGroup {
 //
     	addSequential(new IsAirPressureOkayCommand(), 3);
     	
-    	
-
-
-    	addSequential(new IsSolenoidOkayCommand(1), 5);
-    	addSequential(new RaiseGrabberCommand(true));
-    	
-    	addSequential(new OpenGrabberCommand(false));
-    	addSequential(new IsSolenoidOkayCommand(3), 5);
-    	addSequential(new ExtendShooterCommand(false));
-
-    	addSequential(new IsSolenoidOkayCommand(2), 5);
-    	addSequential(new OpenGrabberCommand(true));
-
-    	
-    	
-    	addSequential(new IsGrabberWheelOkayCommand(true),3);
-    	addSequential(new IsGrabberWheelOkayCommand(false),3);
-    	
-
-
-    	addSequential(new IsShooterWheelOkayCommand("left", true), 3);
-    	addSequential(new IsShooterWheelOkayCommand("right", true), 3);
-    	addSequential(new IsShooterWheelOkayCommand("right", false), 3);
-    	addSequential(new IsShooterWheelOkayCommand("left", false), 3);
-    	
-    	addSequential(new IsLightarOkayCommand());
-//    	addSequential(new IsUltraSonicOkayCommand(1), 10);
-    	addSequential(new IsUltraSonicOkayCommand(2), 10);
+//    	
+//
+//
+//    	addSequential(new IsSolenoidOkayCommand(1), 5);
+//    	addSequential(new RaiseGrabberCommand(true));
+//    	
+//    	addSequential(new OpenGrabberCommand(false));
+//    	addSequential(new IsSolenoidOkayCommand(3), 5);
+//    	addSequential(new ExtendShooterCommand(false));
+//
+//    	addSequential(new IsSolenoidOkayCommand(2), 5);
+//    	addSequential(new OpenGrabberCommand(true));
+//
+//    	
+//    	
+//    	addSequential(new IsGrabberWheelOkayCommand(true),3);
+//    	addSequential(new IsGrabberWheelOkayCommand(false),3);
+//    	
+//
+//
+//    	addSequential(new IsShooterWheelOkayCommand("left", true), 3);
+//    	addSequential(new IsShooterWheelOkayCommand("right", true), 3);
+//    	addSequential(new IsShooterWheelOkayCommand("right", false), 3);
+//    	addSequential(new IsShooterWheelOkayCommand("left", false), 3);
+//    	
+//    	addSequential(new IsLightarOkayCommand());
+////    	addSequential(new IsUltraSonicOkayCommand(1), 10);
+//    	addSequential(new IsUltraSonicOkayCommand(2), 10);
 
     	
     	addSequential(new IsEverythingOkayCommand());

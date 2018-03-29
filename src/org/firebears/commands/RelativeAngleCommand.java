@@ -16,11 +16,11 @@ public class RelativeAngleCommand extends PIDCommand {
     protected double angleTolerance = 2.0;
     protected double targetAngle;
     double offsetFrom90 = 28;
-    //Competition Robot: 5.625;
-    //3.8;
+    //Competition Robot: 
+    //5.625;
     double offsetFrom10 = 7;
-    //Competition Robot: 4;
-    //2.0;
+    //Competition Robot: 
+    //4;
     double ideal90 = 32.625;
     long timeout;
 
@@ -63,9 +63,13 @@ public class RelativeAngleCommand extends PIDCommand {
     
     private double getOffset(double startAngle) {
     	double offsetAnswer;
+    	double absoluteAngle = Math.abs(startAngle);
 //    	offsetAnswer = startAngle * ((offsetFrom90 - offsetFrom10)/80);//y = m*x + b
-    	offsetAnswer = (startAngle - 90) * ((offsetFrom90 - offsetFrom10)/80) + ideal90;
+    	offsetAnswer = (absoluteAngle - 90) * ((offsetFrom90 - offsetFrom10)/80) + ideal90;
     	
+    	if (startAngle < 0) {
+    		offsetAnswer = offsetAnswer * -1;
+    	}
 //    	offsetAnswer = Math.pow(startAngle, 2) * -.003 + startAngle * .829 + 11.89 - 35;
     	
     	return offsetAnswer;

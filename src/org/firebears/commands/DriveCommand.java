@@ -32,10 +32,10 @@ public class DriveCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-    	if (RobotMap.DisableDrive == false) {
+//    	if (RobotMap.DisableDrive == false) {
     		Joystick stick = Robot.oi.joystick1;
        		Robot.chassis.drive(stick.getY(), stick.getX() * 1.0, true);	
-    	}
+//    	}
    		
     }
 
