@@ -40,6 +40,8 @@ public class IsVoltageOkayCommand extends Command {
 
 	protected void interrupted() {
 		System.out.println("IsVoltageOkayCommand Interrupted");
+		RobotMap.DisableDrive = false;
+		RobotMap.DisableShooter = false;
 
 	}
 }

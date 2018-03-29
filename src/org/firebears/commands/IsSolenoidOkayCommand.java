@@ -105,6 +105,8 @@ public class IsSolenoidOkayCommand extends Command {
 
 	protected void interrupted() {
 		System.out.println("IsSolenoidOkayCommand Interrupted");
+		RobotMap.DisableDrive = false;
+		RobotMap.DisableShooter = false;
 
 	}
 }

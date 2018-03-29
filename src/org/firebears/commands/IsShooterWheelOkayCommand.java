@@ -154,6 +154,8 @@ public class IsShooterWheelOkayCommand extends Command {
 //		RobotMap.rightLaunchSpinner.set(0);
 		Robot.shooter.leftSpinner.setSetpoint(0);
 		Robot.shooter.rightSpinner.setSetpoint(0);
+		RobotMap.DisableDrive = false;
+		RobotMap.DisableShooter = false;
 
 	}
 }

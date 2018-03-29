@@ -144,6 +144,8 @@ public class RobotMap {
 	public static boolean TestVoltage = false;
 	public static boolean TestPressure = false;
 	
+	public static boolean TestLightar = false;
+	
 	public static boolean DisableShooter = false;
 	public static boolean DisableDrive = false;
 

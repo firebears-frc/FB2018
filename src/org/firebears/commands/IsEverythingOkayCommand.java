@@ -82,6 +82,8 @@ public class IsEverythingOkayCommand extends Command {
 		System.out.println("	Ultrasonic Test Status:.." + check(RobotMap.TestUltrasonic));
 		System.out.println("	Vision Test Status:......" + check(RobotMap.TestVision));
 		System.out.println("	Pressure Test Status:...." + check(RobotMap.TestPressure));
+		System.out.println("	Lightar Test Status:...." + check(RobotMap.TestLightar));
+
 
 		if (RobotMap.TestVoltage && RobotMap.TestDriveSim && RobotMap.TestNavx && RobotMap.TestShooter
 				&& RobotMap.TestSolenoid && RobotMap.TestUltrasonic && RobotMap.TestVision && RobotMap.TestPressure) {
@@ -103,6 +105,9 @@ public class IsEverythingOkayCommand extends Command {
 	}
 
 	protected void interrupted() {
+		RobotMap.DisableDrive = false;
+		RobotMap.DisableShooter = false;
+
 	}
 
 	protected String check(boolean input) {

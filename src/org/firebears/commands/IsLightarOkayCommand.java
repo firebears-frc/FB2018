@@ -22,25 +22,30 @@ public class IsLightarOkayCommand extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
 		System.out.println("IsLightarOkayCommand started");
-//		currentState1 = Robot.grabber
+		currentState1 = !Robot.grabber.cubeInRange();
+		currentState2 = !Robot.grabber.hasCube();
 
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	System.out.println("Lightar is " + !Robot.grabber.cubeInRange() + !Robot.grabber.hasCube());
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return (currentState1 != !Robot.grabber.cubeInRange() && currentState2 != !Robot.grabber.hasCube());
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	RobotMap.TestLightar = true;
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+		System.out.println("IsLightarOkayCommand interrupted");
+
     }
 }

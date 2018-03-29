@@ -1,5 +1,7 @@
 package org.firebears.commands;
 
+import org.firebears.RobotMap;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -25,5 +27,7 @@ public class IsVisionOkayCommand extends Command {
 	}
 
 	protected void interrupted() {
+		RobotMap.DisableDrive = false;
+		RobotMap.DisableShooter = false;
 	}
 }

@@ -28,23 +28,42 @@ public class TestRobotCommand extends CommandGroup {
     	addSequential(new IsAirPressureOkayCommand(), 3);
     	
     	
-//    	addSequential(new IsUltraSonicOkayCommand(1), 10);
-    	addSequential(new IsUltraSonicOkayCommand(2), 10);
+
 
     	addSequential(new IsSolenoidOkayCommand(1), 5);
     	addSequential(new RaiseGrabberCommand(true));
+    	
+    	addSequential(new OpenGrabberCommand(false));
+    	addSequential(new IsSolenoidOkayCommand(3), 5);
+    	addSequential(new ExtendShooterCommand(false));
 
     	addSequential(new IsSolenoidOkayCommand(2), 5);
     	addSequential(new OpenGrabberCommand(true));
 
-    	addSequential(new IsSolenoidOkayCommand(3), 5);
-    	addSequential(new ExtendShooterCommand(false));
+    	
+    	
+    	addSequential(new IsGrabberWheelOkayCommand(true),3);
+    	addSequential(new IsGrabberWheelOkayCommand(false),3);
+    	
+
 
     	addSequential(new IsShooterWheelOkayCommand("left", true), 3);
     	addSequential(new IsShooterWheelOkayCommand("right", true), 3);
     	addSequential(new IsShooterWheelOkayCommand("right", false), 3);
     	addSequential(new IsShooterWheelOkayCommand("left", false), 3);
+    	
+    	addSequential(new IsLightarOkayCommand());
+//    	addSequential(new IsUltraSonicOkayCommand(1), 10);
+    	addSequential(new IsUltraSonicOkayCommand(2), 10);
 
+    	
+    	addSequential(new IsEverythingOkayCommand());
+    	
+    	
+    	addSequential(new DisableShooterCommand(false));
+    	addSequential(new DisableDriveCommand(false));
+
+    	addSequential(new ActivateCompressor(true));
 
 //    	addSequential(new IsShooterWheelOkayCommand("right", true), 3);
     	
@@ -54,13 +73,8 @@ public class TestRobotCommand extends CommandGroup {
 //    	addSequential(new IsSimOkayCommand("right rear",true), 3);
 
     	
-    	addSequential(new IsEverythingOkayCommand());
     	
-    	
-    	addSequential(new DisableShooterCommand(false));
-    	addSequential(new DisableDriveCommand(false));
 
-    	
     	
 
 //    	addSequential(new IsSimOkayCommand("",false), 3);
@@ -71,7 +85,6 @@ public class TestRobotCommand extends CommandGroup {
 //    	
 //
     	
-    	addSequential(new ActivateCompressor(true));
 
 
 

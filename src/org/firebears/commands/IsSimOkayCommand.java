@@ -218,6 +218,8 @@ public class IsSimOkayCommand extends Command {
 		Robot.chassis.rightRear(0);
 		
 		System.out.println("isSimOkayCommand interrupted");
+		RobotMap.DisableDrive = false;
+		RobotMap.DisableShooter = false;
 
 	}
 }

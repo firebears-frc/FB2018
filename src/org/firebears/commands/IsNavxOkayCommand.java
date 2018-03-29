@@ -38,6 +38,8 @@ public class IsNavxOkayCommand extends Command {
 
 	protected void interrupted() {
 		System.out.println("IsNavxOkayCommand interrupted");
+		RobotMap.DisableDrive = false;
+		RobotMap.DisableShooter = false;
 
 	}
 }

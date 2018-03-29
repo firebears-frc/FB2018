@@ -49,6 +49,8 @@ public class IsUltraSonicOkayCommand extends Command {
 
 	protected void interrupted() {
 		System.out.println("IsUltraSonicOkayCommand interrupted");
+		RobotMap.DisableDrive = false;
+		RobotMap.DisableShooter = false;
 
 	}
 }
