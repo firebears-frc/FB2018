@@ -90,6 +90,7 @@ public class RobotMap {
 	public static String side;
 	public static String priority;
 	public static boolean shouldCross;
+	public static boolean shouldSplit;
 
 	// Different Sensors
 	public static AHRS navXBoard;
@@ -107,7 +108,8 @@ public class RobotMap {
 	public static DigitalInput grabberUpPositionSensor;
 	public static DigitalInput grabberDownPositionSensor;
 
-	
+	public static DigitalInput farLidarSensor;
+	public static DigitalInput closeLidarSensor;
 	
 	public static boolean TestDriveSimLeftMasterPositive = false;
 	public static boolean TestDriveSimLeftMasterNegative = false;
@@ -275,6 +277,12 @@ public class RobotMap {
 
 		// Put Ultrasonic Switches here
 
+		farLidarSensor = new DigitalInput(0);
+		report.addDigitalIO(0, "Grabber Lidar 0", farLidarSensor);
+		
+		closeLidarSensor = new DigitalInput(1);
+		report.addDigitalIO(1, "Grabber Lidar 1", closeLidarSensor);
+		
 		tapeSensor = new DigitalInput(2);
 		report.addDigitalIO(2, "Tape Finder", tapeSensor);
 

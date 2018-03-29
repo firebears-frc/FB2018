@@ -67,6 +67,7 @@ public class Robot extends TimedRobot {
 		shooter = new Shooter();
 		grabber = new Grabber();
 		autoSelection = new AutoSelection();
+		lights.reset();
 
 		CameraServer.getInstance().startAutomaticCapture();
 
@@ -85,7 +86,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void disabledInit() {
-
+	    lights.reset();
 	}
 
 	@Override
@@ -96,6 +97,7 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void autonomousInit() {
+	    lights.reset();
 //		// System.out.println("joytickbutton1: " + oi.joystick1.getRawButton(1));
 //		// System.out.println("joytickYAxis: "+ oi.joystick1.getRawAxis(1));
 //		// System.out.println("joytickXAxis: "+ oi.joystick2.getX());
@@ -159,6 +161,7 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void teleopInit() {
+	    lights.reset();
 		RobotMap.DisableShooter = false;
 		RobotMap.DisableDrive = false;
 		// This makes sure that the autonomous stops running when

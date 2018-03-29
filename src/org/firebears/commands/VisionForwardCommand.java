@@ -1,72 +1,88 @@
 package org.firebears.commands;
 
 import static org.firebears.RobotMap.boundAngle;
-import static org.firebears.RobotMap.getNavXAngle;
 
 import org.firebears.Robot;
+import org.firebears.RobotMap;
 
 import edu.wpi.first.wpilibj.command.PIDCommand;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
- *
+ * Drive Straight from 2016 modified for 2018 robot.
  */
 public class VisionForwardCommand extends PIDCommand {
-
+	
 	long timeout;
 	double startAngle;
 	double currentAngle;
-	private static final double TOLERANCE = 2.5;
-	static final int SLOW_DISTANCE = 15;
-	static final int FAST_DISTANCE = 30;
-	static final double SLOW_SPEED = -0.4;
-	static final double FAST_SPEED = -0.75;
-	
-    public VisionForwardCommand() {
-    	super(.025, 0, 0);
-        requires(Robot.chassis);
-        
-        getPIDController().setInputRange(-180.0, 180.0);
-		getPIDController().setAbsoluteTolerance(TOLERANCE);
+	double tolerance = 2.5;
+	double startingDistance;
+	double currentDistance;
+	double targetDistance;
+	double speed;
+	double offsetFrom50Per = 11.33;
+	double offsetFrom100Per = 23.75;
+
+	public VisionForwardCommand(double speed) {
+		super(.065, 0.0, 0.0);
+		requires(Robot.chassis);
+		this.speed = speed;
+		getPIDController().setInputRange(-180.0, 180.0);
+		getPIDController().setAbsoluteTolerance(tolerance);
 		getPIDController().setContinuous();
-    }
+		
+	}
+	public double getAngleDifference() {
+		return boundAngle(RobotMap.navXBoard.getAngle() - startAngle);
+	}
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    	
-    	// Set how much time until command stops automatically
-    	timeout = System.currentTimeMillis() + 1000 * 6;
-    	
-    	// Get starting angle and set PID setpoint
-		startAngle = getNavXAngle();
+	protected void initialize() {
+		timeout = System.currentTimeMillis() + 1000 * 6;
+		
+		// Remove this before comp
+//		speed = SmartDashboard.getNumber("Target Speed", 0);
+		
+		startAngle = RobotMap.navXBoard.getAngle();
+		startingDistance = RobotMap.chassisLeftMaster.getSelectedSensorPosition(RobotMap.PID_IDX);
+//		targetDistance = targetDistance - getOffset(speed);
 		getPIDController().setSetpoint(0.0);
-    }
+	}
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    }
+	protected void execute() {
+		currentAngle = RobotMap.navXBoard.getAngle();
+//		System.out.println("navx angle: "+ currentAngle);
+	}
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-    	// Stop command when timeout expires, or when the robot's distance is within the tolerance
-    	if (System.currentTimeMillis() >= timeout || Robot.grabber.getGrabberRangeFinderDistance() < 12) {
+	protected boolean isFinished() {
+		if (System.currentTimeMillis() >= timeout) {
 			return true;
 		}
-		return false;
-    }
+		if (Robot.grabber.cubeInRange()) {
+			return true;
+		}
+		return false;	
+	}
 
-    // Called once after isFinished returns true
-    protected void end() {
-    	Robot.chassis.drive(0, 0, true);
-    }
+	protected void end() {
+		getPIDController().disable();
+		Robot.chassis.drive(0, 0, true);
+	}
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    	end();
-    }
-    
-    public double getAngleDifference() {
-		return boundAngle(getNavXAngle() - startAngle);
+	protected void interrupted() {
+		end();
+	}
+	
+	// Calculate overshoot based on given speed
+//	private double getOffset(double speed) {
+//    	double offsetAnswer;
+//    	offsetAnswer = speed * ((offsetFrom100Per - offsetFrom50Per)/.5);//y = m*x + b
+//    	return offsetAnswer;
+//    }
+	
+	private double inchesTraveled() {
+		currentDistance = RobotMap.chassisLeftMaster.getSelectedSensorPosition(RobotMap.PID_IDX);
+		return Math.abs((currentDistance - startingDistance) / 52.6);
 	}
 
 	@Override
@@ -76,13 +92,7 @@ public class VisionForwardCommand extends PIDCommand {
 
 	@Override
 	protected void usePIDOutput(double output) {
-		// Slow robot down when within specific distance
-//		double speed = (Robot.chassis.getRangeFinderDistance() < SLOW_DISTANCE) ? -0.40 : -0.75;
-		double distancePer = (Robot.grabber.getGrabberRangeFinderDistance() - SLOW_DISTANCE) / (FAST_DISTANCE - SLOW_DISTANCE);
-		distancePer = Math.min(100, distancePer);
-		distancePer = Math.max(0, distancePer);
-		double speed = distancePer * (FAST_DISTANCE - SLOW_DISTANCE) + SLOW_DISTANCE;
-		// Drive the robot
-		Robot.chassis.drive(speed, output,false);
+		Robot.chassis.drive(-speed, output, false);
+
 	}
 }

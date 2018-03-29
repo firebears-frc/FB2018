@@ -11,20 +11,21 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class RelativeAngleCommand extends PIDCommand {
 
-    protected final double turnValue;
-    protected final double SPEED = 0.5;
-    protected double angleTolerance = 1.5;
+    protected double turnValue;
+    protected final double SPEED = 0.7;
+    protected double angleTolerance = 2.0;
     protected double targetAngle;
-    double offsetFrom90 = 10;
+    double offsetFrom90 = 28;
     //Competition Robot: 5.625;
     //3.8;
-    double offsetFrom10 = 3;
+    double offsetFrom10 = 7;
     //Competition Robot: 4;
     //2.0;
+    double ideal90 = 32.625;
     long timeout;
 
     public RelativeAngleCommand(double degrees) {
-	super(0.3, 0.0, 0.0); // PID
+	super(0.075, 0.0, 0.0); // PID
 	requires(Robot.chassis);
 	turnValue = degrees;
 
@@ -62,19 +63,26 @@ public class RelativeAngleCommand extends PIDCommand {
     
     private double getOffset(double startAngle) {
     	double offsetAnswer;
-    	offsetAnswer = startAngle * ((offsetFrom90 - offsetFrom10)/80);//y = m*x + b
+//    	offsetAnswer = startAngle * ((offsetFrom90 - offsetFrom10)/80);//y = m*x + b
+    	offsetAnswer = (startAngle - 90) * ((offsetFrom90 - offsetFrom10)/80) + ideal90;
+    	
+//    	offsetAnswer = Math.pow(startAngle, 2) * -.003 + startAngle * .829 + 11.89 - 35;
+    	
     	return offsetAnswer;
     }
 
     protected void initialize() {
 	timeout = System.currentTimeMillis() + 1000 * 5;
+	
+//	turnValue = SmartDashboard.getNumber("Target Angle", 0);
+//	targetAngle = bound(RobotMap.navXBoard.getAngle() + turnValue);
 	targetAngle = bound(RobotMap.navXBoard.getAngle() + turnValue - getOffset(turnValue));
+	
 //	targetAngle = bound(RobotMap.navXBoard.getAngle() + SmartDashboard.getNumber("Target Angle", 0));
 //	targetAngle = bound(RobotMap.navXBoard.getAngle() + SmartDashboard.getNumber("Target Angle", 0) - getOffset(turnValue));
 	getPIDController().setSetpoint(0.0);
 	if (RobotMap.DEBUG)
 	    System.out.println("\t # " + this);
-
     }
 
     protected void execute() {
@@ -89,7 +97,16 @@ public class RelativeAngleCommand extends PIDCommand {
 	// + RobotMap.navXBoard.getAngle() + ", Diff" + difference);
 	// SmartDashboard.putNumber("Difference", difference);
 
-	return Math.abs(difference) < angleTolerance || System.currentTimeMillis() >= timeout;
+	
+//		return Math.abs(difference) < angleTolerance || System.currentTimeMillis() >= timeout;
+	
+		if (turnValue > 0) {
+			return difference < angleTolerance || System.currentTimeMillis() >= timeout;
+		} else if (turnValue < 0) {
+			return difference > -angleTolerance || System.currentTimeMillis() >= timeout;
+		}else {
+			return true;
+		}
     }
 
     protected void end() {

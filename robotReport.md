@@ -15,6 +15,8 @@ roboRIO serial number: 030a4a34
 
 ## DIO
 
+* 0 = Grabber Lidar 0 :
+* 1 = Grabber Lidar 1 :
 * 2 = Tape Finder : edu.wpi.first.wpilibj.DigitalInput@f0a63f
 * 4 = Cube Detector : edu.wpi.first.wpilibj.DigitalInput@1f4c3
 

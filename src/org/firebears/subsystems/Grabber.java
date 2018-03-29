@@ -6,6 +6,7 @@ import org.firebears.RobotMap;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -61,15 +62,19 @@ public class Grabber extends Subsystem {
 		RobotMap.rightIntake.set(-REVMOTORSPEED);
 	}
 	
+	public boolean cubeInRange() {
+		return RobotMap.farLidarSensor.get();
+	}
+	
 	public boolean hasCube() {
-		return !RobotMap.cubeSwitch.get();
+		return RobotMap.closeLidarSensor.get();
 	}
 	
 	public boolean isRaised() {
-		return RobotMap.grabberUpPositionSensor.get();
+		return !RobotMap.grabberUpPositionSensor.get();
 	}
 	public boolean isDown() {
-		return RobotMap.grabberDownPositionSensor.get();
+		return !RobotMap.grabberDownPositionSensor.get();
 	}
 
 	/**
@@ -92,4 +97,10 @@ public class Grabber extends Subsystem {
 	public void initDefaultCommand() {
 //		setDefaultCommand(new AutoPullCubeCommand());
 	}
+	
+    @Override
+    public void periodic() {
+	SmartDashboard.putBoolean("lidar0", RobotMap.farLidarSensor.get());
+	SmartDashboard.putBoolean("lidar1", RobotMap.closeLidarSensor.get());
+    }
 }
