@@ -18,14 +18,17 @@ public class RightSideTwoCubeSplitCommand extends CommandGroup {
     public RightSideTwoCubeSplitCommand() {
     	addSequential(new RightSideRightScaleCommand());
 		addSequential(new SpinShooterWheelsCommand(0));
-		addSequential(new RelativeAngleCommand(80));
+		addSequential(new RelativeAngleCommand(110));
 		addSequential(new VisionGetCubeCommandGroup());
-		addSequential(new RelativeAngleCommand(180));
+		addSequential(new RelativeAngleCommand(90));
+		addSequential(new WaitCommand(.5));
+		addSequential(new RelativeAngleCommand(90));
 		addSequential(new SpinShooterWheelsCommand(.4));
 		addSequential(new WaitCommand(.5));
 		addSequential(new DriveToDistanceStraightCommand(36, -.5));
 		
 		// Remove if not necessary on competition bot
+		addSequential(new WaitCommand(.5));
 		addSequential(new OpenGrabberCommand(true));
 		addSequential(new WaitCommand(.25));
 		addSequential(new OpenGrabberCommand(false));

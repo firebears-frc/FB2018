@@ -30,15 +30,14 @@ public class RightSideLeftSwitchCommand extends CommandGroup {
     	
     	
     	addSequential(new WaitCommand(.5));
-    	addSequential(new RotateToAngleCommand(-180));
+    	addSequential(new RotateToAngleCommand(180));
     	addSequential(new WaitCommand(.5));
-    	addSequential(new DriveToDistanceStraightCommand(55, 0.7));
+    	addSequential(new DriveToDistanceStraightCommand(48, 0.7));
     	addSequential(new WaitCommand(.5));
-    	addSequential(new RotateToAngleCommand(-90));
+    	addSequential(new RelativeAngleCommand(90));
     	addSequential(new WaitCommand(.5));
-    	addSequential(new DriveToDistanceStraightCommand(48, -.5));
 		addSequential(new SpinShooterWheelsCommand(.1));
-		addSequential(new WaitCommand(.25));
+    	addSequential(new DriveToDistanceStraightCommand(48, -.5), .75);
 		addSequential(new FireCubeCommand());
 
 

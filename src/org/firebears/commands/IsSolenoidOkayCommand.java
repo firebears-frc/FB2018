@@ -29,11 +29,11 @@ public class IsSolenoidOkayCommand extends Command {
 
 		switch (solenoid) {
 		case 1:
-			if (RobotMap.grabberDownPositionSensor.get()) {
+			if (!RobotMap.grabberDownPositionSensor.get()) {
 				Robot.grabber.grabberRaise();
 				upNegation = true;
 
-			}else if (RobotMap.grabberUpPositionSensor.get()) {
+			}else if (!RobotMap.grabberUpPositionSensor.get()) {
 				Robot.grabber.grabberLower();
 				downNegation = true;
 
@@ -80,15 +80,15 @@ public class IsSolenoidOkayCommand extends Command {
 	}
 
 	protected boolean isFinished() {
-		return (RobotMap.grabberDownPositionSensor.get() && downNegation) || (RobotMap.grabberUpPositionSensor.get() && upNegation) || openClose || launch;
+		return (!RobotMap.grabberDownPositionSensor.get() && downNegation) || (!RobotMap.grabberUpPositionSensor.get() && upNegation) || openClose || launch;
 	}
 
 	protected void end() {
 		
 		
-		if (solenoid == 1 && RobotMap.grabberUpPositionSensor.get()) {
+		if (solenoid == 1 && !RobotMap.grabberUpPositionSensor.get()) {
 			RobotMap.TestSolenoidGrabberVertUp = true;
-		}else if (solenoid == 1 && RobotMap.grabberDownPositionSensor.get()) {
+		}else if (solenoid == 1 && !RobotMap.grabberDownPositionSensor.get()) {
 			RobotMap.TestSolenoidGrabberVertDown = true;
 		}
 		

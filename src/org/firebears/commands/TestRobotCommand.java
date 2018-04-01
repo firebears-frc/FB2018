@@ -2,6 +2,7 @@ package org.firebears.commands;
 
 import org.firebears.commands.grabber.OpenGrabberCommand;
 import org.firebears.commands.grabber.RaiseGrabberCommand;
+import org.firebears.commands.grabber.SpinGrabberWheelsCommand;
 import org.firebears.commands.shooter.ExtendShooterCommand;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -30,31 +31,44 @@ public class TestRobotCommand extends CommandGroup {
 //    	
 //
 //
-//    	addSequential(new IsSolenoidOkayCommand(1), 5);
-//    	addSequential(new RaiseGrabberCommand(true));
-//    	
-//    	addSequential(new OpenGrabberCommand(false));
-//    	addSequential(new IsSolenoidOkayCommand(3), 5);
-//    	addSequential(new ExtendShooterCommand(false));
+    	addSequential(new IsSolenoidOkayCommand(1), 5);
+    	addSequential(new IsSolenoidOkayCommand(1), 5);
+    	addSequential(new WaitCommand(.5));
+    	addSequential(new RaiseGrabberCommand(true));
+    	addSequential(new WaitCommand(.5));
+
+    	
+    	addSequential(new OpenGrabberCommand(true));
+    	addSequential(new WaitCommand(.5));
+    	addSequential(new IsSolenoidOkayCommand(3), 5);
+    	addSequential(new WaitCommand(.5));
+    	addSequential(new ExtendShooterCommand(false));
+
+    	addSequential(new IsSolenoidOkayCommand(2), 5);
+    	addSequential(new WaitCommand(.5));
+    	addSequential(new OpenGrabberCommand(false));
 //
-//    	addSequential(new IsSolenoidOkayCommand(2), 5);
-//    	addSequential(new OpenGrabberCommand(true));
+//    	
+//    	
+    	addSequential(new IsGrabberWheelOkayCommand(true),3);
+    	addSequential(new IsGrabberWheelOkayCommand(false),3);
+    	addSequential(new SpinGrabberWheelsCommand(false),3);
+
+//    	
 //
-//    	
-//    	
-//    	addSequential(new IsGrabberWheelOkayCommand(true),3);
-//    	addSequential(new IsGrabberWheelOkayCommand(false),3);
-//    	
 //
-//
-//    	addSequential(new IsShooterWheelOkayCommand("left", true), 3);
-//    	addSequential(new IsShooterWheelOkayCommand("right", true), 3);
-//    	addSequential(new IsShooterWheelOkayCommand("right", false), 3);
-//    	addSequential(new IsShooterWheelOkayCommand("left", false), 3);
+    	addSequential(new IsShooterWheelOkayCommand("left", true), 3);
+    	addSequential(new IsShooterWheelOkayCommand("right", true), 3);
+    	addSequential(new IsShooterWheelOkayCommand("right", false), 3);
+    	addSequential(new IsShooterWheelOkayCommand("left", false), 3);
+    	
+    	
+//    	addSequential(new IsSimOkayCommand("left front",true), 3);
+//    	addSequential(new IsSimOkayCommand("right rear",true), 3);
 //    	
-//    	addSequential(new IsLightarOkayCommand());
-////    	addSequential(new IsUltraSonicOkayCommand(1), 10);
-//    	addSequential(new IsUltraSonicOkayCommand(2), 10);
+    	addSequential(new IsLightarOkayCommand());
+//    	addSequential(new IsUltraSonicOkayCommand(1), 10);
+    	addSequential(new IsUltraSonicOkayCommand(1), 10);
 
     	
     	addSequential(new IsEverythingOkayCommand());
@@ -69,8 +83,7 @@ public class TestRobotCommand extends CommandGroup {
     	
 //    	addSequential(new WaitCommand(15));
     	
-//    	addSequential(new IsSimOkayCommand("left front",true), 3);
-//    	addSequential(new IsSimOkayCommand("right rear",true), 3);
+    	
 
     	
     	

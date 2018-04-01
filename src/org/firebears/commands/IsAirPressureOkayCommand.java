@@ -36,6 +36,8 @@ public class IsAirPressureOkayCommand extends Command {
 
 	protected void end() {
 		System.out.println("Pressure Status: Nominal");
+		RobotMap.TestPressure = true;
+
 
 	}
 

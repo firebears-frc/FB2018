@@ -18,10 +18,10 @@ public class RightSideRightScaleCommand extends CommandGroup {
 	public RightSideRightScaleCommand() {
 		// PlayRecordingCommand("recordings/RightSideRightScale.csv"));
 		
-		addSequential(new DriveToDistanceStraightCommand(240, 1.0));
+		addSequential(new DriveToDistanceStraightCommand(234, 1.0));
 		addSequential(new WaitCommand(.7));
 		addSequential(new SpinShooterWheelsCommand(.6));
-		addSequential(new RelativeAngleCommand(105));
+		addSequential(new RelativeAngleCommand(110));
 //		addSequential(new DriveToDistanceStraightCommand(24, .5));
     	addSequential(new WaitCommand(.25));
     	addSequential(new FireCubeCommand());
