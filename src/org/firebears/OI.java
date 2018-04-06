@@ -22,6 +22,7 @@ import org.firebears.commands.NonPIDRotateCommand;
 import org.firebears.commands.PlayMirroredRecording;
 import org.firebears.commands.PlayRecordingCommand;
 import org.firebears.commands.ResetNavX;
+import org.firebears.commands.RotateToAngleCommand;
 import org.firebears.commands.RelativeAngleCommand;
 import org.firebears.commands.StartRecordingCommand;
 import org.firebears.commands.StopRecordingCommand;
@@ -207,6 +208,7 @@ public class OI {
 	    // Other Commands
 	    SmartDashboard.putData("DriveToTapeCommand", new DriveToTapeCommand(.4));
 	    SmartDashboard.putData("RotateToAngle", new RelativeAngleCommand(90));
+	    SmartDashboard.putData("Rotate to Specific Angle", new RotateToAngleCommand(90));
 	    SmartDashboard.putNumber("Target Angle", 90);
 	    SmartDashboard.putNumber("Target Speed", .5);
 	    SmartDashboard.putData("Drive into Wall", new BackIntoWallCommand(12));

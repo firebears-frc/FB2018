@@ -16,10 +16,10 @@ public class RotateToAngleCommand extends PIDCommand {
 	protected double angleTolerance = 2;
 	protected double targetAngle;
 	double angle;
-	double offsetFrom90 = 10;
+	double offsetFrom90 = 7;//10;
 	//Competition Robot: 5.625;
 	// 3.8;
-	double offsetFrom10 = 3;
+	double offsetFrom10 = 4;//3;
 	// Competition Robot: 4;
 	// 2.0;
 	long timeout;
@@ -70,9 +70,14 @@ public class RotateToAngleCommand extends PIDCommand {
 	protected void initialize() {
 		timeout = System.currentTimeMillis() + 1000 * 5;
 		
+//		angle = SmartDashboard.getNumber("Target Angle", 0);
+		
 		turnValue = bound(angle - RobotMap.getNavXAngle());
 		
+//		targetAngle = bound(angle);
 		targetAngle = bound(angle - getOffset(turnValue));
+		
+		
 		System.out.println(turnValue);
 		System.out.println(targetAngle);
 		

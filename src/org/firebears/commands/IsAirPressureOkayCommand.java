@@ -1,4 +1,4 @@
-package org.firebears.commands.testing;
+package org.firebears.commands;
 
 import org.firebears.Robot;
 import org.firebears.RobotMap;
@@ -6,13 +6,12 @@ import org.firebears.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- * Checks Air Pressure
+ *	Checks Air Pressure
  */
 public class IsAirPressureOkayCommand extends Command {
-
+	
 	double CHECK = 100;
 	double pressure;
-
 	public IsAirPressureOkayCommand() {
 
 	}
@@ -38,6 +37,7 @@ public class IsAirPressureOkayCommand extends Command {
 	protected void end() {
 		System.out.println("Pressure Status: Nominal");
 		RobotMap.TestPressure = true;
+
 
 	}
 

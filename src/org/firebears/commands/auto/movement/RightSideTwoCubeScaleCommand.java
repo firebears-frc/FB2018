@@ -18,12 +18,12 @@ public class RightSideTwoCubeScaleCommand extends CommandGroup {
     public RightSideTwoCubeScaleCommand() {
     	addSequential(new RightSideRightScaleCommand());
 		addSequential(new SpinShooterWheelsCommand(0));
-		addSequential(new RelativeAngleCommand(80));
+		addSequential(new RelativeAngleCommand(105));
 		addSequential(new VisionGetCubeCommandGroup());
 		addSequential(new DriveToDistanceStraightCommand(24, -.5));
-		addSequential(new SpinShooterWheelsCommand(.6));
+		addSequential(new SpinShooterWheelsCommand(.8));
 		addSequential(new WaitCommand(.25));
-		addSequential(new RelativeAngleCommand(-60));
+		addSequential(new RelativeAngleCommand(-90));
 		addSequential(new WaitCommand(.5));
 		
 		// Remove if not necessary on competition bot

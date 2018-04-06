@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class AutoPickUpCubeCommand extends Command {
 
+	double timeout;
 	double timer;
 	
     public AutoPickUpCubeCommand() {
@@ -18,6 +19,7 @@ public class AutoPickUpCubeCommand extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	timer = 0;
+    	timeout = 0;
     	Robot.grabber.grabberLower();
     	Robot.grabber.grabberOpen();
     	Robot.grabber.grabberStartSpinning();
@@ -30,9 +32,11 @@ public class AutoPickUpCubeCommand extends Command {
     		Robot.grabber.grabberClose();
     	}
     	if (Robot.grabber.hasCube()) {
+    		timeout ++;
+    	}
+    	if (Robot.grabber.hasCube() && timeout >= 20) {
     		System.out.println("Raising Grabber");
     		Robot.grabber.grabberRaise();
-    		Robot.grabber.grabberStopSpinning();
     	}
     	timer ++;
     }
@@ -40,6 +44,7 @@ public class AutoPickUpCubeCommand extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	if (Robot.grabber.isRaised() && timer >= 150) {
+    		Robot.grabber.grabberStopSpinning();
     		return true;
     	}
         return false;

@@ -15,7 +15,7 @@ public class RelativeAngleCommand extends PIDCommand {
     protected final double SPEED = 0.7;
     protected double angleTolerance = 2.0;
     protected double targetAngle;
-    double offsetFrom90 = 28;
+    double offsetFrom90 = 35;
     //Competition Robot: 
     //5.625;
     double offsetFrom10 = 7;
@@ -70,6 +70,7 @@ public class RelativeAngleCommand extends PIDCommand {
     	if (startAngle < 0) {
     		offsetAnswer = offsetAnswer * -1;
     	}
+    	
 //    	offsetAnswer = Math.pow(startAngle, 2) * -.003 + startAngle * .829 + 11.89 - 35;
     	
     	return offsetAnswer;
@@ -87,6 +88,7 @@ public class RelativeAngleCommand extends PIDCommand {
 	getPIDController().setSetpoint(0.0);
 	if (RobotMap.DEBUG)
 	    System.out.println("\t # " + this);
+		this.toString();
     }
 
     protected void execute() {
@@ -137,6 +139,6 @@ public class RelativeAngleCommand extends PIDCommand {
 
     @Override
     public String toString() {
-	return "RotateToAngleCommand(" + this.turnValue + ")";
+	return "RotateToAngleCommand(" + this.turnValue + ") from " + bound(RobotMap.getNavXAngle());
     }
 }

@@ -1,8 +1,10 @@
-package org.firebears.commands.testing;
+package org.firebears.commands;
 
 import org.firebears.commands.ActivateCompressor;
 import org.firebears.commands.DisableDriveCommand;
 import org.firebears.commands.DisableShooterCommand;
+import org.firebears.commands.IsAirPressureOkayCommand;
+import org.firebears.commands.IsSolenoidOkayCommand;
 import org.firebears.commands.grabber.OpenGrabberCommand;
 import org.firebears.commands.grabber.RaiseGrabberCommand;
 import org.firebears.commands.grabber.SpinGrabberWheelsCommand;

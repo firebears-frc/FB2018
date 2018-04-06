@@ -43,25 +43,13 @@ public class TestCommandGroup extends CommandGroup {
 //		addSequential(new WaitCommand(.25));
 //		
 //		addSequential(new FireCubeCommand());
-		
-		addSequential(new RightSideRightSwitchCommand());
-		addSequential(new DriveToDistanceStraightCommand(24, -.5));
-		addSequential(new WaitCommand(.5));
-		addSequential(new RelativeAngleCommand(90));
-		addSequential(new WaitCommand(.5));
-		addSequential(new DriveToDistanceStraightCommand(36, .5));
-		addSequential(new WaitCommand(.5));
-		addSequential(new RelativeAngleCommand(-90));
-		addSequential(new WaitCommand(.5));
-		addSequential(new DriveToDistanceStraightCommand(36, .5));
-		addSequential(new WaitCommand(.5));
-		addSequential(new RelativeAngleCommand(-90));
-		addSequential(new WaitCommand(.5));
+		addSequential(new RelativeAngleCommand(-110));
 		addSequential(new VisionGetCubeCommandGroup());
-		addSequential(new RelativeAngleCommand(180));
-		addSequential(new SpinShooterWheelsCommand(.4));
+		addSequential(new DriveToDistanceStraightCommand(24, -.5));
+		addSequential(new SpinShooterWheelsCommand(.6));
+		addSequential(new WaitCommand(.25));
+		addSequential(new RelativeAngleCommand(60));
 		addSequential(new WaitCommand(.5));
-		addSequential(new DriveToDistanceStraightCommand(36, -.5));
 		
 		// Remove if not necessary on competition bot
 		addSequential(new OpenGrabberCommand(true));
@@ -70,5 +58,32 @@ public class TestCommandGroup extends CommandGroup {
 		addSequential(new WaitCommand(.25));
 		
 		addSequential(new FireCubeCommand());
+		
+//		addSequential(new RightSideRightSwitchCommand());
+//		addSequential(new DriveToDistanceStraightCommand(24, -.5));
+//		addSequential(new WaitCommand(.5));
+//		addSequential(new RelativeAngleCommand(90));
+//		addSequential(new WaitCommand(.5));
+//		addSequential(new DriveToDistanceStraightCommand(36, .5));
+//		addSequential(new WaitCommand(.5));
+//		addSequential(new RelativeAngleCommand(-90));
+//		addSequential(new WaitCommand(.5));
+//		addSequential(new DriveToDistanceStraightCommand(36, .5));
+//		addSequential(new WaitCommand(.5));
+//		addSequential(new RelativeAngleCommand(-90));
+//		addSequential(new WaitCommand(.5));
+//		addSequential(new VisionGetCubeCommandGroup());
+//		addSequential(new RelativeAngleCommand(180));
+//		addSequential(new SpinShooterWheelsCommand(.4));
+//		addSequential(new WaitCommand(.5));
+//		addSequential(new DriveToDistanceStraightCommand(36, -.5));
+//		
+//		// Remove if not necessary on competition bot
+//		addSequential(new OpenGrabberCommand(true));
+//		addSequential(new WaitCommand(.25));
+//		addSequential(new OpenGrabberCommand(false));
+//		addSequential(new WaitCommand(.25));
+//		
+//		addSequential(new FireCubeCommand());
 	}
 }
