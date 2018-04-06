@@ -26,7 +26,6 @@ import org.firebears.commands.RelativeAngleCommand;
 import org.firebears.commands.StartRecordingCommand;
 import org.firebears.commands.StopRecordingCommand;
 import org.firebears.commands.TestMotors;
-import org.firebears.commands.TestRobotCommand;
 import org.firebears.commands.VisionForwardCommand;
 import org.firebears.commands.VisionGetCubeCommandGroup;
 import org.firebears.commands.VisionRotateCommand;
@@ -49,6 +48,7 @@ import org.firebears.commands.grabber.SpinGrabberWheelsCommand;
 import org.firebears.commands.shooter.ExtendShooterCommand;
 import org.firebears.commands.shooter.SpinShooterWheelsCommand;
 import org.firebears.commands.shooter.TestShooterSpeedCommand;
+import org.firebears.commands.testing.TestRobotCommand;
 import org.firebears.util.RobotReport;
 
 import edu.wpi.first.wpilibj.Joystick;

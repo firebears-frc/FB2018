@@ -1,4 +1,4 @@
-package org.firebears.commands;
+package org.firebears.commands.testing;
 
 import org.firebears.Robot;
 import org.firebears.RobotMap;

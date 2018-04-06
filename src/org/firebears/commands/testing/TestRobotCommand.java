@@ -1,5 +1,8 @@
-package org.firebears.commands;
+package org.firebears.commands.testing;
 
+import org.firebears.commands.ActivateCompressor;
+import org.firebears.commands.DisableDriveCommand;
+import org.firebears.commands.DisableShooterCommand;
 import org.firebears.commands.grabber.OpenGrabberCommand;
 import org.firebears.commands.grabber.RaiseGrabberCommand;
 import org.firebears.commands.shooter.ExtendShooterCommand;
