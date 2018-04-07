@@ -185,10 +185,11 @@ public class OI {
 //	celebrateButton2 =  new JoystickButton(joystick1, 2);
 //	celebrateButton2.whileHeld(celebrateCommand);
 	
+	report.addJoystickButton(1, 2, "Right-side", "Autonomous");
+	report.addJoystickButton(1, 3, "Left-side", "Autonomous");
+	report.addJoystickButton(1, 8, "Split", "Autonomous");
 	report.addJoystickButton(1, 15, "Switch/Scale", "Autonomous");
 	report.addJoystickButton(1, 16, "Cross/Dont-cross", "Autonomous");
-	report.addJoystickButton(1, 17, "Left-side", "Autonomous");
-	report.addJoystickButton(1, 18, "Left-side", "Autonomous");
 	
 	// SmartDashboard Buttons
 	// Recording Commands

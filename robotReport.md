@@ -1,4 +1,4 @@
-# FB2018, as of 2018.02.28
+# FB2018, as of 2018.04.07
 
 roboRIO serial number: 030a4a34
 
@@ -15,8 +15,8 @@ roboRIO serial number: 030a4a34
 
 ## DIO
 
-* 0 = Grabber Lidar 0 :
-* 1 = Grabber Lidar 1 :
+* 0 = Grabber Down Position : edu.wpi.first.wpilibj.DigitalInput@163006a
+* 1 = Grabber Up Position : edu.wpi.first.wpilibj.DigitalInput@1be847c
 * 2 = Tape Finder : edu.wpi.first.wpilibj.DigitalInput@f0a63f
 * 4 = Cube Detector : edu.wpi.first.wpilibj.DigitalInput@1f4c3
 
@@ -47,11 +47,14 @@ roboRIO serial number: 030a4a34
 * 1 = Joystick 2 : edu.wpi.first.wpilibj.Joystick@75222b
     * 1 = Shoot : FireCubeCommand
     * 7 = Arm Down : GrabberDownCommand
-    * 8 = Arm Close : DriverCloseCommand
     * 9 = Arm Up : GrabberUpCommand
-    * 10 = Arm Open : OpenGrabberCommand
     * 11 = Spinner wheels : SpinGrabberWheelsCommand
     * 12 = Grabber wheels : SpinGrabberWheelsCommand
     * 13 = Celebrate : CelebrateCommand
     * 14 = Toggle arms open/closed : OpenGrabberCommand
+    * 2 = Right-side : Autonomous
+    * 3 = Left-side : Autonomous
+    * 8 = Split : Autonomous
+    * 15 = Switch/Scale : Autonomous
+    * 16 = Cross/Dont-cross : Autonomous
 
