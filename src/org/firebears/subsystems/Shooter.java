@@ -63,8 +63,8 @@ public class Shooter extends Subsystem {
 
 		// RobotMap.leftLaunchSpinner.set(speed);
 		// RobotMap.rightLaunchSpinner.set(speed);
-		Robot.lights.setShootingMode(true);
-		Robot.lights.setFallingMode(false);
+		//Robot.lights.setShootingMode(true);
+		//Robot.lights.setFallingMode(false);
 	}
 
 	public void shooterStopWheel() {
@@ -74,8 +74,8 @@ public class Shooter extends Subsystem {
 		rightSpinner.disable();
 		// RobotMap.leftLaunchSpinner.set(0);
 		// RobotMap.rightLaunchSpinner.set(0);
-		Robot.lights.setShootingMode(false);
-		Robot.lights.setFallingMode(true);
+		//Robot.lights.setShootingMode(false);
+		//Robot.lights.setFallingMode(true);
 	}
 
 	public void shooterPneumaticsUp() {

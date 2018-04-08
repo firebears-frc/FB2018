@@ -6,6 +6,7 @@ import org.firebears.Robot;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.I2C;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.I2C.Port;
 
 public class Lights extends Subsystem {
@@ -41,16 +42,16 @@ public class Lights extends Subsystem {
 		driverstation = DriverStation.getInstance();
 	}
 
-	public void setShootingMode(boolean shooting) {
-		isShooting = shooting;
-	}
+	//public void setShootingMode(boolean shooting) {
+		//isShooting = shooting;
+	//}
 
-	public void setFallingMode(boolean falling) {
-		hasShot = falling;
-		if (falling) {
-			fallingTimeout = System.currentTimeMillis() + 2 * 1000L;
-		}
-	}
+	//public void setFallingMode(boolean falling) {
+		//hasShot = falling;
+		//if (falling) {
+			//fallingTimeout = System.currentTimeMillis() + 2 * 1000L;
+		//}
+	//}
 
 	public void setCelebrateMode(boolean celebrate) {
 		letsCelebrate = celebrate;
@@ -80,6 +81,13 @@ public class Lights extends Subsystem {
 
 	@Override
 	public void periodic() {
+		Joystick stick = Robot.oi.joystick2;
+		boolean shootingnow = (((stick.getRawAxis(0) + 1) / 2) > .1);
+		if (shootingnow == false && isShooting == true) {
+			hasShot = true;
+			fallingTimeout = System.currentTimeMillis() + 2 * 1000L;
+		}
+		isShooting = shootingnow;
 
 		if (letsCelebrate) {
 			setAnimation(SHOOTER_STRIP, CELEBRATE_ANIMATION);
