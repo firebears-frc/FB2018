@@ -85,7 +85,7 @@ public class Lights extends Subsystem {
 		boolean shootingnow = (((stick.getRawAxis(0) + 1) / 2) > .1);
 		if (shootingnow == false && isShooting == true) {
 			hasShot = true;
-			fallingTimeout = System.currentTimeMillis() + 2 * 1000L;
+			fallingTimeout = System.currentTimeMillis() + 5 * 1000L;
 		}
 		isShooting = shootingnow;
 
