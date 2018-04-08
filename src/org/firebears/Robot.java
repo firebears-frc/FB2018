@@ -20,9 +20,22 @@ import org.firebears.subsystems.Lights;
 import org.firebears.subsystems.Shooter;
 import org.firebears.subsystems.Vision;
 import org.firebears.util.RobotReport;
+import org.opencv.video.Video;
+import org.opencv.videoio.VideoCapture;
+import org.opencv.videoio.VideoWriter;
+import org.opencv.videoio.Videoio;
 
 import com.kauailabs.navx.frc.AHRS;
 
+import edu.wpi.cscore.CameraServerJNI;
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.cscore.UsbCameraInfo;
+import edu.wpi.cscore.VideoCamera;
+import edu.wpi.cscore.VideoEvent;
+import edu.wpi.cscore.VideoException;
+import edu.wpi.cscore.VideoProperty;
+import edu.wpi.cscore.VideoSink;
+import edu.wpi.cscore.VideoSource;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
@@ -69,7 +82,7 @@ public class Robot extends TimedRobot {
 		autoSelection = new AutoSelection();
 		lights.reset();
 
-		CameraServer.getInstance().startAutomaticCapture();
+		CameraServer.getInstance().startAutomaticCapture(0);
 
 		// OI must be constructed after subsystems. If the OI creates Commands
 		// (which it very likely will), subsystems are not guaranteed to be
@@ -236,6 +249,11 @@ public class Robot extends TimedRobot {
 			SmartDashboard.putString("ControlMode", RobotMap.chassisLeftMaster.getControlMode().toString());
 			
 			SmartDashboard.putString("Solenoid Pos", RobotMap.leftUpDown.get().toString());
+			
+			
+			SmartDashboard.putNumber("Camera FPS", CameraServer.getInstance().startAutomaticCapture(0).getActualFPS());
+			SmartDashboard.putNumber("DegsPerSec", Robot.chassis.getDegreesPerSecond());
+
 
 		}
 	}

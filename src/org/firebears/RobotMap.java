@@ -111,6 +111,8 @@ public class RobotMap {
 	public static DigitalInput farLidarSensor;
 	public static DigitalInput closeLidarSensor;
 	
+//	public static double degPerSec;
+	
 	public static boolean TestDriveSimLeftMasterPositive = false;
 	public static boolean TestDriveSimLeftMasterNegative = false;
 	public static boolean TestDriveSimLeftSlavePositive = false;

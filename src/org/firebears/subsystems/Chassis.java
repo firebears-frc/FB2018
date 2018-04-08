@@ -86,6 +86,37 @@ public class Chassis extends Subsystem {
 		double volts = RobotMap.pressureSensor.getAverageVoltage() - 0.49;
 		return volts * 51.28;
 	}
+	
+	
+	/**
+	 * @return Get the Degrees Per second
+	 *         
+	 */
+
+	public double getDegreesPerSecond() {
+		int t = 1;
+		double y1 = 0;
+		double y2;
+		double degPerSec = 0;
+		if (t == 1) {
+        	y1 = bound(RobotMap.navXBoard.getAngle());
+        	t = 2; 
+    	}else {
+    		y2 = bound(RobotMap.navXBoard.getAngle());
+    		t = 1;
+    		degPerSec = (y2 - y1)/(2/50);
+    	}
+		return degPerSec;
+	}
+	protected static double bound(double angle) {
+		while (angle > 180)
+			angle -= 360;
+		while (angle < -180)
+			angle += 360;
+		return angle;
+	}
+	
+	
 
 	/**
 	 * @return Get range finder distance in inches. Returns 0.0 of the value is
