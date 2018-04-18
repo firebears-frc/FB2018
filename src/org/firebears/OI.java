@@ -27,6 +27,7 @@ import org.firebears.commands.RelativeAngleCommand;
 import org.firebears.commands.StartRecordingCommand;
 import org.firebears.commands.StopRecordingCommand;
 import org.firebears.commands.TestMotors;
+import org.firebears.commands.TurnToAngleDeceleration;
 import org.firebears.commands.VisionForwardCommand;
 import org.firebears.commands.VisionGetCubeCommandGroup;
 import org.firebears.commands.VisionRotateCommand;
@@ -211,11 +212,17 @@ public class OI {
 	    SmartDashboard.putData("RotateToAngle", new RelativeAngleCommand(90));
 	    SmartDashboard.putData("Rotate to Specific Angle", new RotateToAngleCommand(90));
 	    SmartDashboard.putNumber("Target Angle", 90);
+	    SmartDashboard.putNumber("Max Speed", .7);
+	    SmartDashboard.putNumber("Decel Degree", 80);
+	    SmartDashboard.putNumber("Min Speed", .1);
 	    SmartDashboard.putNumber("Target Speed", .5);
 	    SmartDashboard.putData("Drive into Wall", new BackIntoWallCommand(12));
 	    SmartDashboard.putData("DriveStraight", new DriveToDistanceStraightCommand(200, .5));
 	    SmartDashboard.putData("Test Command Group", new TestCommandGroup());
 	    // SmartDashboard.putData("Nullzone Command",new DriveIntoNullZoneCommand());
+		   SmartDashboard.putData("Decel Turn to Angle w 10", new TurnToAngleDeceleration(90, .5, 80));
+		   SmartDashboard.putData("Decel Turn to Angle w 20", new TurnToAngleDeceleration(90, .5, 20));
+		   SmartDashboard.putData("Decel Turn to Angle w 45", new TurnToAngleDeceleration(90, .5, 45));
 	    
 	   SmartDashboard.putData("Extend Shooter", new ExtendShooterCommand(true));
 	   SmartDashboard.putData("Retract Shooter", new ExtendShooterCommand(false));
@@ -235,7 +242,7 @@ public class OI {
 	   SmartDashboard.putData("Turn on Compressor", new ActivateCompressor(true));
 	   SmartDashboard.putData("Turn off Compressor", new ActivateCompressor(false));
 	   SmartDashboard.putData("Reset NavX", new ResetNavX());
-	   SmartDashboard.putData("NOTPIDROTATECOMMAND", new NonPIDRotateCommand(-90));
+//	   SmartDashboard.putData("NOTPIDROTATECOMMAND", new NonPIDRotateCommand(-90));
 	   
 	   // Auto commands
 	   SmartDashboard.putData("Left side", new ChangeSide("Left"));

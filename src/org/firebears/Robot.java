@@ -82,7 +82,7 @@ public class Robot extends TimedRobot {
 		autoSelection = new AutoSelection();
 		lights.reset();
 
-		CameraServer.getInstance().startAutomaticCapture(0);
+//		CameraServer.getInstance().startAutomaticCapture(0);
 
 		// OI must be constructed after subsystems. If the OI creates Commands
 		// (which it very likely will), subsystems are not guaranteed to be
@@ -251,7 +251,7 @@ public class Robot extends TimedRobot {
 			SmartDashboard.putString("Solenoid Pos", RobotMap.leftUpDown.get().toString());
 			
 			
-			SmartDashboard.putNumber("Camera FPS", CameraServer.getInstance().startAutomaticCapture(0).getActualFPS());
+//			SmartDashboard.putNumber("Camera FPS", CameraServer.getInstance().startAutomaticCapture(0).getActualFPS());
 			SmartDashboard.putNumber("DegsPerSec", Robot.chassis.getDegreesPerSecond());
 
 
