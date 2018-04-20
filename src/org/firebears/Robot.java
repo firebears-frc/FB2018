@@ -252,7 +252,7 @@ public class Robot extends TimedRobot {
 			
 			
 //			SmartDashboard.putNumber("Camera FPS", CameraServer.getInstance().startAutomaticCapture(0).getActualFPS());
-			SmartDashboard.putNumber("DegsPerSec", Robot.chassis.getDegreesPerSecond());
+//			SmartDashboard.putNumber("DegsPerSec", Robot.chassis.getDegreesPerSecond());
 
 
 		}

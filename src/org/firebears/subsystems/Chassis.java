@@ -37,6 +37,11 @@ public class Chassis extends Subsystem {
 	private final SpeedControllerGroup rightMotors = RobotMap.chassisRightMotors;
 	private final DifferentialDrive robotDrive = RobotMap.chassisRobotDrive;
 	private final DigitalInput tapeSensor = RobotMap.tapeSensor;
+	
+	static int degPersecState = 1;
+	static double y1;
+	static double y2;
+
 
 	public boolean isTapeBright() {
 		// Return true when detecting light tape
@@ -93,28 +98,31 @@ public class Chassis extends Subsystem {
 	 *         
 	 */
 
-	public double getDegreesPerSecond() {
-		int t = 1;
-		double y1 = 0;
-		double y2;
-		double degPerSec = 0;
-		if (t == 1) {
-        	y1 = bound(RobotMap.navXBoard.getAngle());
-        	t = 2; 
-    	}else {
-    		y2 = bound(RobotMap.navXBoard.getAngle());
-    		t = 1;
-    		degPerSec = (y2 - y1)/(2/50);
-    	}
-		return degPerSec;
-	}
-	protected static double bound(double angle) {
-		while (angle > 180)
-			angle -= 360;
-		while (angle < -180)
-			angle += 360;
-		return angle;
-	}
+//	public double getDegreesPerSecond() {
+////		int t = 1;
+//		
+//		double degPerSec = 0;
+//		if (degPersecState == 1) {
+//        	this.y1 = bound(RobotMap.navXBoard.getAngle());
+//        	degPersecState = 2; 
+//    	}else {
+//    		this.y2 = bound(RobotMap.navXBoard.getAngle());
+//    		degPersecState = 1;
+//    	}
+//		degPerSec = (this.y2 - this.y1)/(1/50);
+//
+////		System.out.println("Degpersec: " + degPerSec);
+//		
+//		
+//		return degPerSec;
+//	}
+//	protected static double bound(double angle) {
+//		while (angle > 180)
+//			angle -= 360;
+//		while (angle < -180)
+//			angle += 360;
+//		return angle;
+//	}
 	
 	
 

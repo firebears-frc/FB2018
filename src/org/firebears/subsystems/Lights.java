@@ -77,6 +77,7 @@ public class Lights extends Subsystem {
 		dataOut[1] = (byte) (a + '0');
 		i2c.transaction(dataOut, dataOut.length, dataBack, dataBack.length);
 		currentAnimation[s] = a;
+		System.out.printf("Lights: setAnimation(%d, %d)%n", s, a);
 	}
 
 	@Override

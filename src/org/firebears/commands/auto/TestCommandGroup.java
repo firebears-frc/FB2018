@@ -1,5 +1,7 @@
 package org.firebears.commands.auto;
 
+import org.firebears.commands.AnotherRotateCommand;
+import org.firebears.commands.DriveToDistanceCommand;
 import org.firebears.commands.DriveToDistanceStraightCommand;
 import org.firebears.commands.GetAcceleration;
 import org.firebears.commands.PlayRecordingCommand;
@@ -26,6 +28,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class TestCommandGroup extends CommandGroup {
 
 	public TestCommandGroup() {
+		
+		addSequential(new AnotherRotateCommand(90));
+//		addSequential(new DriveToDistanceCommand(100, 5, .5));
+
 
 //		addSequential(new RightSideRightScaleCommand());
 //		addSequential(new SpinShooterWheelsCommand(0));
@@ -43,22 +49,22 @@ public class TestCommandGroup extends CommandGroup {
 //		addSequential(new WaitCommand(.25));
 //		
 //		addSequential(new FireCubeCommand());
-		addSequential(new RelativeAngleCommand(-110));
-		addSequential(new VisionGetCubeCommandGroup());
-		addSequential(new DriveToDistanceStraightCommand(24, -.5));
-		addSequential(new SpinShooterWheelsCommand(.6));
-		addSequential(new WaitCommand(.25));
-		addSequential(new RelativeAngleCommand(60));
-		addSequential(new WaitCommand(.5));
-		
-		// Remove if not necessary on competition bot
-		addSequential(new OpenGrabberCommand(true));
-		addSequential(new WaitCommand(.25));
-		addSequential(new OpenGrabberCommand(false));
-		addSequential(new WaitCommand(.25));
-		
-		addSequential(new FireCubeCommand());
-		
+//		addSequential(new RelativeAngleCommand(-110));
+//		addSequential(new VisionGetCubeCommandGroup());
+//		addSequential(new DriveToDistanceStraightCommand(24, -.5));
+//		addSequential(new SpinShooterWheelsCommand(.6));
+//		addSequential(new WaitCommand(.25));
+//		addSequential(new RelativeAngleCommand(60));
+//		addSequential(new WaitCommand(.5));
+//		
+//		// Remove if not necessary on competition bot
+//		addSequential(new OpenGrabberCommand(true));
+//		addSequential(new WaitCommand(.25));
+//		addSequential(new OpenGrabberCommand(false));
+//		addSequential(new WaitCommand(.25));
+//		
+//		addSequential(new FireCubeCommand());
+//		
 //		addSequential(new RightSideRightSwitchCommand());
 //		addSequential(new DriveToDistanceStraightCommand(24, -.5));
 //		addSequential(new WaitCommand(.5));

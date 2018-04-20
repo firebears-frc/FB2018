@@ -37,7 +37,7 @@ public class DriveToDistanceCommand extends PIDCommand {
     	
     	super(.065, 0.0, 0.0);
 		requires(Robot.chassis);
-		this.dis = dis;
+		this.targetDistance = dis;
 //		targetDistance = z;
 //		this.speed = speed;
 		getPIDController().setInputRange(-180.0, 180.0);
@@ -82,6 +82,7 @@ public class DriveToDistanceCommand extends PIDCommand {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+    	System.out.println("inchesTraveled: " + inchesTraveled());
         return inchesTraveled() >= targetDistance;
     }
 
