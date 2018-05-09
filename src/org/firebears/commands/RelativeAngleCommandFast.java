@@ -18,7 +18,7 @@ public class RelativeAngleCommandFast extends PIDCommand {
     long timeout;
 
     public RelativeAngleCommandFast(double degrees) {
-    	super(0.035, 0.0, 0.1); // PID P = .035 or .03375
+    	super(0.03375, 0.0, 0.10675); // PID P = .035 or .03375
 		requires(Robot.chassis);
 		turnValue = degrees;
 
@@ -52,7 +52,7 @@ public class RelativeAngleCommandFast extends PIDCommand {
 
     protected void initialize() {
     	timeout = System.currentTimeMillis() + 1000 * 5;
-    	turnValue = SmartDashboard.getNumber("Target Angle", 0);
+//    	turnValue = SmartDashboard.getNumber("Target Angle", 0);
     	targetAngle = bound(RobotMap.navXBoard.getAngle() + turnValue);
     	
     	getPIDController().setSetpoint(0.0);

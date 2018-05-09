@@ -106,6 +106,7 @@ public class Robot extends TimedRobot {
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
 		SmartDashboard.putNumber("NavX Angle", RobotMap.getNavXAngle());
+		SmartDashboard.putNumber("Vision Angle", Robot.vision.getAngleX());
 	}
 
 	@Override
@@ -250,6 +251,7 @@ public class Robot extends TimedRobot {
 			
 			SmartDashboard.putString("Solenoid Pos", RobotMap.leftUpDown.get().toString());
 			
+			SmartDashboard.putNumber("Vision Angle", Robot.vision.getAngleX());
 			
 //			SmartDashboard.putNumber("Camera FPS", CameraServer.getInstance().startAutomaticCapture(0).getActualFPS());
 //			SmartDashboard.putNumber("DegsPerSec", Robot.chassis.getDegreesPerSecond());

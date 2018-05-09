@@ -1,7 +1,6 @@
 package org.firebears.commands.auto;
 
 import org.firebears.commands.RelativeAngleCommandFast;
-import org.firebears.commands.DriveToDistanceCommand;
 import org.firebears.commands.DriveToDistanceStraightCommand;
 import org.firebears.commands.GetAcceleration;
 import org.firebears.commands.PlayRecordingCommand;

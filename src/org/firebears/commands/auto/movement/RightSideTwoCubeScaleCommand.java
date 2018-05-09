@@ -19,19 +19,17 @@ public class RightSideTwoCubeScaleCommand extends CommandGroup {
     public RightSideTwoCubeScaleCommand() {
     	addSequential(new RightSideRightScaleCommand());
 		addSequential(new SpinShooterWheelsCommand(0));
-		addSequential(new RelativeAngleCommandFast(75));
+		addSequential(new RelativeAngleCommandFast(100));
 		addSequential(new VisionGetCubeCommandGroup());
 		addSequential(new DriveToDistanceStraightCommand(24, -.5));
-		addSequential(new SpinShooterWheelsCommand(.6));
-		addSequential(new WaitCommand(.25));
-		addSequential(new RelativeAngleCommandFast(-75));
-		addSequential(new WaitCommand(.5));
+		addSequential(new SpinShooterWheelsCommand(.8));
+		addSequential(new RelativeAngleCommandFast(-90), 1.25);
 		
 		// Remove if not necessary on competition bot
-		addSequential(new OpenGrabberCommand(true));
-		addSequential(new WaitCommand(.25));
-		addSequential(new OpenGrabberCommand(false));
-		addSequential(new WaitCommand(.25));
+//		addSequential(new OpenGrabberCommand(true));
+//		addSequential(new WaitCommand(.25));
+//		addSequential(new OpenGrabberCommand(false));
+//		addSequential(new WaitCommand(.25));
 		
 		addSequential(new FireCubeCommand());
     }

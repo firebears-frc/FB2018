@@ -25,7 +25,6 @@ public class LeftSideRightScaleCommand extends CommandGroup {
     	addSequential(new DriveToDistanceStraightCommand(190, 0.70));
     	addSequential(new WaitCommand(0.5));
     	addSequential(new RotateToAngleCommandFast(90));
-    	addSequential(new WaitCommand(.5));
     	addSequential(new DriveToDistanceStraightCommand(215, 1.0));
     	
     	
@@ -34,7 +33,7 @@ public class LeftSideRightScaleCommand extends CommandGroup {
     	addSequential(new DriveToDistanceStraightCommand(30, 0.7));
     	addSequential(new WaitCommand(.5));
     	addSequential(new SpinShooterWheelsCommand(.6));
-    	addSequential(new RelativeAngleCommandFast(120));
+    	addSequential(new RelativeAngleCommandFast(120),1.25);
     	addSequential(new FireCubeCommand());
     }
 }
