@@ -14,11 +14,10 @@ public class VisionGetCubeCommandGroup extends CommandGroup {
     public VisionGetCubeCommandGroup() {
     	addParallel(new AutoPickUpCubeCommand());
 		addSequential(new WaitCommand(.25));
-		addSequential(new DriveToDistanceStraightCommand(36, .5));
+		addSequential(new DriveToDistanceStraightCommand(24, .5));
     	addSequential(new WaitforArmDownCommand());
-    	addSequential(new WaitCommand(.25));
-        addSequential(new VisionRotateCommand());
-        addSequential(new WaitCommand(.25));
+    	addSequential(new WaitCommand(.5));
+        addSequential(new VisionRotateCommandFast());
 //        addSequential(new VisionForwardCommand());
         addSequential(new VisionForwardCommand(.3));
         addSequential(new DriveToDistanceStraightCommand(10, -.3));

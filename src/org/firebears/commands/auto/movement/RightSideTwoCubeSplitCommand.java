@@ -2,6 +2,7 @@ package org.firebears.commands.auto.movement;
 
 import org.firebears.commands.DriveToDistanceStraightCommand;
 import org.firebears.commands.RelativeAngleCommand;
+import org.firebears.commands.RelativeAngleCommandFast;
 import org.firebears.commands.VisionGetCubeCommandGroup;
 import org.firebears.commands.driver.FireCubeCommand;
 import org.firebears.commands.grabber.OpenGrabberCommand;
@@ -18,11 +19,9 @@ public class RightSideTwoCubeSplitCommand extends CommandGroup {
     public RightSideTwoCubeSplitCommand() {
     	addSequential(new RightSideRightScaleCommand());
 		addSequential(new SpinShooterWheelsCommand(0));
-		addSequential(new RelativeAngleCommand(110));
+		addSequential(new RelativeAngleCommandFast(75));
 		addSequential(new VisionGetCubeCommandGroup());
-		addSequential(new RelativeAngleCommand(90));
-		addSequential(new WaitCommand(.5));
-		addSequential(new RelativeAngleCommand(90));
+		addSequential(new RelativeAngleCommandFast(180));
 		addSequential(new SpinShooterWheelsCommand(.4));
 		addSequential(new WaitCommand(.5));
 		addSequential(new DriveToDistanceStraightCommand(36, -.5));
