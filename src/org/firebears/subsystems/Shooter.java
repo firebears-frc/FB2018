@@ -33,6 +33,11 @@ public class Shooter extends Subsystem {
 	final double spinnerD = 0.00025;
 	final double spinnerF = 0;
 	final double TOLERANCE_PER = 5;
+	double m_speed;
+
+	public double getShooterSpeed() {
+		return m_speed;
+	}
 
 	public Shooter() {
 		leftSpinnerEncoder = new EncoderPIDSource(RobotMap.leftLaunchSpinner);
@@ -51,7 +56,9 @@ public class Shooter extends Subsystem {
 	}
 
 	public void shooterSpinWheel(double speed) {
+		m_speed = speed;
 		speed = speed * 800;
+		
 		
 		leftSpinner.enable();
 		rightSpinner.enable();
