@@ -173,7 +173,7 @@ public class OI {
 
 	celebrateButton = new JoystickButton(joystick2, 13);
 	Command celebrateCommand = new CelebrateCommand();
-	celebrateButton.whileHeld(celebrateCommand);
+	celebrateButton.whenPressed(celebrateCommand);
 	report.addJoystickButton(1, 13, "Celebrate", celebrateCommand);
 	
 //	dance = new JoystickButton(joystick1, 1);
