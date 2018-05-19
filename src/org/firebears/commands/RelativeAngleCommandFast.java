@@ -18,13 +18,15 @@ public class RelativeAngleCommandFast extends PIDCommand {
     long timeout;
 
     public RelativeAngleCommandFast(double degrees) {
-    	super(0.03375, 0.0, 0.10675); // PID P = .035 or .03375
+    	super(0.025, 0.0, 0.055); // PID P = .035 or .03375 D = 0.095
 		requires(Robot.chassis);
 		turnValue = degrees;
 
 		getPIDController().setInputRange(-180, 180);
 		getPIDController().setContinuous(true);
 		getPIDController().setAbsoluteTolerance(angleTolerance);
+		
+//		SmartDashboard.putData("Rotate Command", getPIDController());
     }
     
     private static double getAngleDifference(double angle1, double angle2) {
@@ -71,6 +73,7 @@ public class RelativeAngleCommandFast extends PIDCommand {
     		return Math.abs(RobotMap.chassisLeftMaster.getSelectedSensorVelocity(RobotMap.PID_IDX)) < 1 
     				&& Math.abs(getAngleDifference()) < angleTolerance;
     	}
+//    	return false;
     }
 
     protected void end() {

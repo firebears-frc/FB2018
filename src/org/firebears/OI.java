@@ -253,6 +253,7 @@ public class OI {
 	   
 	   SmartDashboard.putData("setAnimation", new I2CCommand(1, 3));
 	   SmartDashboard.putData("TEST", new TestRobotCommand());
+	   SmartDashboard.putData("Celebrate", new CelebrateCommand());
 
 		}
     }

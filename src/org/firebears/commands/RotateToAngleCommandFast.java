@@ -19,7 +19,7 @@ public class RotateToAngleCommandFast extends PIDCommand {
 	long timeout;
 
 	public RotateToAngleCommandFast(double angle) {
-    	super(0.035, 0.0, 0.1); // PID P = .035 or .03375
+    	super(0.025, 0.0, 0.055); // PID P = .035 or .03375
 		requires(Robot.chassis);
 		this.angle = bound(angle);
 		

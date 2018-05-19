@@ -24,7 +24,7 @@ public class VisionRotateCommandFast extends PIDCommand {
 	double offsetFrom20 = 38.5;
 	
     public VisionRotateCommandFast() {
-    	super(0.035, 0.0, 0.1);
+    	super(0.0275, 0.0, 0.05);
         
     	requires(Robot.chassis);
     	

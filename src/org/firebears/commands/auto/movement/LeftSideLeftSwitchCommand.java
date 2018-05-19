@@ -31,7 +31,7 @@ public class LeftSideLeftSwitchCommand extends CommandGroup {
     	addSequential(new DriveToDistanceStraightCommand(60, .4));
 		addSequential(new DriveToDistanceStraightCommand(48, .8));
 		addSequential(new WaitCommand(.5));
-		addSequential(new RelativeAngleCommandFast(-90));
+		addSequential(new RelativeAngleCommandFast(-90), 2);
 //		addSequential(new DriveToDistanceStraightCommand(24, -.5));
 //		addSequential(new WaitCommand(.5));
 //		addSequential(new OpenGrabberCommand(true));
