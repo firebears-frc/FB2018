@@ -155,9 +155,8 @@ public class Lights extends Subsystem {
 				}
 
 			}
-			sendAllAnimations();
-
 		}
+		sendAllAnimations();
 	}
 
 	private int getSpeedAnimation(double shooterSpeed) {
