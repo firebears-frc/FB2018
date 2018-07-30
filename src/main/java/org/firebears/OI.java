@@ -17,16 +17,10 @@ import org.firebears.commands.BackIntoWallCommand;
 import org.firebears.commands.CelebrateCommand;
 import org.firebears.commands.DriveToDistanceStraightCommand;
 import org.firebears.commands.I2CCommand;
-import org.firebears.commands.NonPIDRotateCommand;
-//import org.firebears.commands.NonPIDAngle;
-//import org.firebears.commands.PlayMirroredRecording;
-import org.firebears.recording.PlayRecordingCommand;
-import org.firebears.recording.RecordingFactory;
+import org.firebears.commands.PlayMirroredRecording;
+import org.firebears.commands.RelativeAngleCommand;
 import org.firebears.commands.ResetNavX;
 import org.firebears.commands.RotateToAngleCommandFast;
-import org.firebears.commands.RelativeAngleCommand;
-import org.firebears.recording.StartRecordingCommand;
-import org.firebears.recording.StopRecordingCommand;
 import org.firebears.commands.TestMotors;
 import org.firebears.commands.TurnToAngleDeceleration;
 import org.firebears.commands.VisionForwardCommand;
@@ -35,15 +29,12 @@ import org.firebears.commands.VisionRotateCommandFast;
 import org.firebears.commands.auto.ChangePriority;
 import org.firebears.commands.auto.ChangeShouldCross;
 import org.firebears.commands.auto.ChangeSide;
-import org.firebears.commands.auto.DriveToDistanceCommand;
 import org.firebears.commands.auto.DriveToTapeCommand;
 import org.firebears.commands.auto.TestCommandGroup;
-import org.firebears.commands.auto.TestCrossFieldCommandGroup;
-import org.firebears.commands.driver.GrabberDownCommand;
-import org.firebears.commands.driver.GrabberUpCommand;
-import org.firebears.commands.driver.DanceCommand;
 import org.firebears.commands.driver.DriverCloseCommand;
 import org.firebears.commands.driver.FireCubeCommand;
+import org.firebears.commands.driver.GrabberDownCommand;
+import org.firebears.commands.driver.GrabberUpCommand;
 import org.firebears.commands.grabber.OpenGrabberCommand;
 import org.firebears.commands.grabber.RaiseGrabberCommand;
 import org.firebears.commands.grabber.ReverseGrabberWheelsCommand;
@@ -52,6 +43,11 @@ import org.firebears.commands.shooter.ExtendShooterCommand;
 import org.firebears.commands.shooter.SpinShooterWheelsCommand;
 import org.firebears.commands.shooter.TestShooterSpeedCommand;
 import org.firebears.commands.testing.TestRobotCommand;
+//import org.firebears.commands.NonPIDAngle;
+//import org.firebears.commands.PlayMirroredRecording;
+import org.firebears.recording.PlayRecordingCommand;
+import org.firebears.recording.StartRecordingCommand;
+import org.firebears.recording.StopRecordingCommand;
 import org.firebears.util.RobotReport;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -196,11 +192,11 @@ public class OI {
 	// SmartDashboard Buttons
 	// Recording Commands
 	if (RobotMap.DEBUG) {
-	    SmartDashboard.putData("Start Recording", new StartRecordingCommand());
-	    SmartDashboard.putData("Stop Recording", new StopRecordingCommand());
-	    SmartDashboard.putData("Play Recording", new PlayRecordingCommand());
+	    SmartDashboard.putData("Start Recording", new StartRecordingCommand(RobotMap.recordingFactory));
+	    SmartDashboard.putData("Stop Recording", new StopRecordingCommand(RobotMap.recordingFactory));
+	    SmartDashboard.putData("Play Recording", new PlayRecordingCommand(RobotMap.recordingFactory));
 	    SmartDashboard.putData("Play Recording Mirrored", new PlayMirroredRecording());
-	    SmartDashboard.putData("Test Recording", new PlayRecordingCommand(testRecording));
+//	    SmartDashboard.putData("Test Recording", new PlayRecordingCommand(testRecording));
 	    SmartDashboard.putData("Mirror Test Recording", new PlayMirroredRecording(testRecording));
 	    
 	    // Vision Commands
