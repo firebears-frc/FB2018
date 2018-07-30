@@ -1,5 +1,6 @@
 package org.firebears;
 
+import org.firebears.recording.RecordingFactory;
 import org.firebears.subsystems.Lights;
 import org.firebears.util.RobotReport;
 import com.ctre.phoenix.motorcontrol.ControlMode;
@@ -110,6 +111,8 @@ public class RobotMap {
 
 	public static DigitalInput farLidarSensor;
 	public static DigitalInput closeLidarSensor;
+	
+    public static RecordingFactory recordingFactory;
 	
 //	public static double degPerSec;
 	
@@ -313,6 +316,10 @@ public class RobotMap {
 //		pdp.clearStickyFaults();
 
 		report.addOtherConfig(Lights.I2C_ADDRESS, "Trinket I2C Address");
+		
+	    recordingFactory = new RecordingFactory();
+	    recordingFactory.add(RobotMap.chassisLeftMaster, "leftMotor");
+	    recordingFactory.add(RobotMap.chassisRightMaster, "rightMotor");
 	}
 
 	/**
