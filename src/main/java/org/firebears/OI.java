@@ -55,6 +55,8 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import static org.firebears.Robot.config;
+
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
@@ -191,7 +193,7 @@ public class OI {
 	
 	// SmartDashboard Buttons
 	// Recording Commands
-	if (RobotMap.DEBUG) {
+	if (config.DEBUG) {
 	    SmartDashboard.putData("Start Recording", new StartRecordingCommand(RobotMap.recordingFactory));
 	    SmartDashboard.putData("Stop Recording", new StopRecordingCommand(RobotMap.recordingFactory));
 	    SmartDashboard.putData("Play Recording", new PlayRecordingCommand(RobotMap.recordingFactory));

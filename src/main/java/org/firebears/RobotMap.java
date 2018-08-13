@@ -25,6 +25,8 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import static org.firebears.Robot.config;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -33,7 +35,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class RobotMap {
 
-	public static final boolean DEBUG = true;
+	public static final boolean DEBUG = config.DEBUG;
 
 	public static CANTalon chassisLeftMaster;
 	public static CANTalon chassisLeftSlave;
@@ -63,29 +65,18 @@ public class RobotMap {
 
 	public static AnalogInput pressureSensor;
 
-	public static final int CAN_LEFT_MASTER = 2;
-	public static final int CAN_LEFT_SLAVE = 3;
-	public static final int CAN_RIGHT_MASTER = 4;
-	public static final int CAN_RIGHT_SLAVE = 5;
-	public static final int CAN_LEFT_CUBE_SPINNER = 11;
-	public static final int CAN_RIGHT_CUBE_SPINNER = 12;
-	public static final int CAN_LEFT_GRABBER_MOTOR = 13;
-	public static final int CAN_RIGHT_GRABBER_MOTOR = 14;
-	public static final int CAN_CLIMBER_MOTOR = 15;
-	public static final int CAN_SPARE_MOTOR = 16;
-
 	// Variables for closed loop driving
 	public static final int PID_IDX = 0;
 	public static final int TIMEOUT_MS = 10;
-	static double m_P = 0.25;
-	static double m_I = 0.0;
-	static double m_D = 0.05;
-	static double m_ff = 1.75;//1.0; // 1.46;
-	static int m_izone = 256;
-	static double m_rampRate = 0.0;
+	static double m_P = config.getDouble("chassis.pid.P", 0.25);
+	static double m_I = config.getDouble("chassis.pid.I", 0.00);
+	static double m_D = config.getDouble("chassis.pid.D", 0.05);
+	static double m_ff = config.getDouble("chassis.pid.F", 1.75) ;//1.0; // 1.46;
+	static int m_izone = config.getInt("chassis.pid.integralZone", 256);
+	static double m_rampRate = config.getDouble("chassis.pid.rampRate", 0.00);
 	static int m_profile = 0;
 	public static int m_CountPerRev = 650;// ****Magnetic
-	public static boolean CLOSED_LOOP_DRIVING = true;
+    public static boolean CLOSED_LOOP_DRIVING = config.getBoolean("chassis.pid.closedLoop");
 
 	// For autoSelecion
 	public static String side;
@@ -128,7 +119,6 @@ public class RobotMap {
 	
 	public static boolean TestDriveSim = false;
 
-	
 	public static boolean TestShooterLeftPositive = false;
 	public static boolean TestShooterLeftNegative = false;
 	public static boolean TestShooterRightPositive = false;
@@ -136,12 +126,10 @@ public class RobotMap {
 	
 	public static boolean TestShooter = false;
 	
-
 	public static boolean TestSolenoidGrabberVertUp = false;
 	public static boolean TestSolenoidGrabberVertDown = false;
 
 	public static boolean TestSolenoid = false;
-
 
 	public static boolean TestNavx = false;
 	public static boolean TestUltrasonic = false;
@@ -158,44 +146,44 @@ public class RobotMap {
 	public static void init(RobotReport report) {
 
 		// Set up motors for driving
-		chassisLeftMaster = new CANTalon(CAN_LEFT_MASTER);
+		chassisLeftMaster = new CANTalon(config.getInt("chassis.leftMaster.canID"));
 		chassisLeftMaster.setName("Chassis", "FrontLeft");
 		chassisLeftMaster.setNeutralMode(NeutralMode.Brake);
 //		chassisLeftMaster.configPeakCurrentLimit(0, TIMEOUT_MS);
 //		chassisLeftMaster.configPeakCurrentDuration(0, TIMEOUT_MS);
 //		chassisLeftMaster.configContinuousCurrentLimit(20, TIMEOUT_MS);
 //		chassisLeftMaster.enableCurrentLimit(true);
-		report.addCAN(CAN_LEFT_MASTER, "Left Master - PDP:3", chassisLeftMaster);
+		report.addCAN(config.getInt("chassis.leftMaster.canID"), "Left Master - PDP:3", chassisLeftMaster);
 
-		chassisLeftSlave = new CANTalon(CAN_LEFT_SLAVE);
+		chassisLeftSlave = new CANTalon(config.getInt("chassis.leftSlave.canID"));
 		chassisLeftSlave.setName("Chassis", "BackLeft");
 		chassisLeftSlave.setNeutralMode(NeutralMode.Brake);
 //		chassisLeftSlave.configPeakCurrentLimit(0, TIMEOUT_MS);
 //		chassisLeftSlave.configPeakCurrentDuration(0, TIMEOUT_MS);
 //		chassisLeftSlave.configContinuousCurrentLimit(20, TIMEOUT_MS);
 //		chassisLeftSlave.enableCurrentLimit(true);
-		report.addCAN(CAN_LEFT_SLAVE, "Left Slave - PDP:2", chassisLeftSlave);
+		report.addCAN(config.getInt("chassis.leftSlave.canID"), "Left Slave - PDP:2", chassisLeftSlave);
 
 		chassisLeftMotors = new SpeedControllerGroup(chassisLeftMaster, chassisLeftSlave);
 		// LiveWindow.addActuator("Chassis", "LeftMotors", chassisLeftMotors);
 
-		chassisRightMaster = new CANTalon(CAN_RIGHT_MASTER);
+		chassisRightMaster = new CANTalon(config.getInt("chassis.rightMaster.canID"));
 		chassisRightMaster.setName("Chassis", "FrontRight");
 		chassisRightMaster.setNeutralMode(NeutralMode.Brake);
 //		chassisRightMaster.configPeakCurrentLimit(0, TIMEOUT_MS);
 //		chassisRightMaster.configPeakCurrentDuration(0, TIMEOUT_MS);
 //		chassisRightMaster.configContinuousCurrentLimit(20, TIMEOUT_MS);
 //		chassisRightMaster.enableCurrentLimit(true);
-		report.addCAN(CAN_RIGHT_MASTER, "Right Master - PDP:1", chassisRightMaster);
+		report.addCAN(config.getInt("chassis.rightMaster.canID"), "Right Master - PDP:1", chassisRightMaster);
 
-		chassisRightSlave = new CANTalon(CAN_RIGHT_SLAVE);
+		chassisRightSlave = new CANTalon(config.getInt("chassis.rightSlave.canID"));
 		chassisRightSlave.setName("Chassis", "BackRight");
 		chassisRightSlave.setNeutralMode(NeutralMode.Brake);
 //		chassisRightSlave.configPeakCurrentLimit(0, TIMEOUT_MS);
 //		chassisRightSlave.configPeakCurrentDuration(0, TIMEOUT_MS);
 //		chassisRightSlave.configContinuousCurrentLimit(20, TIMEOUT_MS);
 //		chassisRightSlave.enableCurrentLimit(true);
-		report.addCAN(CAN_RIGHT_SLAVE, "Right Slave - PDP:0", chassisRightSlave);
+		report.addCAN(config.getInt("chassis.rightSlave.canID"), "Right Slave - PDP:0", chassisRightSlave);
 
 		chassisRightMotors = new SpeedControllerGroup(chassisRightMaster, chassisRightSlave);
 
@@ -221,27 +209,27 @@ public class RobotMap {
 			setPID(chassisRightMaster, m_P, m_I, m_D, m_ff, m_izone, m_rampRate, m_profile);
 		}
 
-		leftIntake = new CANTalon(CAN_LEFT_GRABBER_MOTOR);
+		leftIntake = new CANTalon(config.getInt("grabber.leftMotor.canID"));
 		leftIntake.setName("Grabber", "leftIntake");
 		leftIntake.setNeutralMode(NeutralMode.Brake);
-		report.addCAN(CAN_LEFT_GRABBER_MOTOR, "leftIntake", leftIntake);
+		report.addCAN(config.getInt("grabber.leftMotor.canID"), "leftIntake", leftIntake);
 
-		rightIntake = new CANTalon(CAN_RIGHT_GRABBER_MOTOR);
+		rightIntake = new CANTalon(config.getInt("grabber.rightMotor.canID"));
 		rightIntake.setName("Grabber", "rightIntake");
 		rightIntake.setNeutralMode(NeutralMode.Brake);
-		report.addCAN(CAN_RIGHT_GRABBER_MOTOR, "rightIntake", rightIntake);
+		report.addCAN(config.getInt("grabber.rightMotor.canID"), "rightIntake", rightIntake);
 
-		leftLaunchSpinner = new CANTalon(CAN_LEFT_CUBE_SPINNER);
+		leftLaunchSpinner = new CANTalon(config.getInt("shooter.leftSpinner.canID"));
 		leftLaunchSpinner.setSensorPhase(true);
 		leftLaunchSpinner.setNeutralMode(NeutralMode.Coast);
 		leftLaunchSpinner.setName("shooter", "leftSpinner");
-		report.addCAN(CAN_LEFT_CUBE_SPINNER, "leftSpinner", leftLaunchSpinner);
+		report.addCAN(config.getInt("shooter.leftSpinner.canID"), "leftSpinner", leftLaunchSpinner);
 
-		rightLaunchSpinner = new CANTalon(CAN_RIGHT_CUBE_SPINNER);
+		rightLaunchSpinner = new CANTalon(config.getInt("shooter.rightSpinner.canID"));
 		rightLaunchSpinner.setSensorPhase(true);
 		rightLaunchSpinner.setNeutralMode(NeutralMode.Coast);
 		rightLaunchSpinner.setName("shooter", "rightSpinner");
-		report.addCAN(CAN_RIGHT_CUBE_SPINNER, "rightSpinner", rightLaunchSpinner);
+		report.addCAN(config.getInt("shooter.rightSpinner.canID"), "rightSpinner", rightLaunchSpinner);
 
 		leftLaunch = new DoubleSolenoid(0, 1, 0);
 		leftLaunch.setName("shooter", "leftPneumatics");

@@ -19,6 +19,7 @@ import org.firebears.subsystems.Grabber;
 import org.firebears.subsystems.Lights;
 import org.firebears.subsystems.Shooter;
 import org.firebears.subsystems.Vision;
+import org.firebears.util.Config;
 import org.firebears.util.RobotReport;
 import org.opencv.video.Video;
 import org.opencv.videoio.VideoCapture;
@@ -58,6 +59,7 @@ public class Robot extends TimedRobot {
 
 	Command selectedAuto;
 
+    public static Config config;
 	public static OI oi;
 	public static Vision vision;
 	public static AutoSelection autoSelection;
@@ -72,6 +74,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void robotInit() {
+        config = new Config("config.properties", "robot.properties", "override.properties");
 		RobotReport report = new RobotReport("FB2018");
 		RobotMap.init(report);
 		chassis = new Chassis();
@@ -91,6 +94,7 @@ public class Robot extends TimedRobot {
 		oi = new OI(report);
 
 		report.write(new File(System.getProperty("user.home"), "robotReport.md"));
+        config.print(System.out);
 	}
 
 	/**
