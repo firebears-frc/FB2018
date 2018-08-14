@@ -21,23 +21,42 @@ public class RecordingFactory {
 
     private List<Recordable> recordableList = new ArrayList<>();
 
+    /**
+     * @param recordable a {@code Recordable}.
+     */
     public void add(Recordable recordable) {
         recordableList.add(recordable);
     }
 
+    /**
+     * @param speedController a {@code SpeedController}.
+     * @param label a unique label for the {@code SpeedController}.
+     */
     public void add(SpeedController speedController, String label) {
         recordableList.add(new SpeedControllerRecordable(speedController, label));
     }
 
+    /**
+     * @param joystick a {@code Joystick}.
+     * @param axisType one axis on the {@code Joystick}.
+     * @param label a unique label for the {@code SpeedController}.
+     */
     public void add(Joystick joystick, Joystick.AxisType axisType, String label) {
         recordableList.add(new JoystickRecordable(joystick, axisType, label));
     }
 
+    /**
+     * @return a new {@code Recording}.
+     */
     public Recording newRecording() {
         Recordable[] recordables = recordableList.toArray(new Recordable[recordableList.size()]);
         return new Recording(recordables);
     }
 
+    /**
+     * @param in the {@code Reader} on which to load a CSV file.
+     * @return a new {@code Recording}.
+     */
     public Recording load(Reader in) {
         Recording recording = newRecording();
         try (BufferedReader reader = new BufferedReader(in)) {
@@ -59,6 +78,16 @@ public class RecordingFactory {
         return recording;
     }
 
+    /**
+     * @param line
+     *            one CSV line.
+     * @param datapoint
+     *            an array of numbers. Must already be of the correct length. As a
+     *            side-effect, data will be written into this array.
+     * @return the value of the first column on the CSV line. Will be the number of
+     *         milliseconds for which these values should be set back into a
+     *         {@code Recordable}.
+     */
     private long readDataLine(String line, double[] datapoint) {
         String[] s = line.split(",");
         long deltaTime = Long.parseLong(s[0]);
@@ -93,76 +122,125 @@ public class RecordingFactory {
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    private static class SpeedControllerRecordable implements Recordable {
+    /**
+     * An object for recording the values on a  {@link SpeedController}.
+     */
+    protected static class SpeedControllerRecordable implements Recordable {
 
         private final SpeedController speedController;
         private final String label;
 
-        private SpeedControllerRecordable(SpeedController speedController, String label) {
+        /**
+         * @param speedController a @code {@link SpeedController}.
+         * @param label a unique label.
+         */
+        protected SpeedControllerRecordable(SpeedController speedController, String label) {
             this.speedController = speedController;
             this.label = label;
         }
 
+        /**
+         * @return the unique label for this {@code Recordable}.
+         */
         @Override
         public String getLabel() {
             return label;
         }
 
+        /**
+         * @return the current value on this {@code SpeedController}.
+         */
         @Override
         public double get() {
             return speedController.get();
         }
 
+        /**
+         * @param value the value to set into this {@code SpeedController}.
+         */
         @Override
         public void set(double value) {
             this.speedController.set(value);
         }
     }
 
-    private static class JoystickRecordable implements Recordable {
+    /**
+     * An object for recording the values from one axis on a {@link Joystick}.
+     * This {@link Recordable} is not settable.
+     */
+    protected static class JoystickRecordable implements Recordable {
 
         private final Joystick joystick;
         private final Joystick.AxisType axisType;
         private final String label;
 
-        private JoystickRecordable(Joystick joystick, Joystick.AxisType axisType, String label) {
+        /**
+         * @param joystick the {@code Joystick}.
+         * @param axisType the axis to record.
+         * @param label a unique label.
+         */
+        protected JoystickRecordable(Joystick joystick, Joystick.AxisType axisType, String label) {
             this.joystick = joystick;
             this.axisType = axisType;
             this.label = label;
         }
 
+        /**
+         * @return the unique label for this {@code Recordable}.
+         */
         @Override
         public String getLabel() {
             return label;
         }
 
+        /**
+         * @return the value for this joystick's axis.
+         */
         @Override
         public double get() {
             return joystick.getAxis(axisType);
         }
 
+        /**
+         * @return false, since this {@code Recordable} may not have values set into it.
+         */
         @Override
         public boolean isSettable() {
             return false;
         }
 
+        /**
+         * @param value a value.
+         */
         @Override
         public void set(double value) {
         }
     }
 
-    private static class FakeRecordable implements Recordable {
+    /**
+     * A {@link Recordable} that exists purely for testing purposes.
+     */
+    protected static class FakeRecordable implements Recordable {
         private final String label;
 
-        private FakeRecordable(String label) {
+        /**
+         * @param label a unique label.
+         */
+        protected FakeRecordable(String label) {
             this.label = label;
         }
 
+        /**
+         * @return the unique label for this {@code Recordable}.
+         */
         @Override
         public String getLabel() {
             return label;
         }
 
+        /**
+         * @return a random value.
+         */
         @Override
         public double get() {
             double value = Math.random() * 2.0 - 1.0;
@@ -170,6 +248,9 @@ public class RecordingFactory {
             return value;
         }
 
+        /**
+         * @param value a value.
+         */
         @Override
         public void set(double value) {
             System.out.printf("set(%f)%n", value);

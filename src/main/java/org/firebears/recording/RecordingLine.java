@@ -15,7 +15,7 @@ public class RecordingLine implements Comparable<RecordingLine> {
      * @param currentTime
      *            Current time in milliseconds.
      * @param recordables
-     *            List of recordable objects.
+     *            An array of recordable objects.
      */
     RecordingLine(long currentTime, Recordable... recordables) {
         this.time = currentTime;
@@ -25,6 +25,14 @@ public class RecordingLine implements Comparable<RecordingLine> {
         }
     }
 
+    /**
+     * Create one new {@code RecordingLine} based on a sequence of numbers.
+     * 
+     * @param currentTime
+     *            Current time in milliseconds.
+     * @param datapoint
+     *            an array of numbers.
+     */
     RecordingLine(long currentTime, double... datapoint) {
         this.time = currentTime;
         data = new double[datapoint.length];
@@ -33,6 +41,13 @@ public class RecordingLine implements Comparable<RecordingLine> {
         }
     }
 
+    /**
+     * Determine if a line is greater-than, equal-to, or less-than the other line.
+     * Supports the {@link Comparable} interface.
+     * 
+     * @param other another line
+     * @return an integer greater-than, equal-to, or less-than zero.
+     */
     @Override
     public int compareTo(RecordingLine other) {
         return Long.compare(this.time, other.time);

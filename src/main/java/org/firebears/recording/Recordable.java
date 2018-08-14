@@ -1,8 +1,15 @@
 package org.firebears.recording;
 
+import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.SpeedController;
+
 /**
- * Represents something connected the robot that can be recorded, and
- * potentially set later.
+ * Represents something connected to the robot that can be recorded, and
+ * potentially set later.  For instance, we could record the input to a 
+ * {@code SpeedController} or a {@code Joystick} and later set those values 
+ * back into the robot.  We could record the values from an {@link AnalogGyro},
+ * but it would not make sense to set values into back to the gyro.
  */
 public interface Recordable {
 

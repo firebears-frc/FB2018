@@ -25,6 +25,9 @@ public class PlayRecordingCommand extends Command {
     /**
      * Play the most recently recorded {@link Recording} created by any
      * {@link StartRecordingCommand}.
+     * 
+     * @param factory
+     *            the current factory for creating {@link Recording} objects.
      */
     public PlayRecordingCommand(RecordingFactory factory) {
         this.factory = factory;
@@ -34,6 +37,8 @@ public class PlayRecordingCommand extends Command {
     /**
      * Play a recording saved to a specific file.
      * 
+     * @param factory
+     *            the current factory for creating {@link Recording} objects.
      * @param recordingFile
      *            Recording file in CSV format.
      */
@@ -46,6 +51,8 @@ public class PlayRecordingCommand extends Command {
      * Play a recording saved to a named file. Can play files saved into the
      * {@code FRCUserProgram.jar} as system resources.
      * 
+     * @param factory
+     *            the current factory for creating {@link Recording} objects.
      * @param fileName
      *            File name or resource name for CSV data.
      */
