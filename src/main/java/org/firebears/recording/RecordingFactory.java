@@ -1,10 +1,7 @@
 package org.firebears.recording;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.Reader;
 import java.io.Writer;
@@ -256,35 +253,4 @@ public class RecordingFactory {
             System.out.printf("set(%f)%n", value);
         }
     }
-
-    // public static void main(String[] arg) throws InterruptedException,
-    // IOException {
-    // RecordingFactory f = new RecordingFactory();
-    // f.add(new FakeRecordable("left"));
-    // f.add(new FakeRecordable("right"));
-    //
-    // Recording recording1 = f.newRecording();
-    // long startTime = System.currentTimeMillis();
-    // for (int i = 0; i < 8; i++) {
-    // long currentTime = System.currentTimeMillis() - startTime;
-    // recording1.addLine(currentTime);
-    // Thread.sleep(20);
-    // }
-    //
-    // java.io.File desktop = new java.io.File(System.getProperty("user.home"),
-    // "Desktop");
-    // java.io.File outFile1 = new java.io.File(desktop, "q1.csv");
-    // Writer out = new FileWriter(outFile1);
-    // f.save(recording1, out, "First test");
-    // out.close();
-    //
-    // Reader in = new FileReader(outFile1);
-    // Recording recording2 = f.load(in);
-    // in.close();
-    //
-    // java.io.File outFile2 = new java.io.File(desktop, "q2.csv");
-    // out = new FileWriter(outFile2);
-    // f.save(recording2, out, "second test");
-    // out.close();
-    // }
 }
