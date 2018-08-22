@@ -197,7 +197,7 @@ public class OI {
 	    SmartDashboard.putData("Start Recording", new StartRecordingCommand(RobotMap.recordingFactory));
 	    SmartDashboard.putData("Stop Recording", new StopRecordingCommand(RobotMap.recordingFactory));
 	    SmartDashboard.putData("Play Recording", new PlayRecordingCommand(RobotMap.recordingFactory));
-	    SmartDashboard.putData("Play Recording Mirrored", new PlayMirroredRecording());
+//	    SmartDashboard.putData("Play Recording Mirrored", new PlayMirroredRecording());
 	    SmartDashboard.putData("Test Recording", new PlayRecordingCommand(RobotMap.recordingFactory, testRecording));
 //	    SmartDashboard.putData("Mirror Test Recording", new PlayMirroredRecording(testRecording));
 	    
