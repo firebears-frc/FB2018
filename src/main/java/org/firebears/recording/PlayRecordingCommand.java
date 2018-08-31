@@ -26,8 +26,7 @@ public class PlayRecordingCommand extends Command {
      * Play the most recently recorded {@link Recording} created by any
      * {@link StartRecordingCommand}.
      * 
-     * @param factory
-     *            the current factory for creating {@link Recording} objects.
+     * @param factory the current factory for creating {@link Recording} objects.
      */
     public PlayRecordingCommand(RecordingFactory factory) {
         this.factory = factory;
@@ -37,10 +36,9 @@ public class PlayRecordingCommand extends Command {
     /**
      * Play a recording saved to a specific file.
      * 
-     * @param factory
-     *            the current factory for creating {@link Recording} objects.
-     * @param recordingFile
-     *            Recording file in CSV format.
+     * @param factory       the current factory for creating {@link Recording}
+     *                      objects.
+     * @param recordingFile Recording file in CSV format.
      */
     public PlayRecordingCommand(RecordingFactory factory, File recordingFile) {
         this.factory = factory;
@@ -51,10 +49,8 @@ public class PlayRecordingCommand extends Command {
      * Play a recording saved to a named file. Can play files saved into the
      * {@code FRCUserProgram.jar} as system resources.
      * 
-     * @param factory
-     *            the current factory for creating {@link Recording} objects.
-     * @param fileName
-     *            File name or resource name for CSV data.
+     * @param factory  the current factory for creating {@link Recording} objects.
+     * @param fileName File name or resource name for CSV data.
      */
     public PlayRecordingCommand(RecordingFactory factory, String fileName) {
         this.factory = factory;
@@ -101,22 +97,30 @@ public class PlayRecordingCommand extends Command {
 
     private Recording loadRecording(File file) {
         Recording recording = null;
-        try (Reader reader = new FileReader(file)) {
-            recording = factory.load(reader);
-        } catch (IOException e) {
-            e.printStackTrace();
-            recording = null;
+        if (file == null) {
+            System.out.println(this.getClass().getSimpleName() + ": loadRecording : null file");
+        } else {
+            try (Reader reader = new FileReader(file)) {
+                recording = factory.load(reader);
+            } catch (IOException e) {
+                e.printStackTrace();
+                recording = null;
+            }
         }
         return recording;
     }
 
     private Recording loadRecording(InputStream stream) {
         Recording recording = null;
-        try (Reader reader = new InputStreamReader(stream)) {
-            recording = this.factory.load(reader);
-        } catch (IOException e) {
-            e.printStackTrace();
-            recording = null;
+        if (stream == null) {
+            System.out.println(this.getClass().getSimpleName() + ": loadRecording : null stream");
+        } else {
+            try (Reader reader = new InputStreamReader(stream)) {
+                recording = this.factory.load(reader);
+            } catch (IOException e) {
+                e.printStackTrace();
+                recording = null;
+            }
         }
         return recording;
     }

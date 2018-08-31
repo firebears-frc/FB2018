@@ -37,7 +37,12 @@ dependencies {
     compile wpilib()
     compile ctre()
     compile navx()
-    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.2.0'
+    testCompile 'org.junit.jupiter:junit-jupiter-api:5.2.0'
+    testRuntime 'org.junit.jupiter:junit-jupiter-engine:5.2.0'
+}
+
+test {
+     useJUnitPlatform()
 }
 
 // Setting up my Jar File. In this case, adding all libraries into the main jar ('fat jar')

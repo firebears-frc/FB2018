@@ -26,8 +26,17 @@ public class RecordingFactory {
     }
 
     /**
+     * @param recordables list of  {@code Recordable} objects.
+     */
+    public void addAll(List<Recordable> recordables) {
+        for (Recordable recordable : recordables) {
+            recordableList.add(recordable);
+        }
+    }
+
+    /**
      * @param speedController a {@code SpeedController}.
-     * @param label a unique label for the {@code SpeedController}.
+     * @param label           a unique label for the {@code SpeedController}.
      */
     public void add(SpeedController speedController, String label) {
         recordableList.add(new SpeedControllerRecordable(speedController, label));
@@ -36,7 +45,7 @@ public class RecordingFactory {
     /**
      * @param joystick a {@code Joystick}.
      * @param axisType one axis on the {@code Joystick}.
-     * @param label a unique label for the {@code SpeedController}.
+     * @param label    a unique label for the {@code SpeedController}.
      */
     public void add(Joystick joystick, Joystick.AxisType axisType, String label) {
         recordableList.add(new JoystickRecordable(joystick, axisType, label));
@@ -76,11 +85,9 @@ public class RecordingFactory {
     }
 
     /**
-     * @param line
-     *            one CSV line.
-     * @param datapoint
-     *            an array of numbers. Must already be of the correct length. As a
-     *            side-effect, data will be written into this array.
+     * @param line      one CSV line.
+     * @param datapoint an array of numbers. Must already be of the correct length.
+     *                  As a side-effect, data will be written into this array.
      * @return the value of the first column on the CSV line. Will be the number of
      *         milliseconds for which these values should be set back into a
      *         {@code Recordable}.
@@ -120,18 +127,18 @@ public class RecordingFactory {
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     /**
-     * An object for recording the values on a  {@link SpeedController}.
+     * An object for recording the values on a {@link SpeedController}.
      */
-    protected static class SpeedControllerRecordable implements Recordable {
+    public static class SpeedControllerRecordable implements Recordable {
 
         private final SpeedController speedController;
         private final String label;
 
         /**
          * @param speedController a @code {@link SpeedController}.
-         * @param label a unique label.
+         * @param label           a unique label.
          */
-        protected SpeedControllerRecordable(SpeedController speedController, String label) {
+        public SpeedControllerRecordable(SpeedController speedController, String label) {
             this.speedController = speedController;
             this.label = label;
         }
@@ -162,10 +169,10 @@ public class RecordingFactory {
     }
 
     /**
-     * An object for recording the values from one axis on a {@link Joystick}.
-     * This {@link Recordable} is not settable.
+     * An object for recording the values from one axis on a {@link Joystick}. This
+     * {@link Recordable} is not settable.
      */
-    protected static class JoystickRecordable implements Recordable {
+    public static class JoystickRecordable implements Recordable {
 
         private final Joystick joystick;
         private final Joystick.AxisType axisType;
@@ -174,9 +181,9 @@ public class RecordingFactory {
         /**
          * @param joystick the {@code Joystick}.
          * @param axisType the axis to record.
-         * @param label a unique label.
+         * @param label    a unique label.
          */
-        protected JoystickRecordable(Joystick joystick, Joystick.AxisType axisType, String label) {
+        public JoystickRecordable(Joystick joystick, Joystick.AxisType axisType, String label) {
             this.joystick = joystick;
             this.axisType = axisType;
             this.label = label;
@@ -217,13 +224,13 @@ public class RecordingFactory {
     /**
      * A {@link Recordable} that exists purely for testing purposes.
      */
-    protected static class FakeRecordable implements Recordable {
+    public static class FakeRecordable implements Recordable {
         private final String label;
 
         /**
          * @param label a unique label.
          */
-        protected FakeRecordable(String label) {
+        public FakeRecordable(String label) {
             this.label = label;
         }
 
