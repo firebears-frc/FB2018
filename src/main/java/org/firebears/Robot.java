@@ -47,6 +47,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.command.WaitCommand;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import static org.firebears.util.Config.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -59,7 +60,6 @@ public class Robot extends TimedRobot {
 
 	Command selectedAuto;
 
-    public static Config config;
 	public static OI oi;
 	public static Vision vision;
 	public static AutoSelection autoSelection;
@@ -74,7 +74,8 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void robotInit() {
-        config = new Config("config.properties", "robot.properties", "override.properties");
+		cleanAllPreferences();
+		loadConfiguration("config.properties", "/home/lvuser/robot.properties", "/u/override.properties");
 		RobotReport report = new RobotReport("FB2018");
 		RobotMap.init(report);
 		chassis = new Chassis();
@@ -94,7 +95,7 @@ public class Robot extends TimedRobot {
 		oi = new OI(report);
 
 		report.write(new File(System.getProperty("user.home"), "robotReport.md"));
-        config.print(System.out);
+		printPreferences(System.out);
 	}
 
 	/**

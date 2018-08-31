@@ -19,13 +19,12 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
+import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.SerialPort.Port;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
-import static org.firebears.Robot.config;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -35,7 +34,8 @@ import static org.firebears.Robot.config;
  */
 public class RobotMap {
 
-	public static final boolean DEBUG = config.DEBUG;
+	final static Preferences config = Preferences.getInstance();
+	public static final boolean DEBUG = config.getBoolean("debug", false);
 
 	public static CANTalon chassisLeftMaster;
 	public static CANTalon chassisLeftSlave;
@@ -76,7 +76,7 @@ public class RobotMap {
 	static double m_rampRate = config.getDouble("chassis.pid.rampRate", 0.00);
 	static int m_profile = 0;
 	public static int m_CountPerRev = 650;// ****Magnetic
-    public static boolean CLOSED_LOOP_DRIVING = config.getBoolean("chassis.pid.closedLoop");
+    public static boolean CLOSED_LOOP_DRIVING = config.getBoolean("chassis.pid.closedLoop", true);
 
 	// For autoSelecion
 	public static String side;
@@ -146,44 +146,48 @@ public class RobotMap {
 	public static void init(RobotReport report) {
 
 		// Set up motors for driving
-		chassisLeftMaster = new CANTalon(config.getInt("chassis.leftMaster.canID"));
+		int chassisLeftMasterCanID = config.getInt("chassis.leftMaster.canID", 2);
+		chassisLeftMaster = new CANTalon(chassisLeftMasterCanID);
 		chassisLeftMaster.setName("Chassis", "FrontLeft");
 		chassisLeftMaster.setNeutralMode(NeutralMode.Brake);
 //		chassisLeftMaster.configPeakCurrentLimit(0, TIMEOUT_MS);
 //		chassisLeftMaster.configPeakCurrentDuration(0, TIMEOUT_MS);
 //		chassisLeftMaster.configContinuousCurrentLimit(20, TIMEOUT_MS);
 //		chassisLeftMaster.enableCurrentLimit(true);
-		report.addCAN(config.getInt("chassis.leftMaster.canID"), "Left Master - PDP:3", chassisLeftMaster);
+		report.addCAN(chassisLeftMasterCanID, "Left Master - PDP:3", chassisLeftMaster);
 
-		chassisLeftSlave = new CANTalon(config.getInt("chassis.leftSlave.canID"));
+		int chassisLeftSlaveCanID = config.getInt("chassis.leftSlave.canID", 3);
+		chassisLeftSlave = new CANTalon(chassisLeftSlaveCanID);
 		chassisLeftSlave.setName("Chassis", "BackLeft");
 		chassisLeftSlave.setNeutralMode(NeutralMode.Brake);
 //		chassisLeftSlave.configPeakCurrentLimit(0, TIMEOUT_MS);
 //		chassisLeftSlave.configPeakCurrentDuration(0, TIMEOUT_MS);
 //		chassisLeftSlave.configContinuousCurrentLimit(20, TIMEOUT_MS);
 //		chassisLeftSlave.enableCurrentLimit(true);
-		report.addCAN(config.getInt("chassis.leftSlave.canID"), "Left Slave - PDP:2", chassisLeftSlave);
+		report.addCAN(chassisLeftSlaveCanID, "Left Slave - PDP:2", chassisLeftSlave);
 
 		chassisLeftMotors = new SpeedControllerGroup(chassisLeftMaster, chassisLeftSlave);
 		// LiveWindow.addActuator("Chassis", "LeftMotors", chassisLeftMotors);
 
-		chassisRightMaster = new CANTalon(config.getInt("chassis.rightMaster.canID"));
+		int chassisRightMasterCanID = config.getInt("chassis.rightMaster.canID", 4);
+		chassisRightMaster = new CANTalon(chassisRightMasterCanID);
 		chassisRightMaster.setName("Chassis", "FrontRight");
 		chassisRightMaster.setNeutralMode(NeutralMode.Brake);
 //		chassisRightMaster.configPeakCurrentLimit(0, TIMEOUT_MS);
 //		chassisRightMaster.configPeakCurrentDuration(0, TIMEOUT_MS);
 //		chassisRightMaster.configContinuousCurrentLimit(20, TIMEOUT_MS);
 //		chassisRightMaster.enableCurrentLimit(true);
-		report.addCAN(config.getInt("chassis.rightMaster.canID"), "Right Master - PDP:1", chassisRightMaster);
+		report.addCAN(chassisRightMasterCanID, "Right Master - PDP:1", chassisRightMaster);
 
-		chassisRightSlave = new CANTalon(config.getInt("chassis.rightSlave.canID"));
+		int chassisRightSlaveCanID = config.getInt("chassis.rightSlave.canID", 5);
+		chassisRightSlave = new CANTalon(chassisRightSlaveCanID);
 		chassisRightSlave.setName("Chassis", "BackRight");
 		chassisRightSlave.setNeutralMode(NeutralMode.Brake);
 //		chassisRightSlave.configPeakCurrentLimit(0, TIMEOUT_MS);
 //		chassisRightSlave.configPeakCurrentDuration(0, TIMEOUT_MS);
 //		chassisRightSlave.configContinuousCurrentLimit(20, TIMEOUT_MS);
 //		chassisRightSlave.enableCurrentLimit(true);
-		report.addCAN(config.getInt("chassis.rightSlave.canID"), "Right Slave - PDP:0", chassisRightSlave);
+		report.addCAN(chassisRightSlaveCanID, "Right Slave - PDP:0", chassisRightSlave);
 
 		chassisRightMotors = new SpeedControllerGroup(chassisRightMaster, chassisRightSlave);
 
@@ -209,27 +213,31 @@ public class RobotMap {
 			setPID(chassisRightMaster, m_P, m_I, m_D, m_ff, m_izone, m_rampRate, m_profile);
 		}
 
-		leftIntake = new CANTalon(config.getInt("grabber.leftMotor.canID"));
+		int grabberLeftMotorCanID = config.getInt("grabber.leftMotor.canID", 13);
+		leftIntake = new CANTalon(grabberLeftMotorCanID);
 		leftIntake.setName("Grabber", "leftIntake");
 		leftIntake.setNeutralMode(NeutralMode.Brake);
-		report.addCAN(config.getInt("grabber.leftMotor.canID"), "leftIntake", leftIntake);
+		report.addCAN(grabberLeftMotorCanID, "leftIntake", leftIntake);
 
-		rightIntake = new CANTalon(config.getInt("grabber.rightMotor.canID"));
+		int grabberRightMotorCanID = config.getInt("grabber.rightMotor.canID", 14);
+		rightIntake = new CANTalon(grabberRightMotorCanID);
 		rightIntake.setName("Grabber", "rightIntake");
 		rightIntake.setNeutralMode(NeutralMode.Brake);
-		report.addCAN(config.getInt("grabber.rightMotor.canID"), "rightIntake", rightIntake);
+		report.addCAN(grabberRightMotorCanID, "rightIntake", rightIntake);
 
-		leftLaunchSpinner = new CANTalon(config.getInt("shooter.leftSpinner.canID"));
+		int shooterLeftSpinnerCanID = config.getInt("shooter.leftSpinner.canID", 11);
+		leftLaunchSpinner = new CANTalon(shooterLeftSpinnerCanID);
 		leftLaunchSpinner.setSensorPhase(true);
 		leftLaunchSpinner.setNeutralMode(NeutralMode.Coast);
 		leftLaunchSpinner.setName("shooter", "leftSpinner");
-		report.addCAN(config.getInt("shooter.leftSpinner.canID"), "leftSpinner", leftLaunchSpinner);
+		report.addCAN(shooterLeftSpinnerCanID, "leftSpinner", leftLaunchSpinner);
 
-		rightLaunchSpinner = new CANTalon(config.getInt("shooter.rightSpinner.canID"));
+		int shooterRightSpinnerCanID = config.getInt("shooter.rightSpinner.canID", 12);
+		rightLaunchSpinner = new CANTalon(shooterRightSpinnerCanID);
 		rightLaunchSpinner.setSensorPhase(true);
 		rightLaunchSpinner.setNeutralMode(NeutralMode.Coast);
 		rightLaunchSpinner.setName("shooter", "rightSpinner");
-		report.addCAN(config.getInt("shooter.rightSpinner.canID"), "rightSpinner", rightLaunchSpinner);
+		report.addCAN(shooterRightSpinnerCanID, "rightSpinner", rightLaunchSpinner);
 
 		leftLaunch = new DoubleSolenoid(0, 1, 0);
 		leftLaunch.setName("shooter", "leftPneumatics");
@@ -272,26 +280,33 @@ public class RobotMap {
 
 		// Put Ultrasonic Switches here
 
-		farLidarSensor = new DigitalInput(0);
-		report.addDigitalIO(0, "Grabber Lidar 0", farLidarSensor);
+		int grabberFarLidarDio = config.getInt("grabber.farLidar.dio", 0);
+		farLidarSensor = new DigitalInput(grabberFarLidarDio);
+		report.addDigitalIO(grabberFarLidarDio, "Grabber Lidar 0", farLidarSensor);
 		
-		closeLidarSensor = new DigitalInput(1);
-		report.addDigitalIO(1, "Grabber Lidar 1", closeLidarSensor);
+		int grabberCloseLidarDio = config.getInt("grabber.closeLidar.dio", 1);
+		closeLidarSensor = new DigitalInput(grabberCloseLidarDio);
+		report.addDigitalIO(grabberCloseLidarDio, "Grabber Lidar 1", closeLidarSensor);
 		
-		tapeSensor = new DigitalInput(2);
-		report.addDigitalIO(2, "Tape Finder", tapeSensor);
+		int chassisTapeSensorDio = config.getInt("chassis.tapeSensor.dio", 2);
+		tapeSensor = new DigitalInput(chassisTapeSensorDio);
+		report.addDigitalIO(chassisTapeSensorDio, "Tape Finder", tapeSensor);
 
 		// Put Sensor for when cube is loaded here
 
 		// Put Sensor for when cube is in the grabber here
-		cubeSwitch = new DigitalInput(4);
-		report.addDigitalIO(4, "Cube Detector", cubeSwitch);
-		
-		grabberDownPositionSensor = new DigitalInput(6);
-		report.addDigitalIO(0, "Grabber Down Position", grabberDownPositionSensor);
 
-		grabberUpPositionSensor = new DigitalInput(5);
-		report.addDigitalIO(1, "Grabber Up Position", grabberUpPositionSensor);
+		int grabberCubeSwitchDio = config.getInt("grabber.cubeSwitch.dio", 4);
+		cubeSwitch = new DigitalInput(grabberCubeSwitchDio);
+		report.addDigitalIO(grabberCubeSwitchDio, "Cube Detector", cubeSwitch);
+		
+		int grabberDownSensorDio = config.getInt("grabber.downSensor.dio", 6);
+		grabberDownPositionSensor = new DigitalInput(grabberDownSensorDio);
+		report.addDigitalIO(grabberDownSensorDio, "Grabber Down Position", grabberDownPositionSensor);
+
+		int grabberUpSensorDio = config.getInt("grabber.upSensor.dio", 5);
+		grabberUpPositionSensor = new DigitalInput(grabberUpSensorDio);
+		report.addDigitalIO(grabberUpSensorDio, "Grabber Up Position", grabberUpPositionSensor);
 
 		try {
 			// navXBoard = new AHRS(SPI.Port.kMXP);

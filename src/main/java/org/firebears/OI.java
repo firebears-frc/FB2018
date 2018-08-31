@@ -51,11 +51,10 @@ import org.firebears.recording.StopRecordingCommand;
 import org.firebears.util.RobotReport;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
-import static org.firebears.Robot.config;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -89,6 +88,10 @@ public class OI {
     String testRecording = "recordings/MiddleSideRightSwitch.csv";
 
     public OI(RobotReport report) {
+
+		final Preferences config = Preferences.getInstance();
+		final boolean DEBUG = config.getBoolean("debug", false);
+
 	// Intialize the joysticks
 	joystick1 = new Joystick(0);
 	report.addJoystick(0, "Joystick 1", joystick1);
@@ -193,7 +196,7 @@ public class OI {
 	
 	// SmartDashboard Buttons
 	// Recording Commands
-	if (config.DEBUG) {
+	if (DEBUG) {
 	    SmartDashboard.putData("Start Recording", new StartRecordingCommand(RobotMap.recordingFactory));
 	    SmartDashboard.putData("Stop Recording", new StopRecordingCommand(RobotMap.recordingFactory));
 	    SmartDashboard.putData("Play Recording", new PlayRecordingCommand(RobotMap.recordingFactory));
