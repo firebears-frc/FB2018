@@ -1,5 +1,6 @@
 package org.firebears;
 
+import org.firebears.recording.Recordable;
 import org.firebears.recording.RecordingFactory;
 import org.firebears.subsystems.Lights;
 import org.firebears.util.RobotReport;
@@ -321,8 +322,8 @@ public class RobotMap {
 		report.addOtherConfig(Lights.I2C_ADDRESS, "Trinket I2C Address");
 		
 	    recordingFactory = new RecordingFactory();
-	    recordingFactory.add(RobotMap.chassisLeftMaster, "leftMotor");
-	    recordingFactory.add(RobotMap.chassisRightMaster, "rightMotor");
+	    recordingFactory.add(RobotMap.chassisLeftMaster);
+	    recordingFactory.add(RobotMap.chassisRightMaster);
 	}
 
 	/**
@@ -360,34 +361,46 @@ public class RobotMap {
 		talonSRX.selectProfileSlot(slotIdx, PID_IDX);
 	}
 
-	public static class CANTalon extends WPI_TalonSRX {
+    public static class CANTalon extends WPI_TalonSRX implements Recordable {
 
-		public int encoderMultiplier = 0;
+        public int encoderMultiplier = 0;
+        private double currentSpeed = 0.0;
 
-		public CANTalon(int deviceNumber) {
-			super(deviceNumber);
-		}
+        public CANTalon(int deviceNumber) {
+            super(deviceNumber);
+        }
 
-		@Override
-		public void set(double speed) {
-			if (encoderMultiplier != 0) {
-//			if (CLOSED_LOOP_DRIVING) {
-				set(ControlMode.Velocity, speed * encoderMultiplier);
-				SmartDashboard.putNumber(this + " Target", speed * encoderMultiplier);
-			} else {
-				set(ControlMode.PercentOutput, speed);
-			}
-		}
+        @Override
+        public void set(double speed) {
+            if (encoderMultiplier != 0) {
+                // if (CLOSED_LOOP_DRIVING) {
+                set(ControlMode.Velocity, speed * encoderMultiplier);
+                SmartDashboard.putNumber(this + " Target", speed * encoderMultiplier);
+            } else {
+                set(ControlMode.PercentOutput, speed);
+            }
+            currentSpeed = speed;
+        }
 
-		@Override
-		public String toString() {
-			return "CANTalon(" + getDeviceID() + ")";
-		}
+        @Override
+        public double get() {
+            return currentSpeed;
+        }
 
-		public void configEncoderCodesPerRev(int ticks) {
-			this.encoderMultiplier = ticks;
-		}
-	}
+        @Override
+        public String toString() {
+            return "CANTalon(" + getDeviceID() + ")";
+        }
+
+        public void configEncoderCodesPerRev(int ticks) {
+            this.encoderMultiplier = ticks;
+        }
+
+        @Override
+        public String getLabel() {
+            return getName();
+        }
+    }
 	
 	public static class EncoderPIDSource implements PIDSource {
 

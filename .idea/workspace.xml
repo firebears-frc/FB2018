@@ -1,0 +1,730 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="62eedb58-5927-4752-ba41-888487911d9f" name="Default Changelist" comment="" />
+    <ignored path="$PROJECT_DIR$/bin/default/" />
+    <ignored path="$PROJECT_DIR$/.gradle/" />
+    <ignored path="$PROJECT_DIR$/build/" />
+    <ignored path="$PROJECT_DIR$/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+    </option>
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="FB2018" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="FB2018" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="FB2018" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="embeddedtools" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-1776346230">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.8" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="iml" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="IDEA_MODULE" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="txt" value="52" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="PLAIN_TEXT" value="52" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="myGradleHomes">
+      <map>
+        <entry key="$PROJECT_DIR$" value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9" />
+      </map>
+    </option>
+    <option name="myGradleVersions">
+      <map>
+        <entry key="$PROJECT_DIR$" value="4.9" />
+      </map>
+    </option>
+    <option name="availableProjects">
+      <map>
+        <entry>
+          <key>
+            <ExternalProjectPojo>
+              <option name="name" value="FB2018" />
+              <option name="path" value="$PROJECT_DIR$" />
+            </ExternalProjectPojo>
+          </key>
+          <value>
+            <list>
+              <ExternalProjectPojo>
+                <option name="name" value="FB2018" />
+                <option name="path" value="$PROJECT_DIR$" />
+              </ExternalProjectPojo>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="availableTasks">
+      <map>
+        <entry key="$PROJECT_DIR$">
+          <value>
+            <list>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the sub-projects of root project 'FB2018'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="projects" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="writeDebugInfo" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Generates Gradle wrapper files." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="wrapper" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Simulate External Task for Java/Kotlin/JVM" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="simulateExternalJava" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Deploy all artifacts on all targets" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="deploy" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Simulate External Task for native executable" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="simulateExternalCpp" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="deployNativeZipsRoborio" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles a jar archive containing the main classes." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="jar" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the configuration model of root project 'FB2018'. [incubating]" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="model" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="deployFrcJavaRoborio" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Processes main resources." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="processResources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Launch Smart Dashboard" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="smartDashboard" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the tasks runnable from root project 'FB2018'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="tasks" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Run a console displaying output from the RoboRIO (roborio)" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="riologRoborio" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Initializes a new Gradle build." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="init" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Determine the address(es) of target Roborio" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="discoverRoborio" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Runs the unit tests." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="test" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Run a console displaying output from the default RoboRIO (roborio)" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="riolog" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Compiles main Java source." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="compileJava" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Runs all checks." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="check" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays all dependencies declared in root project 'FB2018'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="dependencies" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Processes test resources." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="processTestResources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Print all versions of the wpi block" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="wpi" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles and tests this project and all projects it depends on." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="buildNeeded" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="deployJreRoborio" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the components produced by root project 'FB2018'. [incubating]" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="components" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles and tests this project and all projects that depend on it." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="buildDependents" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Clean Clion IDE Files" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="cleanClion" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles main classes." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="classes" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the dependent components of components in root project 'FB2018'. [incubating]" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="dependentComponents" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays all buildscript dependencies declared in root project 'FB2018'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="buildEnvironment" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="deployNativeLibsRoborio" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="deployRoborioCommandsRoborio" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles test classes." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="testClasses" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Generates Javadoc API documentation for the main source code." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="javadoc" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Generate Editor Configuration for Build and Debugging" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="editorConfig" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Generate Clion CMakeLists.txt files." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="clion" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Launch Shuffleboard" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="shuffleboard" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the insight into a specific dependency in root project 'FB2018'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="dependencyInsight" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles the outputs of this project." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="assemble" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Deletes the build directory." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="clean" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Compiles test Java source." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="compileTestJava" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays a help message." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="help" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles and tests this project." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="build" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Extract Test JNI Native Libraries (nativeDesktopLib, nativeDesktopZip)" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="extractTestJNI" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Simulate Task for Java/Kotlin/JVM" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="simulateJar" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the properties of root project 'FB2018'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="properties" />
+              </ExternalTaskPojo>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="modificationStamps">
+      <map>
+        <entry key="$PROJECT_DIR$" value="6138695309000" />
+        <entry key="$PROJECT_DIR$/.gradle" value="0" />
+        <entry key="$PROJECT_DIR$/build.gradle" value="2339577902" />
+        <entry key="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" value="4171081951" />
+        <entry key="$PROJECT_DIR$/settings.gradle" value="1595935860" />
+      </map>
+    </option>
+    <option name="projectBuildClasspath">
+      <map>
+        <entry key="$PROJECT_DIR$">
+          <value>
+            <ExternalProjectBuildClasspathPojo>
+              <option name="modulesBuildClasspath">
+                <map>
+                  <entry key="$PROJECT_DIR$">
+                    <value>
+                      <ExternalModuleBuildClasspathPojo>
+                        <option name="entries">
+                          <list>
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/gradle.plugin.edu.wpi.first/GradleRIO/2019.0.0-alpha-3/a44466b8a1393d0668c639adc788cf39edefdba0/GradleRIO-2019.0.0-alpha-3.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/gradle.plugin.jaci.gradle/DeployTools/2018.07.21b/33a2ce1746653048614abf901fd261ac92508839/DeployTools-2018.07.21b.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/de.undercouch/gradle-download-task/3.1.2/dbb5911739f1a18228847ad955c700a368db1ba4/gradle-download-task-3.1.2.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.2.4/a60a5e993c98c864010053cb901b7eab25306568/gson-2.2.4.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jcraft/jsch/0.1.53/658b682d5c817b27ae795637dfec047c63d29935/jsch-0.1.53.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.gradle/build-scan-plugin/1.15/f46ede26431a77430aa3f4f42b18fb86ee5c9e77/build-scan-plugin-1.15.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpclient/4.5.2/733db77aa8d9b2d68015189df76ab06304406e50/httpclient-4.5.2.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpcore/4.4.4/b31526a230871fbe285fbcbe2813f9c0839ae9b0/httpcore-4.4.4.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-logging/commons-logging/1.2/4bfc12adfe4842bf07b657f0369c4cb522955686/commons-logging-1.2.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-codec/commons-codec/1.9/9ce04e34240f674bc72680f8b843b1457383161a/commons-codec-1.9.jar" />
+                          </list>
+                        </option>
+                        <option name="path" value="$PROJECT_DIR$" />
+                      </ExternalModuleBuildClasspathPojo>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+              <option name="name" value="FB2018" />
+              <option name="projectBuildClasspath">
+                <list>
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-model-groovy-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-kotlin-dsl-tooling-models-0.18.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-resources-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-tooling-api-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-kotlin-dsl-0.18.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-core-api-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/ant-1.9.11.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-cli-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-docs-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-persistent-cache-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-build-option-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/ant-launcher-1.9.11.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-messaging-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/groovy-all-2.4.12.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-jvm-services-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-launcher-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-base-services-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-kotlin-dsl-provider-plugins-0.18.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-kotlin-dsl-tooling-builders-0.18.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-model-core-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-core-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-installation-beacon-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-base-services-groovy-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-process-services-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-build-cache-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-runtime-api-info-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-native-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-logging-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-wrapper-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-platform-jvm-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-testing-base-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-testing-jvm-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-build-init-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-maven-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-resources-sftp-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-signing-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-resources-s3-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-code-quality-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-test-kit-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-ivy-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-osgi-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-language-groovy-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-language-java-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-antlr-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-reporting-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-platform-play-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-ide-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-resources-gcs-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-scala-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-resources-http-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-ear-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-publish-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-testing-junit-platform-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-composite-builds-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-dependency-management-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-testing-native-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-platform-base-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-language-jvm-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-plugin-development-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-diagnostics-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-ide-native-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-build-cache-http-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-workers-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-javascript-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-platform-native-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-jacoco-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-plugins-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-build-comparison-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-language-native-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-version-control-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-plugin-use-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-language-scala-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-ide-play-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/ivy-2.2.0.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-tooling-api-builders-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-announce-4.9.jar" />
+                </list>
+              </option>
+            </ExternalProjectBuildClasspathPojo>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="projectSyncType">
+      <map>
+        <entry key="$PROJECT_DIR$/../../VSC_projects/RobotBuilder" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../VSC_projects/q7" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$" value="IMPORT" />
+        <entry key="$USER_HOME$/Stuff/tmp/RobotBuilder" value="PREVIEW" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="9" />
+    <option name="y" value="35" />
+    <option name="width" value="1400" />
+    <option name="height" value="837" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="FB2018" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FB2018" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="FB2018" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FB2018" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FB2018" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FB2018" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="FB2018" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FB2018" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FB2018" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FB2018" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="firebears" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FB2018" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FB2018" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="firebears" type="462c0819:PsiDirectoryNode" />
+              <item name="recording" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FB2018" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FB2018" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Gradle.FB2018 [deploy]">
+    <configuration name="FB2018 [deploy]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="deploy" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <method v="2" />
+    </configuration>
+    <configuration name="build" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <method v="2" />
+    </configuration>
+    <configuration name="deploy" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
+            <option value="deploy" />
+          </list>
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Gradle.build" />
+      <item itemvalue="Gradle.deploy" />
+      <item itemvalue="Gradle.FB2018 [deploy]" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.FB2018 [deploy]" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="62eedb58-5927-4752-ba41-888487911d9f" name="Default Changelist" comment="" />
+      <created>1538616495496</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1538616495496</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Added IntelliJ support files">
+      <created>1538617105008</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1538617105008</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="9" y="35" width="1400" height="837" extended-state="0" />
+    <layout>
+      <window_info id="Designer" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2496318" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info active="true" anchor="bottom" id="Version Control" visible="true" weight="0.48724833" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Build" weight="0.32885906" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.19194631" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Gradle" visible="true" weight="0.20029455" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="right" id="Maven Projects" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="Added IntelliJ support files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added IntelliJ support files" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/FB2018.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="17" lean-forward="true" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

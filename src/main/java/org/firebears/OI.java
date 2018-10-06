@@ -84,6 +84,10 @@ public class OI {
     public JoystickButton dance;
     public JoystickButton testMotors;
     public JoystickButton testMotors2;
+    
+    public JoystickButton startRecordingButton;
+    public JoystickButton stopRrecordingButton;
+    public JoystickButton playRecordingButton;
 
     String testRecording = "recordings/MiddleSideRightSwitch.csv";
 
@@ -194,15 +198,31 @@ public class OI {
 	report.addJoystickButton(1, 15, "Switch/Scale", "Autonomous");
 	report.addJoystickButton(1, 16, "Cross/Dont-cross", "Autonomous");
 	
-	// SmartDashboard Buttons
+
 	// Recording Commands
+    startRecordingButton= new JoystickButton(joystick1, 8);
+    Command startRecordingCommand = new StartRecordingCommand(RobotMap.recordingFactory);
+    startRecordingButton.whenPressed(startRecordingCommand);
+    report.addJoystickButton(0, 8, "Start Recording", startRecordingCommand);
+    
+    stopRrecordingButton= new JoystickButton(joystick1, 10);
+    Command stopRecordingCommand = new StopRecordingCommand(RobotMap.recordingFactory);
+    stopRrecordingButton.whenPressed(stopRecordingCommand);
+    report.addJoystickButton(0, 10, "Stop Recording", stopRecordingCommand);
+    
+    playRecordingButton= new JoystickButton(joystick1, 12);
+    Command playRecordingCommand = new PlayRecordingCommand(RobotMap.recordingFactory);
+    playRecordingButton.whenPressed(playRecordingCommand);
+    report.addJoystickButton(0, 12, "Play Recording", playRecordingCommand);
+    
+    // SmartDashboard Buttons
 	if (DEBUG) {
-	    SmartDashboard.putData("Start Recording", new StartRecordingCommand(RobotMap.recordingFactory));
-	    SmartDashboard.putData("Stop Recording", new StopRecordingCommand(RobotMap.recordingFactory));
-	    SmartDashboard.putData("Play Recording", new PlayRecordingCommand(RobotMap.recordingFactory));
-//	    SmartDashboard.putData("Play Recording Mirrored", new PlayMirroredRecording());
-	    SmartDashboard.putData("Test Recording", new PlayRecordingCommand(RobotMap.recordingFactory, testRecording));
-//	    SmartDashboard.putData("Mirror Test Recording", new PlayMirroredRecording(testRecording));
+//	    SmartDashboard.putData("Start Recording", new StartRecordingCommand(RobotMap.recordingFactory));
+//	    SmartDashboard.putData("Stop Recording", new StopRecordingCommand(RobotMap.recordingFactory));
+//	    SmartDashboard.putData("Play Recording", new PlayRecordingCommand(RobotMap.recordingFactory));
+////	    SmartDashboard.putData("Play Recording Mirrored", new PlayMirroredRecording());
+//	    SmartDashboard.putData("Test Recording", new PlayRecordingCommand(RobotMap.recordingFactory, testRecording));
+////	    SmartDashboard.putData("Mirror Test Recording", new PlayMirroredRecording(testRecording));
 	    
 	    // Vision Commands
 	    SmartDashboard.putData("Vision Turn", new VisionRotateCommandFast());
