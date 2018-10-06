@@ -133,6 +133,7 @@ public class RecordingFactory {
 
         private final SpeedController speedController;
         private final String label;
+        private double currentSpeed = 0.0;
 
         /**
          * @param speedController a @code {@link SpeedController}.
@@ -156,15 +157,17 @@ public class RecordingFactory {
          */
         @Override
         public double get() {
-            return speedController.get();
+            return currentSpeed;
+//            return speedController.get();
         }
 
         /**
          * @param value the value to set into this {@code SpeedController}.
          */
         @Override
-        public void set(double value) {
-            this.speedController.set(value);
+        public void set(double speed) {
+            this.speedController.set(speed);
+            currentSpeed = speed;
         }
     }
 
