@@ -309,9 +309,13 @@ public class RobotMap {
 		grabberUpPositionSensor = new DigitalInput(grabberUpSensorDio);
 		report.addDigitalIO(grabberUpSensorDio, "Grabber Up Position", grabberUpPositionSensor);
 
+		String navxPort = config.getString("navx.port", "usb");
 		try {
-			// navXBoard = new AHRS(SPI.Port.kMXP);
-			navXBoard = new AHRS(Port.kUSB);
+			if ("usb".equalsIgnoreCase(navxPort))  {
+				navXBoard = new AHRS(Port.kUSB);
+			} else if ("mxp".equalsIgnoreCase(navxPort))  {
+				navXBoard = new AHRS(SPI.Port.kMXP);
+			}
 		} catch (RuntimeException ex) {
 			DriverStation.reportError("Error instantiating navX MXP:  " + ex.getMessage(), true);
 		}
