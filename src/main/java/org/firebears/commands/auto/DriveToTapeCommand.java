@@ -25,7 +25,7 @@ public class DriveToTapeCommand extends Command {
 //		startingDistance = RobotMap.chassisLeftMaster.getSelectedSensorPosition(RobotMap.PID_IDX);
     }
     protected void execute() {
-    	Robot.chassis.drive(-SPEED, 0,false);
+    	Robot.chassis.drive(-SPEED, 0);
     }
 
     protected boolean isFinished() {
@@ -34,7 +34,7 @@ public class DriveToTapeCommand extends Command {
     }
 
     protected void end() {
-		Robot.chassis.drive(0, 0,false);
+		Robot.chassis.drive(0, 0);
 //    	Robot.chassis.stop();
     	System.out.println("Ending " + this);
 //    	System.out.println("Distance to tape: " + (currentDistance - startingDistance)/52.6);

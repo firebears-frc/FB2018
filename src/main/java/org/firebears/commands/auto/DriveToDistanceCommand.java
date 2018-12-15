@@ -48,7 +48,7 @@ public class DriveToDistanceCommand extends Command {
 	}
 
 	protected void execute() {
-		Robot.chassis.drive(-SPEED, 0,false);
+		Robot.chassis.drive(-SPEED, 0);
 	}
 
 	protected boolean isFinished() {
@@ -61,7 +61,7 @@ public class DriveToDistanceCommand extends Command {
 	}
 
 	protected void end() {
-		Robot.chassis.drive(0, 0,false);
+		Robot.chassis.drive(0, 0);
 		System.out.println("Ending " + this);
 //		Robot.chassis.stop();
 	}

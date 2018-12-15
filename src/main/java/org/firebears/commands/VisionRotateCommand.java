@@ -71,7 +71,7 @@ public class VisionRotateCommand extends PIDCommand {
     // Called once after isFinished returns true
     protected void end() {
 //    	Robot.chassis.stop();
-    	Robot.chassis.drive(0, 0, true);
+    	Robot.chassis.drive(0, 0);
     	System.out.println("Ending " + this);
     }
 
@@ -104,7 +104,7 @@ public class VisionRotateCommand extends PIDCommand {
 		// Make sure output doesn't go faster than expected
 		output = Math.max(-SPEED, Math.min(output, SPEED));
 		// Drive the robot
-		Robot.chassis.drive(0.0, output, true);
+		Robot.chassis.drive(0.0, output);
 	}
 	
 	public String toString() {

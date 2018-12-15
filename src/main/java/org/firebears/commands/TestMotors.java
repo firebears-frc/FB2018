@@ -41,7 +41,7 @@ public class TestMotors extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.chassis.drive(SPEED, ROTATE, false);
+    	Robot.chassis.drive(SPEED, ROTATE);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -51,7 +51,7 @@ public class TestMotors extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.chassis.drive(0, 0, false);
+    	Robot.chassis.drive(0, 0);
     }
 
     // Called when another command which requires one or more of the same

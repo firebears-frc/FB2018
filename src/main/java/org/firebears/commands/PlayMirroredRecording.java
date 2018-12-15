@@ -60,7 +60,7 @@ public class PlayMirroredRecording extends Command {
 	protected void execute() {
 		long currentTime = System.currentTimeMillis() - startTime;
 		while ((currentTime > time) && (hasMore)) {
-			Robot.chassis.drive(forwardAmount, -rotateAmount,true);
+			Robot.chassis.drive(forwardAmount, -rotateAmount);
 			hasMore = readLine();
 		}
 	}

@@ -35,7 +35,7 @@ public class BackIntoWallCommand extends Command {
 		double speed = distancePer * (FAST_DISTANCE - SLOW_DISTANCE) + SLOW_DISTANCE;
 		SmartDashboard.putNumber("Target Speed", speed);
 		// Drive the robot
-		Robot.chassis.drive(-1 * speed, 0, false);
+		Robot.chassis.drive(-1 * speed, 0);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -48,7 +48,7 @@ public class BackIntoWallCommand extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.chassis.drive(0, 0, false);
+    	Robot.chassis.drive(0, 0);
     }
 
     // Called when another command which requires one or more of the same

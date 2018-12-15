@@ -24,7 +24,7 @@ public class DriveIntoWallCommand extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		Robot.chassis.drive(-speed, 0, false);
+		Robot.chassis.drive(-speed, 0);
 
 	}
 
@@ -39,7 +39,7 @@ public class DriveIntoWallCommand extends Command {
 
 	// Called once after isFinished returns true
 	protected void end() {
-		Robot.chassis.drive(0, 0,false);
+		Robot.chassis.drive(0, 0);
 	}
 
 	// Called when another command which requires one or more of the same

@@ -77,7 +77,7 @@ public class RelativeAngleCommandFast extends PIDCommand {
     }
 
     protected void end() {
-    	Robot.chassis.drive(0, 0, true);
+    	Robot.chassis.drive(0, 0);
     }
 
     protected void interrupted() {
@@ -96,7 +96,7 @@ public class RelativeAngleCommandFast extends PIDCommand {
     @Override
     protected void usePIDOutput(double output) {
     	output = Math.max(-SPEED, Math.min(output, SPEED));
-    	Robot.chassis.drive(0, -output, false);
+    	Robot.chassis.drive(0, -output);
     }
 
     @Override

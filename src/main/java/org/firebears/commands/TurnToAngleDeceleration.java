@@ -74,7 +74,7 @@ public class TurnToAngleDeceleration extends PIDCommand {
     }
 
     protected void end() {
-    	Robot.chassis.drive(0, 0, true);
+    	Robot.chassis.drive(0, 0);
     }
 
     protected void interrupted() {
@@ -98,7 +98,7 @@ public class TurnToAngleDeceleration extends PIDCommand {
     	}
     	
     	output = Math.max(-maxSpeed, Math.min(output, maxSpeed));
-    	Robot.chassis.drive(0, -output, false);
+    	Robot.chassis.drive(0, -output);
     }
     
     

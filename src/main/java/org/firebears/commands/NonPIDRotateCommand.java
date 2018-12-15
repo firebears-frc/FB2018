@@ -44,7 +44,7 @@ public class NonPIDRotateCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	CurrentAnlge = RobotMap.navXBoard.getAngle();
-    	Robot.chassis.drive(0, SPEED * direction, false);
+    	Robot.chassis.drive(0, SPEED * direction);
     }
 
     // Make this return true when this Command no longer needs to run execute()

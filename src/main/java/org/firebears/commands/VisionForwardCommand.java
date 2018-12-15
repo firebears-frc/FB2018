@@ -66,7 +66,7 @@ public class VisionForwardCommand extends PIDCommand {
 
 	protected void end() {
 		getPIDController().disable();
-		Robot.chassis.drive(0, 0, true);
+		Robot.chassis.drive(0, 0);
 	}
 
 	protected void interrupted() {
@@ -92,7 +92,7 @@ public class VisionForwardCommand extends PIDCommand {
 
 	@Override
 	protected void usePIDOutput(double output) {
-		Robot.chassis.drive(-speed, output, false);
+		Robot.chassis.drive(-speed, output);
 
 	}
 }
