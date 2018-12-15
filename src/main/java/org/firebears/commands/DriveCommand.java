@@ -11,6 +11,8 @@
 package org.firebears.commands;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
 import org.firebears.Robot;
 import org.firebears.RobotMap;
@@ -33,8 +35,10 @@ public class DriveCommand extends Command {
     @Override
     protected void execute() {
 //    	if (RobotMap.DisableDrive == false) {
-    		Joystick stick = Robot.oi.joystick1;
-       		Robot.chassis.drive(stick.getY(), stick.getX() * 1.0, true);	
+            XboxController stick = Robot.oi.xbox1;
+            double speed = Robot.oi.xbox1.getY(Hand.kLeft);
+            double rotation = Robot.oi.xbox1.getX(Hand.kRight);
+       		Robot.chassis.drive(speed, rotation * 1.0, true);	
 //    	}
    		
     }

@@ -4,6 +4,7 @@ import org.firebears.Robot;
 import org.firebears.RobotMap;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -19,7 +20,7 @@ public class TeleopShooterCommand extends Command {
     protected void initialize() {
     	
     }
-	Joystick stick = Robot.oi.joystick2;
+    XboxController stick = Robot.oi.xbox2;
 
     protected void execute() {
     	double throttle = stick.getRawAxis(0);

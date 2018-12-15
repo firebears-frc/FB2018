@@ -52,6 +52,7 @@ import org.firebears.util.RobotReport;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Preferences;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -62,8 +63,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class OI {
 
-    public Joystick joystick1;
-    public Joystick joystick2;
+    public XboxController xbox1;
+    public XboxController xbox2;
     public JoystickButton testPID;
     public JoystickButton Driveinches;
     public JoystickButton extendShooter;
@@ -75,7 +76,8 @@ public class OI {
     public JoystickButton armUp;
     public JoystickButton armClose;
     public JoystickButton armOpen;
-    public JoystickButton armOpenClose;
+	public JoystickButton armOpenClose1;
+	public JoystickButton armOpenClose2;
     public JoystickButton celebrateButton;
     public JoystickButton celebrateButton2;
     public JoystickButton spinGrabberWheels;
@@ -97,29 +99,29 @@ public class OI {
 		final boolean DEBUG = config.getBoolean("debug", false);
 
 	// Intialize the joysticks
-	joystick1 = new Joystick(0);
-	report.addJoystick(0, "Joystick 1", joystick1);
+	xbox1 = new XboxController(0);
+//	report.addJoystick(0, "Joystick 1", joystick1);
 
-	joystick2 = new Joystick(1);
+	xbox2 = new XboxController(1);
 
 	// Driveinches = new JoystickButton(joystick1,1);
 	// Driveinches.whileHeld(new DriveToDistanceCommand(18.8));
 
-	report.addJoystick(1, "Joystick 2", joystick2);
+//	report.addJoystick(1, "Joystick 2", joystick2);
 
 	// Joystick Buttons
 	
-	testMotors = new JoystickButton(joystick1, 7);
+	testMotors = new JoystickButton(xbox1, 7);
 	TestMotors testMotorsStraightForward = new TestMotors(true, true);
 	testMotors.whileHeld(testMotorsStraightForward);
 	report.addJoystickButton(0, 7, "Test Motors Forward", testMotorsStraightForward);
 	
-	testMotors = new JoystickButton(joystick1, 9);
+	testMotors = new JoystickButton(xbox1, 8);
 	TestMotors testMotorsStraightBackwards = new TestMotors(true, false);
 	testMotors.whileHeld(testMotorsStraightBackwards);
 	report.addJoystickButton(0, 9, "Test Motors Backward", testMotorsStraightBackwards);
 	
-	extendShooter = new JoystickButton(joystick2, 1);
+	extendShooter = new JoystickButton(xbox2, 3);
 	Command fireCubeCommand = new FireCubeCommand();
 	extendShooter.whenPressed(fireCubeCommand);
 	report.addJoystickButton(1, 1, "Shoot", fireCubeCommand);
@@ -136,12 +138,12 @@ public class OI {
 //	switchShot = new JoystickButton(joystick2, 3);
 //	switchShot.whenPressed(new SpinShooterWheelsCommand(.25));
 	
-	armDown = new JoystickButton(joystick2, 7);
+	armDown = new JoystickButton(xbox2, 1);
 	Command grabberDownCommand = new GrabberDownCommand();
 	armDown.whenPressed(grabberDownCommand);
 	report.addJoystickButton(1, 7, "Arm Down", grabberDownCommand);
 	
-	armUp = new JoystickButton(joystick2, 9);
+	armUp = new JoystickButton(xbox2, 4);
 	Command grabberUpCommand = new GrabberUpCommand();
 	armUp.whenPressed(grabberUpCommand);
 	report.addJoystickButton(1, 9, "Arm Up", grabberUpCommand);
@@ -156,20 +158,25 @@ public class OI {
 //	armOpen.whenPressed(armOpenCommand);
 //	report.addJoystickButton(1, 10, "Arm Open", armOpenCommand);
 	
-	armOpenClose = new JoystickButton(joystick2, 14);
+	armOpenClose1 = new JoystickButton(xbox1, 5);
 	Command armClosedCommand = new OpenGrabberCommand(false);
-	armOpenClose.whenPressed(armOpenCommand);
-	armOpenClose.whenReleased(armClosedCommand);
+	armOpenClose1.whenPressed(armOpenCommand);
+	armOpenClose1.whenReleased(armClosedCommand);
 	report.addJoystickButton(1, 14, "Toggle arms open/closed", armClosedCommand);
-	
-	spinGrabberWheels = new JoystickButton(joystick2, 11);
+
+	armOpenClose2 = new JoystickButton(xbox1, 6);
+	armOpenClose2.whenPressed(armOpenCommand);
+	armOpenClose2.whenReleased(armClosedCommand);
+	report.addJoystickButton(1, 14, "Toggle arms open/closed", armClosedCommand);
+
+	spinGrabberWheels = new JoystickButton(xbox1, 2);
 	Command spinnerWheelsStartCommand = new SpinGrabberWheelsCommand(true);
 	spinGrabberWheels.whenPressed(spinnerWheelsStartCommand);
 	Command spinnerWheelsStopCommand = new SpinGrabberWheelsCommand(false);
 	spinGrabberWheels.whenReleased(spinnerWheelsStopCommand);
 	report.addJoystickButton(1, 11, "Spinner wheels", spinnerWheelsStartCommand);
 	
-	reverseGrabberWheels = new JoystickButton(joystick2, 12);
+	reverseGrabberWheels = new JoystickButton(xbox1, 10);
 	Command grabberWheelsStartCommand = new ReverseGrabberWheelsCommand(true);
 	reverseGrabberWheels.whenPressed(grabberWheelsStartCommand);
 	Command grabberWheelsStopCommand = new ReverseGrabberWheelsCommand(false);
@@ -177,7 +184,7 @@ public class OI {
 	report.addJoystickButton(1, 12, "Grabber wheels", spinnerWheelsStartCommand);
 
 
-	celebrateButton = new JoystickButton(joystick2, 13);
+	celebrateButton = new JoystickButton(xbox1, 9);
 	Command celebrateCommand = new CelebrateCommand();
 	celebrateButton.whenPressed(celebrateCommand);
 	report.addJoystickButton(1, 13, "Celebrate", celebrateCommand);
@@ -200,17 +207,17 @@ public class OI {
 	
 
 	// Recording Commands
-    startRecordingButton= new JoystickButton(joystick1, 8);
+    startRecordingButton= new JoystickButton(xbox1, 8);
     Command startRecordingCommand = new StartRecordingCommand(RobotMap.recordingFactory);
     startRecordingButton.whenPressed(startRecordingCommand);
     report.addJoystickButton(0, 8, "Start Recording", startRecordingCommand);
     
-    stopRrecordingButton= new JoystickButton(joystick1, 10);
+    stopRrecordingButton= new JoystickButton(xbox1, 10);
     Command stopRecordingCommand = new StopRecordingCommand(RobotMap.recordingFactory);
     stopRrecordingButton.whenPressed(stopRecordingCommand);
     report.addJoystickButton(0, 10, "Stop Recording", stopRecordingCommand);
     
-    playRecordingButton= new JoystickButton(joystick1, 12);
+    playRecordingButton= new JoystickButton(xbox1, 12);
     Command playRecordingCommand = new PlayRecordingCommand(RobotMap.recordingFactory);
     playRecordingButton.whenPressed(playRecordingCommand);
     report.addJoystickButton(0, 12, "Play Recording", playRecordingCommand);
@@ -279,9 +286,4 @@ public class OI {
 
 		}
     }
-
-    public Joystick getJoystick1() {
-	return joystick1;
-    }
-
 }

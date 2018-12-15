@@ -8,6 +8,7 @@ import org.firebears.RobotMap;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.I2C.Port;
 
 public class Lights extends Subsystem {
@@ -101,7 +102,7 @@ public class Lights extends Subsystem {
 
 	@Override
 	public void periodic() {
-		Joystick stick = Robot.oi.joystick2;
+		XboxController stick = Robot.oi.xbox1;
 		double shooterSpeed = ((stick.getRawAxis(0) + 1) / 2);
 		boolean shootingnow = shooterSpeed > 0.1;
 		if (shootingnow == false && isShooting == true) {

@@ -90,11 +90,11 @@ public class AutoSelection extends Subsystem {
 		// Boolean shouldCross = Robot.oi.joystick2.getRawButton(16);
 		// System.out.println("ShouldCross: " + shouldCross);
 
-		boolean leftSide = Robot.oi.joystick2.getRawButton(3);
-		boolean rightSide = Robot.oi.joystick2.getRawButton(2);
-		boolean shouldCross = Robot.oi.joystick2.getRawButton(16);
-		boolean scaleBool = Robot.oi.joystick2.getRawButton(15);
-		boolean shouldSplit = Robot.oi.joystick2.getRawButton(8);
+		boolean leftSide = Robot.oi.xbox2.getRawButton(3);
+		boolean rightSide = Robot.oi.xbox2.getRawButton(2);
+		boolean shouldCross = Robot.oi.xbox2.getRawButton(16);
+		boolean scaleBool = Robot.oi.xbox2.getRawButton(15);
+		boolean shouldSplit = Robot.oi.xbox2.getRawButton(8);
 
 		String side = "";
 		String priority = "";
