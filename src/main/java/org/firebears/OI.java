@@ -111,15 +111,15 @@ public class OI {
 
 	// Joystick Buttons
 	
-	testMotors = new JoystickButton(xbox1, 7);
-	TestMotors testMotorsStraightForward = new TestMotors(true, true);
-	testMotors.whileHeld(testMotorsStraightForward);
-	report.addJoystickButton(0, 7, "Test Motors Forward", testMotorsStraightForward);
+	// testMotors = new JoystickButton(xbox1, 7);
+	// TestMotors testMotorsStraightForward = new TestMotors(true, true);
+	// testMotors.whileHeld(testMotorsStraightForward);
+	// report.addJoystickButton(0, 7, "Test Motors Forward", testMotorsStraightForward);
 	
-	testMotors = new JoystickButton(xbox1, 8);
-	TestMotors testMotorsStraightBackwards = new TestMotors(true, false);
-	testMotors.whileHeld(testMotorsStraightBackwards);
-	report.addJoystickButton(0, 9, "Test Motors Backward", testMotorsStraightBackwards);
+	// testMotors = new JoystickButton(xbox1, 8);
+	// TestMotors testMotorsStraightBackwards = new TestMotors(true, false);
+	// testMotors.whileHeld(testMotorsStraightBackwards);
+	// report.addJoystickButton(0, 9, "Test Motors Backward", testMotorsStraightBackwards);
 	
 	extendShooter = new JoystickButton(xbox1, 3);
 	Command fireCubeCommand = new FireCubeCommand();

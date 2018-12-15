@@ -5,6 +5,7 @@ import org.firebears.RobotMap;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -20,10 +21,11 @@ public class TeleopShooterCommand extends Command {
     protected void initialize() {
     	
     }
-    XboxController stick = Robot.oi.xbox2;
+    XboxController stick = Robot.oi.xbox1;
 
     protected void execute() {
-    	double throttle = stick.getRawAxis(0);
+        double throttle = Robot.oi.xbox1.getTriggerAxis(Hand.kRight);
+        throttle = throttle*2.0-1.0;
     	if (RobotMap.DisableShooter == false) {
 //        	System.out.println("Input: " + throttle);
     		if (((throttle + 1) / 2) >= .1) {
