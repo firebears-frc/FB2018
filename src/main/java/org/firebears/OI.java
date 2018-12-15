@@ -121,7 +121,7 @@ public class OI {
 	testMotors.whileHeld(testMotorsStraightBackwards);
 	report.addJoystickButton(0, 9, "Test Motors Backward", testMotorsStraightBackwards);
 	
-	extendShooter = new JoystickButton(xbox2, 3);
+	extendShooter = new JoystickButton(xbox1, 3);
 	Command fireCubeCommand = new FireCubeCommand();
 	extendShooter.whenPressed(fireCubeCommand);
 	report.addJoystickButton(1, 1, "Shoot", fireCubeCommand);
@@ -138,12 +138,12 @@ public class OI {
 //	switchShot = new JoystickButton(joystick2, 3);
 //	switchShot.whenPressed(new SpinShooterWheelsCommand(.25));
 	
-	armDown = new JoystickButton(xbox2, 1);
+	armDown = new JoystickButton(xbox1, 1);
 	Command grabberDownCommand = new GrabberDownCommand();
 	armDown.whenPressed(grabberDownCommand);
 	report.addJoystickButton(1, 7, "Arm Down", grabberDownCommand);
 	
-	armUp = new JoystickButton(xbox2, 4);
+	armUp = new JoystickButton(xbox1, 4);
 	Command grabberUpCommand = new GrabberUpCommand();
 	armUp.whenPressed(grabberUpCommand);
 	report.addJoystickButton(1, 9, "Arm Up", grabberUpCommand);
