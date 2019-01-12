@@ -1,64 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry output="bin/main" kind="src" path="src/main/java">
+	<classpathentry kind="src" output="bin/main" path="src/main/java">
 		<attributes>
 			<attribute name="gradle_scope" value="main"/>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry output="bin/test" kind="src" path="src/test/java">
-		<attributes>
-			<attribute name="gradle_scope" value="test"/>
-			<attribute name="gradle_used_by_scope" value="test"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry output="bin/main" kind="src" path="src/main/resources">
+	<classpathentry kind="src" output="bin/main" path="src/main/resources">
 		<attributes>
 			<attribute name="gradle_scope" value="main"/>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-11/"/>
 	<classpathentry kind="con" path="org.eclipse.buildship.core.gradleclasspathcontainer"/>
 	<classpathentry kind="output" path="bin/default"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8/"/>
-	<classpathentry sourcepath="/Users/keith/.gradle/caches/modules-2/files-2.1/edu.wpi.first.wpilibj/wpilibj-java/2019.1.1-beta-1/784348da96fae15578ff48b1b6921c21c72c5546/wpilibj-java-2019.1.1-beta-1-sources.jar" kind="lib" path="/Users/keith/.gradle/caches/modules-2/files-2.1/edu.wpi.first.wpilibj/wpilibj-java/2019.1.1-beta-1/a30362905f375fa1caa6b3a7578792c4f36e8de/wpilibj-java-2019.1.1-beta-1.jar">
-		<attributes>
-			<attribute name="gradle_used_by_scope" value=""/>
-		</attributes>
-	</classpathentry>
-	<classpathentry sourcepath="/Users/keith/.gradle/caches/modules-2/files-2.1/edu.wpi.first.ntcore/ntcore-java/2019.1.1-beta-1/41159e1382cac1345eee4e97e3dabe26b3d572d8/ntcore-java-2019.1.1-beta-1-sources.jar" kind="lib" path="/Users/keith/.gradle/caches/modules-2/files-2.1/edu.wpi.first.ntcore/ntcore-java/2019.1.1-beta-1/bde28f9ef7bcf718ee7c1e3320b32fbca0ef6bc/ntcore-java-2019.1.1-beta-1.jar">
-		<attributes>
-			<attribute name="gradle_used_by_scope" value=""/>
-		</attributes>
-	</classpathentry>
-	<classpathentry sourcepath="/Users/keith/.gradle/caches/modules-2/files-2.1/edu.wpi.first.wpiutil/wpiutil-java/2019.1.1-beta-1/4560f1f30aa5bcc05289ed25e292b9595ae54d2f/wpiutil-java-2019.1.1-beta-1-sources.jar" kind="lib" path="/Users/keith/.gradle/caches/modules-2/files-2.1/edu.wpi.first.wpiutil/wpiutil-java/2019.1.1-beta-1/3d27a6cbe1d36afbb8478829bfacefb317c54c5c/wpiutil-java-2019.1.1-beta-1.jar">
-		<attributes>
-			<attribute name="gradle_used_by_scope" value=""/>
-		</attributes>
-	</classpathentry>
-	<classpathentry sourcepath="/Users/keith/.gradle/caches/modules-2/files-2.1/edu.wpi.first.thirdparty.frc2019.opencv/opencv-java/3.4.3-7/d7ce07484da4ea790d516cc8484b2a6de163e649/opencv-java-3.4.3-7-sources.jar" kind="lib" path="/Users/keith/.gradle/caches/modules-2/files-2.1/edu.wpi.first.thirdparty.frc2019.opencv/opencv-java/3.4.3-7/51734a4865f902466971d339ffbdf3c04d2623db/opencv-java-3.4.3-7.jar">
-		<attributes>
-			<attribute name="gradle_used_by_scope" value=""/>
-		</attributes>
-	</classpathentry>
-	<classpathentry sourcepath="/Users/keith/.gradle/caches/modules-2/files-2.1/edu.wpi.first.cscore/cscore-java/2019.1.1-beta-1/aa634a8fbc63267df0f72d6d3a691e7674a85016/cscore-java-2019.1.1-beta-1-sources.jar" kind="lib" path="/Users/keith/.gradle/caches/modules-2/files-2.1/edu.wpi.first.cscore/cscore-java/2019.1.1-beta-1/1461c840fb43ea9da9dd26ee81d06ae49428ac32/cscore-java-2019.1.1-beta-1.jar">
-		<attributes>
-			<attribute name="gradle_used_by_scope" value=""/>
-		</attributes>
-	</classpathentry>
-	<classpathentry sourcepath="/Users/keith/.gradle/caches/modules-2/files-2.1/edu.wpi.first.cameraserver/cameraserver-java/2019.1.1-beta-1/5f9b148f1018ad005326464969d303e1064f21b5/cameraserver-java-2019.1.1-beta-1-sources.jar" kind="lib" path="/Users/keith/.gradle/caches/modules-2/files-2.1/edu.wpi.first.cameraserver/cameraserver-java/2019.1.1-beta-1/a5d8252de1846db7657b3c2567a443e1b24d2597/cameraserver-java-2019.1.1-beta-1.jar">
-		<attributes>
-			<attribute name="gradle_used_by_scope" value=""/>
-		</attributes>
-	</classpathentry>
-	<classpathentry sourcepath="/Users/keith/.gradle/caches/modules-2/files-2.1/edu.wpi.first.hal/hal-java/2019.1.1-beta-1/761c5e2f5da161855a0928b3462db8b054575d4d/hal-java-2019.1.1-beta-1-sources.jar" kind="lib" path="/Users/keith/.gradle/caches/modules-2/files-2.1/edu.wpi.first.hal/hal-java/2019.1.1-beta-1/61887bedcc6f9d15f4408a05d99fadb956e57e47/hal-java-2019.1.1-beta-1.jar">
-		<attributes>
-			<attribute name="gradle_used_by_scope" value=""/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/Users/keith/Documents/VSC_projects/FB2018/unresolved dependency - junit junit 4.12">
-		<attributes>
-			<attribute name="gradle_used_by_scope" value=""/>
-		</attributes>
-	</classpathentry>
 </classpath>
