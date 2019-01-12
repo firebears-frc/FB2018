@@ -138,8 +138,8 @@ public class Chassis extends Subsystem {
 		return distanceInInches;
 	}
 
-	public void drive(double speed1, double speed2) {
-		robotDrive.tankDrive(speed1, speed2);
+	public void drive(double speed1, double rotation) {
+		robotDrive.tankDrive(speed1, rotation);
 	}
 
 	public void leftFront(double speed1) {
@@ -151,13 +151,13 @@ public class Chassis extends Subsystem {
 
 	}
 
-	public void rightFront(double speed2) {
-		RobotMap.chassisRightMaster.set(speed2);
+	public void rightFront(double speed1) {
+		RobotMap.chassisRightMaster.set(speed1);
 
 	}
 
-	public void rightRear(double speed2) {
-		RobotMap.chassisRightSlave.set(speed2);
+	public void rightRear(double speed1) {
+		RobotMap.chassisRightSlave.set(speed1);
 
 	}
 
