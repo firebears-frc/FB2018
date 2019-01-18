@@ -49,12 +49,15 @@ import org.firebears.recording.PlayRecordingCommand;
 import org.firebears.recording.StartRecordingCommand;
 import org.firebears.recording.StopRecordingCommand;
 import org.firebears.util.RobotReport;
+import org.firebears.commands.LineFollowerCommand;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import edu.wpi.first.wpilibj.DigitalInput;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -87,7 +90,10 @@ public class OI {
     
     public JoystickButton startRecordingButton;
     public JoystickButton stopRrecordingButton;
-    public JoystickButton playRecordingButton;
+	public JoystickButton playRecordingButton;
+	
+	public JoystickButton followLineButton;
+	
 
     String testRecording = "recordings/MiddleSideRightSwitch.csv";
 
@@ -181,6 +187,13 @@ public class OI {
 	Command celebrateCommand = new CelebrateCommand();
 	celebrateButton.whenPressed(celebrateCommand);
 	report.addJoystickButton(1, 13, "Celebrate", celebrateCommand);
+
+	followLineButton = new JoystickButton(joystick1, 1);
+	Command LineFollowerCommand = new LineFollowerCommand();
+	followLineButton.whenPressed(LineFollowerCommand);
+
+	
+
 	
 //	dance = new JoystickButton(joystick1, 1);
 //	dance.whileHeld(new DanceCommand());
@@ -276,6 +289,10 @@ public class OI {
 	   SmartDashboard.putData("setAnimation", new I2CCommand(1, 3));
 	   SmartDashboard.putData("TEST", new TestRobotCommand());
 	   SmartDashboard.putData("Celebrate", new CelebrateCommand());
+
+	   SmartDashboard.putData("Follow Line", new LineFollowerCommand());
+
+	
 
 		}
     }

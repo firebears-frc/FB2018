@@ -36,7 +36,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class RobotMap {
 
 	final static Preferences config = Preferences.getInstance();
-	public static final boolean DEBUG = config.getBoolean("debug", false);
+	public static final boolean DEBUG = config.getBoolean("debug", true);
 
 	public static CANTalon chassisLeftMaster;
 	public static CANTalon chassisLeftSlave;

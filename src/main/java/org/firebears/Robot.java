@@ -87,6 +87,7 @@ public class Robot extends TimedRobot {
 		lights.reset();
 
 		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture(0);
+		
 
 		// OI must be constructed after subsystems. If the OI creates Commands
 		// (which it very likely will), subsystems are not guaranteed to be
