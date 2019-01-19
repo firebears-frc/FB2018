@@ -39,11 +39,11 @@ public class DriveCommand extends Command {
             double speed1 = Robot.oi.xbox1.getY(Hand.kLeft);
             Robot.chassis.leftFront(-speed1);
             Robot.chassis.leftRear(-speed1);
-//            double speed2 = Robot.oi.xbox1.getY(Hand.kRight);
-//            Robot.chassis.rightFront(speed2);
- //           Robot.chassis.rightRear(speed2);
-            double rotation = Robot.oi.xbox1.getX(Hand.kRight);
-       		Robot.chassis.drive(speed1, rotation * 1.0);	
+           double speed2 = Robot.oi.xbox1.getY(Hand.kRight);
+            Robot.chassis.rightFront(speed2);
+     Robot.chassis.rightRear(speed2);
+            //double rotation = Robot.oi.xbox1.getX(Hand.kRight);
+       		//Robot.chassis.drive(speed1, rotation * 1.0);	
 //    	}
    		
     }
