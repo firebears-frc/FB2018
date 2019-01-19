@@ -95,7 +95,7 @@ public class RobotMap {
 	public static Encoder encoderRight;
 
 	public static DigitalInput tapeSensor;
-
+	public static DigitalInput middleSensor;
 	public static DigitalInput cubeSwitch;
 	
 	public static DigitalInput grabberUpPositionSensor;
@@ -289,15 +289,19 @@ public class RobotMap {
 		closeLidarSensor = new DigitalInput(grabberCloseLidarDio);
 		report.addDigitalIO(grabberCloseLidarDio, "Grabber Lidar 1", closeLidarSensor);
 		
-		int chassisTapeSensorDio = config.getInt("chassis.tapeSensor.dio", 2);
+		int chassisTapeSensorDio = config.getInt("chassis.tapeSensor.dio", 4);
 		tapeSensor = new DigitalInput(chassisTapeSensorDio);
 		report.addDigitalIO(chassisTapeSensorDio, "Tape Finder", tapeSensor);
+
+		int chassisMiddleSensorDio = config.getInt("chassis.middleSensor.dio", 2);
+		middleSensor = new DigitalInput(chassisMiddleSensorDio);
+		report.addDigitalIO(chassisMiddleSensorDio, "Midlle Sensor", middleSensor);
 
 		// Put Sensor for when cube is loaded here
 
 		// Put Sensor for when cube is in the grabber here
 
-		int grabberCubeSwitchDio = config.getInt("grabber.cubeSwitch.dio", 4);
+		int grabberCubeSwitchDio = config.getInt("grabber.cubeSwitch.dio", 3);
 		cubeSwitch = new DigitalInput(grabberCubeSwitchDio);
 		report.addDigitalIO(grabberCubeSwitchDio, "Cube Detector", cubeSwitch);
 		
