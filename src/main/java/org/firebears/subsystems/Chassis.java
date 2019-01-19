@@ -72,6 +72,12 @@ public class Chassis extends Subsystem {
 		// if (periodicCount % 250 == 0) {
 		// System.out.printf("Chassis: Air Pressure = %5.2f%n", getAirPressure());
 		// }
+		DigitalInput rightSensor = RobotMap.cubeSwitch;
+		DigitalInput middleSensor = RobotMap.middleSensor;
+		DigitalInput leftSensor = RobotMap.tapeSensor;
+		SmartDashboard.putBoolean("left Sensor", leftSensor.get());
+		SmartDashboard.putBoolean("middle Sensor", middleSensor.get());
+		SmartDashboard.putBoolean("right Sensor", rightSensor.get());
 	}
 
 	private long periodicCount = 0;
