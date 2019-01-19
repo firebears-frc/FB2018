@@ -95,12 +95,10 @@ public class RobotMap {
 	public static Encoder encoderRight;
 
 	public static DigitalInput tapeSensor;
-<<<<<<< HEAD
+
 
 	public static DigitalInput rightSensor;
-=======
-	public static DigitalInput middleSensor;
->>>>>>> c3aece08c3e8f0d77e950b19b4484b7e4104d3f5
+
 	public static DigitalInput cubeSwitch;
 	
 	public static DigitalInput grabberUpPositionSensor;
@@ -298,16 +296,11 @@ public class RobotMap {
 		tapeSensor = new DigitalInput(chassisTapeSensorDio);
 		report.addDigitalIO(chassisTapeSensorDio, "Tape Finder", tapeSensor);
 
-<<<<<<< HEAD
-		int chassisRightSensorDio = config.getInt("chassis.rightSensor.dio", 3);
+
+		int chassisRightSensorDio = config.getInt("chassis.rightSensor.dio", 2);
 		cubeSwitch = new DigitalInput(chassisRightSensorDio);
 		report.addDigitalIO(chassisRightSensorDio, "Right Sensor", rightSensor);
-=======
-		int chassisMiddleSensorDio = config.getInt("chassis.middleSensor.dio", 2);
-		middleSensor = new DigitalInput(chassisMiddleSensorDio);
-		report.addDigitalIO(chassisMiddleSensorDio, "Midlle Sensor", middleSensor);
 
->>>>>>> c3aece08c3e8f0d77e950b19b4484b7e4104d3f5
 		// Put Sensor for when cube is loaded here
 
 		// Put Sensor for when cube is in the grabber here
