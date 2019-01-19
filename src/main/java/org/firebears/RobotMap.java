@@ -96,6 +96,7 @@ public class RobotMap {
 
 	public static DigitalInput tapeSensor;
 
+	public static DigitalInput rightSensor;
 	public static DigitalInput cubeSwitch;
 	
 	public static DigitalInput grabberUpPositionSensor;
@@ -293,6 +294,9 @@ public class RobotMap {
 		tapeSensor = new DigitalInput(chassisTapeSensorDio);
 		report.addDigitalIO(chassisTapeSensorDio, "Tape Finder", tapeSensor);
 
+		int chassisRightSensorDio = config.getInt("chassis.rightSensor.dio", 3);
+		cubeSwitch = new DigitalInput(chassisRightSensorDio);
+		report.addDigitalIO(chassisRightSensorDio, "Right Sensor", rightSensor);
 		// Put Sensor for when cube is loaded here
 
 		// Put Sensor for when cube is in the grabber here
@@ -343,7 +347,7 @@ public class RobotMap {
 	 * @return current NavXBoard angle wrapped to the range -180 to 180.
 	 */
 	public static double getNavXAngle() {
-		return boundAngle(navXBoard.getAngle());
+		return 0.0; //boundAngle(navXBoard.getAngle());
 	}
 
 	private static void setPID(TalonSRX talonSRX, double pidP, double pidI, double pidD, double pidF, int pidIZone,

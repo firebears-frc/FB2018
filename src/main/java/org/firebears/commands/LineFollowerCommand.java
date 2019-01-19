@@ -16,8 +16,9 @@ import org.firebears.subsystems.Chassis;
 
 
 public class LineFollowerCommand extends Command {
-  DigitalInput rightSensor = RobotMap.cubeSwitch;
-  DigitalInput leftSensor = RobotMap.tapeSensor;
+  DigitalInput rightSensor = RobotMap.rightSensor;
+  DigitalInput centerSensor = RobotMap.tapeSensor;
+  DigitalInput leftSensor = RobotMap.cubeSwitch;
   long timeout;
 
   public LineFollowerCommand() {
@@ -30,7 +31,7 @@ public class LineFollowerCommand extends Command {
   @Override
   protected void initialize() {
     Robot.chassis.drive(0.2, 0, true);
-    timeout = System.currentTimeMillis() + 5000;
+    timeout = System.currentTimeMillis() + 10000;
     System.out.println("initialize");
     // drive slowley
   }
@@ -38,13 +39,16 @@ public class LineFollowerCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if (leftSensor.get() == false) {
+    if (leftSensor.get() == true) {
       Robot.chassis.drive(-0.5, 0.5, true);
     }else
-    if (rightSensor.get() == false) {
+    if (centerSensor.get() == true) {
+      Robot.chassis.drive(-0.5, 0, true);
+    }else
+    if (rightSensor.get() == true) {
       Robot.chassis.drive(-0.5, -0.5, true);
     }else
-    if (leftSensor.get() && rightSensor.get()) {
+    if (leftSensor.get() && rightSensor.get() && centerSensor.get() == false) {
       Robot.chassis.drive(-0.5, 0, true);
     }
   }
@@ -55,7 +59,7 @@ public class LineFollowerCommand extends Command {
     if (System.currentTimeMillis() >= timeout){
       return true;
     }
-    if (leftSensor.get() == false && rightSensor.get() == false){
+    if (leftSensor.get() == false && rightSensor.get() == false && centerSensor.get() == false){
       return true;
     }
     return false;
