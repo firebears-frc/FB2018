@@ -10,20 +10,27 @@ package org.firebears.commands;
 import edu.wpi.first.wpilibj.command.Command;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+
+import javax.lang.model.util.ElementScanner6;
+
 import org.firebears.Robot;
 import org.firebears.RobotMap;
 import org.firebears.subsystems.Chassis;
 
 public class LineFollowerCommand extends Command {
 
-  DigitalInput rightSensor = RobotMap.rightSensor;
-  DigitalInput centerSensor = RobotMap.tapeSensor;
-  DigitalInput leftSensor = RobotMap.cubeSwitch;
+  DigitalInput rightSensor = RobotMap.rightSensor;// 2
+  DigitalInput centerSensor = RobotMap.tapeSensor;// 3
+  DigitalInput leftSensor = RobotMap.cubeSwitch;// 4
 
-  
+  private boolean Rsen;
+  private boolean Csen;
+  private boolean Lsen;
+  private boolean seenTape;
+
+  private double driveSpeed = 0.2;
+  private double rotationSpeed = 0.3;
   long timeout;
-  int state;
-  int state2;
 
   public LineFollowerCommand() {
     requires(Robot.chassis);
@@ -36,31 +43,41 @@ public class LineFollowerCommand extends Command {
   protected void initialize() {
     Robot.chassis.drive(0.2, 0, true);
 
-    timeout = System.currentTimeMillis() + 10000;
+    timeout = System.currentTimeMillis() + 20000;
 
-  
-    System.out.println("initialize");
-    state = 0;
-    state2 = 0;
-    // drive slowley
+    System.out.print("initialize");
+    seenTape = false;
+    // drive slowly
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    System.out.print("execute");
+    Rsen = rightSensor.get();
+    System.out.print(Rsen);
+    Csen = centerSensor.get();
+    System.out.print(Csen);
+    Lsen = leftSensor.get();
+    System.out.print(Lsen);
 
-    if (leftSensor.get() == true) {
-      Robot.chassis.drive(-0.5, 0.5, true);
-    }else
-    if (centerSensor.get() == true) {
-      Robot.chassis.drive(-0.5, 0, true);
-    }else
-    if (rightSensor.get() == true) {
-      Robot.chassis.drive(-0.5, -0.5, true);
-    }else
-    if (leftSensor.get() && rightSensor.get() && centerSensor.get() == false) {
-      Robot.chassis.drive(-0.5, 0, true);
+    if (Lsen || Csen || Rsen) {
+      seenTape = true;
 
+    }
+
+    if (Lsen && !Csen && !Rsen) {
+      Robot.chassis.drive(-driveSpeed, -rotationSpeed, false);
+    } else if (!Lsen && Csen && !Rsen) {
+      Robot.chassis.drive(-driveSpeed, 0.0, false);
+    } else if (!Lsen && !Csen && Rsen) {
+      Robot.chassis.drive(-driveSpeed, rotationSpeed, false);
+    } else if (Lsen && Csen && !Rsen) {
+      Robot.chassis.drive(-driveSpeed, -rotationSpeed, false);
+    } else if (!Lsen && Csen && Rsen) {
+      Robot.chassis.drive(-driveSpeed, rotationSpeed, false);
+    } else if (!Lsen && !Csen && !Rsen) {
+      Robot.chassis.drive(-driveSpeed, 0.0, false);
     }
   }
 
@@ -70,7 +87,7 @@ public class LineFollowerCommand extends Command {
     if (System.currentTimeMillis() >= timeout) {
       return true;
     }
-    if (leftSensor.get() == false && rightSensor.get() == false && centerSensor.get() == false){
+    if (Lsen == false && Rsen == false && Csen == false && seenTape) {
       return true;
 
     }

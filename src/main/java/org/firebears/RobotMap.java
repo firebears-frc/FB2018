@@ -292,22 +292,23 @@ public class RobotMap {
 		closeLidarSensor = new DigitalInput(grabberCloseLidarDio);
 		report.addDigitalIO(grabberCloseLidarDio, "Grabber Lidar 1", closeLidarSensor);
 		
-		int chassisTapeSensorDio = config.getInt("chassis.tapeSensor.dio", 4);
+		int chassisTapeSensorDio = 2; //config.getInt("chassis.tapeSensor.dio", 2);
 		tapeSensor = new DigitalInput(chassisTapeSensorDio);
 		report.addDigitalIO(chassisTapeSensorDio, "Tape Finder", tapeSensor);
 
 
-		int chassisRightSensorDio = config.getInt("chassis.rightSensor.dio", 2);
-		cubeSwitch = new DigitalInput(chassisRightSensorDio);
+		int chassisRightSensorDio = config.getInt("chassis.rightSensor.dio", 3);
+		rightSensor = new DigitalInput(chassisRightSensorDio);
 		report.addDigitalIO(chassisRightSensorDio, "Right Sensor", rightSensor);
 
 		// Put Sensor for when cube is loaded here
 
 		// Put Sensor for when cube is in the grabber here
 
-		int grabberCubeSwitchDio = config.getInt("grabber.cubeSwitch.dio", 3);
+		int grabberCubeSwitchDio = 4; //config.getInt("grabber.cubeSwitch.dio", 4);
 		cubeSwitch = new DigitalInput(grabberCubeSwitchDio);
 		report.addDigitalIO(grabberCubeSwitchDio, "Cube Detector", cubeSwitch);
+		
 		
 		int grabberDownSensorDio = config.getInt("grabber.downSensor.dio", 6);
 		grabberDownPositionSensor = new DigitalInput(grabberDownSensorDio);
