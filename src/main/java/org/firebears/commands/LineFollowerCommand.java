@@ -28,8 +28,8 @@ public class LineFollowerCommand extends Command {
   private boolean Lsen;
   private boolean seenTape;
 
-  private double driveSpeed = 0.2;
-  private double rotationSpeed = 0.3;
+  private double driveSpeed = 0.1;
+  private double rotationSpeed = 0.1;
   long timeout;
 
   public LineFollowerCommand() {
@@ -43,7 +43,7 @@ public class LineFollowerCommand extends Command {
   protected void initialize() {
     Robot.chassis.drive(0.2, 0, true);
 
-    timeout = System.currentTimeMillis() + 20000;
+    timeout = System.currentTimeMillis() + 4000;
 
     System.out.print("initialize");
     seenTape = false;
@@ -87,10 +87,9 @@ public class LineFollowerCommand extends Command {
     if (System.currentTimeMillis() >= timeout) {
       return true;
     }
-    if (Lsen == false && Rsen == false && Csen == false && seenTape) {
-      return true;
-
-    }
+    //if (Lsen == false && Rsen == false && Csen == false && seenTape) {
+  // return true;
+   // }
     return false;
   }
 
