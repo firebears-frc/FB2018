@@ -28,8 +28,8 @@ public class LineFollowerCommand extends Command {
   private boolean Lsen;
   private boolean seenTape;
 
-  private double driveSpeed = 0.1;
-  private double rotationSpeed = 0.1;
+  private double driveSpeed = 0.2;
+  private double rotationSpeed = 0.275;
   long timeout;
 
   public LineFollowerCommand() {
@@ -87,9 +87,9 @@ public class LineFollowerCommand extends Command {
     if (System.currentTimeMillis() >= timeout) {
       return true;
     }
-    //if (Lsen == false && Rsen == false && Csen == false && seenTape) {
-  // return true;
-   // }
+    if (Lsen == false && Rsen == false && Csen == false && seenTape) {
+  return true;
+   }
     return false;
   }
 
