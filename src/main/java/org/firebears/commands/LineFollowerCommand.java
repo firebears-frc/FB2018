@@ -29,7 +29,8 @@ public class LineFollowerCommand extends Command {
   private boolean seenTape;
 
   private double driveSpeed = 0.2;
-  private double rotationSpeed = 0.275;
+  private double rotationSpeed = 0.275
+  ;
   long timeout;
 
   public LineFollowerCommand() {
