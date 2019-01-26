@@ -190,7 +190,7 @@ public class OI {
 
 	followLineButton = new JoystickButton(joystick1, 1);
 	Command LineFollowerCommand = new LineFollowerCommand();
-	followLineButton.whenPressed(LineFollowerCommand);
+	followLineButton.whileHeld(LineFollowerCommand);
 
 	
 
