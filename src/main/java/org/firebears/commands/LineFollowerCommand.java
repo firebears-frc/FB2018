@@ -27,11 +27,16 @@ public class LineFollowerCommand extends Command {
   private boolean Csen;
   private boolean Lsen;
   private boolean seenTape;
+  private boolean steepAngle;
 
-  private double driveSpeed = 0.2;
-  private double rotationSpeed = 0.275
-  ;
+  private double driveSpeed = 0.225;
+  private double rotationSpeed = 0.3;
+
+  int offTape;
+  int lastOn;
+
   long timeout;
+  long timeout2;
 
   public LineFollowerCommand() {
     requires(Robot.chassis);
@@ -44,10 +49,12 @@ public class LineFollowerCommand extends Command {
   protected void initialize() {
     Robot.chassis.drive(0.2, 0, true);
 
-    timeout = System.currentTimeMillis() + 4000;
+    timeout = System.currentTimeMillis() + 5500;
 
     System.out.print("initialize");
     seenTape = false;
+    offTape = 0;
+    steepAngle = false;
     // drive slowly
   }
 
@@ -64,7 +71,6 @@ public class LineFollowerCommand extends Command {
 
     if (Lsen || Csen || Rsen) {
       seenTape = true;
-
     }
 
     if (Lsen && !Csen && !Rsen) {
@@ -80,6 +86,40 @@ public class LineFollowerCommand extends Command {
     } else if (!Lsen && !Csen && !Rsen) {
       Robot.chassis.drive(-driveSpeed, 0.0, false);
     }
+
+    if (offTape == 1) {
+      if (Lsen || Csen || Rsen) {
+        timeout = 4000;
+        offTape = 0;
+      }
+    }
+
+    if (Rsen) {
+      lastOn = 2;
+    }
+    if (Lsen) {
+      lastOn = 1;
+    }
+
+
+    if (Lsen && Csen && Rsen) {
+      if (!steepAngle) {
+        steepAngle = true;
+        timeout2 = 750;
+      }
+    }
+
+    if (steepAngle) {
+      if (lastOn == 1) {
+        Robot.chassis.drive(-driveSpeed, rotationSpeed, false);
+      } else if (lastOn == 2) {
+        Robot.chassis.drive(-driveSpeed, -rotationSpeed, false);
+      }
+      if (System.currentTimeMillis() >= timeout2) {
+        offTape = 1;
+        timeout = 3000;
+      }
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -88,9 +128,19 @@ public class LineFollowerCommand extends Command {
     if (System.currentTimeMillis() >= timeout) {
       return true;
     }
-    if (Lsen == false && Rsen == false && Csen == false && seenTape) {
-  return true;
-   }
+    if (offTape == 0) {
+      if (!steepAngle) {
+        if (Lsen == false && Rsen == false && Csen == false && seenTape) {
+          timeout = 1500;
+          offTape = 1;
+        }
+      }
+    }
+    if (steepAngle) {
+      if (lastOn == 0) {
+        return true;
+      }
+    }
     return false;
   }
 
