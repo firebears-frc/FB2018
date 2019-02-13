@@ -19,14 +19,15 @@ public class TeleopShooterCommand extends Command {
     protected void initialize() {
     	
     }
-	Joystick stick = Robot.oi.joystick2;
+	Joystick stick = Robot.oi.joystick1;
 
     protected void execute() {
-    	double throttle = stick.getRawAxis(0);
+    	double throttle = stick.getRawAxis(3);
     	if (RobotMap.DisableShooter == false) {
 //        	System.out.println("Input: " + throttle);
     		if (((throttle + 1) / 2) >= .1) {
-    			Robot.shooter.shooterSpinWheel((throttle + 1) / 2);
+                Robot.shooter.shooterSpinWheel((throttle + 1) / 2);
+                System.out.println((throttle + 1) / 2);
     		} else {
     			Robot.shooter.shooterSpinWheel(0);
     		}
