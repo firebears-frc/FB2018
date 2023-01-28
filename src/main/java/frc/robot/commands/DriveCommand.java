@@ -59,7 +59,7 @@ public class DriveCommand extends CommandBase {
     public void execute() {
         XboxController xboxController=RobotContainer.getInstance().getxbox();
         double speed=xboxController.getLeftY() * .7;
-        double rotaiton=xboxController.getLeftX() * .7;
+        double rotaiton=xboxController.getLeftX();
         //if(xboxController.getAButton() == true) {
         //    speed=.5;
         //}
