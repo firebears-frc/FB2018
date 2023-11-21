@@ -177,3 +177,6 @@ out/
 *.orig
 sysProps.xml
 .DS_Store
+
+# AdvantageKit
+src/main/java/frc/robot/BuildConstants.java
