@@ -47,18 +47,18 @@ public class Chassis extends SubsystemBase {
     }
 
     @AutoLogOutput
-    public ChassisSpeeds targetSpeed() {
+    public ChassisSpeeds targetSpeeds() {
         return target;
     }
 
-    public DifferentialDriveWheelSpeeds getSpeeds() {
+    public DifferentialDriveWheelSpeeds wheelSpeeds() {
         return new DifferentialDriveWheelSpeeds(frontLeft.getSelectedSensorVelocity(),
                 frontRight.getSelectedSensorVelocity());
     }
 
     @AutoLogOutput
-    public ChassisSpeeds actualSpeed() {
-        return kinematics.toChassisSpeeds(getSpeeds());
+    public ChassisSpeeds actualSpeeds() {
+        return kinematics.toChassisSpeeds(wheelSpeeds());
     }
 
     public Command defaultCommand(Supplier<ChassisSpeeds> supplier) {
