@@ -44,12 +44,14 @@ public class Intake extends SubsystemBase {
     @AutoLogOutput
     private IntakeState state = IntakeState.STOP;
 
-    public Intake(PneumaticsControlModule pcm) {
-        leftRaise = pcm.makeDoubleSolenoid(Constants.LEFT_RAISE_FORWARD_CHANNEL, Constants.LEFT_RAISE_REVERSE_CHANNEL);
-        rightRaise = pcm.makeDoubleSolenoid(Constants.RIGHT_RAISE_FORWARD_CHANNEL,
+    public Intake(PneumaticsControlModule pcm_0, PneumaticsControlModule pcm_1) {
+        leftRaise = pcm_1.makeDoubleSolenoid(Constants.LEFT_RAISE_FORWARD_CHANNEL,
+                Constants.LEFT_RAISE_REVERSE_CHANNEL);
+        rightRaise = pcm_1.makeDoubleSolenoid(Constants.RIGHT_RAISE_FORWARD_CHANNEL,
                 Constants.RIGHT_RAISE_REVERSE_CHANNEL);
-        leftClose = pcm.makeDoubleSolenoid(Constants.LEFT_CLOSE_FORWARD_CHANNEL, Constants.LEFT_CLOSE_REVERSE_CHANNEL);
-        rightClose = pcm.makeDoubleSolenoid(Constants.RIGHT_CLOSE_FORWARD_CHANNEL,
+        leftClose = pcm_0.makeDoubleSolenoid(Constants.LEFT_CLOSE_FORWARD_CHANNEL,
+                Constants.LEFT_CLOSE_REVERSE_CHANNEL);
+        rightClose = pcm_0.makeDoubleSolenoid(Constants.RIGHT_CLOSE_FORWARD_CHANNEL,
                 Constants.RIGHT_CLOSE_REVERSE_CHANNEL);
     }
 
@@ -112,7 +114,7 @@ public class Intake extends SubsystemBase {
             case INTAKE -> Constants.INTAKE_SPEED;
             case EJECT -> -1.0 * Constants.INTAKE_SPEED;
             case HOLD -> Constants.HOLD_SPEED;
-            case STOP -> 0;
+            case STOP -> 0.0;
         };
 
         left.set(-speed);

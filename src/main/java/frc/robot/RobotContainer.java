@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.subsystems.Chassis;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Shooter;
 
 public class RobotContainer {
     private static final class Constants {
@@ -16,14 +17,17 @@ public class RobotContainer {
         public static final double JOYSTICK_DEADBAND = 0.05;
 
         private static final int PDP_CAN_ID = 1;
-        private static final int PCM_CAN_ID = 0;
+        private static final int PCM_0_CAN_ID = 0;
+        private static final int PCM_1_CAN_ID = 1;
     }
 
     private final PowerDistribution pdp = new PowerDistribution(Constants.PDP_CAN_ID,
             PowerDistribution.ModuleType.kCTRE);
-    private final PneumaticsControlModule pcm = new PneumaticsControlModule(Constants.PCM_CAN_ID);
+    private final PneumaticsControlModule pcm_0 = new PneumaticsControlModule(Constants.PCM_0_CAN_ID);
+    private final PneumaticsControlModule pcm_1 = new PneumaticsControlModule(Constants.PCM_1_CAN_ID);
     private final Chassis chassis = new Chassis();
-    private final Intake intake = new Intake(pcm);
+    private final Intake intake = new Intake(pcm_0, pcm_1);
+    private final Shooter shooter = new Shooter(pcm_0);
     private final CommandXboxController controller = new CommandXboxController(Constants.CONTROLLER_PORT);
 
     public RobotContainer() {
@@ -53,13 +57,12 @@ public class RobotContainer {
         controller.b()
                 .onTrue(Commands.parallel(
                         intake.stop(),
-                        intake.open()
-                // TODO: Start spinners
-                ))
+                        intake.open(),
+                        shooter.spin()))
                 .onFalse(Commands.sequence(
-                        // TODO: Punch
+                        shooter.punch(),
                         Commands.waitSeconds(0.5),
-                        // TODO: Un-punch
+                        shooter.retract(),
                         intake.close()));
     }
 }
