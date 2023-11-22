@@ -54,7 +54,7 @@ public class RobotContainer {
                         intake.up(),
                         intake.hold()));
 
-        controller.b()
+        controller.a()
                 .onTrue(Commands.parallel(
                         intake.stop(),
                         intake.open(),
