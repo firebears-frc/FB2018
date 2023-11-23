@@ -29,7 +29,8 @@ public class Chassis extends SubsystemBase {
     private final MotorControllerGroup left, right;
     private final DifferentialDrive drive;
 
-    private ChassisSpeeds target = new ChassisSpeeds();
+    @AutoLogOutput
+    private ChassisSpeeds targetSpeeds = new ChassisSpeeds();
 
     public Chassis() {
         frontLeft = new WPI_TalonSRX(Constants.FRONT_LEFT_CAN_ID);
@@ -70,14 +71,9 @@ public class Chassis extends SubsystemBase {
     }
 
     private void drive(ChassisSpeeds speeds) {
-        target = speeds;
+        targetSpeeds = speeds;
 
         drive.arcadeDrive(speeds.vxMetersPerSecond, speeds.omegaRadiansPerSecond, false);
-    }
-
-    @AutoLogOutput
-    public ChassisSpeeds targetSpeeds() {
-        return target;
     }
 
     public Command defaultCommand(Supplier<ChassisSpeeds> supplier) {
