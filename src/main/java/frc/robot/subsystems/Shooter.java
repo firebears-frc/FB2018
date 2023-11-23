@@ -5,6 +5,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PneumaticsControlModule;
+import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
@@ -25,8 +26,8 @@ public class Shooter extends SubsystemBase {
         public static final int CONTINUOUS_CURRENT_LIMIT = 40;
     }
 
-    private final WPI_TalonSRX leftMotor = new WPI_TalonSRX(Constants.LEFT_CAN_ID);
-    private final WPI_TalonSRX rightMotor = new WPI_TalonSRX(Constants.RIGHT_CAN_ID);
+    private final WPI_TalonSRX leftMotor, rightMotor;
+    private final MotorControllerGroup motors;
     private final DoubleSolenoid leftSolenoid;
     private final DoubleSolenoid rightSolenoid;
 
@@ -34,19 +35,23 @@ public class Shooter extends SubsystemBase {
         leftSolenoid = pcm.makeDoubleSolenoid(Constants.LEFT_FORWARD_CHANNEL, Constants.LEFT_REVERSE_CHANNEL);
         rightSolenoid = pcm.makeDoubleSolenoid(Constants.RIGHT_FORWARD_CHANNEL, Constants.RIGHT_REVERSE_CHANNEL);
 
+        leftMotor = new WPI_TalonSRX(Constants.LEFT_CAN_ID);
         leftMotor.configFactoryDefault();
         leftMotor.setInverted(false);
         leftMotor.setNeutralMode(NeutralMode.Coast);
         leftMotor.configPeakCurrentLimit(Constants.PEAK_CURRENT_LIMIT);
         leftMotor.configPeakCurrentDuration(Constants.PEAK_CURRENT_DURATION);
         leftMotor.configContinuousCurrentLimit(Constants.CONTINUOUS_CURRENT_LIMIT);
-        
+
+        rightMotor = new WPI_TalonSRX(Constants.RIGHT_CAN_ID);
         rightMotor.configFactoryDefault();
         rightMotor.setInverted(true);
         rightMotor.setNeutralMode(NeutralMode.Coast);
         rightMotor.configPeakCurrentLimit(Constants.PEAK_CURRENT_LIMIT);
         rightMotor.configPeakCurrentDuration(Constants.PEAK_CURRENT_DURATION);
         rightMotor.configContinuousCurrentLimit(Constants.CONTINUOUS_CURRENT_LIMIT);
+
+        motors = new MotorControllerGroup(leftMotor, rightMotor);
     }
 
     public Command punch() {
@@ -65,15 +70,13 @@ public class Shooter extends SubsystemBase {
 
     public Command spin() {
         return runOnce(() -> {
-            leftMotor.set(Constants.SHOOT_SPEED);
-            rightMotor.set(Constants.SHOOT_SPEED);
+            motors.set(Constants.SHOOT_SPEED);
         });
     }
 
     public Command stop() {
         return runOnce(() -> {
-            leftMotor.set(0.0);
-            rightMotor.set(0.0);
+            motors.set(0.0);
         });
     }
 }
