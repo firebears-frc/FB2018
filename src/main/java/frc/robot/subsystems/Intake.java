@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.PneumaticsControlModule;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.util.DoubleSolenoidGroup;
 
 public class Intake extends SubsystemBase {
     private static final class Constants {
@@ -43,6 +44,7 @@ public class Intake extends SubsystemBase {
     private final WPI_TalonSRX leftMotor, rightMotor;
     private final MotorControllerGroup motors;
     private final DoubleSolenoid leftRaise, rightRaise, leftClose, rightClose;
+    private final DoubleSolenoidGroup raise, close;
 
     @AutoLogOutput
     private IntakeState state = IntakeState.STOP;
@@ -70,37 +72,36 @@ public class Intake extends SubsystemBase {
                 Constants.LEFT_RAISE_REVERSE_CHANNEL);
         rightRaise = pcm_1.makeDoubleSolenoid(Constants.RIGHT_RAISE_FORWARD_CHANNEL,
                 Constants.RIGHT_RAISE_REVERSE_CHANNEL);
+        raise = new DoubleSolenoidGroup(leftRaise, rightRaise);
+
         leftClose = pcm_0.makeDoubleSolenoid(Constants.LEFT_CLOSE_FORWARD_CHANNEL,
                 Constants.LEFT_CLOSE_REVERSE_CHANNEL);
         rightClose = pcm_0.makeDoubleSolenoid(Constants.RIGHT_CLOSE_FORWARD_CHANNEL,
                 Constants.RIGHT_CLOSE_REVERSE_CHANNEL);
+        close = new DoubleSolenoidGroup(leftClose, rightClose);
     }
 
     public Command up() {
         return runOnce(() -> {
-            leftRaise.set(DoubleSolenoid.Value.kForward);
-            rightRaise.set(DoubleSolenoid.Value.kForward);
+            raise.set(DoubleSolenoid.Value.kForward);
         });
     }
 
     public Command down() {
         return runOnce(() -> {
-            leftRaise.set(DoubleSolenoid.Value.kReverse);
-            rightRaise.set(DoubleSolenoid.Value.kReverse);
+            raise.set(DoubleSolenoid.Value.kReverse);
         });
     }
 
     public Command open() {
         return runOnce(() -> {
-            leftClose.set(DoubleSolenoid.Value.kForward);
-            rightClose.set(DoubleSolenoid.Value.kForward);
+            close.set(DoubleSolenoid.Value.kForward);
         });
     }
 
     public Command close() {
         return runOnce(() -> {
-            leftClose.set(DoubleSolenoid.Value.kReverse);
-            rightClose.set(DoubleSolenoid.Value.kReverse);
+            close.set(DoubleSolenoid.Value.kReverse);
         });
     }
 

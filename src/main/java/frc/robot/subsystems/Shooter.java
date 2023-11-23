@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.PneumaticsControlModule;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.util.DoubleSolenoidGroup;
 
 public class Shooter extends SubsystemBase {
     private static final class Constants {
@@ -28,12 +29,13 @@ public class Shooter extends SubsystemBase {
 
     private final WPI_TalonSRX leftMotor, rightMotor;
     private final MotorControllerGroup motors;
-    private final DoubleSolenoid leftSolenoid;
-    private final DoubleSolenoid rightSolenoid;
+    private final DoubleSolenoid leftSolenoid, rightSolenoid;
+    private final DoubleSolenoidGroup solenoids;
 
     public Shooter(PneumaticsControlModule pcm) {
         leftSolenoid = pcm.makeDoubleSolenoid(Constants.LEFT_FORWARD_CHANNEL, Constants.LEFT_REVERSE_CHANNEL);
         rightSolenoid = pcm.makeDoubleSolenoid(Constants.RIGHT_FORWARD_CHANNEL, Constants.RIGHT_REVERSE_CHANNEL);
+        solenoids = new DoubleSolenoidGroup(leftSolenoid, rightSolenoid);
 
         leftMotor = new WPI_TalonSRX(Constants.LEFT_CAN_ID);
         leftMotor.configFactoryDefault();
@@ -56,15 +58,13 @@ public class Shooter extends SubsystemBase {
 
     public Command punch() {
         return runOnce(() -> {
-            leftSolenoid.set(DoubleSolenoid.Value.kReverse);
-            rightSolenoid.set(DoubleSolenoid.Value.kReverse);
+            solenoids.set(DoubleSolenoid.Value.kForward);
         });
     }
 
     public Command retract() {
         return runOnce(() -> {
-            leftSolenoid.set(DoubleSolenoid.Value.kForward);
-            rightSolenoid.set(DoubleSolenoid.Value.kForward);
+            solenoids.set(DoubleSolenoid.Value.kReverse);
         });
     }
 
