@@ -21,16 +21,26 @@ public class RobotContainer {
         private static final int PCM_1_CAN_ID = 1;
     }
 
-    private final PowerDistribution pdp = new PowerDistribution(Constants.PDP_CAN_ID,
-            PowerDistribution.ModuleType.kCTRE);
-    private final PneumaticsControlModule pcm_0 = new PneumaticsControlModule(Constants.PCM_0_CAN_ID);
-    private final PneumaticsControlModule pcm_1 = new PneumaticsControlModule(Constants.PCM_1_CAN_ID);
-    private final Chassis chassis = new Chassis();
-    private final Intake intake = new Intake(pcm_0, pcm_1);
-    private final Shooter shooter = new Shooter(pcm_0);
-    private final CommandXboxController controller = new CommandXboxController(Constants.CONTROLLER_PORT);
+    private final PowerDistribution pdp;
+    private final PneumaticsControlModule pcm_0, pcm_1;
+
+    private final Chassis chassis;
+    private final Intake intake;
+    private final Shooter shooter;
+
+    private final CommandXboxController controller;
 
     public RobotContainer() {
+        pdp = new PowerDistribution(Constants.PDP_CAN_ID, PowerDistribution.ModuleType.kCTRE);
+        pcm_0 = new PneumaticsControlModule(Constants.PCM_0_CAN_ID);
+        pcm_1 = new PneumaticsControlModule(Constants.PCM_1_CAN_ID);
+
+        chassis = new Chassis();
+        intake = new Intake(pcm_0, pcm_1);
+        shooter = new Shooter(pcm_0);
+
+        controller = new CommandXboxController(Constants.CONTROLLER_PORT);
+
         configureBindings();
     }
 
