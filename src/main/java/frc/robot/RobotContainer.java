@@ -55,20 +55,21 @@ public class RobotContainer {
         chassis.setDefaultCommand(chassis.defaultCommand(this::getChassisSpeeds));
 
         controller.rightTrigger()
-                .onTrue(Commands.parallel(
-                        intake.open(),
+                .onTrue(Commands.sequence(
                         intake.down(),
+                        intake.open(),
                         intake.intake()))
-                .onFalse(Commands.parallel(
+                .onFalse(Commands.sequence(
                         intake.close(),
+                        Commands.waitSeconds(0.5),
                         intake.up(),
                         intake.hold()));
 
         controller.a()
-                .onTrue(Commands.parallel(
+                .onTrue(Commands.sequence(
+                        shooter.spin(),
                         intake.stop(),
-                        intake.open(),
-                        shooter.spin()))
+                        intake.open()))
                 .onFalse(Commands.sequence(
                         shooter.punch(),
                         Commands.waitSeconds(0.5),
