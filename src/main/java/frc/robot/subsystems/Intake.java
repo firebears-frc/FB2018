@@ -2,6 +2,7 @@ package frc.robot.subsystems;
 
 import org.littletonrobotics.junction.AutoLogOutput;
 
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -25,6 +26,10 @@ public class Intake extends SubsystemBase {
 
         public static final double INTAKE_SPEED = 0.5;
         public static final double HOLD_SPEED = 0.05;
+
+        public static final int PEAK_CURRENT_LIMIT = 20;
+        public static final int PEAK_CURRENT_DURATION = 1000;
+        public static final int CONTINUOUS_CURRENT_LIMIT = 10;
     }
 
     private enum IntakeState {
@@ -53,6 +58,20 @@ public class Intake extends SubsystemBase {
                 Constants.LEFT_CLOSE_REVERSE_CHANNEL);
         rightClose = pcm_0.makeDoubleSolenoid(Constants.RIGHT_CLOSE_FORWARD_CHANNEL,
                 Constants.RIGHT_CLOSE_REVERSE_CHANNEL);
+
+        left.configFactoryDefault();
+        left.setInverted(true);
+        left.setNeutralMode(NeutralMode.Coast);
+        left.configPeakCurrentLimit(Constants.PEAK_CURRENT_LIMIT);
+        left.configPeakCurrentDuration(Constants.PEAK_CURRENT_DURATION);
+        left.configContinuousCurrentLimit(Constants.CONTINUOUS_CURRENT_LIMIT);
+        
+        right.configFactoryDefault();
+        right.setInverted(false);
+        right.setNeutralMode(NeutralMode.Coast);
+        right.configPeakCurrentLimit(Constants.PEAK_CURRENT_LIMIT);
+        right.configPeakCurrentDuration(Constants.PEAK_CURRENT_DURATION);
+        right.configContinuousCurrentLimit(Constants.CONTINUOUS_CURRENT_LIMIT);
     }
 
     public Command up() {
@@ -117,7 +136,7 @@ public class Intake extends SubsystemBase {
             case STOP -> 0.0;
         };
 
-        left.set(-speed);
+        left.set(speed);
         right.set(speed);
     }
 }

@@ -1,5 +1,6 @@
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -18,6 +19,10 @@ public class Shooter extends SubsystemBase {
         private static final int RIGHT_REVERSE_CHANNEL = 2;
 
         public static final double SHOOT_SPEED = 1.0;
+
+        public static final int PEAK_CURRENT_LIMIT = 60;
+        public static final int PEAK_CURRENT_DURATION = 1000;
+        public static final int CONTINUOUS_CURRENT_LIMIT = 40;
     }
 
     private final WPI_TalonSRX leftMotor = new WPI_TalonSRX(Constants.LEFT_CAN_ID);
@@ -28,6 +33,20 @@ public class Shooter extends SubsystemBase {
     public Shooter(PneumaticsControlModule pcm) {
         leftSolenoid = pcm.makeDoubleSolenoid(Constants.LEFT_FORWARD_CHANNEL, Constants.LEFT_REVERSE_CHANNEL);
         rightSolenoid = pcm.makeDoubleSolenoid(Constants.RIGHT_FORWARD_CHANNEL, Constants.RIGHT_REVERSE_CHANNEL);
+
+        leftMotor.configFactoryDefault();
+        leftMotor.setInverted(false);
+        leftMotor.setNeutralMode(NeutralMode.Coast);
+        leftMotor.configPeakCurrentLimit(Constants.PEAK_CURRENT_LIMIT);
+        leftMotor.configPeakCurrentDuration(Constants.PEAK_CURRENT_DURATION);
+        leftMotor.configContinuousCurrentLimit(Constants.CONTINUOUS_CURRENT_LIMIT);
+        
+        rightMotor.configFactoryDefault();
+        rightMotor.setInverted(true);
+        rightMotor.setNeutralMode(NeutralMode.Coast);
+        rightMotor.configPeakCurrentLimit(Constants.PEAK_CURRENT_LIMIT);
+        rightMotor.configPeakCurrentDuration(Constants.PEAK_CURRENT_DURATION);
+        rightMotor.configContinuousCurrentLimit(Constants.CONTINUOUS_CURRENT_LIMIT);
     }
 
     public Command punch() {
@@ -47,7 +66,7 @@ public class Shooter extends SubsystemBase {
     public Command spin() {
         return runOnce(() -> {
             leftMotor.set(Constants.SHOOT_SPEED);
-            rightMotor.set(-Constants.SHOOT_SPEED);
+            rightMotor.set(Constants.SHOOT_SPEED);
         });
     }
 
