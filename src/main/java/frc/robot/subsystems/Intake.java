@@ -3,6 +3,7 @@ package frc.robot.subsystems;
 import org.littletonrobotics.junction.AutoLogOutput;
 
 import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -46,8 +47,10 @@ public class Intake extends SubsystemBase {
     private final DoubleSolenoid leftRaise, rightRaise, leftClose, rightClose;
     private final DoubleSolenoidGroup raise, close;
 
-    @AutoLogOutput
-    private IntakeState state = IntakeState.STOP;
+    @AutoLogOutput(key = "Intake/State")
+    private IntakeState state;
+    @AutoLogOutput(key = "Intake/Speed")
+    private double speed;
 
     public Intake(PneumaticsControlModule pcm_0, PneumaticsControlModule pcm_1) {
         leftMotor = new WPI_TalonSRX(Constants.LEFT_CAN_ID);
@@ -79,60 +82,69 @@ public class Intake extends SubsystemBase {
         rightClose = pcm_0.makeDoubleSolenoid(Constants.RIGHT_CLOSE_FORWARD_CHANNEL,
                 Constants.RIGHT_CLOSE_REVERSE_CHANNEL);
         close = new DoubleSolenoidGroup(leftClose, rightClose);
+
+        // https://v5.docs.ctr-electronics.com/en/stable/ch18_CommonAPI.html#setting-status-frame-periods
+        leftMotor.setStatusFramePeriod(StatusFrameEnhanced.Status_1_General, 20);
+        leftMotor.setStatusFramePeriod(StatusFrameEnhanced.Status_2_Feedback0, 20);
+        leftMotor.setStatusFramePeriod(StatusFrameEnhanced.Status_3_Quadrature, 1000);
+        leftMotor.setStatusFramePeriod(StatusFrameEnhanced.Status_4_AinTempVbat, 20);
+        leftMotor.setStatusFramePeriod(StatusFrameEnhanced.Status_8_PulseWidth, 1000);
+        leftMotor.setStatusFramePeriod(StatusFrameEnhanced.Status_10_MotionMagic, 1000);
+        leftMotor.setStatusFramePeriod(StatusFrameEnhanced.Status_12_Feedback1, 1000);
+        leftMotor.setStatusFramePeriod(StatusFrameEnhanced.Status_13_Base_PIDF0, 1000);
+        leftMotor.setStatusFramePeriod(StatusFrameEnhanced.Status_14_Turn_PIDF1, 1000);
+        leftMotor.setStatusFramePeriod(StatusFrameEnhanced.Status_21_FeedbackIntegrated, 1000);
+        rightMotor.setStatusFramePeriod(StatusFrameEnhanced.Status_1_General, 20);
+        rightMotor.setStatusFramePeriod(StatusFrameEnhanced.Status_2_Feedback0, 20);
+        rightMotor.setStatusFramePeriod(StatusFrameEnhanced.Status_3_Quadrature, 1000);
+        rightMotor.setStatusFramePeriod(StatusFrameEnhanced.Status_4_AinTempVbat, 20);
+        rightMotor.setStatusFramePeriod(StatusFrameEnhanced.Status_8_PulseWidth, 1000);
+        rightMotor.setStatusFramePeriod(StatusFrameEnhanced.Status_10_MotionMagic, 1000);
+        rightMotor.setStatusFramePeriod(StatusFrameEnhanced.Status_12_Feedback1, 1000);
+        rightMotor.setStatusFramePeriod(StatusFrameEnhanced.Status_13_Base_PIDF0, 1000);
+        rightMotor.setStatusFramePeriod(StatusFrameEnhanced.Status_14_Turn_PIDF1, 1000);
+        rightMotor.setStatusFramePeriod(StatusFrameEnhanced.Status_21_FeedbackIntegrated, 1000);
+
+        state = IntakeState.STOP;
+        speed = 0.0;
     }
 
     public Command up() {
-        return runOnce(() -> {
-            raise.set(DoubleSolenoid.Value.kForward);
-        });
+        return runOnce(() -> raise.set(DoubleSolenoid.Value.kForward));
     }
 
     public Command down() {
-        return runOnce(() -> {
-            raise.set(DoubleSolenoid.Value.kReverse);
-        });
+        return runOnce(() -> raise.set(DoubleSolenoid.Value.kReverse));
     }
 
     public Command open() {
-        return runOnce(() -> {
-            close.set(DoubleSolenoid.Value.kForward);
-        });
+        return runOnce(() -> close.set(DoubleSolenoid.Value.kForward));
     }
 
     public Command close() {
-        return runOnce(() -> {
-            close.set(DoubleSolenoid.Value.kReverse);
-        });
+        return runOnce(() -> close.set(DoubleSolenoid.Value.kReverse));
     }
 
     public Command intake() {
-        return runOnce(() -> {
-            state = IntakeState.INTAKE;
-        });
+        return runOnce(() -> state = IntakeState.INTAKE);
     }
 
     public Command hold() {
-        return runOnce(() -> {
-            state = IntakeState.HOLD;
-        });
+        return runOnce(() -> state = IntakeState.HOLD);
     }
 
     public Command eject() {
-        return runOnce(() -> {
-            state = IntakeState.EJECT;
-        });
+        return runOnce(() -> state = IntakeState.EJECT);
     }
 
     public Command stop() {
-        return runOnce(() -> {
-            state = IntakeState.STOP;
-        });
+        return runOnce(() -> state = IntakeState.STOP);
     }
 
     @Override
     public void periodic() {
         // Figure out what speed we should be running
-        double speed = switch (state) {
+        speed = switch (state) {
             case INTAKE -> Constants.INTAKE_SPEED;
             case EJECT -> -1.0 * Constants.INTAKE_SPEED;
             case HOLD -> Constants.HOLD_SPEED;
