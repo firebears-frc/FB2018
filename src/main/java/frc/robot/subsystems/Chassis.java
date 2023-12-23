@@ -43,10 +43,7 @@ public class Chassis extends SubsystemBase {
         frontRight = new WPI_TalonSRX(Constants.FRONT_RIGHT_CAN_ID);
         rearRight = new WPI_TalonSRX(Constants.REAR_RIGHT_CAN_ID);
 
-        Constants.CONFIG.apply(frontLeft);
-        Constants.CONFIG.apply(rearLeft);
-        Constants.CONFIG.apply(frontRight);
-        Constants.CONFIG.apply(rearRight);
+        Constants.CONFIG.apply(frontLeft, rearLeft, frontRight, rearRight);
 
         left = new MotorControllerGroup(frontLeft, rearLeft);
         right = new MotorControllerGroup(frontRight, rearRight);
